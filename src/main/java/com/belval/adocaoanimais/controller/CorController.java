@@ -36,6 +36,7 @@ public class CorController {
 		if (c == null) {
 			return "cor-nao-encontrada";
 		}
+		model.addAttribute("cor", repository.findAll());
 		model.addAttribute("c", c);
 		return "pet-cor";
 	}
@@ -46,8 +47,17 @@ public class CorController {
 		if (c == null) {
 			return "cor-nao-encontrada";
 		}
+		model.addAttribute("cor", repository.findAll());
 		model.addAttribute("c", c);
 		return "pet-cor";
+
+	}
+	
+	@GetMapping("/pet/pet-cor/{id}/excluir")
+	public String excluir(@PathVariable("id") int id, Model model) {
+		repository.deleteById(id);
+		 
+		return list(model);
 
 	}
 }
