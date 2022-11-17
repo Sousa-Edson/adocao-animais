@@ -1,0 +1,89 @@
+<!-- navbar - barra de menu -->
+<nav class="navbar navbar-expand-lg  sticky-top  " style="background-color:rgb(153, 0, 204)" th:fragment="navbar">
+	<!-- background-color:rgb(153, 0, 204);; -->
+	<!-- style="margin-left:0px ;margin-right:0px ;" -->
+	<div class="container ">
+		<a class="navbar-brand" href="#">
+			<img th:src="@{/MicrosoftTeams-image.png}" alt="" width="30" height="24">
+		</a>
+		<a class="navbar-brand text-white" href="/pet">Adote fácil</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<a class="nav-link  text-white custon-txt-white" aria-current="page" href="/pet">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white custon-txt-white" href="/pet/catalogo">Galeria</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle text-white custon-txt-white" href="#" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false">
+						Saiba mais
+					</a>
+					<ul class="dropdown-menu  ">
+						<li><a class="dropdown-item " href="/pet/intencao-adotar">Adote um animal</a></li>
+						<li><a class="dropdown-item" href="/pet/cadastroAnimal">Doe um animal</a></li>
+						<li>
+							<hr class="dropdown-divider">
+						</li>
+						<li><a class="dropdown-item" href="#">Fique por dentro de eventos de sua região</a></li>
+					</ul>
+				</li>
+			</ul>
+			<div>
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item dropdown">
+						<div class="btn-group">
+							<button type="button" class="btn btn-outline-light"><a class="dropdown-item"
+									href="/pet/dashboard">Dashboard</a></button>
+							<button type="button" class="btn btn-outline-light dropdown-toggle dropdown-toggle-split"
+								data-bs-toggle="dropdown" aria-expanded="false">
+								<span class="visually"> </span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="/pet/pet-raca">Cadastrar raça</a></li>
+								<li><a class="dropdown-item" href="/pet/pet-cor">Cadastrar cor</a></li>
+								<li><a class="dropdown-item" href="#">Gerenciar usuários</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><a class="dropdown-item" href="/pet/postagem">Gerenciar eventos</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+
+			</div>
+			<div>
+				<!--				<a class="btn btn-outline-light" href="/pet/login"> Logar</a>-->
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item dropdown">
+						<div class="btn-group">
+							<a type="button" class="btn btn-outline-light"> <i class="bi bi-person-circle">
+									Usuário</i></a>
+							<button type="button" class="btn btn-outline-light dropdown-toggle dropdown-toggle-split"
+								data-bs-toggle="dropdown" aria-expanded="false">
+								<span class="visually"> </span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="/pet/perfil-pessoa">Perfil</a></li>
+								<!--								<li><a class="dropdown-item" href="/pet/pet-cor">Cadastrar cor</a></li>-->
+								<!--								<li><a class="dropdown-item" href="#">Gerenciar usuários</a></li>-->
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="/pet/login">Sair</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+
+			</div>
+		</div>
+	</div>
+	
+</nav>
