@@ -1,0 +1,58 @@
+<section th:fragment="section-script">
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Aviso</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      Deseja realmente sair?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+       <a class="btn btn-primary"  href="/pet/login">Sair</a>
+      </div>
+    </div>
+  </div>
+</div>
+	<!-- Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+		integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+		crossorigin="anonymous"></script>
+
+	<script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+
+	<script>
+		const myCarouselElement = document.querySelector('#myCarousel')
+		const carousel = new bootstrap.Carousel(myCarouselElement, {
+			interval: 3000, //aqui conttrola a velocidade do slide
+			ride: "carousel" // aqui inicia automaticamente
+		})
+
+
+	</script>
+	<script>
+		const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+
+		const alert = (message, type) => {
+			const wrapper = document.createElement('div')
+			wrapper.innerHTML = [
+				`<div class="alert alert-${type} alert-dismissible" role="alert">`,
+				`   <div>${message}</div>`,
+				'   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+				'</div>'
+			].join('')
+
+			alertPlaceholder.append(wrapper)
+		}
+
+		const alertTrigger = document.getElementById('liveAlertBtn')
+		if (alertTrigger) {
+			alertTrigger.addEventListener('click', () => {
+				alert('Nice, you triggered this alert message!', 'success')
+			})
+		}	
+	</script>
+</section>
