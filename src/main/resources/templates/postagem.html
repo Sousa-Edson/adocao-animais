@@ -38,9 +38,9 @@
 
 							<div class="card-header">
 								<div class="row">
-									<div class=" col-md-12"">
+									<div class=" col-md-12">
 										<label for=" nome"></label>
-										<img name="imagem" id="imagem" class="form-control mh-50"
+										<img name="imagem" id="imagem" class="rounded mx-auto d-block "
 											src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVdxeWlVQ9PncYAMwTXUkg8UPSyW7GnrGDZg&usqp=CAU"
 											alt="sss">
 									</div>
@@ -74,7 +74,7 @@
 													placeholder="Digite nome do Animal ">
 											</div>
 										</div>
-									</div>/div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -110,7 +110,7 @@
 		const InputVar = document.querySelector('#inputGroupFile01');
 		InputVar.addEventListener('change', function (evt) {
 			if (!(evt.target && evt.target.files && evt.target.files.length > 0)) {
-				return;
+				imgVar.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVdxeWlVQ9PncYAMwTXUkg8UPSyW7GnrGDZg&usqp=CAU';
 			}
 
 			// Inicia o file-reader:

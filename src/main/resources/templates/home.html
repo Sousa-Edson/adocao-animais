@@ -154,7 +154,15 @@
 	<div th:replace="fragments/footer :: footer">...</div>
 	<section th:replace="fragments/script :: section-script">...
 	</section>
+<script>
+		const myCarouselElement = document.querySelector('#myCarousel')
+		const carousel = new bootstrap.Carousel(myCarouselElement, {
+			interval: 3000, //aqui conttrola a velocidade do slide
+			ride: "carousel" // aqui inicia automaticamente
+		})
 
+
+	</script>
 </body>
 
 </html>

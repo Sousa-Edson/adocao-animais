@@ -12,10 +12,7 @@ public class PostagemController {
         return "postagem-lista";
     }
 
-//    @PostMapping("/pet/postagem")
-//    public String lista() {
-//        return "pet/postagem-lista";
-//    }
+ 
     @GetMapping("/pet/postagem-novo")
     public String novo() {
         return "postagem";
