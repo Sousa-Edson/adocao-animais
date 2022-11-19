@@ -19,7 +19,8 @@
 				<div class="content">
 					<div class="container">
 						<div class="row featurette align-items-center" style="margin: 20px">
-							<div class="col-md-6 order-md-1"><a href="/postagem/postagem-lista" class="btn  btn-primary">Lista
+							<div class="col-md-6 order-md-1"><a href="/postagem/postagem-lista"
+									class="btn  btn-primary">Lista
 									evento</a></div>
 						</div>
 					</div>
@@ -28,7 +29,7 @@
 					<div class="container">
 						<div class="col-sm-12">
 							<h1 class="m-0" id="quem-somos">
-								Cadastro <small> de postagem </small>
+								Cadastro <small> de eventos </small>
 							</h1>
 						</div>
 						<form action="postagem-novo" method="post" name="formulario">
@@ -39,39 +40,41 @@
 								<div class="card-header">
 									<div class="row">
 										<div class=" col-md-12">
-										 
-											<img name="imagem" id="imagem" class="rounded mx-auto d-block " 	style="width: 500px; height: 400px"
+
+											<img name="imagemExibir" id="imagemExibir" class="rounded mx-auto d-block "
+												style="width: 500px; height: 400px"
 												src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVdxeWlVQ9PncYAMwTXUkg8UPSyW7GnrGDZg&usqp=CAU"
 												alt="imagem erro">
 										</div>
 									</div>
 									<div class="row">
-										<div class="col-sm-12">
-											<label for="nome">Imagem da postagem</label>
+										<div class="col-sm-10">
+											<label for="nome">Imagem </label>
 											<div class="input-group mb-3">
 												<input type="file" class="form-control" id="caminhoImagem"
 													name="caminhoImagem" accept="image/*">
+
 											</div>
 										</div>
 
+										<div class="col-sm-2">
+											<label for="dataPublicacao">Data de publicação</label>
+											<input type="date" class="form-control" id="dataPublicacao"
+												name="dataPublicacao" placeholder="Digite nome do Animal ">
+										</div>
 									</div>
 
 									<div class="row">
 										<div class="form-group  col-md-12 ">
-											<label for="titulo">Titulo de postagem</label>
+											<label for="titulo">Titulo </label>
 											<input type="text" class="form-control" id="titulo" name="titulo"
 												placeholder="Evento de adoção ... ">
 											<div class="row">
 												<div class="col-md-12">
-													<label for="conteudo">Descrição da postagem</label>
+													<label for="conteudo">Descrição </label>
 													<textarea class="form-control" id="conteudo" name="conteudo"
 														placeholder="Evento que acontecerá de forma livre e gratuita dia tal no endereço ...  "
 														style="height: 200px;"></textarea>
-												</div>
-												<div class="col-sm-4">
-													<label for="dataPublicacao">Data de publicação</label>
-													<input type="date" class="form-control" id="dataPublicacao"
-														name="dataPublicacao" placeholder="Digite nome do Animal ">
 												</div>
 											</div>
 										</div>
@@ -107,7 +110,7 @@
 	</section>
 	<script>
 
-		const imgVar = document.querySelector('#imagem');
+		const imgVar = document.querySelector('#imagemExibir');
 		const InputVar = document.querySelector('#caminhoImagem');
 		InputVar.addEventListener('change', function (evt) {
 			if (!(evt.target && evt.target.files && evt.target.files.length > 0)) {

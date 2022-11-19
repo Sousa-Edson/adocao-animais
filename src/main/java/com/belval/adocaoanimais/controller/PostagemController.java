@@ -38,6 +38,9 @@ public class PostagemController {
 		ModelAndView mv = new ModelAndView("redirect:../postagem/postagem-lista");
 
 		if (!postagem.getTitulo().isEmpty()) {
+//			String diretorio = postagem.getImagem().getAbsolutePath();
+//			postagem.setCaminhoImagem(diretorio);
+//			 System.out.println("caminho="+postagem.getCaminhoImagem());
 			repository.save(postagem);
 		}
 
@@ -60,7 +63,7 @@ public class PostagemController {
 		} else {
 			model.addAttribute("postagem", repository.findAll());
 			model.addAttribute("c", c);
-			 System.out.println(c.getTitulo());
+			 System.out.println(c.getImagem());
 			return "postagem/postagem-detalhe";
 		}
 
