@@ -58,9 +58,9 @@ public class PostagemController {
 		if (c == null) {
 			return "nao-encontrada";
 		} else {
-//			model.addAttribute("postagem", repository.findAll());
+			model.addAttribute("postagem", repository.findAll());
 			model.addAttribute("c", c);
-			 
+			 System.out.println(c.getTitulo());
 			return "postagem/postagem-detalhe";
 		}
 

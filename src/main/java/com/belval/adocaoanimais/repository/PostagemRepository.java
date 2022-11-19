@@ -8,7 +8,7 @@ import com.belval.adocaoanimais.model.Postagem;
  
 public interface PostagemRepository extends CrudRepository<Postagem, Integer> {
 
-    List<Postagem> findByTitulo(String cor);
+    List<Postagem> findByTitulo(String postagem);
 
     Postagem findById(int id);
 }

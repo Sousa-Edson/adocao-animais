@@ -22,7 +22,7 @@
 
 				<!-- Main content -->
 				<div class="content">
-					<div class="container">
+					<div class="container" >
 						<div class="row">
 							<div id="liveAlertPlaceholder"></div>
 
@@ -44,19 +44,19 @@
 												<a href="https://portal.barueri.sp.gov.br/Noticia/22092022-final-de-semana-tem-feira-de-adocao-de-caes-nos-parques-da-cidade"
 													target="_blank" class="eaturette-heading"
 													style="text-decoration: none">
-													<span class="text-muted" th:value="${c.titulo}"> </span>
+													<span class="text-muted" th:text="${c.titulo}"> </span>
 												</a>
 											</h2>
-
-											<p class="lead" th:value="${c.conteudo}">
+	 
+											<p class="lead"  th:text="${c.conteudo}" >
 
 											</p>
-											<small class="text-muted" th:value="${c.dataPostagem}"> </small>
+											<small class="text-muted"  th:text="'Data de Publicação: '+${c.dataPublicacao}"> </small>
 										</div>
 										<div class="col-md-5">
 											<img class="featurette-image img-fluid mx-auto rounded"
 												data-src="holder.js/400x400/auto" alt="400x400"
-												style="width: 500px; height: 400px" th:value="${c.caminhoImagem}"
+												style="width: 500px; height: 400px" th:src="@{/img-postagem/{img} (img=${c.caminhoImagem})}"
 												data-holder-rendered="true">
 										</div>
 									</div>

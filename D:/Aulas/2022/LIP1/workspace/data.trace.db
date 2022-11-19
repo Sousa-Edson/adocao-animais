@@ -266,3 +266,6 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: /home/edson/Dev/
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
 	... 59 more
+2022-11-19 11:34:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "CONTEUDO CHARACTER VARYING(255)": "'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lore... (574)"; SQL statement:
+insert into postagem (ativo, caminho_imagem, conteudo, data_publicacao, titulo, id) values (?, ?, ?, ?, ?, ?) [22001-214]
