@@ -34,7 +34,7 @@ public class RacaController {
 
 		model.addAttribute("c", new PetRaca());
 		model.addAttribute("raca", repository.findAll());
-		return "pet-raca";
+		return "animal/pet-raca";
 	}
 
 	@GetMapping("/pet/pet-raca/{id}/edit")
@@ -46,7 +46,7 @@ public class RacaController {
 			model.addAttribute("raca", repository.findAll());
 			model.addAttribute("c", c);
 			m.addAttribute("msg", "mensagem");
-			return "pet-raca";
+			return "animal/pet-raca";
 		}
 
 	}
@@ -63,7 +63,7 @@ public class RacaController {
 			model.addAttribute("c", new PetRaca());
 			model.addAttribute("e", e);
 			m.addAttribute("exc", true);
-			return "pet-raca";
+			return "animal/pet-raca";
 		}
 	}
 

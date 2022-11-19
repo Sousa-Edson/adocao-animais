@@ -13,6 +13,7 @@ public class Postagem {
 	private Integer id;
 	private String titulo;
 	private String conteudo;
+	private String caminhoImagem;
 	private String dataPublicacao;
 	private boolean ativo;
 
@@ -20,11 +21,18 @@ public class Postagem {
 		super();
 	}
 
-	public Postagem(Integer id, String titulo, String conteudo, String dataPublicacao, boolean ativo) {
+	public String getCaminhoImagem() {
+		return caminhoImagem;
+	}
+
+
+	public Postagem(Integer id, String titulo, String conteudo, String caminhoImagem, String dataPublicacao,
+			boolean ativo) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.conteudo = conteudo;
+		this.caminhoImagem = caminhoImagem;
 		this.dataPublicacao = dataPublicacao;
 		this.ativo = ativo;
 	}
@@ -51,6 +59,10 @@ public class Postagem {
 
 	public void setConteudo(String conteudo) {
 		this.conteudo = conteudo;
+	}
+
+	public void setCaminhoImagem(String caminhoImagem) {
+		this.caminhoImagem = caminhoImagem;
 	}
 
 	public String getDataPublicacao() {

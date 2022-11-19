@@ -15,11 +15,12 @@
 	<div style="margin-top: 10px;"></div>
 	<main>
 		<div class="container">
-						<div class="row featurette align-items-center" style="margin: 20px">
-							<div class="col-md-6 order-md-1"><a href="/pet/postagem-novo" class="btn  btn-primary">Novo evento</a></div>
-							</div>
-						</div>
-					</div>
+			<div class="row featurette align-items-center" style="margin: 20px">
+				<div class="col-md-6 order-md-1"><a href="/postagem/postagem-novo" class="btn  btn-primary">Novo
+						evento</a></div>
+			</div>
+		</div>
+		</div>
 		<section class=" ">
 			<div class="container">
 				<div class="row">
@@ -43,45 +44,19 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>1.</td>
-											<td>Adote aqui</td>
-											<td>
-												<span class="   ">20/10/2010</span>
+										<tr th:each="p : ${postagem}">
+											<td><span th:text=" ${p.id}"></span>.
 											</td>
+											<td>
+												<span th:text="${p.titulo}"></span>
+											</td>
+											<td>
+												<span th:text="${p.dataPublicacao}"></span>
+											</td>
+
 											<td>
 												<div class="btn-group">
-													<a href="/pet/postagem-detalhe"
-														class="btn btn-sm btn-outline-secondary">Visualizar</a>
-													<a href="adotar.html"
-														class="btn btn-sm btn-outline-success">Gerenciar</a>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>2.</td>
-											<td>Encontro de pet's</td>
-											<td>
-												<span class="   ">20/06/2010</span>
-											</td>
-											<td>
-												<div class="btn-group">
-													<a href="/pet/postagem-detalhe"
-														class="btn btn-sm btn-outline-secondary">Visualizar</a>
-													<a href="adotar.html"
-														class="btn btn-sm btn-outline-success">Gerenciar</a>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>3.</td>
-											<td>Adoção em Barueri parque</td>
-											<td>
-												<span class="   ">20/01/2010</span>
-											</td>
-											<td>
-												<div class="btn-group">
-													<a href="/pet/postagem-detalhe"
+													<a th:href="@{/postagem/postagem-detalhe/{id} (id=${p.id})}"
 														class="btn btn-sm btn-outline-secondary">Visualizar</a>
 													<a href="adotar.html"
 														class="btn btn-sm btn-outline-success">Gerenciar</a>

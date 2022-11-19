@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head th:replace="fragments/head ">
+
+</head>
+
+<body class="hold-transition layout-top-nav layout-navbar-fixed"
+	style="background-image: './imagens/MicrosoftTeams-image.png';">
+
+
+
+	<!-- navbar - barra de menu -->
+	<nav th:replace="fragments/navbar :: navbar">...</nav>
+	<div style="margin-top: 10px;"></div>
+	<main>
+		<div class="content-wrapper" style="min-height: 747px;">
+			<div class="content-header">
+				<div class="content">
+					<div class="container">
+						<div class="row featurette align-items-center" style="margin: 20px">
+							<div class="col-md-6 order-md-1"><a href="/postagem/postagem-lista" class="btn  btn-primary">Lista
+									evento</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="content">
+					<div class="container">
+						<div class="col-sm-12">
+							<h1 class="m-0" id="quem-somos">
+								Cadastro <small> de postagem </small>
+							</h1>
+						</div>
+						<form action="postagem-novo" method="post" name="formulario">
+							<div class="col-sm-12">
+							</div>
+							<div class="card  card-default ">
+
+								<div class="card-header">
+									<div class="row">
+										<div class=" col-md-12">
+											<label for=" nome"></label>
+											<img name="imagem" id="imagem" class="rounded mx-auto d-block "
+												src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVdxeWlVQ9PncYAMwTXUkg8UPSyW7GnrGDZg&usqp=CAU"
+												alt="sss">
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm- ">
+											<label for="nome">Imagem da postagem</label>
+											<div class="input-group mb-3">
+												<input type="file" class="form-control" id="caminhoImagem"
+													name="caminhoImagem" accept="image/*">
+											</div>
+										</div>
+
+									</div>
+
+									<div class="row">
+										<div class="form-group  col-md-12 ">
+											<label for="titulo">Titulo de postagem</label>
+											<input type="text" class="form-control" id="titulo" name="titulo"
+												placeholder="Evento de adoção ... ">
+											<div class="row">
+												<div class="col-md-12">
+													<label for="conteudo">Descrição da postagem</label>
+													<textarea class="form-control" id="conteudo" name="conteudo"
+														placeholder="Evento que acontecerá de forma livre e gratuita dia tal no endereço ...  "
+														style="height: 200px;"></textarea>
+												</div>
+												<div class="col-sm-4">
+													<label for="dataPublicacao">Data de publicação</label>
+													<input type="date" class="form-control" id="dataPublicacao"
+														name="dataPublicacao" placeholder="Digite nome do Animal ">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card  card-default ">
+								<div class="row featurette align-items-center" style="margin: 20px">
+									<div class="col-md-12 order-md-1">
+										<div class="row">
+											<button type="submit"
+												class="btn btn-success btn-lg btn-block">Salvar</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+	</main>
+	<!-- footer - rodape basico -->
+	<div th:replace="fragments/footer :: footer">...</div>
+	<section th:replace="fragments/script :: section-script">...
+	</section>
+	<script>
+
+		const imgVar = document.querySelector('#imagem');
+		const InputVar = document.querySelector('#caminhoImagem');
+		InputVar.addEventListener('change', function (evt) {
+			if (!(evt.target && evt.target.files && evt.target.files.length > 0)) {
+				imgVar.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVdxeWlVQ9PncYAMwTXUkg8UPSyW7GnrGDZg&usqp=CAU';
+			}
+
+			// Inicia o file-reader:
+			var r = new FileReader();
+			// Define o que ocorre quando concluir:
+			r.onload = function () {
+				// Define o `src` do elemento para o resultado:
+				imgVar.src = r.result;
+			}
+			// Lê o arquivo e cria um link (o resultado vai ser enviado para o onload.
+			r.readAsDataURL(evt.target.files[0]);
+		});
+	</script>
+</body>
+
+</html>
