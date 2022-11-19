@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head th:replace="fragments/head ">
+
+</head>
+
+<body class="hold-transition layout-top-nav layout-navbar-fixed"
+	style="background-image: './imagens/MicrosoftTeams-image.png';">
+
+
+
+	<!-- navbar - barra de menu -->
+	<nav th:replace="fragments/navbar :: navbar">...</nav>
+	<div style="margin-top: 10px;"></div>
+	<main>
+		<div class="container">
+						<div class="row featurette align-items-center" style="margin: 20px">
+							<div class="col-md-6 order-md-1"><a href="/pet/postagem-novo" class="btn  btn-primary">Novo evento</a></div>
+							</div>
+						</div>
+					</div>
+		<section class=" ">
+			<div class="container">
+				<div class="row">
+
+					<section class="col-lg-12 ">
+						<!-- <h1>lado direito</h1> -->
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title"> <i class="nav-icon  fas fa-solid fas fa-users"> Eventos
+										cadastros </i>
+								</h3>
+							</div>
+							<div class="card-body p-3">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th style="width: 10px">#</th>
+											<th>Titulo</th>
+											<th>Data</th>
+											<th style="width: 40px">Ações</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1.</td>
+											<td>Adote aqui</td>
+											<td>
+												<span class="   ">20/10/2010</span>
+											</td>
+											<td>
+												<div class="btn-group">
+													<a href="/pet/postagem-detalhe"
+														class="btn btn-sm btn-outline-secondary">Visualizar</a>
+													<a href="adotar.html"
+														class="btn btn-sm btn-outline-success">Gerenciar</a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>2.</td>
+											<td>Encontro de pet's</td>
+											<td>
+												<span class="   ">20/06/2010</span>
+											</td>
+											<td>
+												<div class="btn-group">
+													<a href="/pet/postagem-detalhe"
+														class="btn btn-sm btn-outline-secondary">Visualizar</a>
+													<a href="adotar.html"
+														class="btn btn-sm btn-outline-success">Gerenciar</a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>3.</td>
+											<td>Adoção em Barueri parque</td>
+											<td>
+												<span class="   ">20/01/2010</span>
+											</td>
+											<td>
+												<div class="btn-group">
+													<a href="/pet/postagem-detalhe"
+														class="btn btn-sm btn-outline-secondary">Visualizar</a>
+													<a href="adotar.html"
+														class="btn btn-sm btn-outline-success">Gerenciar</a>
+												</div>
+											</td>
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+							<div class="card-tools">
+								<ul class="pagination pagination-md justify-content-center">
+									<li class="page-item"><a class="page-link" href="#">«</a></li>
+									<li class="page-item"><a class="page-link" href="#">1</a></li>
+									<li class="page-item"><a class="page-link" href="#">2</a></li>
+									<li class="page-item"><a class="page-link" href="#">3</a></li>
+									<li class="page-item"><a class="page-link" href="#">»</a></li>
+								</ul>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</section>
+	</main>
+	<!-- footer - rodape basico -->
+	<div th:replace="fragments/footer :: footer">...</div>
+	<section th:replace="fragments/script :: section-script">...
+	</section>
+
+</body>
+
+</html>

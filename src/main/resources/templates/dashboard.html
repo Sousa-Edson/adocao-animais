@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+
+<head th:replace="fragments/head ">
+	 
+</head>
+
+<body class="hold-transition layout-top-nav layout-navbar-fixed"
+	style="background-image: './imagens/MicrosoftTeams-image.png';">
+
+	<!-- navbar - barra de menu -->
+	<!-- navbar - barra de menu -->
+	<nav th:replace="fragments/navbar :: navbar">...</nav>
+
+
+	<div style="margin-top: 10px;"></div>
+	<main>
+		<h1 class="container">Dashboard</h1>
+		<section class="container">
+			<div class="row">
+				<div class="col-lg-3 col-6 py-3">
+					<div class="small-box bg-primary rounded">
+						<div class="row">
+							<div class="col ">
+								<div class="text-center text-white ">
+									<h3>239</h3>
+									<p>Usuários registrados</p>
+								</div>
+							</div>
+							<div class="col ">
+								<h1 class="display-1 text-center text-black-50  ">
+									<div class="icon">
+										<i class="ion ion-person-add"></i>
+									</div>
+								</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-6 py-3">
+					<div class="small-box bg-success rounded">
+						<div class="row">
+							<div class="col ">
+								<div class="text-center text-white ">
+									<h3>211</h3>
+									<p>Animais registrados</p>
+								</div>
+							</div>
+							<div class="col ">
+								<h1 class="display-1 text-center text-black-50  ">
+									<div class="icon">
+										<i class="ion ion-stats-bars"></i>
+									</div>
+								</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-6 py-3">
+					<div class="small-box bg-warning rounded">
+						<div class="row">
+							<div class="col ">
+								<div class="text-center text-white ">
+									<h3>44</h3>
+									<p>Adoções confirmadas</p>
+								</div>
+							</div>
+							<div class="col ">
+								<h1 class="display-1 text-center text-black-50  ">
+									<div class="icon">
+										<i class="ionicons ion-ios-paw"></i>
+									</div>
+								</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-6 py-3">
+					<div class="small-box bg-danger rounded">
+						<div class="row">
+							<div class="col ">
+								<div class="text-center text-white ">
+									<h3>65</h3>
+									<p>Doação confirmadas</p>
+								</div>
+							</div>
+							<div class="col ">
+								<h1 class="display-1 text-center text-black-50  ">
+									<div class="icon">
+										<i class="ion ion-pie-graph"></i>
+									</div>
+								</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+		</section>
+		<section class=" ">
+			<div class="container">
+				<div class="row">
+					<section class="col-lg-6  ">
+						<!-- <h1>lado direito</h1> -->
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title"> <i class="nav-icon fas fa-solid fa-paw"> Últimos animais
+										cadastros </i></h3>
+							</div>
+							<div class="card-body p-3">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th style="width: 10px">#</th>
+											<th>Nome</th>
+											<th>Gênero/Idade</th>
+											<th style="width: 40px">Ações</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1.</td>
+											<td>CLAUDINHO</td>
+											<td>
+												<span class="badge bg-primary">Macho, 8 anos</span>
+											</td>
+											<td>
+												<div class="btn-group">
+													<a href="catalogo-descricao.html"
+														class="btn btn-sm btn-outline-secondary">Visualizar</a>
+													<a href="adotar.html"
+														class="btn btn-sm btn-outline-success">Gerenciar</a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>2.</td>
+											<td>JANIS</td>
+											<td>
+												<span class="badge bg-danger">Fêmea, 6 anos</span>
+											</td>
+											<td>
+												<div class="btn-group">
+													<a href="catalogo-descricao.html"
+														class="btn btn-sm btn-outline-secondary">Visualizar</a>
+													<a href="adotar.html"
+														class="btn btn-sm btn-outline-success">Gerenciar</a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>3.</td>
+											<td>NEMO I</td>
+											<td>
+												<span class="badge bg-primary">Macho, 12 anos</span>
+											</td>
+											<td>
+												<div class="btn-group">
+													<a href="catalogo-descricao.html"
+														class="btn btn-sm btn-outline-secondary">Visualizar</a>
+													<a href="adotar.html"
+														class="btn btn-sm btn-outline-success">Gerenciar</a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>4.</td>
+											<td>SULTÃO II</td>
+											<td>
+												<span class="badge bg-primary">Macho, 13 anos</span>
+											</td>
+											<td>
+												<div class="btn-group">
+													<a href="catalogo-descricao.html"
+														class="btn btn-sm btn-outline-secondary">Visualizar</a>
+													<a href="adotar.html"
+														class="btn btn-sm btn-outline-success">Gerenciar</a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>5.</td>
+											<td> BARTOLOMEU</td>
+											<td>
+												<span class="badge bg-primary">Macho, 12 anos</span>
+											</td>
+											<td>
+												<div class="btn-group">
+													<a href="catalogo-descricao.html"
+														class="btn btn-sm btn-outline-secondary">Visualizar</a>
+													<a href="adotar.html"
+														class="btn btn-sm btn-outline-success">Gerenciar</a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>6.</td>
+											<td>BIA II</td>
+											<td>
+												<span class="badge bg-danger">Fêmea, 4 anos</span>
+											</td>
+											<td>
+												<div class="btn-group">
+													<a href="catalogo-descricao.html"
+														class="btn btn-sm btn-outline-secondary">Visualizar</a>
+													<a href="adotar.html"
+														class="btn btn-sm btn-outline-success">Gerenciar</a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>7.</td>
+											<td>TONY</td>
+											<td>
+												<span class="badge bg-primary">Macho, 12 anos</span>
+											</td>
+											<td>
+												<div class="btn-group">
+													<a href="catalogo-descricao.html"
+														class="btn btn-sm btn-outline-secondary">Visualizar</a>
+													<a href="adotar.html"
+														class="btn btn-sm btn-outline-success">Gerenciar</a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>8.</td>
+											<td>FUFFY</td>
+											<td>
+												<span class="badge bg-primary">Macho, 8 anos</span>
+											</td>
+											<td>
+												<div class="btn-group">
+													<a href="catalogo-descricao.html"
+														class="btn btn-sm btn-outline-secondary">Visualizar</a>
+													<a href="adotar.html"
+														class="btn btn-sm btn-outline-success">Gerenciar</a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>9.</td>
+											<td>GASPAR</td>
+											<td>
+												<span class="badge bg-primary">Macho, 8 anos</span>
+											</td>
+											<td>
+												<div class="btn-group">
+													<a href="catalogo-descricao.html"
+														class="btn btn-sm btn-outline-secondary">Visualizar</a>
+													<a href="adotar.html"
+														class="btn btn-sm btn-outline-success">Gerenciar</a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>10.</td>
+											<td>BAM</td>
+											<td>
+												<span class="badge bg-primary">Macho, 3 anos</span>
+											</td>
+											<td>
+												<div class="btn-group">
+													<a href="catalogo-descricao.html"
+														class="btn btn-sm btn-outline-secondary">Visualizar</a>
+													<a href="adotar.html"
+														class="btn btn-sm btn-outline-success">Gerenciar</a>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="card-tools">
+								<ul class="pagination pagination-md justify-content-center">
+									<li class="page-item"><a class="page-link" href="#">«</a></li>
+									<li class="page-item"><a class="page-link" href="#">1</a></li>
+									<li class="page-item"><a class="page-link" href="#">2</a></li>
+									<li class="page-item"><a class="page-link" href="#">3</a></li>
+									<li class="page-item"><a class="page-link" href="#">»</a></li>
+								</ul>
+							</div>
+						</div>
+					</section>
+					<section class="col-lg-6  ">
+						<!-- <h1>lado direito</h1> -->
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title"> <i class="nav-icon  fas fa-solid fas fa-users"> Últimos usuários
+										cadastros </i>
+								</h3>
+							</div>
+							<div class="card-body p-3">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th style="width: 10px">#</th>
+											<th>Nome</th>
+											<th>Permissão</th>
+											<th style="width: 40px">Ações</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1.</td>
+											<td>JOSÉ LUIZ DA MATTA</td>
+											<td>
+												<span class="badge bg-success">Administrador</span>
+											</td>
+											<td>
+												<div class="btn-group">
+													<a href="catalogo-descricao.html"
+														class="btn btn-sm btn-outline-secondary">Visualizar</a>
+													<a href="adotar.html"
+														class="btn btn-sm btn-outline-success">Gerenciar</a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>2.</td>
+											<td>ANTONIA MARIA CONCEIÇÃO</td>
+											<td>
+												<span class="badge bg-warning">Usuário comun</span>
+											</td>
+											<td>
+												<div class="btn-group">
+													<a href="catalogo-descricao.html"
+														class="btn btn-sm btn-outline-secondary">Visualizar</a>
+													<a href="adotar.html"
+														class="btn btn-sm btn-outline-success">Gerenciar</a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>3.</td>
+											<td>CRLOS EDUARDO DE NOBREGA</td>
+											<td>
+												<span class="badge bg-warning">Usuário comun</span>
+											</td>
+											<td>
+												<div class="btn-group">
+													<a href="catalogo-descricao.html"
+														class="btn btn-sm btn-outline-secondary">Visualizar</a>
+													<a href="adotar.html"
+														class="btn btn-sm btn-outline-success">Gerenciar</a>
+												</div>
+											</td>
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+							<div class="card-tools">
+								<ul class="pagination pagination-md justify-content-center">
+									<li class="page-item"><a class="page-link" href="#">«</a></li>
+									<li class="page-item"><a class="page-link" href="#">1</a></li>
+									<li class="page-item"><a class="page-link" href="#">2</a></li>
+									<li class="page-item"><a class="page-link" href="#">3</a></li>
+									<li class="page-item"><a class="page-link" href="#">»</a></li>
+								</ul>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</section>
+	</main>
+	 
+	 
+
+	<!-- footer - rodape basico -->
+	<div th:replace="fragments/footer :: footer">...</div>
+	<section th:replace="fragments/script :: section-script">...
+	</section>
+</body>
+
+</html>

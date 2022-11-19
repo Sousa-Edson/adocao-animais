@@ -2,8 +2,9 @@ package com.belval.adocaoanimais;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Repository;
 
-//@RestController
+ 
 @SpringBootApplication
 public class AdocaoanimaisApplication {
 
