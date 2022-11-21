@@ -1,8 +1,7 @@
 
 package com.belval.adocaoanimais.model;
 
-import java.io.File;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,11 +13,11 @@ public class Postagem {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String titulo;
+	@Column(name = "conteudo",  length = 512) // AQUI EU DEFINO O NOME DA COLUNA ,SE PODE NULA E O TAMANHO
 	private String conteudo;
-	private String  caminhoImagem;
+	private String caminhoImagem;
 	private String dataPublicacao;
 	private boolean ativo;
-	private File imagem;
 
 	public Postagem() {
 		super();
@@ -27,7 +26,6 @@ public class Postagem {
 	public String getCaminhoImagem() {
 		return caminhoImagem;
 	}
-
 
 	public Postagem(Integer id, String titulo, String conteudo, String caminhoImagem, String dataPublicacao,
 			boolean ativo) {
@@ -82,14 +80,6 @@ public class Postagem {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
-	}
-
-	public File getImagem() {
-		return imagem;
-	}
-
-	public void setImagem(File imagem) {
-		this.imagem = imagem;
 	}
 
 }
