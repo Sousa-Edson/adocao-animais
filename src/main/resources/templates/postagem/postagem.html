@@ -51,7 +51,7 @@
 										<div class="col-sm-10">
 											<label for="nome">Imagem </label>
 											<div class="input-group mb-3">
-												<input type="file" class="form-control" id="file" name="file"
+												<input type="file" class="form-control" id="file-img" name="file-img"
 													accept="image/*">
 
 											</div>
@@ -116,7 +116,7 @@
 	<script>
 
 		const imgVar = document.querySelector('#imagemExibir');
-		const InputVar = document.querySelector('#caminhoImagem');
+		const InputVar = document.querySelector('#file-img');
 		InputVar.addEventListener('change', function (evt) {
 			if (!(evt.target && evt.target.files && evt.target.files.length > 0)) {
 				imgVar.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVdxeWlVQ9PncYAMwTXUkg8UPSyW7GnrGDZg&usqp=CAU';
