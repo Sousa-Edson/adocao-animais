@@ -19,9 +19,9 @@
 				<div class="content">
 					<div class="container">
 						<div class="row featurette align-items-center" style="margin: 20px">
-							<div class="col-md-6 order-md-1"><a href="/postagem/postagem-lista"
+							<div class="col-md-6 order-md-1"><a href="/pet/postagem/postagem-lista"
 									class="btn  btn-primary">Lista
-									evento</a></div>
+									postagem</a></div>
 						</div>
 					</div>
 				</div>
@@ -29,7 +29,7 @@
 					<div class="container">
 						<div class="col-sm-12">
 							<h1 class="m-0" id="quem-somos">
-								Cadastro <small> de eventos </small>
+								Cadastro <small> de postagem </small>
 							</h1>
 						</div>
 						<form action="postagem-novo" method="post" name="formulario" enctype="multipart/form-data">
@@ -72,8 +72,8 @@
 										</div>
 										<div class="form-group  col-md-12 ">
 											<label for="linkEvento">Link </label>
-											<input type="url" class="form-control" id="linkEvento" name="linkEvento"
-												placeholder="http:local-evento.com ... ">
+											<input type="url" class="form-control" id="linkEvento" name="linkEvento" pattern="https://.+"
+												placeholder="https://example.com"  >
 										</div>
 										<div class="row">
 											<div class="col-md-12">

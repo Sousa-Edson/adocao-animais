@@ -16,7 +16,7 @@ import com.belval.adocaoanimais.model.Animal;
 @Controller
 public class AnimalController {
 
-	private static List<Animal> listaPet = new ArrayList<Animal>();
+	/*private static List<Animal> listaPet = new ArrayList<Animal>();
 	private static int next = 1;
 
 	private Animal buscarPetPeloId(int id) {
@@ -83,6 +83,6 @@ public class AnimalController {
 				i.set(pet);
 			}
 		}
-	}
+	}*/
 
 }

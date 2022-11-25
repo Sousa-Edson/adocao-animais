@@ -1,6 +1,8 @@
 
 package com.belval.adocaoanimais.model;
 
+import java.net.URL;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,10 +15,11 @@ public class Postagem {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String titulo;
-	@Column(name = "conteudo",  length = 512) // AQUI EU DEFINO O NOME DA COLUNA ,SE PODE NULA E O TAMANHO
+	@Column(name = "conteudo", length = 512) // AQUI EU DEFINO O NOME DA COLUNA ,SE PODE NULA E O TAMANHO
 	private String conteudo;
 	private String caminhoImagem;
 	private String dataPublicacao;
+	private URL linkEvento;
 	private boolean ativo;
 
 	public Postagem() {
@@ -72,6 +75,14 @@ public class Postagem {
 
 	public void setDataPublicacao(String dataPublicacao) {
 		this.dataPublicacao = dataPublicacao;
+	}
+
+	public URL getLinkEvento() {
+		return linkEvento;
+	}
+
+	public void setLinkEvento(URL linkEvento) {
+		this.linkEvento = linkEvento;
 	}
 
 	public boolean isAtivo() {
