@@ -27,8 +27,8 @@ public class PostagemController {
 	@Autowired
 	private PostagemRepository repository;
 	@Autowired
-	public static String caminhoImagens = "/home/edson/Dev/workspace/adocao-animais/src/main/resources/imagens/img-postagem/";
-//	public static String caminhoImagens = "D:/Aulas/2022/LIP1/workspace/data";
+	public static String caminhoImagens = "Z:/Modulo 2/LIPI/workspace/imagens/img-postagem/";
+//	public static String caminhoImagens = "/home/edson/Dev/workspace/adocao-animais/src/main/resources/imagens/img-postagem/";
 
 	@GetMapping("/pet/postagem/postagem-lista")
 	public String list(Model model) {
