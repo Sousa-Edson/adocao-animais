@@ -32,7 +32,8 @@
 								Cadastro <small> de postagem </small>
 							</h1>
 						</div>
-						<form action="postagem-novo" method="post" name="formulario" enctype="multipart/form-data">
+						<form action="/pet/postagem/postagem-novo" method="post" name="formulario"
+							enctype="multipart/form-data">
 							<div class="col-sm-12">
 							</div>
 							<div class="card  card-default ">
@@ -43,7 +44,7 @@
 
 											<img name="imagemExibir" id="imagemExibir" class="rounded mx-auto d-block "
 												style="width: 500px; height: 400px"
-												src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVdxeWlVQ9PncYAMwTXUkg8UPSyW7GnrGDZg&usqp=CAU"
+												th:src="@{{imagem}(imagem=${p.getCaminhoImagem})}"
 												alt="imagem erro">
 										</div>
 									</div>
@@ -60,7 +61,8 @@
 										<div class="col-sm-2">
 											<label for="dataPublicacao">Data de publicação</label>
 											<input type="date" class="form-control" id="dataPublicacao"
-												name="dataPublicacao" placeholder="Digite nome do Animal ">
+												name="dataPublicacao" placeholder="01/01/0001 "
+												th:value="${p.dataPublicacao}">
 										</div>
 									</div>
 
@@ -68,19 +70,20 @@
 										<div class="form-group  col-md-12 ">
 											<label for="titulo">Titulo </label>
 											<input type="text" class="form-control" id="titulo" name="titulo"
-												placeholder="Evento de adoção ... ">
+												th:value="${p.titulo}" placeholder="Evento de adoção ... ">
 										</div>
 										<div class="form-group  col-md-12 ">
 											<label for="linkEvento">Link </label>
-											<input type="url" class="form-control" id="linkEvento" name="linkEvento" pattern="https://.+"
-												placeholder="https://example.com"  >
+											<input type="url" class="form-control" id="linkEvento" name="linkEvento"
+												pattern="https://.+" th:value="${p.linkEvento}"
+												placeholder="https://example.com">
 										</div>
 										<div class="row">
 											<div class="col-md-12">
 												<label for="conteudo">Descrição </label>
-												<textarea class="form-control" id="conteudo" name="conteudo"
+												<textarea class="form-control" id="conteudo" name="conteudo" maxlength="500"
 													placeholder="Evento que acontecerá de forma livre e gratuita dia tal no endereço ...  "
-													style="height: 200px;"></textarea>
+													style="height: 200px;" th:text="${p.conteudo}"> </textarea>
 											</div>
 										</div>
 									</div>
@@ -90,6 +93,8 @@
 								<div class="row featurette align-items-center" style="margin: 20px">
 									<div class="col-md-12 order-md-1">
 										<div class="row">
+											<input type="hidden" class="form-control " id="id" name="id"
+												th:value="${p.id}" placeholder="Id atual">
 											<button type="submit"
 												class="btn btn-success btn-lg btn-block">Salvar</button>
 										</div>
@@ -115,22 +120,26 @@
 	</section>
 	<script>
 
-		const imgVar = document.querySelector('#imagemExibir');
-		const InputVar = document.querySelector('#file-img');
-		InputVar.addEventListener('change', function (evt) {
-			if (!(evt.target && evt.target.files && evt.target.files.length > 0)) {
-				imgVar.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVdxeWlVQ9PncYAMwTXUkg8UPSyW7GnrGDZg&usqp=CAU';
+		let photo = document.getElementById('imagemExibir');
+		let file = document.getElementById('file-img');
+
+		photo.addEventListener('click', () => {
+			file.click();
+		});
+
+		file.addEventListener('change', () => {
+
+			if (file.files.length <= 0) {
+				return;
 			}
 
-			// Inicia o file-reader:
-			var r = new FileReader();
-			// Define o que ocorre quando concluir:
-			r.onload = function () {
-				// Define o `src` do elemento para o resultado:
-				imgVar.src = r.result;
+			let reader = new FileReader();
+
+			reader.onload = () => {
+				photo.src = reader.result;
 			}
-			// Lê o arquivo e cria um link (o resultado vai ser enviado para o onload.
-			r.readAsDataURL(evt.target.files[0]);
+
+			reader.readAsDataURL(file.files[0]);
 		});
 	</script>
 </body>

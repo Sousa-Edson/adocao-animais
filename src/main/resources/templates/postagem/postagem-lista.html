@@ -74,7 +74,7 @@
 										<tr>
 											<th style="width: 10px">#</th>
 											<th>Titulo</th>
-											<th>Data</th>
+											<th style="width: 100px">Data</th>
 											<th>Link</th>
 											<th style="width: 40px">Ações</th>
 										</tr>
@@ -91,7 +91,7 @@
 											</td>
 											<td>
 											
-											<a  th:href="${p.linkEvento}">x</a>
+											<a  th:href="@{{link} (link=${p.linkEvento})}"><i th:if="${p.linkEvento != null}" class="bi bi-globe"></i></a>
 											 
 											</td>
 
