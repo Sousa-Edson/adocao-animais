@@ -126,5 +126,12 @@ public class UsuarioController {
 		}
 		return null;
 	}
+	
+	/* LISTA */
+	@GetMapping("/pet/gerenciar-usuario")
+	public String lista(Model model) {
+		model.addAttribute("u", repository.findAll());
+		return "/pessoa/pessoa-lista";
+	}
 
 }

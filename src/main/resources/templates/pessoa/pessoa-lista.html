@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+
+<head th:replace="fragments/head ">
+	 
+</head>
+
+<body class="hold-transition layout-top-nav layout-navbar-fixed"
+	style="background-image: './imagens/MicrosoftTeams-image.png';">
+
+	<!-- navbar - barra de menu -->
+	<!-- navbar - barra de menu -->
+	<nav th:replace="fragments/navbar :: navbar">...</nav>
+
+
+	<div style="margin-top: 10px;"></div>
+	<main>
+		<h1 class="container">Gerenciar usuários</h1>
+		 
+		<section class=" ">
+			<div class="container">
+				<div class="row">
+					 
+					<section class="col-lg-12 ">
+						<!-- <h1>lado direito</h1> -->
+						<div class="card">
+						 
+							<div class="card-body p-3">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th style="width: 10px">#</th>
+											<th>Nome</th>
+											<th>Permissão</th>
+											<th style="width: 40px">Ações</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="u : ${u}">
+											<td><span th:text=" ${u.id}"></span>.</td>
+											<td><span th:text=" ${u.nome}" class="text-capitalize"></span></td>
+											<td>
+												<span class="badge bg-success">Administrador</span>
+											</td>
+											<td>
+												<div class="btn-group">
+													<a th:href="@{/pet/perfil-pessoa/{id} (id=${u.id})}"
+														class="btn btn-sm btn-outline-secondary">Visualizar</a>
+													<a th:href="@{/pet/perfil-pessoa/{id}/edit (id=${u.id})}"
+														class="btn btn-sm btn-outline-success">Gerenciar</a>
+												</div>
+											</td>
+										</tr>
+										 
+										
+
+									</tbody>
+								</table>
+							</div>
+							<div class="card-tools">
+								<ul class="pagination pagination-md justify-content-center">
+									<li class="page-item"><a class="page-link" href="#">«</a></li>
+									<li class="page-item"><a class="page-link" href="#">1</a></li>
+									<li class="page-item"><a class="page-link" href="#">2</a></li>
+									<li class="page-item"><a class="page-link" href="#">3</a></li>
+									<li class="page-item"><a class="page-link" href="#">»</a></li>
+								</ul>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</section>
+	</main>
+	 
+	 
+
+	<!-- footer - rodape basico -->
+	<div th:replace="fragments/footer :: footer">...</div>
+	<section th:replace="fragments/script :: section-script">...
+	</section>
+</body>
+
+</html>

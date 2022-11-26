@@ -36,9 +36,10 @@
 							<div class="card  card-default ">
 
 								<div class="card-header">
-										<form id="register-form" action="/pet/usuario/usuario-edit" method="post"
-											enctype="multipart/form-data" name="formulario">
-									<div class="row">
+									<div id="msg"></div>
+									<form id="register-form" action="/pet/usuario/usuario-edit" method="post"
+										enctype="multipart/form-data" name="formulario">
+										<div class="row">
 											<div class="col-lg-6 col-md-12 mt-4">
 												<img class="form-control" id="imagemExibir"
 													style="width: 500px; height: 400px"
@@ -105,6 +106,18 @@
 															placeholder="São Paulo ">
 													</div>
 												</div>
+												<div class="row">
+													<div class="col-sm-4">
+														<label for="senha">Senha</label>
+														<input type="password" id="senha" name="senha"
+															class="form-control" th:value="${u.senha}">
+													</div>
+													<div class="col-sm-4">
+														<label for="confirmaSenha">Senha</label>
+														<input type="password" id="confirmaSenha" name="confirmaSenha"
+															class="form-control" th:value="${u.senha}">
+													</div>
+												</div>
 
 												<div class="  ">
 													<div class="row featurette align-items-center" style="margin: 10px">
@@ -112,23 +125,22 @@
 															<div class="row">
 																<input type="hidden" id="id" name="id"
 																	th:value="${u.id}">
-																<input type="hidden" id="senha" name="senha"
-																	th:value="${u.senha}">
-																<button type="submit"
+
+																<button type="submit" id="btn-submit"
 																	class="btn btn-primary  btn-block">Salvar</button>
 															</div>
 														</div>
 													</div>
 												</div>
-									</div>
-								</div>
-										</form>
+											</div>
+										</div>
+									</form>
 
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 
 
 
@@ -161,6 +173,24 @@
 			}
 
 			reader.readAsDataURL(file.files[0]);
+		});
+	</script>
+	<script>
+		const btn = document.querySelector("#btn-submit");
+		const txtNome = document.querySelector("#nome");
+
+		const txtSenha = document.querySelector("#senha");
+		const txtConfirma = document.querySelector("#confirmaSenha");
+		const txtmsg = document.querySelector("#msg");
+
+		btn.addEventListener("click", function (e) {
+			if (txtSenha.value != txtConfirma.value) {
+				e.preventDefault();
+				txtmsg.innerHTML = '<div class="alert alert-danger alert-dismissible fade show" role="alert">   Senha e Confirmação de senha não são iguais. <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
+			} else {
+
+			}
+
 		});
 	</script>
 
