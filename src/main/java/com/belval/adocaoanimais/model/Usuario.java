@@ -22,6 +22,8 @@ public class Usuario {
 	private String bairro;
 	private String cidade;
 	private String estado;
+	
+	private String caminhoImagem;
 
 	public Usuario() {
 		super();
@@ -113,6 +115,14 @@ public class Usuario {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+	public String getCaminhoImagem() {
+		return caminhoImagem;
+	}
+
+	public void setCaminhoImagem(String caminhoImagem) {
+		this.caminhoImagem = caminhoImagem;
 	}
 
 }

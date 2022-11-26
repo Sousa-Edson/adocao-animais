@@ -38,8 +38,8 @@
 								<div class="card-header">
 									<div class="row">
 										<div class="col-lg-6 col-md-12">
-											<img class="form-control"
-												src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVdxeWlVQ9PncYAMwTXUkg8UPSyW7GnrGDZg&usqp=CAU"
+											<img class="form-control" style="width: 500px; height: 400px"
+												th:src="@{{imagem}(imagem=${u.getCaminhoImagem})}"
 												alt="sss">
 										</div>
 										<div class="form-group col-lg-6 col-md-12 ">
@@ -96,15 +96,14 @@
 												</div>
 												<div class="col-sm-8">
 													<div class="row mt-4">
-														<a class="btn btn-primary btn-block" th:href="@{/pet/perfil-pessoa/{id}/edit (id=${u.id})}">Editar </a>
+														<a class="btn btn-primary btn-block"
+															th:href="@{/pet/perfil-pessoa/{id}/edit (id=${u.id})}">Editar
+														</a>
 													</div>
 												</div>
 
 											</div>
 
-											<div class="  ">
-
-											</div>
 										</div>
 									</div>
 
