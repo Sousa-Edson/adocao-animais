@@ -23,7 +23,6 @@ public class UsuarioController {
 			repository.save(usuario);
 			mv = new ModelAndView("redirect:../login");
 		}
-
 		return mv;
 	}
 
@@ -37,10 +36,13 @@ public class UsuarioController {
 	@GetMapping("/pet/login/novo")
 	public ModelAndView cadastro(Usuario usuario, Model model) {
 		ModelAndView mv = new ModelAndView("/pessoa/cadastroUsu");
-		 
-//			usuario.setNome("Tadeo");
-			model.addAttribute("u", usuario);
-		 
+		model.addAttribute("u", usuario);
 		return mv;
+	}
+
+	/* PERFIL */
+	@GetMapping("/pet/perfil-pessoa")
+	public String perfil() {
+		return "/pessoa/perfil-pessoa";
 	}
 }
