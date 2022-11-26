@@ -17,6 +17,12 @@ public class Usuario {
 	private String senha;
 	private boolean ativo;
 
+	private String cep;
+
+	private String bairro;
+	private String cidade;
+	private String estado;
+
 	public Usuario() {
 		super();
 	}
@@ -75,6 +81,38 @@ public class Usuario {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 }

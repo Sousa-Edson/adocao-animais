@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.belval.adocaoanimais.model.PetCor;
+import com.belval.adocaoanimais.model.Postagem;
 import com.belval.adocaoanimais.model.Usuario;
 import com.belval.adocaoanimais.repository.UsuarioRepository;
 
@@ -45,4 +47,18 @@ public class UsuarioController {
 	public String perfil() {
 		return "/pessoa/perfil-pessoa";
 	}
+	
+	@GetMapping("/pet/perfil-pessoa/{id}")
+	public String detalhe(@PathVariable("id") int id, Model model) {
+		Usuario u= repository.findById(id);
+		if (u == null) {
+			return "nao-encontrada";
+		} else {
+//			model.addAttribute("postagem", repository.findAll());
+			model.addAttribute("u", u);
+			return "/pessoa/perfil-pessoa";
+		}
+
+	}
+
 }

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+
+<head th:replace="fragments/head ">
+
+</head>
+
+<body class="hold-transition layout-top-nav layout-navbar-fixed"
+	style="background-image: './imagens/MicrosoftTeams-image.png';">
+
+
+	<!-- navbar - barra de menu -->
+	<nav th:replace="fragments/navbar :: navbar">...</nav>
+	<div style="margin-top: 10px;"></div>
+	<main>
+		<div class="content-wrapper" style="min-height: 747px;">
+			<div class="content-header">
+				<div class="content">
+					<div class="container">
+						<div class="row featurette align-items-center" style="margin: 20px">
+							<div class="col-md-6 order-md-1">
+							</div>
+						</div>
+					</div>
+					<div class="content">
+						<div class="container">
+							<div class="col-sm-12">
+								<h1 class="m-0" id="quem-somos">
+									Perfil <small> de usuário </small>
+								</h1>
+							</div>
+
+							<div class="col-sm-12">
+							</div>
+							<div class="card  card-default ">
+
+								<div class="card-header">
+									<div class="row">
+										<div class="col-lg-6 col-md-12">
+											<img class="form-control"
+												src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVdxeWlVQ9PncYAMwTXUkg8UPSyW7GnrGDZg&usqp=CAU"
+												alt="sss">
+										</div>
+										<div class="form-group col-lg-6 col-md-12 ">
+
+											<div class="row">
+												<div class="col-sm-5">
+													<label for="nome">Nome</label>
+													<input type="text" class="form-control" id="nome" name="nome" th:value="${u.nome}"
+														placeholder="João  ">
+												</div>
+												<div class="col-sm-7">
+													<label for="nome">Sobrenome</label>
+													<input type="text" class="form-control" id="sobreNome" th:value="${u.sobreNome}"
+														name="sobreNome" placeholder="Silva">
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-12">
+													<label for="nome">E-mail</label>
+													<input type="email" class="form-control" id="email" name="email" th:value="${u.email}"
+														placeholder="email@email.com">
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-12">
+													<label for="nome">Endereço</label>
+													<input type="text" class="form-control" id="endereco" th:value="${u.endereco}"
+														name="endereco" placeholder="Rua do peões N° 001">
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-4">
+													<label for="nome">Cep</label>
+													<input type="text" class="form-control" id="cep" name="cep" th:value="${u.cep}"
+														placeholder="08.999-123">
+												</div>
+												<div class="col-sm-8">
+													<label for="nome">Imagem usuário</label>
+													<div class="input-group mb-3">
+														<input type="file" class="form-control" id="inputGroupFile01"
+															accept="image/*">
+													</div>
+												</div>
+
+											</div>
+											<div class="row">
+												<div class="col-sm-4">
+													<label for="nome">Bairro</label>
+													<input type="text" class="form-control" id="bairro" name="bairro" th:value="${u.bairro}"
+														placeholder="Belval ">
+												</div>
+												<div class="col-sm-4"> <label for="nome">Cidade</label>
+													<input type="text" class="form-control" id="cidade" name="cidade" th:value="${u.cidade}"
+														placeholder="Barueri">
+												</div>
+												<div class="col-sm-4"> <label for="nome">Estado</label>
+													<input type="text" class="form-control" id="estado" name="estado" th:value="${u.estado}"
+														placeholder="São Paulo ">
+												</div>
+											</div>
+
+											<div class="  ">
+												<div class="row featurette align-items-center" style="margin: 10px">
+													<div class="col-md-12 order-md-1">
+														<div class="row">
+															<button type="button"
+																class="btn btn-primary btn-lg btn-block">Salvar</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="content">
+					<div class="container">
+						<div class="row featurette align-items-center" style="margin: 20px">
+							<div class="col-md-6 order-md-1">
+							</div>
+						</div>
+					</div>
+					<div class="content">
+						<div class="container">
+							<div class="col-sm-12">
+								<h1 class="m-0" id="quem-somos">
+									Meus <small> animais</small>
+								</h1>
+							</div>
+
+					<section class="col-lg-12  ">
+						<!-- <h1>lado direito</h1> -->
+						<div class="card">
+							 
+							<div class="card-body p-3">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th style="width: 10px">#</th>
+											<th>Nome</th>
+											<th>Gênero/Idade</th>
+											<th style="width: 40px">Ações</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1.</td>
+											<td>CLAUDINHO</td>
+											<td>
+												<span class="badge bg-primary">Macho, 8 anos</span>
+											</td>
+											<td>
+												<div class="btn-group">
+													<a href="catalogo-descricao.html"
+														class="btn btn-sm btn-outline-secondary">Visualizar</a>
+													<a href="adotar.html"
+														class="btn btn-sm btn-outline-success">Gerenciar</a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>2.</td>
+											<td>JANIS</td>
+											<td>
+												<span class="badge bg-danger">Fêmea, 6 anos</span>
+											</td>
+											<td>
+												<div class="btn-group">
+													<a href="catalogo-descricao.html"
+														class="btn btn-sm btn-outline-secondary">Visualizar</a>
+													<a href="adotar.html"
+														class="btn btn-sm btn-outline-success">Gerenciar</a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>3.</td>
+											<td>NEMO I</td>
+											<td>
+												<span class="badge bg-primary">Macho, 12 anos</span>
+											</td>
+											<td>
+												<div class="btn-group">
+													<a href="catalogo-descricao.html"
+														class="btn btn-sm btn-outline-secondary">Visualizar</a>
+													<a href="adotar.html"
+														class="btn btn-sm btn-outline-success">Gerenciar</a>
+												</div>
+											</td>
+										</tr>
+										 
+										
+									</tbody>
+								</table>
+							</div>
+							<div class="card-tools">
+								<ul class="pagination pagination-md justify-content-center">
+									<li class="page-item"><a class="page-link" href="#">«</a></li>
+									<li class="page-item"><a class="page-link" href="#">1</a></li>
+									<li class="page-item"><a class="page-link" href="#">2</a></li>
+									<li class="page-item"><a class="page-link" href="#">3</a></li>
+									<li class="page-item"><a class="page-link" href="#">»</a></li>
+								</ul>
+							</div>
+						</div>
+					</section>
+						</div>
+					</div>
+				</div>
+
+
+
+
+	</main>
+	<!-- footer - rodape basico -->
+	<div th:replace="fragments/footer :: footer">...</div>
+	<section th:replace="fragments/script :: section-script">...
+	</section>
+
+
+</body>
+
+</html>
