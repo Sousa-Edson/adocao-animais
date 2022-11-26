@@ -3,10 +3,10 @@
 	<!-- background-color:rgb(153, 0, 204);; -->
 	<!-- style="margin-left:0px ;margin-right:0px ;" -->
 	<div class="container ">
-		<a class="navbar-brand" href="#">
+		<a class="navbar-brand" href="/">
 			<img th:src="@{/MicrosoftTeams-image.png}" alt="" width="30" height="24">
 		</a>
-		<a class="navbar-brand text-white" href="/">Adote fácil</a>
+		<a class="navbar-brand text-white" href="/pet">Adote fácil</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -14,7 +14,7 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li class="nav-item">
-					<a class="nav-link  text-white custon-txt-white" aria-current="page" href="/home">Home</a>
+					<a class="nav-link  text-white custon-txt-white" aria-current="page" href="/pet/home">Home</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link text-white custon-txt-white" href="/pet/catalogo">Galeria</a>
@@ -35,7 +35,7 @@
 				</li>
 			</ul>
 			<div>
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<ul th:if="${id > 2}" class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item dropdown">
 						<div class="btn-group">
 							<button type="button" class="btn btn-outline-light"><a class="dropdown-item"
@@ -47,11 +47,12 @@
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="/pet/pet-raca">Cadastrar raça</a></li>
 								<li><a class="dropdown-item" href="/pet/pet-cor">Cadastrar cor</a></li>
-								<li><a class="dropdown-item" href="#">Gerenciar usuários</a></li>
+								<li><a class="dropdown-item" href="/pet/gerenciar-usuario">Gerenciar usuários</a></li>
 								<li>
 									<hr class="dropdown-divider">
 								</li>
-								<li><a class="dropdown-item" href="/pet/postagem">Gerenciar eventos</a></li>
+								<li><a class="dropdown-item" href="/pet/postagem/postagem-lista">Gerenciar postagem</a>
+								</li>
 							</ul>
 						</div>
 					</li>
@@ -62,21 +63,25 @@
 				<!--				<a class="btn btn-outline-light" href="/pet/login"> Logar</a>-->
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item dropdown">
-						<div class="btn-group">
+						<div th:if="${id == null}" class="btn-group">
+							<a type="button" class="btn btn-success" href="/pet/login" > <i class="bi bi-person-circle">
+									Logar</i></a>
+						</div>
+						<div th:if="${id != null}" class="btn-group">
 							<a type="button" class="btn btn-outline-light"> <i class="bi bi-person-circle">
-									Usuário</i></a>
+									Usuario</i></a>
 							<button type="button" class="btn btn-outline-light dropdown-toggle dropdown-toggle-split"
 								data-bs-toggle="dropdown" aria-expanded="false">
 								<span class="visually"> </span>
 							</button>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="/pet/perfil-pessoa">Perfil</a></li>
-								<!--								<li><a class="dropdown-item" href="/pet/pet-cor">Cadastrar cor</a></li>-->
-								<!--								<li><a class="dropdown-item" href="#">Gerenciar usuários</a></li>-->
+
 								<li>
 									<hr class="dropdown-divider">
 								</li>
-								<li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="/pet/login">Sair</a></li>
+								<li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+										href="/pet/login">Sair</a></li>
 							</ul>
 						</div>
 					</li>
@@ -85,5 +90,5 @@
 			</div>
 		</div>
 	</div>
-	
+
 </nav>

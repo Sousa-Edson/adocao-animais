@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.belval.adocaoanimais.model.PetCor;
-import com.belval.adocaoanimais.model.PetRaca;
 import com.belval.adocaoanimais.repository.CorRepository;
 
 @Controller
@@ -32,7 +31,7 @@ public class CorController {
 	public String list(Model model) {
 		model.addAttribute("c", new PetCor());
 		model.addAttribute("cor", repository.findAll());
-		return "pet-cor";
+		return "animal/pet-cor";
 	}
 
 	@GetMapping("/pet/pet-cor/{id}/edit")
@@ -44,7 +43,7 @@ public class CorController {
 			model.addAttribute("cor", repository.findAll());
 			model.addAttribute("c", c);
 			m.addAttribute("msg", "msg");
-			return "pet-cor";
+			return "animal/pet-cor";
 		}
 
 	}
@@ -69,7 +68,7 @@ public class CorController {
 			model.addAttribute("c", new PetCor());
 			model.addAttribute("e", e);
 			m.addAttribute("exc", true);
-			return "pet-cor";
+			return "animal/pet-cor";
 		}
 	}
 

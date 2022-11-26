@@ -8,9 +8,9 @@ import javax.persistence.Id;
 
 @Entity
 public class PetCor {
- @Id
- @GeneratedValue(strategy=GenerationType.AUTO)
-private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 	private String cor;
 	private boolean ativo;
 

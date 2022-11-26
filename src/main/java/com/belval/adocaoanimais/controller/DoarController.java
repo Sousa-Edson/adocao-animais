@@ -9,7 +9,7 @@ public class DoarController {
 
     @GetMapping("/pet/cadastroAnimal")
     public String novo() {
-        return "cadastroAnimal";
+        return "/animal/cadastroAnimal";
     }
  
 }

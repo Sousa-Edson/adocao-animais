@@ -22,7 +22,7 @@
     padding-top: 10vh;
     background-image: url('../imagens/MicrosoftTeams-image.jpeg');
     background-size: cover;
-   
+    
   }
   
   /* form */
@@ -33,6 +33,7 @@
     background-color: #FFF;
     border-radius: 10px;
     padding: 25px;
+    
   }
   
   #main-container h1 {

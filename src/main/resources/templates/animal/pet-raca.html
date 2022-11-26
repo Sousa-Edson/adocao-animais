@@ -6,7 +6,7 @@
 </head>
 
 <body class="hold-transition layout-top-nav layout-navbar-fixed"
-	style="background-image: './imagens/MicrosoftTeams-image.png';">
+	style="background-image: './imagens/MicrosoftTeams-image.png';" onLoad='document.formulario.raca.focus()'>
 
 	<!-- navbar - barra de menu -->
 	<nav th:replace="fragments/navbar :: navbar">...</nav>
@@ -48,7 +48,7 @@
 						</div>
 						<!-- /.card-header -->
 						<!-- form start -->
-						<form action="/pet/pet-raca" method="post">
+						<form action="/pet/pet-raca" method="post"  name="formulario">
 							<div class="card-body">
 								<div class="form-group " style="display:none;">
 									<label for="">Id</label>
@@ -133,6 +133,9 @@
 
 	<section th:replace="fragments/script :: section-script">...
 	</section>
+	<script>
+	fu
+	</script>
 </body>
 
 </html>

@@ -18,15 +18,35 @@
 	<div style="margin-top: 10px;"></div>
 
 	<!-- header - banner -->
-	<header class="  navbar-expand-lg">
+	<header class=" container">
 		<div class="card-body text-center ">
-			<img class="img-fluid" src="imagens/MicrosoftTeams-image.png " alt="" style="height: 10vh;" />
+			<div class="row   align-items-center">
+				<div class="col-sm-6">
+					<img class="img-fluid"
+						th:src="@{/imagens/MicrosoftTeams-image.png }" alt="" />
+				</div>
+				<div class="col-sm-6 ">
+				<h3 class="text-mute"> O maior impacto é o abandono de animais em situações precárias.  </h3>
+					<p id="apresentacao" class="text-start">
+						A relação entre humanos e seus animais de estimação se torna cada
+						vez mais evidente no nosso dia a dia. Esse fenômeno não é novo,
+						porém observa-se um grande aumento da importância dada à essa
+						relação nas famílias de todo o mundo, inclusive no Brasil. Mesmo
+						com esse fenômeno, observa-se grandes quantidades de cães
+						abandonados nos centros urbanos. Isso ocorre por alguns fatores
+						como a facilidade de reprodução dos animais, abandono por parte
+						dos responsáveis ou criação de animais a reprodução e
+						comercialização. <small>de sua regiÃ£o!</small>
+					</p>
+				</div>
+			</div>
 		</div>
 	</header>
 
-	<!-- informações -->
+	<!-- informaÃ§Ãµes -->
 
-	<section th:replace="fragments/container-info :: container-info"> ...</section>
+	<section th:replace="fragments/container-info :: container-info">
+		...</section>
 
 
 
@@ -43,83 +63,37 @@
 									Feiras e eventos <small>de sua região!</small>
 								</h1>
 							</div>
-							<div class="card">
-								<div class="row featurette align-items-center" style="margin: 20px">
-									<div class="col-md-7">
+							<!-- separação -->
+							<div class="card" th:each="p,iStat:${p}">
+								<div class="row featurette align-items-center"
+									style="margin: 20px">
+									<div
+										th:attr="class=${iStat.odd} ? 'col-md-7 order-md-2 text-capitalize' :'col-md-7 order-md-1 text-capitalize' ">
 										<h2 class="featurette-heading">
-											<a href="https://portal.barueri.sp.gov.br/Noticia/22092022-final-de-semana-tem-feira-de-adocao-de-caes-nos-parques-da-cidade"
-												target="_blank" class="eaturette-heading" style="text-decoration: none">
-												<span class="text-muted"> Final de semana tem Feira de Adoção de Cães
-													nos parques da cidade.</span>
+											<a th:href="@{{caminho}(caminho=${p.linkEvento})} "
+												target="_blank" class="eaturette-heading"
+												style="text-decoration: none"> <span class="text-muted"
+												th:text="${p.titulo}"> ...</span>
 											</a>
 										</h2>
 
-										<p class="lead">
-											A Feira de Adoção de Cães continua acontecendo aos
-											finais de semana (sábados e domingos) de setembro no
-											Parque Municipal Dom José (rua Ángela Mirela, 500 ,
-											Jardim Barueri).
-										</p>
-										<small class="text-muted">Data de Publicação: 22/09/2022</small>
+										<p class="lead text-capitalize" th:text="${p.conteudo}">...</p>
+										<small class="text-muted"
+											th:text="'Data de Publição: '+${p.dataPublicacao}">...</small>
 									</div>
-									<div class="col-md-5">
+									<div
+										th:attr="class=${iStat.even} ? 'col-md-5 order-md-2' :'col-md-5 order-md-1' ">
 										<img class="featurette-image img-fluid mx-auto rounded"
 											data-src="holder.js/400x400/auto" alt="400x400"
 											style="width: 500px; height: 400px"
-											src="https://servicos.barueri.sp.gov.br/cms/Upload/Noticia/22092022-final-de-semana-tem-feira-de-adocao-de-caes-nos-parques-da-cidade-0.jpg"
+											th:src="@{/pet/mostrarImagem/{imagem}(imagem=${p.getCaminhoImagem})}"
 											data-holder-rendered="true" />
 									</div>
 								</div>
 
-								<hr class="featurette-divider" />
-								<div class="row featurette align-items-center" style="margin: 20px">
-									<div class="col-md-7 order-md-2">
-										<h2 class="featurette-heading">
-											<a href="http://servicos.barueri.sp.gov.br/agendamentocepad/SelAnimal.aspx"
-												target="_blank" class="eaturette-heading" style="text-decoration: none">
-												<span class="text-muted"> Agendamento de Castração.</span>
-											</a>
-										</h2>
-										<p class="lead">
-											Agendamento para a campanha de castração de animais
-											cadastrados no Registro Geral de Animais(RGA).
-										</p>
-										<small class="text-muted">Data de Publicação: 22/09/2022</small>
-									</div>
-									<div class="col-md-5 order-md-1">
-										<img class="featurette-image img-fluid mx-auto rounded  "
-											data-src="holder.js/400x400/auto" alt="400x400"
-											src="http://servicos.barueri.sp.gov.br/agendamentocepad/img/agendamento.jpg"
-											data-holder-rendered="true" style="width: 500px; height: 400px" />
-									</div>
-								</div>
-
-								<hr class="featurette-divider" />
-
-								<div class="row featurette align-items-center" style="margin: 20px">
-									<div class="col-md-7">
-										<h2 class="featurette-heading">
-											<a href="https://portal.barueri.sp.gov.br/Noticia/09092022-resgate-animal-da-nova-chance-a-pets-abandonados"
-												target="_blank" class="eaturette-heading" style="text-decoration: none">
-												<span class="text-muted"> Resgate Animal dá nova chance a pets
-													abandonados.</span>
-											</a>
-										</h2>
-										<p class="lead">
-											O trabalho desenvolvido pelos profissionais que atuam
-											no Resgate Animal de Barueri significa uma segunda
-											chance aos animais domésticos abandonados pelas ruas.
-										</p>
-										<small class="text-muted">Data de Publição: 09/09/2022</small>
-									</div>
-									<div class="col-md-5">
-										<img class="featurette-image img-fluid mx-auto rounded"
-											data-src="holder.js/400x400/auto" alt="400x400"
-											src="https://servicos.barueri.sp.gov.br/cms/Upload/Noticia/09092022-resgate-animal-da-nova-chance-a-pets-abandonados-0.jpg"
-											data-holder-rendered="true" style="width: 500px; height: 400px" />
-									</div>
-								</div>
 							</div>
+							<!-- separação -->
+
 						</div>
 					</div>
 				</div>
@@ -136,14 +110,17 @@
 		<div class="row">
 			<div class="col-lg-4 col-sm-12">
 				<div class="card  ">
-					<img src="imagens/Revista_Guarda_Responsavel-1.png" alt="" style="max-width: 100%">
+					<img th:src="@{/imagens/Revista_Guarda_Responsavel-1.png}" alt=""
+						style="max-width: 100%">
 				</div>
 			</div>
 			<div class="col-lg-4 col-sm-12">
-				<img src="imagens/Revista_Guarda_Responsavel-2.png" alt="" style="max-width: 100%">
+				<img th:src="@{/imagens/Revista_Guarda_Responsavel-2.png}" alt=""
+					style="max-width: 100%">
 			</div>
 			<div class="col-lg-4 col-sm-12">
-				<img src="imagens/Revista_Guarda_Responsavel-3.png" alt="" style="max-width: 100%">
+				<img th:src="@{/imagens/Revista_Guarda_Responsavel-3.png}" alt=""
+					style="max-width: 100%">
 			</div>
 		</div>
 	</section>
@@ -154,7 +131,13 @@
 	<div th:replace="fragments/footer :: footer">...</div>
 	<section th:replace="fragments/script :: section-script">...
 	</section>
-
+	<script>
+		const myCarouselElement = document.querySelector('#myCarousel')
+		const carousel = new bootstrap.Carousel(myCarouselElement, {
+			interval : 3000, //aqui conttrola a velocidade do slide
+			ride : "carousel" // aqui inicia automaticamente
+		})
+	</script>
 </body>
 
 </html>

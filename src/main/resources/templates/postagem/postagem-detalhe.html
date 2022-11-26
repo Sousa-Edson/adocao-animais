@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head th:replace="fragments/head ">
+
+</head>
+
+<body class="hold-transition layout-top-nav layout-navbar-fixed"
+	style="background-image: './imagens/MicrosoftTeams-image.png';">
+
+
+
+	<!-- navbar - barra de menu -->
+	<nav th:replace="fragments/navbar :: navbar">...</nav>
+	<div style="margin-top: 10px;"></div>
+	<main>
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header">
+
+				<!-- /.content-header -->
+
+				<!-- Main content -->
+				<div class="content">
+				<div class="content">
+									<div class="container">
+										<div class="row featurette align-items-center" style="margin: 20px">
+											<div class="col-md-6 order-md-1"><a href="/pet/postagem/postagem-lista"
+													class="btn  btn-primary">Voltar para lista
+													postagem</a></div>
+										</div>
+									</div>
+								</div>
+
+					<div class="container">
+					
+						<div class="row">
+
+							<div class="content-header">
+								
+								<div class="col-lg-12">
+
+									<!-- START THE FEATURETTES -->
+									<div class="col-sm-6">
+										<h1 class="m-0" id="feiras-eventos-regiao">
+											Detalhe <small> postagem</small>
+										</h1>
+									</div>
+									<div class="card">
+										<!-- <hr class="featurette-divider" /> -->
+
+										<div class="row featurette align-items-center" style="margin: 20px">
+											<div class="col-md-7">
+												<h2 class="featurette-heading">
+													<a th:href="@{{caminho}(caminho=${p.linkEvento})} "
+														target="_blank" class="eaturette-heading"
+														style="text-decoration: none">
+														<span class="text-muted" th:text="${p.titulo}"> </span>
+													</a>
+												</h2>
+
+												<p class="lead" th:text="${p.conteudo}">
+
+												</p>
+												<small class="text-muted"
+													th:text="'Data de Publicação: '+${p.dataPublicacao}"> </small>
+											</div>
+											<div class="col-md-5">
+												<img class="featurette-image img-fluid mx-auto rounded"
+													th:src="@{/pet/mostrarImagem/{imagem}(imagem=${p.getCaminhoImagem})}"
+													data-src="holder.js/400x400/auto" alt="400x400"
+													style="width: 500px; height: 400px" data-holder-rendered="true">
+											</div>
+										</div>
+
+
+									 
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</main>
+	<!-- footer - rodape basico -->
+	<div class="container">
+		<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+			<div class="col-md-4 d-flex align-items-center">
+				<a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+					<div class="  text-center ">
+						<img class="img-fluid" src="imagens/MicrosoftTeams-image.png " alt="" style="height: 5vh;" />
+					</div>
+				</a>
+				<span class="mb-3 mb-md-0 text-muted">© 2023 Adote fácil</span>
+			</div>
+			<div class="nav col-md-4 justify-content-end list-unstyled d-flex">
+				<span class="mb-3 mb-md-0 text-muted"> Adote e transfome uma vida, a sua!</span>
+			</div>
+		</footer>
+	</div>
+
+	<!-- footer - rodape basico -->
+	<div th:replace="fragments/footer :: footer">...</div>
+	<section th:replace="fragments/script :: section-script">...
+	</section>
+</body>
+
+</html>
