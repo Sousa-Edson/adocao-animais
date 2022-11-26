@@ -52,22 +52,22 @@
 										<div class="row featurette align-items-center" style="margin: 20px">
 											<div class="col-md-7">
 												<h2 class="featurette-heading">
-													<a href="https://portal.barueri.sp.gov.br/Noticia/22092022-final-de-semana-tem-feira-de-adocao-de-caes-nos-parques-da-cidade"
+													<a th:href="@{{caminho}(caminho=${p.linkEvento})} "
 														target="_blank" class="eaturette-heading"
 														style="text-decoration: none">
-														<span class="text-muted" th:text="${c.titulo}"> </span>
+														<span class="text-muted" th:text="${p.titulo}"> </span>
 													</a>
 												</h2>
 
-												<p class="lead" th:text="${c.conteudo}">
+												<p class="lead" th:text="${p.conteudo}">
 
 												</p>
 												<small class="text-muted"
-													th:text="'Data de Publicação: '+${c.dataPublicacao}"> </small>
+													th:text="'Data de Publicação: '+${p.dataPublicacao}"> </small>
 											</div>
 											<div class="col-md-5">
 												<img class="featurette-image img-fluid mx-auto rounded"
-													th:src="@{/pet/mostrarImagem/{imagem}(imagem=${c.getCaminhoImagem})}"
+													th:src="@{/pet/mostrarImagem/{imagem}(imagem=${p.getCaminhoImagem})}"
 													data-src="holder.js/400x400/auto" alt="400x400"
 													style="width: 500px; height: 400px" data-holder-rendered="true">
 											</div>
