@@ -41,7 +41,7 @@ public class UsuarioController {
 	}
 
 	/* LOGIN-CADASTRO */
-	@GetMapping("/pet/register")
+	@GetMapping("/pet/login/novo")
 	public String cadastro() {
 		return "/pessoa/cadastroUsu";
 	}
