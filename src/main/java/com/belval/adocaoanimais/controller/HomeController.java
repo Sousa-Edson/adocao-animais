@@ -15,25 +15,20 @@ public class HomeController {
 
 	@GetMapping("/pet/home")
 	public String list(Model model) {
-
-//		model.addAttribute("c", new Postagem());
+		model.addAttribute("id", 3);
 		model.addAttribute("p", repository.findAll());
 		return "home";
 	}
 
 	@GetMapping("/")
 	public String home(Model model) {
-		model.addAttribute("id", 3);
 		return "home";
 	}
-
-	@GetMapping("/home")
-	public String home2() {
-		return "home";
-	}
+ 
 
 	@GetMapping("/pet")
-	public String home3() {
+	public String home3(Model model) {
+		model.addAttribute("id", 1);
 		return "home";
 	}
 
