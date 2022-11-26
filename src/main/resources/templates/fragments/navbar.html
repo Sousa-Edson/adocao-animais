@@ -51,7 +51,8 @@
 								<li>
 									<hr class="dropdown-divider">
 								</li>
-								<li><a class="dropdown-item" href="/pet/postagem/postagem-lista">Gerenciar postagem</a></li>
+								<li><a class="dropdown-item" href="/pet/postagem/postagem-lista">Gerenciar postagem</a>
+								</li>
 							</ul>
 						</div>
 					</li>
@@ -62,10 +63,10 @@
 				<!--				<a class="btn btn-outline-light" href="/pet/login"> Logar</a>-->
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item dropdown">
-					<div th:if="${id == null}" class="btn-group">
-					<a type="button" class="btn btn-outline-success"> <i class="bi bi-person-circle">
+						<div th:if="${id == null}" class="btn-group">
+							<a type="button" class="btn btn-success"> <i class="bi bi-person-circle">
 									Logar</i></a>
-									</div>
+						</div>
 						<div th:if="${id != null}" class="btn-group">
 							<a type="button" class="btn btn-outline-light"> <i class="bi bi-person-circle">
 									Usuario</i></a>
@@ -73,13 +74,14 @@
 								data-bs-toggle="dropdown" aria-expanded="false">
 								<span class="visually"> </span>
 							</button>
-							<ul   class="dropdown-menu">
+							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="/pet/perfil-pessoa">Perfil</a></li>
-								
+
 								<li>
 									<hr class="dropdown-divider">
 								</li>
-								<li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="/pet/login">Sair</a></li>
+								<li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+										href="/pet/login">Sair</a></li>
 							</ul>
 						</div>
 					</li>
@@ -88,5 +90,5 @@
 			</div>
 		</div>
 	</div>
-	
+
 </nav>
