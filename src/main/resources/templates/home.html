@@ -46,10 +46,10 @@
 								</h1>
 							</div>
 							<!-- separação -->
-							<div class="card" th:each="p : ${p}">
+							<div class="card" th:each="p,iStat:${p}">
 								<div class="row featurette align-items-center"
 									style="margin: 20px">
-									<div class="col-md-7">
+									<div   th:attr="class=${iStat.odd} ? 'col-md-7 order-md-2' :'col-md-7 order-md-1' ">
 										<h2 class="featurette-heading">
 											<a th:href="@{{caminho}(caminho=${p.linkEvento})} "
 												target="_blank" class="eaturette-heading"
@@ -62,7 +62,7 @@
 										<small class="text-muted"
 											th:text="'Data de Publição: '+${p.dataPublicacao}">...</small>
 									</div>
-									<div class="col-md-5">
+									<div th:attr="class=${iStat.even} ? 'col-md-5 order-md-2' :'col-md-5 order-md-1' ">
 										<img class="featurette-image img-fluid mx-auto rounded"
 											data-src="holder.js/400x400/auto" alt="400x400"
 											style="width: 500px; height: 400px"
