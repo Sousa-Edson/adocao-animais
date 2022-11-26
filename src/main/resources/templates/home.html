@@ -18,10 +18,27 @@
 	<div style="margin-top: 10px;"></div>
 
 	<!-- header - banner -->
-	<header class="  navbar-expand-lg">
+	<header class=" container">
 		<div class="card-body text-center ">
-			<img class="img-fluid" th:src="@{/imagens/MicrosoftTeams-image.png }"
-				alt="" style="height: 10vh;" />
+			<div class="row   align-items-center">
+				<div class="col-sm-6">
+					<img class="img-fluid"
+						th:src="@{/imagens/MicrosoftTeams-image.png }" alt="" />
+				</div>
+				<div class="col-sm-6">
+					<p id="apresentacao">
+						A relação entre humanos e seus animais de estimação se torna cada
+						vez mais evidente no nosso dia a dia. Esse fenômeno não é novo,
+						porém observa-se um grande aumento da importância dada à essa
+						relação nas famílias de todo o mundo, inclusive no Brasil. Mesmo
+						com esse fenômeno, observa-se grandes quantidades de cães
+						abandonados nos centros urbanos. Isso ocorre por alguns fatores
+						como a facilidade de reprodução dos animais, abandono por parte
+						dos responsáveis ou criação de animais a reprodução e
+						comercialização. <small>de sua regiÃ£o!</small>
+					</p>
+				</div>
+			</div>
 		</div>
 	</header>
 
@@ -49,7 +66,8 @@
 							<div class="card" th:each="p,iStat:${p}">
 								<div class="row featurette align-items-center"
 									style="margin: 20px">
-									<div   th:attr="class=${iStat.odd} ? 'col-md-7 order-md-2' :'col-md-7 order-md-1' ">
+									<div
+										th:attr="class=${iStat.odd} ? 'col-md-7 order-md-2' :'col-md-7 order-md-1' ">
 										<h2 class="featurette-heading">
 											<a th:href="@{{caminho}(caminho=${p.linkEvento})} "
 												target="_blank" class="eaturette-heading"
@@ -62,7 +80,8 @@
 										<small class="text-muted"
 											th:text="'Data de Publição: '+${p.dataPublicacao}">...</small>
 									</div>
-									<div th:attr="class=${iStat.even} ? 'col-md-5 order-md-2' :'col-md-5 order-md-1' ">
+									<div
+										th:attr="class=${iStat.even} ? 'col-md-5 order-md-2' :'col-md-5 order-md-1' ">
 										<img class="featurette-image img-fluid mx-auto rounded"
 											data-src="holder.js/400x400/auto" alt="400x400"
 											style="width: 500px; height: 400px"
