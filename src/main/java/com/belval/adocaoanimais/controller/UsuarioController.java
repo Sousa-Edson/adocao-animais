@@ -33,4 +33,16 @@ public class UsuarioController {
 
 		return mv;
 	}
+
+	/* LOGIN */
+	@GetMapping("/pet/login")
+	public String login() {
+		return "login";
+	}
+
+	/* LOGIN-CADASTRO */
+	@GetMapping("/pet/register")
+	public String cadastro() {
+		return "/pessoa/cadastroUsu";
+	}
 }

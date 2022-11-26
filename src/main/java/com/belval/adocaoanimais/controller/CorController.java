@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.belval.adocaoanimais.model.PetCor;
-import com.belval.adocaoanimais.model.PetRaca;
 import com.belval.adocaoanimais.repository.CorRepository;
 
 @Controller
