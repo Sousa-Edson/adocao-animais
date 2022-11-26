@@ -9,7 +9,7 @@ public class AdotarController {
 
     @GetMapping("/pet/intencao-adotar")
     public String novo() {
-        return "intencao-adotar";
+        return "/catalogo/intencao-adotar";
     }
 
     
