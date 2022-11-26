@@ -10,6 +10,6 @@ public class CatalogoController {
 
     @GetMapping("/pet/catalogo")
     public String novo() {
-        return "catalogo";
+        return "/catalogo/catalogo";
     }
 }
