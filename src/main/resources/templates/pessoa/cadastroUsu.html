@@ -16,7 +16,7 @@
 	<link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 
-<body style="min-height: 358px;" class="vh-100" >
+<body style="min-height: 358px;" class="vh-100">
 	<div id="main-container" >
 		<h1>Cadastre-se</h1>
 		<!-- Modal -->
@@ -218,11 +218,12 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-					<!--	<button type="button" class="btn btn-primary">Understood</button>-->
+						<!--	<button type="button" class="btn btn-primary">Understood</button>-->
 					</div>
 				</div>
 			</div>
 		</div>
+		<div id="msg"></div>
 		<form id="register-form" action="/pet/usuario/usuario-novo" method="post" name="formulario">
 			<!--<div class="full-box">
 				<label for="address">Endereço</label>
@@ -231,30 +232,31 @@
 			</div> -->
 			<div class="half-box spacing">
 				<label for="name">Nome</label>
-				<input type="text" name="nome" id="nome" placeholder="Digite seu nome" data-required data-min-length="3"
-					data-max-length="16">
+				<input type="text" name="nome" id="nome" placeholder="Digite seu nome" th:value="${u.nome}"
+					data-required data-min-length="3" required minlength="3" maxlength="100" data-max-length="16">
 			</div>
 			<div class="half-box">
 				<label for="lastname">Sobrenome</label>
-				<input type="text" name="sobreNome" id="sobreNome" placeholder="Digite seu sobrenome" data-required
-					data-only-letters>
+				<input type="text" name="sobreNome" id="sobreNome" th:value="${u.sobreNome}" required minlength="3"
+					maxlength="100" placeholder="Digite seu sobrenome" data-required data-only-letters>
 			</div>
 			<div class="full-box">
 				<label for="email">E-mail</label>
-				<input type="email" name="email" id="email" placeholder="Digite seu e-mail" data-min-length="2" data-email-validate>
+				<input type="email" name="email" id="email" placeholder="Digite seu e-mail" data-min-length="2" required
+					minlength="3" maxlength="100" data-email-validate>
 			</div>
 			<div class="half-box spacing">
 				<label for="lastname">Senha</label>
 				<input type="password" name="senha" id="senha" placeholder="Digite sua senha" data-password-validate
-					data-required>
+					required minlength="3" maxlength="100" data-required>
 			</div>
 			<div class="half-box">
 				<label for="passconfirmation">Confirmação de senha</label>
 				<input type="password" name="senhaConfirma" id="senhaConfirma" placeholder="Digite novamente sua senha"
-					data-equal="password">
+					required minlength="3" maxlength="100" data-equal="password">
 			</div>
 			<div>
-				<input type="checkbox" name="uso" id="agreement">
+				<input type="checkbox" name="uso" id="agreement" required>
 				<label for="agreement" id="agreement-label">Eu li e aceito os <a href="#" data-bs-toggle="modal"
 						data-bs-target="#staticBackdrop">termos de uso</a></label>
 			</div>
@@ -263,11 +265,29 @@
 				<label for="agreement" id="agreement-label">Eu ja tenho <a href="/pet/login">usuário</a></label>
 			</div>
 		</form>
-	</div>
-	<p class="error-validation template"></p>
-	<script src="js/scripts.js"></script>
-	<section th:replace="fragments/script :: section-script">...
-	</section>
+
+		<p class="error-validation template"></p>
+		<section th:replace="fragments/script :: section-script">...
+		</section>
+
+		<script>
+			const btn = document.querySelector("#btn-submit");
+			const txtNome = document.querySelector("#nome");
+
+			const txtSenha = document.querySelector("#senha");
+			const txtConfirma = document.querySelector("#senhaConfirma");
+			const txtmsg = document.querySelector("#msg");
+
+			btn.addEventListener("click", function (e) {
+				if (txtSenha.value != txtConfirma.value) {
+					e.preventDefault();
+					txtmsg.innerHTML = '<div class="alert alert-danger alert-dismissible fade show" role="alert">   Senha e Confirmação de senha não são iguais. <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
+				} else {
+					 
+				}
+
+			});
+		</script>
 </body>
 
 </html>
