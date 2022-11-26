@@ -16,19 +16,10 @@ public class UsuarioController {
 
 	@PostMapping("/pet/usuario/usuario-novo")
 	public ModelAndView novo(Usuario usuario) {
-		ModelAndView mv = new ModelAndView("redirect:../login");
+		ModelAndView mv = new ModelAndView("redirect:../login/novo");
 		if (!usuario.getNome().isEmpty()) {
 			repository.save(usuario);
-		}
-
-		return mv;
-	}
-
-	@GetMapping("/pet/usuario/usuario-novo")
-	public ModelAndView novo2(Usuario usuario) {
-		ModelAndView mv = new ModelAndView("redirect:../login");
-		if (!usuario.getNome().isEmpty()) {
-			repository.save(usuario);
+			mv = new ModelAndView("redirect:../login");
 		}
 
 		return mv;
