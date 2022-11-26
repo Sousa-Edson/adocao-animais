@@ -9,7 +9,7 @@ public class RegisterController {
 
     @GetMapping("/pet/register")
     public String novo() {
-        return "cadastroUsu";
+        return "/pessoa/cadastroUsu";
     }
 
      
