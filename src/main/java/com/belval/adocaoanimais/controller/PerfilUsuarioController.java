@@ -9,7 +9,7 @@ public class PerfilUsuarioController {
 
     @GetMapping("/pet/perfil-pessoa")
     public String novo() {
-        return "perfil-pessoa";
+        return "/pessoa/perfil-pessoa";
     }
 
    
