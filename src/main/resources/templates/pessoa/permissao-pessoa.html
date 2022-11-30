@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+
+<head th:replace="fragments/head ">
+
+</head>
+
+<body class="hold-transition layout-top-nav layout-navbar-fixed"
+	style="background-image: './imagens/MicrosoftTeams-image.png';">
+
+
+	<!-- navbar - barra de menu -->
+	<nav th:replace="fragments/navbar :: navbar">...</nav>
+
+	<main>
+		<div class="content-wrapper">
+			<div class="content-header">
+
+
+				<div class="content">
+					<div class="container ">
+						<div class="col-sm-12">
+							<h1 class="mt-2" id="quem-somos">
+								Permissão <small> do usuário </small>
+							</h1>
+						</div>
+
+
+						<div class="card  card-default ">
+
+							<div class="card-header">
+								<div class="row">
+
+									<div class="form-group col-lg-12 col-md-12 ">
+
+										<div class="row">
+											<div class="col-sm-5">
+												<label for="nome">Nome</label>
+												<input type="text" class="form-control" id="nome" name="nome"
+													th:value="${u.nome}" readonly placeholder="João  ">
+											</div>
+											<div class="col-sm-7">
+												<label for="nome">Sobrenome</label>
+												<input type="text" class="form-control" id="sobreNome"
+													th:value="${u.sobreNome}" readonly name="sobreNome"
+													placeholder="Silva">
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-12">
+												<label for="nome">E-mail</label>
+												<input type="email" class="form-control" id="email" name="email"
+													th:value="${u.email}" readonly placeholder="email@email.com">
+											</div>
+										</div>
+
+
+										<div class="row">
+
+											<div class="col-sm-8">
+												<div class="row mt-4">
+													<div class="col-sm-6">
+														<select class="form-select" aria-label="Default select example">
+															<option selected>Selecione</option>
+															<option value="1">Usuário</option>
+															<option value="2">Consulta</option>
+															<option value="3">Administrador</option>
+														</select>
+													</div>
+													<div class="col-sm-6">
+														<div class="d-grid gap-2">
+															<a class="btn btn-primary btn-block"
+																th:href="@{/pet/perfil-pessoa/{id}/edit (id=${u.id})}">Editar
+															</a>
+
+														</div>
+													</div>
+												</div>
+
+											</div>
+
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+
+
+	</main>
+	<!-- footer - rodape basico -->
+	<div th:replace="fragments/footer :: footer">...</div>
+	<section th:replace="fragments/script :: section-script">...
+	</section>
+
+
+</body>
+
+</html>

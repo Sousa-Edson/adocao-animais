@@ -125,4 +125,6 @@ public class Usuario {
 		this.caminhoImagem = caminhoImagem;
 	}
 
+	 
+
 }

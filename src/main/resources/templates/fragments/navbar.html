@@ -35,7 +35,7 @@
 				</li>
 			</ul>
 			<div>
-				<ul th:if="${id > 2}" class="navbar-nav me-auto mb-2 mb-lg-0">
+				<ul th:if="${permissao == null}" class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item dropdown">
 						<div class="btn-group">
 							<button type="button" class="btn btn-outline-light"><a class="dropdown-item"
@@ -63,11 +63,11 @@
 				<!--				<a class="btn btn-outline-light" href="/pet/login"> Logar</a>-->
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item dropdown">
-						<div th:if="${id == null}" class="btn-group">
+						<div th:if="${ permissao == 1}" class="btn-group">
 							<a type="button" class="btn btn-success" href="/pet/login" > <i class="bi bi-person-circle">
 									Logar</i></a>
 						</div>
-						<div th:if="${id != null}" class="btn-group">
+						<div th:if="${permissao == null || permissao == 2}" class="btn-group">
 							<a type="button" class="btn btn-outline-light"> <i class="bi bi-person-circle">
 									Usuario</i></a>
 							<button type="button" class="btn btn-outline-light dropdown-toggle dropdown-toggle-split"
