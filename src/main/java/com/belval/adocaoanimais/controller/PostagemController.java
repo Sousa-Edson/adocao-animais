@@ -26,8 +26,8 @@ import com.belval.adocaoanimais.repository.PostagemRepository;
 public class PostagemController {
 	@Autowired
 	private PostagemRepository repository;
-	@Autowired
-	public static String caminhoImagens = "/home/edson/Dev/workspace/adocao-animais/src/main/resources/imagens/img-postagem/";
+	@Autowired  
+	public static String caminhoImagens = "/home/edson/Imagens/img-postagem/";
 //	public static String caminhoImagens = "Z:/Modulo 2/LIPI/workspace/imagens/img-postagem/";
 
 	@GetMapping("/pet/postagem/postagem-lista")
