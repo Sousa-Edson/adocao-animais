@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.belval.adocaoanimais.model.PetCor;
 import com.belval.adocaoanimais.model.Postagem;
 import com.belval.adocaoanimais.repository.PostagemRepository;
 
@@ -27,8 +26,8 @@ public class PostagemController {
 	@Autowired
 	private PostagemRepository repository;
 	@Autowired
-	public static String caminhoImagens = "/home/edson/Dev/workspace/adocao-animais/src/main/resources/imagens/img-postagem/";
-//	public static String caminhoImagens = "Z:/Modulo 2/LIPI/workspace/imagens/img-postagem/";
+	public static String caminhoImagens = "/home/edson/Projetos/adocao-animais/img-data/img-post/";
+	// public static String caminhoImagens = "Z:/Modulo	// 2/LIPI/workspace/imagens/img-postagem/";
 
 	@GetMapping("/pet/postagem/postagem-lista")
 	public String list(Model model) {
@@ -102,7 +101,7 @@ public class PostagemController {
 		if (p == null) {
 			return "nao-encontrada";
 		} else {
-//			model.addAttribute("postagem", repository.findAll());
+			// model.addAttribute("postagem", repository.findAll());
 			model.addAttribute("p", p);
 			return "postagem/postagem-detalhe";
 		}

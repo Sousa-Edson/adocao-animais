@@ -28,7 +28,8 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioRepository repository;
 	@Autowired
-	public static String caminhoImagens = "/home/edson/Dev/workspace/adocao-animais/src/main/resources/imagens/img-usuario/";
+	public static String caminhoImagens = "/home/edson/Projetos/adocao-animais/img-data/img-user/";
+//	public static String caminhoImagens = "/home/edson/Dev/workspace/adocao-animais/src/main/resources/imagens/img-usuario/";
 
 	@PostMapping("/pet/usuario/usuario-novo")
 	public ModelAndView registro(Usuario usuario) {
