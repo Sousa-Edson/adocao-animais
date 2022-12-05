@@ -16,6 +16,7 @@ public class HomeController {
 	@GetMapping("/pet/home")
 	public String list(Model model) {
 		model.addAttribute("p", repository.findAll());
+		System.out.println("p é -> "+repository.findAll());
 		return "home";
 	}
 //	@PostMapping("/pet/home")

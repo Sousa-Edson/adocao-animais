@@ -22,11 +22,10 @@
 		<div class="card-body text-center ">
 			<div class="row   align-items-center">
 				<div class="col-sm-6">
-					<img class="img-fluid"
-						th:src="@{/imagens/MicrosoftTeams-image.png }" alt="" />
+					<img class="img-fluid" th:src="@{/imagens/MicrosoftTeams-image.png }" alt="" />
 				</div>
 				<div class="col-sm-6 ">
-				<h3 class="text-mute"> O maior impacto é o abandono de animais em situações precárias.  </h3>
+					<h3 class="text-mute"> O maior impacto é o abandono de animais em situações precárias.  </h3>
 					<p id="apresentacao" class="text-start">
 						A relação entre humanos e seus animais de estimação se torna cada
 						vez mais evidente no nosso dia a dia. Esse fenômeno não é novo,
@@ -59,21 +58,21 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="col-sm-6">
-								<h1 class="m-0" id="feiras-eventos-regiao">
+								<h1 th:if="${p.size() != 0}" class="m-0" id="feiras-eventos-regiao">
 									Feiras e eventos <small>de sua região!</small>
 								</h1>
 							</div>
 							<!-- separação -->
+							 
+								 
 							<div class="card" th:each="p,iStat:${p}">
-								<div class="row featurette align-items-center"
-									style="margin: 20px">
+								<div class="row featurette align-items-center" style="margin: 20px">
 									<div
 										th:attr="class=${iStat.odd} ? 'col-md-7 order-md-2 text-capitalize' :'col-md-7 order-md-1 text-capitalize' ">
 										<h2 class="featurette-heading">
-											<a th:href="@{{caminho}(caminho=${p.linkEvento})} "
-												target="_blank" class="eaturette-heading"
-												style="text-decoration: none"> <span class="text-muted"
-												th:text="${p.titulo}"> ...</span>
+											<a th:href="@{{caminho}(caminho=${p.linkEvento})} " target="_blank"
+												class="eaturette-heading" style="text-decoration: none"> <span
+													class="text-muted" th:text="${p.titulo}"> ...</span>
 											</a>
 										</h2>
 
@@ -81,8 +80,7 @@
 										<small class="text-muted"
 											th:text="'Data de Publição: '+${p.dataPublicacao}">...</small>
 									</div>
-									<div
-										th:attr="class=${iStat.even} ? 'col-md-5 order-md-2' :'col-md-5 order-md-1' ">
+									<div th:attr="class=${iStat.even} ? 'col-md-5 order-md-2' :'col-md-5 order-md-1' ">
 										<img class="featurette-image img-fluid mx-auto rounded"
 											data-src="holder.js/400x400/auto" alt="400x400"
 											style="width: 500px; height: 400px"
@@ -110,17 +108,14 @@
 		<div class="row">
 			<div class="col-lg-4 col-sm-12">
 				<div class="card  ">
-					<img th:src="@{/imagens/Revista_Guarda_Responsavel-1.png}" alt=""
-						style="max-width: 100%">
+					<img th:src="@{/imagens/Revista_Guarda_Responsavel-1.png}" alt="" style="max-width: 100%">
 				</div>
 			</div>
 			<div class="col-lg-4 col-sm-12">
-				<img th:src="@{/imagens/Revista_Guarda_Responsavel-2.png}" alt=""
-					style="max-width: 100%">
+				<img th:src="@{/imagens/Revista_Guarda_Responsavel-2.png}" alt="" style="max-width: 100%">
 			</div>
 			<div class="col-lg-4 col-sm-12">
-				<img th:src="@{/imagens/Revista_Guarda_Responsavel-3.png}" alt=""
-					style="max-width: 100%">
+				<img th:src="@{/imagens/Revista_Guarda_Responsavel-3.png}" alt="" style="max-width: 100%">
 			</div>
 		</div>
 	</section>
@@ -134,8 +129,8 @@
 	<script>
 		const myCarouselElement = document.querySelector('#myCarousel')
 		const carousel = new bootstrap.Carousel(myCarouselElement, {
-			interval : 3000, //aqui conttrola a velocidade do slide
-			ride : "carousel" // aqui inicia automaticamente
+			interval: 3000, //aqui conttrola a velocidade do slide
+			ride: "carousel" // aqui inicia automaticamente
 		})
 	</script>
 </body>
