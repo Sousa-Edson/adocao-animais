@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -41,9 +42,13 @@ public class UsuarioController {
 
 	@PostMapping("/pet/usuario/usuario-edit")
 	public ModelAndView editaRegistro(Usuario usuario, @RequestParam("file-img") MultipartFile arquivo) {
+		int a = usuario.getId();
+		Usuario u = repository.findById(a);
+		System.out.println("u id " + u.getId());
+		System.out.println("u nome " + u.getNome());
 		ModelAndView mv = new ModelAndView("redirect:../home");
 		if (!usuario.getNome().isEmpty()) {
-			repository.save(usuario);
+			repository.save(u);
 		}
 		try {
 			System.out.println("entrando");
@@ -53,8 +58,8 @@ public class UsuarioController {
 						.get(caminhoImagens + String.valueOf(usuario.getId()) + arquivo.getOriginalFilename());
 				Files.write(caminho, bytes);
 				usuario.setCaminhoImagem(String.valueOf(usuario.getId()) + arquivo.getOriginalFilename());
-				System.out.println("salvando "+usuario.getCaminhoImagem());
-				repository.save(usuario);
+				System.out.println("salvando " + usuario.getCaminhoImagem());
+				repository.save(u);
 			}
 		} catch (Exception e) {
 			System.out.println("erro--> " + e);
@@ -117,6 +122,22 @@ public class UsuarioController {
 			return "/pessoa/perfil-pessoa-editar";
 		}
 	}
+	
+	@GetMapping("/pet/perfil-pessoa/{id}/perm")
+	public String editarPErmissao(@PathVariable("id") int id, Model model) {
+		Usuario u = repository.findById(id);
+		if (u == null) {
+			return "nao-encontrada";
+		} else {
+			 
+
+			model.addAttribute("u", u);
+			return "/pessoa/permissao-pessoa";
+		}
+	}
+	
+	
+
 	@GetMapping("/pet/mostrarImagemUser/{imagem}")
 	@ResponseBody
 	public byte[] retornarImagem(@PathVariable("imagem") String imagem) throws IOException {
@@ -126,7 +147,7 @@ public class UsuarioController {
 		}
 		return null;
 	}
-	
+
 	/* LISTA */
 	@GetMapping("/pet/gerenciar-usuario")
 	public String lista(Model model) {
