@@ -62,9 +62,14 @@
 									Feiras e eventos <small>de sua região!</small>
 								</h1>
 							</div>
+								<div th:if="${p.size() == 0}" class="card  ">
+									<h1 class="m-3 text-center" id="">
+										Sem <small>enventos!</small>
+									</h1>
+								</div>
 							<!-- separação -->
-							 
-								 
+
+
 							<div class="card" th:each="p,iStat:${p}">
 								<div class="row featurette align-items-center" style="margin: 20px">
 									<div
