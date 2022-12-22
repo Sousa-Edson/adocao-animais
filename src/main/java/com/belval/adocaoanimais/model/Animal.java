@@ -1,5 +1,9 @@
 package com.belval.adocaoanimais.model;
 
+ 
+
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,8 +12,9 @@ import javax.persistence.Id;
 @Entity
 public class Animal {
 	@Id
-	 @GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	private int userId;
 	private String nome;
 	private int raca;
 	private int cor;
@@ -17,10 +22,13 @@ public class Animal {
 	private String especie;
 	private int sexo;
 	private int vacina;
+	private Date nascimento;
 
-	public Animal(int id, String nome, int raca, int cor, int porte, String especie, int sexo, int vacina) {
+	public Animal(int id,int userId, String nome, int raca, int cor, int porte, String especie, int sexo, int vacina,
+			Date nascimento) {
 		super();
 		this.id = id;
+		this.userId = userId;
 		this.nome = nome;
 		this.raca = raca;
 		this.cor = cor;
@@ -28,10 +36,19 @@ public class Animal {
 		this.especie = especie;
 		this.sexo = sexo;
 		this.vacina = vacina;
+		this.nascimento = nascimento;
 	}
 
 	public Animal() {
 		super();
+	}
+
+	public Date getNascimento() {
+		return nascimento;
+	}
+
+	public void setNascimento(Date nascimento) {
+		this.nascimento = nascimento;
 	}
 
 	public int getId() {
@@ -97,5 +114,14 @@ public class Animal {
 	public void setVacina(int vacina) {
 		this.vacina = vacina;
 	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	
 
 }

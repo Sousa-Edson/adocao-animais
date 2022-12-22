@@ -17,8 +17,9 @@ public class AnimalController {
 	@PostMapping("/pet/cadastroAnimal")
 	public ModelAndView salvar(Animal animal) {
 		ModelAndView mv = new ModelAndView("redirect:../pet/home");
-		 
+
 		if (!animal.getNome().isEmpty()) {
+			animal.setUserId(1);
 			repository.save(animal);
 		}
 		return mv;
