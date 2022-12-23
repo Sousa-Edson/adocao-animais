@@ -1,9 +1,13 @@
 package com.belval.adocaoanimais.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.belval.enums.TipoAnimal;
 
 @Entity
 public class PetRaca {
@@ -13,16 +17,10 @@ public class PetRaca {
     private String raca;
     private boolean ativo;
 
-    public PetRaca(Long id, String raca, boolean ativo) {
-        super();
-        this.id = id;
-        this.raca = raca;
-        this.ativo = ativo;
-    }
+    @Enumerated(EnumType.STRING)
+    private TipoAnimal tipoAnimal;
 
-    public PetRaca() {
-        super();
-    }
+     
 
     public Long getId() {
         return id;
@@ -46,6 +44,19 @@ public class PetRaca {
 
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
+    }
+
+    public TipoAnimal getTipoAnimal() {
+        return tipoAnimal;
+    }
+
+    public void setTipoAnimal(TipoAnimal tipoAnimal) {
+        this.tipoAnimal = tipoAnimal;
+    }
+
+    @Override
+    public String toString() {
+        return "PetRaca [id=" + id + ", raca=" + raca + ", ativo=" + ativo + ", tipoAnimal=" + tipoAnimal + "]";
     }
 
 }

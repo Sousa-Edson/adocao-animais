@@ -37,7 +37,6 @@ public class CorController {
 	@GetMapping("/new")
 	public ModelAndView nnew(RequisicaoFormCor requisicao) {
 		ModelAndView mv = new ModelAndView("admin/cor/new");
-
 		return mv;
 	}
 
