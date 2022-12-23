@@ -7,13 +7,13 @@ import javax.persistence.Id;
 
 @Entity
 public class PetRaca {
-	@Id
-	 @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String raca;
     private boolean ativo;
 
-    public PetRaca(int id, String raca, boolean ativo) {
+    public PetRaca(Long id, String raca, boolean ativo) {
         super();
         this.id = id;
         this.raca = raca;
@@ -24,11 +24,11 @@ public class PetRaca {
         super();
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

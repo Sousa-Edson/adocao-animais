@@ -1,14 +1,12 @@
 package com.belval.adocaoanimais.repository;
 
-import java.util.List;
-
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.belval.adocaoanimais.model.PetRaca;
  
-public interface RacaRepository  extends CrudRepository<PetRaca, Integer> {
+public interface RacaRepository  extends JpaRepository<PetRaca, Long> {
 	 
-	    List<PetRaca> findByRaca(String raca);
+	    // List<PetRaca> findByRaca(String raca);
 
-	    PetRaca findById(int id);
+	    // PetRaca findById(int id);
 }
