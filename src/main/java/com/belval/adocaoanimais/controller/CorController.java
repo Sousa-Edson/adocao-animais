@@ -102,6 +102,7 @@ public class CorController {
 			Optional<PetCor> optional = this.corRepository.findById(id);
 			if (optional.isPresent()) {
 				PetCor petCor = requisicao.toPetCor(optional.get());
+				petCor.setAtivo(true);
 				this.corRepository.save(petCor);
 				return new ModelAndView("redirect:/pet/admin/pet-cor/" + petCor.getId());
 			} else {
