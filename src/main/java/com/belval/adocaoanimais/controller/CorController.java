@@ -119,35 +119,32 @@ public class CorController {
 		return mv;
 	}
 
-	
-
 	@GetMapping("/{id}/delete")
 	public String excluir(@PathVariable("id") Long id, Model model, ModelMap m) {
-	// repository.deleteById(id);
-	Optional<PetCor> e = corRepository.findById(id);
-	// System.out.println("ver -------------- "+e.get());
-	if (e == null) {
-		System.out.println("555555555555555555555555555555555");
-	return "redirect:/pet/admin/pet-cor";
-	} else {
-		System.out.println("99999999999999999999999999999999999999");
-	 System.out.println(e.get().getId());
-	 model.addAttribute("cores", corRepository.findAll());
-	 model.addAttribute("corId", e.get().getId());
-	m.addAttribute("exc", true);
-	System.out.println(m);
-	return "admin/cor/index";
-	}
+		// repository.deleteById(id);
+		Optional<PetCor> e = corRepository.findById(id);
+		// System.out.println("ver -------------- "+e.get());
+		if (e == null) {
+			System.out.println("555555555555555555555555555555555");
+			return "redirect:/pet/admin/pet-cor";
+		} else {
+			System.out.println("99999999999999999999999999999999999999");
+			System.out.println(e.get().getId());
+			model.addAttribute("cores", corRepository.findAll());
+			model.addAttribute("corId", e.get().getId());
+			m.addAttribute("exc", true);
+			System.out.println(m);
+			return "admin/cor/index";
+		}
 	}
 
 	@GetMapping("/{id}/destroy")
-public String excluir(@PathVariable("id") Long id, Model model) {
-	corRepository.deleteById(id);
+	public String excluir(@PathVariable("id") Long id, Model model) {
+		corRepository.deleteById(id);
 
-	return "redirect:/pet/admin/pet-cor";
+		return "redirect:/pet/admin/pet-cor";
 
-}
-
+	}
 
 	// public ModelAndView delete(@PathVariable Long id ) {
 	// Optional<PetCor> optional = this.corRepository.findById(id);
