@@ -7,6 +7,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -117,69 +119,111 @@ public class CorController {
 		return mv;
 	}
 
-	// @PostMapping("/pet/pet-cor")
-	// public ModelAndView novo(PetCor cor) {
-	// ModelAndView mv = new ModelAndView("redirect:../pet/pet-cor");
-	// if (!cor.getCor().isEmpty()) {
-	// repository.save(cor);
-	// }
-	//
+	
+
+	@GetMapping("/{id}/delete")
+	public String excluir(@PathVariable("id") Long id, Model model, ModelMap m) {
+	// repository.deleteById(id);
+	Optional<PetCor> e = corRepository.findById(id);
+	// System.out.println("ver -------------- "+e.get());
+	if (e == null) {
+		System.out.println("555555555555555555555555555555555");
+	return "redirect:/pet/admin/pet-cor";
+	} else {
+		System.out.println("99999999999999999999999999999999999999");
+	 System.out.println(e.get().getId());
+	 model.addAttribute("cores", corRepository.findAll());
+	 model.addAttribute("corId", e.get().getId());
+	m.addAttribute("exc", true);
+	System.out.println(m);
+	return "admin/cor/index";
+	}
+	}
+
+	@GetMapping("/{id}/destroy")
+public String excluir(@PathVariable("id") Long id, Model model) {
+	corRepository.deleteById(id);
+
+	return "redirect:/pet/admin/pet-cor";
+
+}
+
+
+	// public ModelAndView delete(@PathVariable Long id ) {
+	// Optional<PetCor> optional = this.corRepository.findById(id);
+	// if (optional == null) {
+	// return index();
+	// } else {
+	// System.out.println(optional.get());
+	// ModelAndView mv = new ModelAndView("redirect:/");
+	// mv.addObject("cor", corRepository.findAll());
+	// mv.addObject("exc", true);
 	// return mv;
 	// }
-	//
-	// @GetMapping("/pet/pet-cor")
-	// public String list(Model model) {
-	// model.addAttribute("c", new PetCor());
-	// model.addAttribute("cor", repository.findAll());
-	// return "animal/pet-cor";
-	// }
-	//
-	// @GetMapping("/pet/pet-cor/{id}/edit")
-	// public String edit(@PathVariable("id") int id, Model model, ModelMap m) {
-	// PetCor c = repository.findById(id);
-	// if (c == null) {
-	// return "cor-nao-encontrada";
-	// } else {
-	// model.addAttribute("cor", repository.findAll());
-	// model.addAttribute("c", c);
-	// m.addAttribute("msg", "msg");
-	// return "animal/pet-cor";
-	// }
-	//
-	// }
-
-	// @GetMapping("/pet/pet-cor/{id}/excluir")
-	// public String excluir(@PathVariable("id") int id, Model model) {
-	// repository.deleteById(id);
-	//
-	// return list(model);
-	//
-	// }
-
-	// @GetMapping("/pet/pet-cor/{id}/excluir")
-	// public String excluir(@PathVariable("id") int id, Model model, ModelMap m) {
-	// // repository.deleteById(id);
-	// PetCor e = repository.findById(id);
-	// if (e == null) {
-	// return list(model);
-	// } else {
-	// System.out.println(e.getId());
-	// model.addAttribute("cor", repository.findAll());
-	// model.addAttribute("c", new PetCor());
-	// model.addAttribute("e", e);
-	// m.addAttribute("exc", true);
-	// return "animal/pet-cor";
-	// }
-	// }
-	//
-	// @GetMapping("/pet/pet-cor/{id}/excluindo")
-	// public String excluirConfirmado(@PathVariable("id") int id, Model model) {
-	// PetCor e = repository.findById(id);
-	// if (e == null) {
-	// return list(model);
-	// } else {
-	// repository.deleteById(id);
-	// return list(model);
-	// }
-	// }
 }
+
+// @PostMapping("/pet/pet-cor")
+// public ModelAndView novo(PetCor cor) {
+// ModelAndView mv = new ModelAndView("redirect:../pet/pet-cor");
+// if (!cor.getCor().isEmpty()) {
+// repository.save(cor);
+// }
+//
+// return mv;
+// }
+//
+// @GetMapping("/pet/pet-cor")
+// public String list(Model model) {
+// model.addAttribute("c", new PetCor());
+// model.addAttribute("cor", repository.findAll());
+// return "animal/pet-cor";
+// }
+//
+// @GetMapping("/pet/pet-cor/{id}/edit")
+// public String edit(@PathVariable("id") int id, Model model, ModelMap m) {
+// PetCor c = repository.findById(id);
+// if (c == null) {
+// return "cor-nao-encontrada";
+// } else {
+// model.addAttribute("cor", repository.findAll());
+// model.addAttribute("c", c);
+// m.addAttribute("msg", "msg");
+// return "animal/pet-cor";
+// }
+//
+// }
+
+// @GetMapping("/pet/pet-cor/{id}/excluir")
+// public String excluir(@PathVariable("id") int id, Model model) {
+// repository.deleteById(id);
+//
+// return list(model);
+//
+// }
+
+// @GetMapping("/pet/pet-cor/{id}/excluir")
+// public String excluir(@PathVariable("id") int id, Model model, ModelMap m) {
+// // repository.deleteById(id);
+// PetCor e = repository.findById(id);
+// if (e == null) {
+// return list(model);
+// } else {
+// System.out.println(e.getId());
+// model.addAttribute("cor", repository.findAll());
+// model.addAttribute("c", new PetCor());
+// model.addAttribute("e", e);
+// m.addAttribute("exc", true);
+// return "animal/pet-cor";
+// }
+// }
+//
+// @GetMapping("/pet/pet-cor/{id}/excluindo")
+// public String excluirConfirmado(@PathVariable("id") int id, Model model) {
+// PetCor e = repository.findById(id);
+// if (e == null) {
+// return list(model);
+// } else {
+// repository.deleteById(id);
+// return list(model);
+// }
+// }

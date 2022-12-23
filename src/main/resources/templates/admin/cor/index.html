@@ -7,7 +7,15 @@
 		<div class="col-lg-8  col-md-8 col-sm-12">
 			<section>
 				<h1 class="display-5">Lista de cores</h1>
-
+				<div th:if="${exc == true}" class="alert alert-danger alert-dismissible fade show" role="alert">
+					<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+						<use xlink:href="#exclamation-triangle-fill" />
+					</svg>
+					<strong>Aviso de exclusão!</strong> Você tem certeza que dejesa excluir o  item <strong th:text="${corId}">id</strong> ?
+					<a th:href="@{/pet/admin/pet-cor/{id}/destroy (id=${corId})}" class="btn btn-outline-danger btn-sm">Sim
+						desejo excluir</a>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
 				<div class="row">
 					<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
@@ -72,7 +80,7 @@
 												<a th:href="@{/pet/admin/pet-cor/{id}/edit (id=${cor.id})}"
 													class="btn btn-info">
 													<i class="bi bi-pencil"></i></a>
-												<a th:href="@{/pet/admin/pet-cor/{id}/excluir (id=${cor.id})}"
+												<a th:href="@{/pet/admin/pet-cor/{id}/delete (id=${cor.id})}"
 													class="btn btn-danger"> <i class="bi bi-trash3"></i></a>
 										</div>
 									</td>
