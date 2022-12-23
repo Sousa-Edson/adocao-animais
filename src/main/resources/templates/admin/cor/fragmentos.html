@@ -1,0 +1,18 @@
+<section th:fragment="form(requisicaoFormCor,action)">
+    <h1 class="display-5">Cadastrar nova cor</h1>
+
+     
+    <form th:object="${requisicaoFormCor}"
+    th:action="${action}"   method="post" name="formulario">
+
+    
+        <div class="mt-3 mb-3">
+            <label for="txtcor" class="form-label">Digite uma cor</label>
+            <input type="text" class="form-control" th:field="*{cor}"  th:errorclass=" is-invalid"  placeholder="vermelho verde azul">
+            <div class="invalid-feedback" th:errors="*{cor}"></div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-primary">Submeter</button>
+        </div>
+    </form>
+</section>

@@ -1,0 +1,140 @@
+<!-- HEAD -->
+
+<head th:fragment="head(titulo)">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!-- <title>Adote fácil | Home</title> -->
+	<title th:text="${'Adote fácil | '+titulo}">NOSSA HOME!!!!</title>
+	<link rel="icon" type="imagem/png" th:href="@{/MicrosoftTeams-image.png}" />
+	<!-- Google Font: Source Sans Pro -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
+	<!-- css boostrap -->
+	<link th:href="@{/bootstrap/css/bootstrap.css}" rel="stylesheet" />
+	<!-- icons -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+	<!-- Ionicons -->
+	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<!-- fontawesome. -->
+	<!--  <script src="https://kit.fontawesome.com/f279ebca90.js" crossorigin="anonymous"></script> -->
+	<!-- css custon -->
+	<link rel="stylesheet" th:href="@{/custon.css}" />
+</head>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg  sticky-top  " style="background-color: rgb(153, 0, 204)" th:fragment="navbar">
+	<div class="container ">
+		<a class="navbar-brand" href="/"> <img th:src="@{/MicrosoftTeams-image.png}" alt="" width="30" height="24">
+		</a> <a class="navbar-brand text-white" href="/pet">Adote fácil</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item"><a class="nav-link  text-white custon-hover active" aria-current="page"
+						href="/pet/home">Home</a></li>
+				<li class="nav-item"><a class="nav-link text-white custon-hover" href="/pet/catalogo">Galeria</a>
+				</li>
+				<li class="nav-item"><a class="nav-link text-white custon-hover" href="/pet/catalogo">Adote
+					</a></li>
+				<li class="nav-item"><a class="nav-link text-white custon-hover" href="/pet/catalogo">Anuncie
+					</a></li>
+				<li class="nav-item"><a class="nav-link text-white custon-hover" href="/pet/catalogo">Fique
+						por dentro </a></li>
+				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle text-white custon-hover" href="#"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false"> Saiba mais </a>
+					<ul class="dropdown-menu  ">
+						<li><a class="dropdown-item " href="/pet/intencao-adotar">Mais
+								um</a></li>
+						<li><a class="dropdown-item" href="/pet/cadastroAnimal">Mais
+								dois</a></li>
+						<li>
+							<hr class="dropdown-divider">
+						</li>
+						<li><a class="dropdown-item" href="#">Mais três</a></li>
+					</ul>
+				</li>
+
+			</ul>
+			<div class=" navbar-nav   d-grid gap-2 d-md-flex me-md-2 justify-content-md-end custon-hover">
+				<a class="nav-link text-light custon-hover" href="#"><span class=" "><span class="bi pe-none me-2"
+							width="40" height="32">
+							<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+								<path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+								<path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+							  </svg>
+						</span>DashBoard</span></a>
+			</div>
+			<div class="dropdown">
+
+				<a href="#" class="d-flex align-items-center link-light text-decoration-none dropdown-toggle"
+					data-bs-toggle="dropdown" aria-expanded="false"> <img src="https://github.com/mdo.png" alt=""
+						width="32" height="32" class="rounded-circle me-2"> <strong class="text-light">Edson</strong>
+				</a>
+				<ul class="dropdown-menu text-small shadow ">
+					<li><a class="dropdown-item" href="#">Meus anúncios</a></li>
+					<li><a class="dropdown-item" href="#"> Minhas requisições</a></li>
+					<li><a class="dropdown-item" href="#"> Perfil</a></li>
+					<li>
+						<hr class="dropdown-divider">
+					</li>
+					<li><a class="dropdown-item" href="#">Deslogar</a></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+
+</nav>
+
+<!-- SCRIPTS -->
+<section th:fragment="section-script">
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="staticBackdropLabel">Aviso</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">Deseja realmente sair?</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+					<a class="btn btn-primary" href="/pet/login">Sair</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+		integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+		crossorigin="anonymous"></script>
+
+	<script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+
+
+	<script>
+		const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+
+		const alert = (message, type) => {
+			const wrapper = document.createElement('div')
+			wrapper.innerHTML = [
+				`<div class="alert alert-${type} alert-dismissible" role="alert">`,
+				`   <div>${message}</div>`,
+				'   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+				'</div>'
+			].join('')
+
+			alertPlaceholder.append(wrapper)
+		}
+
+		const alertTrigger = document.getElementById('liveAlertBtn')
+		if (alertTrigger) {
+			alertTrigger.addEventListener('click', () => {
+				alert('Mensagem vem aqui!', 'success')
+			})
+		}	
+	</script>
+</section>

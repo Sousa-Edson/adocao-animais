@@ -1,21 +1,54 @@
 package com.belval.adocaoanimais.model;
 
-public class Animal {
-	private int id;
-	private String nome;
-	private String raca;
-	private int idade;
+ 
 
-	public Animal(int id, String nome, String raca, int idade) {
+import java.sql.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Animal {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	private int userId;
+	private String nome;
+	private int raca;
+	private int cor;
+	private int porte;
+	private String especie;
+	private int sexo;
+	private int vacina;
+	private Date nascimento;
+
+	public Animal(int id,int userId, String nome, int raca, int cor, int porte, String especie, int sexo, int vacina,
+			Date nascimento) {
 		super();
 		this.id = id;
+		this.userId = userId;
 		this.nome = nome;
 		this.raca = raca;
-		this.idade = idade;
+		this.cor = cor;
+		this.porte = porte;
+		this.especie = especie;
+		this.sexo = sexo;
+		this.vacina = vacina;
+		this.nascimento = nascimento;
 	}
 
 	public Animal() {
 		super();
+	}
+
+	public Date getNascimento() {
+		return nascimento;
+	}
+
+	public void setNascimento(Date nascimento) {
+		this.nascimento = nascimento;
 	}
 
 	public int getId() {
@@ -34,20 +67,61 @@ public class Animal {
 		this.nome = nome;
 	}
 
-	public String getRaca() {
+	public int getRaca() {
 		return raca;
 	}
 
-	public void setRaca(String raca) {
+	public void setRaca(int raca) {
 		this.raca = raca;
 	}
 
-	public int getIdade() {
-		return idade;
+	public int getCor() {
+		return cor;
 	}
 
-	public void setIdade(int idade) {
-		this.idade = idade;
+	public void setCor(int cor) {
+		this.cor = cor;
 	}
+
+	public int getPorte() {
+		return porte;
+	}
+
+	public void setPorte(int porte) {
+		this.porte = porte;
+	}
+
+	public String getEspecie() {
+		return especie;
+	}
+
+	public void setEspecie(String especie) {
+		this.especie = especie;
+	}
+
+	public int getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(int sexo) {
+		this.sexo = sexo;
+	}
+
+	public int getVacina() {
+		return vacina;
+	}
+
+	public void setVacina(int vacina) {
+		this.vacina = vacina;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	
 
 }

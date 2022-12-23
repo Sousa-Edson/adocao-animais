@@ -1,0 +1,15 @@
+<head th:replace="~{fragmentos :: head('Editar cor')}"></head>
+<nav th:replace="~{fragmentos :: navbar}"></nav>
+<main class="container mt-1  bg-light ">
+
+<div class="row">
+			<div th:replace="~{admin/fragmentos :: sidebar('cor')}"></div>
+			<div class="col-lg-8  col-md-8 col-sm-12">
+				<section th:replace="~{admin/cor/fragmentos :: form(requisicaoFormCor,'/pet/admin/pet-cor/'+${petId})}">formulario</section>
+				 
+                
+			</div>
+		</div>
+
+</main>
+<section th:replace="~{fragmentos :: section-script}"></section>

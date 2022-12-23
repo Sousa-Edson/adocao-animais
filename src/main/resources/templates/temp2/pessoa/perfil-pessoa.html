@@ -18,9 +18,9 @@
 			<div class="content-header">
 				<div class="content">
 					<div class="container">
-						<div class="row featurette align-items-center" style="margin: 20px">
-							<div class="col-md-6 order-md-1">
-							</div>
+						<div class="row featurette align-items-center"
+							style="margin: 20px">
+							<div class="col-md-6 order-md-1"></div>
 						</div>
 					</div>
 					<div class="content">
@@ -31,8 +31,7 @@
 								</h1>
 							</div>
 
-							<div class="col-sm-12">
-							</div>
+							<div class="col-sm-12"></div>
 							<div class="card  card-default ">
 
 								<div class="card-header">
@@ -45,28 +44,29 @@
 
 											<div class="row">
 												<div class="col-sm-5">
-													<label for="nome">Nome</label>
-													<input type="text" class="form-control" id="nome" name="nome"
+													<label for="nome">Nome</label> <input type="text"
+														class="form-control" id="nome" name="nome"
 														th:value="${u.nome}" readonly placeholder="João  ">
 												</div>
 												<div class="col-sm-7">
-													<label for="nome">Sobrenome</label>
-													<input type="text" class="form-control" id="sobreNome"
+													<label for="nome">Sobrenome</label> <input type="text"
+														class="form-control" id="sobreNome"
 														th:value="${u.sobreNome}" readonly name="sobreNome"
 														placeholder="Silva">
 												</div>
 											</div>
 											<div class="row">
 												<div class="col-sm-12">
-													<label for="nome">E-mail</label>
-													<input type="email" class="form-control" id="email" name="email"
-														th:value="${u.email}" readonly placeholder="email@email.com">
+													<label for="nome">E-mail</label> <input type="email"
+														class="form-control" id="email" name="email"
+														th:value="${u.email}" readonly
+														placeholder="email@email.com">
 												</div>
 											</div>
 											<div class="row">
 												<div class="col-sm-12">
-													<label for="nome">Endereço</label>
-													<input type="text" class="form-control" id="endereco"
+													<label for="nome">Endereço</label> <input type="text"
+														class="form-control" id="endereco"
 														th:value="${u.endereco}" readonly name="endereco"
 														placeholder="Rua do peões N° 001">
 												</div>
@@ -74,23 +74,25 @@
 
 											<div class="row">
 												<div class="col-sm-4">
-													<label for="nome">Bairro</label>
-													<input type="text" class="form-control" id="bairro" name="bairro"
+													<label for="nome">Bairro</label> <input type="text"
+														class="form-control" id="bairro" name="bairro"
 														th:value="${u.bairro}" readonly placeholder="Belval ">
 												</div>
-												<div class="col-sm-4"> <label for="nome">Cidade</label>
-													<input type="text" class="form-control" id="cidade" name="cidade"
+												<div class="col-sm-4">
+													<label for="nome">Cidade</label> <input type="text"
+														class="form-control" id="cidade" name="cidade"
 														th:value="${u.cidade}" readonly placeholder="Barueri">
 												</div>
-												<div class="col-sm-4"> <label for="nome">Estado</label>
-													<input type="text" class="form-control" id="estado" name="estado"
+												<div class="col-sm-4">
+													<label for="nome">Estado</label> <input type="text"
+														class="form-control" id="estado" name="estado"
 														th:value="${u.estado}" readonly placeholder="São Paulo ">
 												</div>
 											</div>
 											<div class="row">
 												<div class="col-sm-4">
-													<label for="nome">Cep</label>
-													<input type="text" class="form-control" id="cep" name="cep"
+													<label for="nome">Cep</label> <input type="text"
+														class="form-control" id="cep" name="cep"
 														th:value="${u.cep}" readonly placeholder="08.999-123">
 												</div>
 												<div class="col-sm-8">
@@ -113,9 +115,9 @@
 				</div>
 				<div class="content">
 					<div class="container">
-						<div class="row featurette align-items-center" style="margin: 20px">
-							<div class="col-md-6 order-md-1">
-							</div>
+						<div class="row featurette align-items-center"
+							style="margin: 20px">
+							<div class="col-md-6 order-md-1"></div>
 						</div>
 					</div>
 					<div class="content">
@@ -149,9 +151,8 @@
 												<tr>
 													<td>1.</td>
 													<td>CLAUDINHO</td>
-													<td>
-														<span class="badge bg-primary">Macho, 8 anos</span>
-													</td>
+													<td><span class="badge bg-primary">Macho, 8
+															anos</span></td>
 													<td>
 														<div class="btn-group">
 															<a href="catalogo-descricao.html"
@@ -164,8 +165,7 @@
 												<tr>
 													<td>2.</td>
 													<td>JANIS</td>
-													<td>
-														<span class="badge bg-danger">Fêmea, 6 anos</span>
+													<td><span class="badge bg-danger">Fêmea, 6 anos</span>
 													</td>
 													<td>
 														<div class="btn-group">
@@ -179,9 +179,8 @@
 												<tr>
 													<td>3.</td>
 													<td>NEMO I</td>
-													<td>
-														<span class="badge bg-primary">Macho, 12 anos</span>
-													</td>
+													<td><span class="badge bg-primary">Macho, 12
+															anos</span></td>
 													<td>
 														<div class="btn-group">
 															<a href="catalogo-descricao.html"
@@ -210,10 +209,6 @@
 						</div>
 					</div>
 				</div>
-
-
-
-
 	</main>
 	<!-- footer - rodape basico -->
 	<div th:replace="fragments/footer :: footer">...</div>
