@@ -1,14 +1,10 @@
 package com.belval.adocaoanimais.repository;
 
-import java.util.List;
-
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.belval.adocaoanimais.model.PetCor;
  
-public interface CorRepository extends CrudRepository<PetCor, Integer> {
+public interface CorRepository extends JpaRepository<PetCor, Long> {
 
-    List<PetCor> findByCor(String cor);
-
-    PetCor findById(int id);
+     
 }

@@ -1,0 +1,116 @@
+<div th:fragment="sidebar(barra)" class="col-lg-4 col-md-4 col-sm-12 ">
+
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light ">
+        <!-- style="width: 280px;"-->
+        <a href="/"
+            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <span class="bi pe-none me-2" width="40" height="32">
+                  <i class=" fa-solid fa-gears"></i>
+            </span>
+            
+            <span class="fs-4">DashBoard</span>
+        </a>
+        <hr>
+        <span class="fs-4 ">Admin</span>
+        <ul class="nav nav-pills flex-column mb-auto">
+
+            <li class="nav-item">
+
+                <a href="#" class="nav-link link-dark custon-hover" aria-current="page">
+                    <span class="bi pe-none me-2" width="40" height="32">
+                        <i class=" fa-solid fa-gears"></i>
+                  </span>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link link-dark custon-hover">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#speedometer2"></use>
+                    </svg>
+                    Usuários
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link link-dark custon-hover">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#table"></use>
+                    </svg>
+                    Anuncios de animais
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link link-dark custon-hover">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#grid"></use>
+                    </svg>
+                    Requisição de adoções
+                </a>
+            </li>
+
+        </ul>
+
+        <span class="fs-4">Cadastros</span>
+        <ul class="nav nav-pills flex-column mb-auto">
+
+            <li class="nav-item">
+                <a href="/pet/admin/pet-cor" class="nav-link    custon-hover" th:classappend="${barra.equals('cor') ? 'active' : 'link-dark '}" aria-current="page">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#home"></use>
+                    </svg>
+                    Cor
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link link-dark custon-hover">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#speedometer2"></use>
+                    </svg>
+                    Raça
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link link-dark custon-hover">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#table"></use>
+                    </svg>
+                    Eventos
+                </a>
+            </li>
+
+
+        </ul>
+        <span class="fs-4">Pessoal</span>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link link-dark custon-hover" aria-current="page">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#home"></use>
+                    </svg>
+                    Perfil
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link link-dark custon-hover">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#speedometer2"></use>
+                    </svg>
+                    Meus anúncios
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link link-dark custon-hover">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#table"></use>
+                    </svg>
+                    Minhas requisições
+                </a>
+            </li>
+
+
+        </ul>
+        <hr>
+
+    </div>
+
+</div>

@@ -10,11 +10,11 @@ import javax.persistence.Id;
 public class PetCor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	private Long id;
 	private String cor;
 	private boolean ativo;
 
-	public PetCor(Integer id, String cor, boolean ativo) {
+	public PetCor(Long id, String cor, boolean ativo) {
 		super();
 		this.id = id;
 		this.cor = cor;
@@ -25,11 +25,11 @@ public class PetCor {
 		super();
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
