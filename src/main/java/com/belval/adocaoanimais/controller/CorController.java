@@ -109,7 +109,6 @@ public class CorController {
 				return this.retornaError("UPDATE ERROR: cor #" + id + " não encontrado no banco!");
 			}
 		}
-
 	}
 
 	private ModelAndView retornaError(String msg) {
@@ -120,30 +119,62 @@ public class CorController {
 	}
 
 	@GetMapping("/{id}/delete")
-	public String excluir(@PathVariable("id") Long id, Model model, ModelMap m) {
-		// repository.deleteById(id);
+	public String delete(@PathVariable("id") Long id, Model model, ModelMap m) {
 		Optional<PetCor> e = corRepository.findById(id);
-		// System.out.println("ver -------------- "+e.get());
 		if (e == null) {
 			System.out.println("555555555555555555555555555555555");
-			return "redirect:/pet/admin/pet-cor";
 		} else {
-			System.out.println("99999999999999999999999999999999999999");
-			System.out.println(e.get().getId());
 			model.addAttribute("cores", corRepository.findAll());
 			model.addAttribute("corId", e.get().getId());
 			m.addAttribute("exc", true);
-			System.out.println(m);
-			return "admin/cor/index";
 		}
+		return "admin/cor/index";
 	}
 
 	@GetMapping("/{id}/destroy")
-	public String excluir(@PathVariable("id") Long id, Model model) {
+	public String destroy(@PathVariable("id") Long id, Model model) {
 		corRepository.deleteById(id);
-
 		return "redirect:/pet/admin/pet-cor";
+	}
 
+	@GetMapping("/{id}/activate")
+	public String activate(@PathVariable("id") Long id, Model model, RequisicaoFormCor requisicao) {
+		Optional<PetCor> e = corRepository.findById(id);
+		if (e == null) {
+			System.out.println("555555555555555555555555555555555");
+		} else {
+			Optional<PetCor> optional = this.corRepository.findById(id);
+			if (optional.isPresent()) {
+				PetCor petCor = requisicao.toPetCorCheck(optional.get());
+				petCor.setId(id);
+				petCor.setAtivo(true);
+				this.corRepository.save(petCor);
+			} else {
+				System.out.println("########### Não achou o cor");
+			}
+			model.addAttribute("cores", corRepository.findAll());
+		}
+		return "redirect:/pet/admin/pet-cor";
+	}
+
+	@GetMapping("/{id}/deactivate")
+	public String deactivate(@PathVariable("id") Long id, Model model, RequisicaoFormCor requisicao) {
+		Optional<PetCor> e = corRepository.findById(id);
+		if (e == null) {
+			System.out.println("555555555555555555555555555555555");
+		} else {
+			Optional<PetCor> optional = this.corRepository.findById(id);
+			if (optional.isPresent()) {
+				PetCor petCor = requisicao.toPetCorCheck(optional.get());
+				petCor.setId(id);
+				petCor.setAtivo(false);
+				this.corRepository.save(petCor);
+			} else {
+				System.out.println("########### Não achou o cor");
+			}
+			model.addAttribute("cores", corRepository.findAll());
+		}
+		return "redirect:/pet/admin/pet-cor";
 	}
 
 	// public ModelAndView delete(@PathVariable Long id ) {

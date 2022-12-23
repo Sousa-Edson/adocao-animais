@@ -29,6 +29,17 @@ public class RequisicaoFormCor {
         this.ativo = petCor.isAtivo();
     }
 
+    public PetCor toPetCorCheck() {
+        PetCor petCor = new PetCor();
+        petCor.setAtivo(this.ativo);
+        return petCor;
+    }
+
+    public PetCor toPetCorCheck(PetCor petCor) {
+        petCor.setAtivo(this.ativo);
+        return petCor;
+    }
+
     @Override
     public String toString() {
         return "RequisicaoFormCor [cor=" + cor + ", ativo=" + ativo + "]";
