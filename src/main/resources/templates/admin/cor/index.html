@@ -11,8 +11,10 @@
 					<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
 						<use xlink:href="#exclamation-triangle-fill" />
 					</svg>
-					<strong>Aviso de exclusão!</strong> Você tem certeza que dejesa excluir o  item <strong th:text="${corId}">id</strong> ?
-					<a th:href="@{/pet/admin/pet-cor/{id}/destroy (id=${corId})}" class="btn btn-outline-danger btn-sm">Sim
+					<strong>Aviso de exclusão!</strong> Você tem certeza que dejesa excluir o item <strong
+						th:text="${corId}">id</strong> ?
+					<a th:href="@{/pet/admin/pet-cor/{id}/destroy (id=${corId})}"
+						class="btn btn-outline-danger btn-sm">Sim
 						desejo excluir</a>
 					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
@@ -39,30 +41,46 @@
 							</thead>
 							<tbody>
 								<tr th:each="cor : ${cores}">
-									<td><a th:if="${cor.ativo}"
-											th:href="@{/pet/admin/pet-cor/{id}/deactivate (id=${cor.id})}">
-
-											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-												fill="currentColor" class="bi bi-check-circle text-success"
-												viewBox="0 0 16 16">
+									<td>
+										<a type="button" th:class="''+${cor.ativo ? 'text-success' : 'text-warning'}"
+											class=" " data-bs-toggle="modal" th:data-bs-target="|#userModal${cor.id}|">
+											<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+												fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
 												<path
-													d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-												<path
-													d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+													d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
 											</svg>
 										</a>
-										<a th:if="${cor.ativo==false}" th:href="@{/pet/admin/pet-cor/{id}/
-										activate (id=${cor.id})}">
+										<!-- Modal -->
+										<div class="modal  fade" th:id="|userModal${cor.id}|" data-bs-backdrop="static"
+											data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+											aria-hidden="true">
+											<div class="modal-dialog ">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h1 class="modal-title fs-5" id="staticBackdropLabel"
+															th:text="${cor.ativo}  ? 'DESATIVAR?' : 'ATIVAR?' ">Modal
+															title</h1>
+														<button type="button" class="btn-close" data-bs-dismiss="modal"
+															aria-label="Close"></button>
+													</div>
+													<div class="modal-body">
+														Deseja <strong
+															th:text="${cor.ativo}  ? 'desativar' : 'ativar' "></strong>
+														a cor
+														<strong th:text="${cor.cor}"></strong>?
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary"
+															data-bs-dismiss="modal">Fechar</button>
+														<a class="btn btn-warning" th:if="${cor.ativo}"
+															th:href="@{/pet/admin/pet-cor/{id}/deactivate (id=${cor.id})}">Desativar</a>
+														<a class="btn btn-success" th:if="${cor.ativo==false}"
+															th:href="@{/pet/admin/pet-cor/{id}/activate (id=${cor.id})}">Ativar</a>
 
-											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-												fill="currentColor" class="bi bi-x-circle text-danger"
-												viewBox="0 0 16 16">
-												<path
-													d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-												<path
-													d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-											</svg>
-										</a>
+													</div>
+												</div>
+											</div>
+										</div>
 									</td>
 									<td><span th:text="${cor.id}"></span>.</td>
 									<td><span th:text="${cor.cor}"></span></td>
@@ -83,6 +101,7 @@
 												<a th:href="@{/pet/admin/pet-cor/{id}/delete (id=${cor.id})}"
 													class="btn btn-danger"> <i class="bi bi-trash3"></i></a>
 										</div>
+
 									</td>
 								</tr>
 
