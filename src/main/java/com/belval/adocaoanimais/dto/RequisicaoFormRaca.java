@@ -13,15 +13,6 @@ public class RequisicaoFormRaca {
     private boolean ativo;
     private TipoAnimal tipoAnimal;
 
-    public RequisicaoFormRaca(@NotBlank @NotNull String raca, boolean ativo, TipoAnimal tipoAnimal) {
-        this.raca = raca;
-        this.ativo = ativo;
-        this.tipoAnimal = tipoAnimal;
-    }
-
-    public RequisicaoFormRaca() {
-    }
-
     public PetRaca toPetRaca() {
         PetRaca petRaca = new PetRaca();
         petRaca.setRaca(this.raca);
@@ -72,7 +63,15 @@ public class RequisicaoFormRaca {
 
     @Override
     public String toString() {
-        return "RequisicaoFormRaca [raca=" + raca + ", ativo=" + ativo + "]";
+        return "RequisicaoFormRaca [raca=" + raca + ", ativo=" + ativo + ", tipoAnimal=" + tipoAnimal + "]";
+    }
+
+    public TipoAnimal getTipoAnimal() {
+        return tipoAnimal;
+    }
+
+    public void setTipoAnimal(TipoAnimal tipoAnimal) {
+        this.tipoAnimal = tipoAnimal;
     }
 
 }

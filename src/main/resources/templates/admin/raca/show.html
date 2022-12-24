@@ -22,6 +22,7 @@
                     <div class="row">
                         <div class="col-12">
                             <hr>
+                            <b>Tipo:</b> <span class="form-label" th:text="${petRaca.tipoAnimal}"></span><br />
                             <b>Raça:</b> <span class="form-label" th:text="${petRaca.raca}"></span><br />
                             <b>Ativa:</b> <a th:if="${petRaca.ativo}" class="text-decoration-none"
                                 th:href="@{/pet/admin/pet-raca/{id}/deactivate (id=${petRaca.id})}"> Sim</a> <a

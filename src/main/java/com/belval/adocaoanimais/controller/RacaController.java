@@ -53,7 +53,7 @@ public class RacaController {
 			return mv;
 		} else {
 			PetRaca petRaca = requisicao.toPetRaca();
-			// petRaca.setAtivo(true);
+			 petRaca.setAtivo(true);
 			this.racaRepository.save(petRaca);
 			return new ModelAndView("redirect:/pet/admin/pet-raca/" + petRaca.getId());
 		}
@@ -90,6 +90,7 @@ public class RacaController {
 			requisicao.fromPetRaca(petRaca);
 			ModelAndView mv = new ModelAndView("admin/raca/edit");
 			mv.addObject("petId", petRaca.getId());
+			mv.addObject("listaTipoAnimal", TipoAnimal.values());
 			return mv;
 		} else {
 			System.out.println("$$$$$$$$$$$ Não achou o raça");
