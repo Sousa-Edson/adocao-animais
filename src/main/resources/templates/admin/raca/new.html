@@ -1,0 +1,15 @@
+<head th:replace="~{fragmentos :: head('Nova raça')}"></head>
+<nav th:replace="~{fragmentos :: navbar}"></nav>
+<main class="container mt-1  bg-light ">
+
+<div class="row">
+			<div th:replace="~{admin/fragmentos :: sidebar('raca')}"></div>
+			<div class="col-lg-8  col-md-8 col-sm-12">
+				<section th:replace="~{admin/raca/fragmentos :: form(requisicaoFormRaca,'/pet/admin/pet-raca','Cadastrar nova raça')}">  formulario</section>
+				 
+                
+			</div>
+		</div>
+
+</main>
+<section th:replace="~{fragmentos :: section-script}"></section>

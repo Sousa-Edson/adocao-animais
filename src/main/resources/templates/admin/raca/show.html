@@ -1,15 +1,15 @@
-<head th:replace="~{fragmentos :: head('Detalhe de cor')}"></head>
+<head th:replace="~{fragmentos :: head('Detalhe de raça')}"></head>
 <nav th:replace="~{fragmentos :: navbar}"></nav>
 <main class="container mt-1  bg-light ">
 
     <div class="row">
-        <div th:replace="~{admin/fragmentos :: sidebar('cor')}"></div>
+        <div th:replace="~{admin/fragmentos :: sidebar('raca')}"></div>
         <div class="col-lg-8  col-md-8 col-sm-12">
             <section>
-                <h1 class="display-5">Detalhe de cor #<span th:text="${petCor.id}"></span></h1>
+                <h1 class="display-5">Detalhe de raça #<span th:text="${petRaca.id}"></span></h1>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
-                    <a href=" /pet/admin/pet-cor" class="btn btn-primary me-md-2 px-5">
+                    <a href=" /pet/admin/pet-raca" class="btn btn-primary me-md-2 px-5">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                             class="bi bi-list-check" viewBox="0 0 20 20">
                             <path fill-rule="evenodd"
@@ -22,11 +22,12 @@
                     <div class="row">
                         <div class="col-12">
                             <hr>
-                            <b>Cor:</b> <span class="form-label" th:text="${petCor.cor}"></span><br />
-                            <b>Ativa:</b> <a th:if="${petCor.ativo}" class="text-decoration-none"
-                                th:href="@{/pet/admin/pet-cor/{id}/deactivate (id=${petCor.id})}"> Sim</a> <a
-                                th:unless="${petCor.ativo}" class="text-decoration-none"
-                                th:href="@{/pet/admin/pet-cor/{id}/activate (id=${petCor.id})}">Não</a>
+                            <b>Tipo:</b> <span class="form-label" th:text="${petRaca.tipoAnimal}"></span><br />
+                            <b>Raça:</b> <span class="form-label" th:text="${petRaca.raca}"></span><br />
+                            <b>Ativa:</b> <a th:if="${petRaca.ativo}" class="text-decoration-none"
+                                th:href="@{/pet/admin/pet-raca/{id}/deactivate (id=${petRaca.id})}"> Sim</a> <a
+                                th:unless="${petRaca.ativo}" class="text-decoration-none"
+                                th:href="@{/pet/admin/pet-raca/{id}/activate (id=${petRaca.id})}">Não</a>
 
                             <br />
                             <b>Atualizado por:</b> Edson <br />
