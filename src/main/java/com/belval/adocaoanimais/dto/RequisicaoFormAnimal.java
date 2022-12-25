@@ -1,42 +1,38 @@
 package com.belval.adocaoanimais.dto;
-  
 
-
-import java.time.LocalDate;
+import java.sql.Date;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.belval.adocaoanimais.model.Animal;
 import com.belval.enums.Especie;
 import com.belval.enums.Porte;
- 
 
 public class RequisicaoFormAnimal {
     @NotBlank
     @NotNull
     private String nome;
     private int raca;
-    private int cor; 
-    private Porte porte; 
+    private int cor;
+    private Porte porte;
     private Especie especie;
- 
+
     private int sexo;
-    private int vacina; 
-    @DateTimeFormat
-    private LocalDate nascimento;
+    private int vacina;
+
+    private Date nascimento;
 
     public Animal toAnimal() {
         Animal animal = new Animal();
         animal.setNome(this.nome);
         animal.setRaca(this.raca);
         animal.setCor(this.cor);
-      
+        animal.setPorte(this.porte);
+        animal.setEspecie(this.especie);
         animal.setSexo(this.sexo);
         animal.setVacina(this.vacina);
-        // animal.setNascimento(this.nascimento);
+        animal.setNascimento(this.nascimento);
         return animal;
     }
 
@@ -44,10 +40,11 @@ public class RequisicaoFormAnimal {
         animal.setNome(this.nome);
         animal.setRaca(this.raca);
         animal.setCor(this.cor);
-        
+        animal.setPorte(this.porte);
+        animal.setEspecie(this.especie);
         animal.setSexo(this.sexo);
         animal.setVacina(this.vacina);
-        // animal.setNascimento(this.nascimento);
+        animal.setNascimento(this.nascimento);
         return animal;
     }
 
@@ -55,10 +52,11 @@ public class RequisicaoFormAnimal {
         this.nome = animal.getNome();
         this.raca = animal.getRaca();
         this.cor = animal.getCor();
-        
+        this.porte = animal.getPorte();
+        this.especie = animal.getEspecie();
         this.sexo = animal.getSexo();
         this.vacina = animal.getVacina();
-        // this.nascimento = animal.getNascimento();
+        this.nascimento = animal.getNascimento();
     }
 
     @Override
@@ -123,12 +121,14 @@ public class RequisicaoFormAnimal {
         this.vacina = vacina;
     }
 
-    public LocalDate getNascimento() {
+    public Date getNascimento() {
         return nascimento;
     }
 
-    public void setNascimento(LocalDate nascimento) {
+    public void setNascimento(Date nascimento) {
         this.nascimento = nascimento;
     }
- 
+
+   
+
 }

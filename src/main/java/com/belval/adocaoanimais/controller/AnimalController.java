@@ -2,8 +2,6 @@ package com.belval.adocaoanimais.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -46,22 +44,21 @@ public class AnimalController {
 		 
 
 	@PostMapping("")
-	public ModelAndView create(@Valid RequisicaoFormAnimal requisicao, BindingResult bindingResult) {
-		 
+	public ModelAndView create( RequisicaoFormAnimal requisicao,BindingResult bindingResult ){
 		System.out.println("#########################################################################CREATE");
 		System.out.println(requisicao);
 		if (bindingResult.hasErrors()) {
 			System.out.println("\n************************TEM ERROS**********************\n");
 			System.out.println("ERRO \n\n"+bindingResult+"\n\n");
 			ModelAndView mv = new ModelAndView("private/animal/new");
-
 			return mv;
 		} else {
 			Animal animal = requisicao.toAnimal();
 			// animal.setAtivo(true);
 			
 			this.animalRepository.save(animal);
-			return new ModelAndView("redirect:/pet/home" + animal.getId());
+			// return new ModelAndView("redirect:/pet/home" + animal.getId());
+			return new ModelAndView("redirect:/pet/home" );
 		}
 	}
 
