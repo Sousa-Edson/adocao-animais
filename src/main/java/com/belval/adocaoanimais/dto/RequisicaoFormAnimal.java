@@ -1,69 +1,102 @@
 package com.belval.adocaoanimais.dto;
+  
+
+
+import java.time.LocalDate;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.belval.adocaoanimais.model.PetRaca;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.belval.adocaoanimais.model.Animal;
 import com.belval.enums.Especie;
+import com.belval.enums.Porte;
+ 
 
 public class RequisicaoFormAnimal {
     @NotBlank
     @NotNull
-    private String raca;
-    private boolean ativo;
+    private String nome;
+    private int raca;
+    private int cor; 
+    private Porte porte; 
     private Especie especie;
+ 
+    private int sexo;
+    private int vacina; 
+    @DateTimeFormat
+    private LocalDate nascimento;
 
-    public PetRaca toPetRaca() {
-        PetRaca petRaca = new PetRaca();
-        petRaca.setRaca(this.raca);
-        petRaca.setAtivo(this.ativo);
-        petRaca.setEspecie(this.especie);
-        return petRaca;
+    public Animal toAnimal() {
+        Animal animal = new Animal();
+        animal.setNome(this.nome);
+        animal.setRaca(this.raca);
+        animal.setCor(this.cor);
+      
+        animal.setSexo(this.sexo);
+        animal.setVacina(this.vacina);
+        // animal.setNascimento(this.nascimento);
+        return animal;
     }
 
-    public PetRaca toPetRaca(PetRaca petRaca) {
-        petRaca.setRaca(this.raca);
-        petRaca.setAtivo(this.ativo);
-        petRaca.setEspecie(this.especie);
-        return petRaca;
+    public Animal toAnimal(Animal animal) {
+        animal.setNome(this.nome);
+        animal.setRaca(this.raca);
+        animal.setCor(this.cor);
+        
+        animal.setSexo(this.sexo);
+        animal.setVacina(this.vacina);
+        // animal.setNascimento(this.nascimento);
+        return animal;
     }
 
-    public void fromPetRaca(PetRaca petRaca) {
-        this.raca = petRaca.getRaca();
-        this.ativo = petRaca.isAtivo();
-        this.especie = petRaca.getEspecie();
-    }
-
-    public PetRaca toPetRacaCheck() {
-        PetRaca petRaca = new PetRaca();
-        petRaca.setAtivo(this.ativo);
-        return petRaca;
-    }
-
-    public PetRaca toPetRacaCheck(PetRaca petRaca) {
-        petRaca.setAtivo(this.ativo);
-        return petRaca;
-    }
-
-    public String getRaca() {
-        return raca;
-    }
-
-    public void setRaca(String raca) {
-        this.raca = raca;
-    }
-
-    public boolean isAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
+    public void fromAnimal(Animal animal) {
+        this.nome = animal.getNome();
+        this.raca = animal.getRaca();
+        this.cor = animal.getCor();
+        
+        this.sexo = animal.getSexo();
+        this.vacina = animal.getVacina();
+        // this.nascimento = animal.getNascimento();
     }
 
     @Override
     public String toString() {
-        return "RequisicaoFormRaca [raca=" + raca + ", ativo=" + ativo + ", especie=" + especie + "]";
+        return "RequisicaoFormAnimal [nome=" + nome + ", raca=" + raca + ", cor=" + cor + ", porte=" + porte
+                + ", especie=" + especie + ", sexo=" + sexo + ", vacina=" + vacina + ", nascimento=" + nascimento + "]";
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getRaca() {
+        return raca;
+    }
+
+    public void setRaca(int raca) {
+        this.raca = raca;
+    }
+
+    public int getCor() {
+        return cor;
+    }
+
+    public void setCor(int cor) {
+        this.cor = cor;
+    }
+
+    public Porte getPorte() {
+        return porte;
+    }
+
+    public void setPorte(Porte porte) {
+        this.porte = porte;
     }
 
     public Especie getEspecie() {
@@ -74,4 +107,28 @@ public class RequisicaoFormAnimal {
         this.especie = especie;
     }
 
+    public int getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(int sexo) {
+        this.sexo = sexo;
+    }
+
+    public int getVacina() {
+        return vacina;
+    }
+
+    public void setVacina(int vacina) {
+        this.vacina = vacina;
+    }
+
+    public LocalDate getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(LocalDate nascimento) {
+        this.nascimento = nascimento;
+    }
+ 
 }

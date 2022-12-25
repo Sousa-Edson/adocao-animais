@@ -2,13 +2,17 @@ package com.belval.adocaoanimais.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.belval.adocaoanimais.dto.RequisicaoFormAnimal;
 import com.belval.adocaoanimais.model.Animal;
 import com.belval.adocaoanimais.model.PetCor;
 import com.belval.adocaoanimais.model.PetRaca;
@@ -22,14 +26,14 @@ import com.belval.enums.Porte;
 @RequestMapping(value = "/pet/private/animal")
 public class AnimalController {
 	@Autowired
-	private AnimalRepository repository;
+	private AnimalRepository animalRepository;
 	@Autowired
 	private RacaRepository racaRepository;
 	@Autowired
 	private CorRepository corRepository;
 
 	@GetMapping("/new")
-	public ModelAndView nnew( ) { // trabalhar na requisição              RequisicaoFormAnimal requisicao
+	public ModelAndView nnew( RequisicaoFormAnimal requisicao ) { // trabalhar na requisição              RequisicaoFormAnimal requisicao
 		ModelAndView mv = new ModelAndView("private/animal/new");
 		List<PetRaca> racas = racaRepository.findAll();
 		mv.addObject("listaRaca",racas);
@@ -41,16 +45,36 @@ public class AnimalController {
 	}
 		 
 
-	@PostMapping("/pet/cadastroAnimal")
-	public ModelAndView salvar(Animal animal) {
-		ModelAndView mv = new ModelAndView("redirect:../pet/home");
+	@PostMapping("")
+	public ModelAndView create(@Valid RequisicaoFormAnimal requisicao, BindingResult bindingResult) {
+		 
+		System.out.println("#########################################################################CREATE");
+		System.out.println(requisicao);
+		if (bindingResult.hasErrors()) {
+			System.out.println("\n************************TEM ERROS**********************\n");
+			System.out.println("ERRO \n\n"+bindingResult+"\n\n");
+			ModelAndView mv = new ModelAndView("private/animal/new");
 
-		if (!animal.getNome().isEmpty()) {
-			animal.setUserId(1);
-			repository.save(animal);
+			return mv;
+		} else {
+			Animal animal = requisicao.toAnimal();
+			// animal.setAtivo(true);
+			
+			this.animalRepository.save(animal);
+			return new ModelAndView("redirect:/pet/home" + animal.getId());
 		}
-		return mv;
 	}
+
+	// @PostMapping("/pet/cadastroAnimal")
+	// public ModelAndView salvar(Animal animal) {
+	// 	ModelAndView mv = new ModelAndView("redirect:../pet/home");
+
+	// 	if (!animal.getNome().isEmpty()) {
+	// 		animal.setUserId(1);
+	// 		repository.save(animal);
+	// 	}
+	// 	return mv;
+	// }
 
 
 	/*

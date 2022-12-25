@@ -1,0 +1,162 @@
+<section th:fragment="form(requisicaoFormAnimal,action,titulo)">
+    
+
+    <div class="col-md-12">
+        <h1 class="m-0 display-5" id="quem-somos" th:text="${titulo}">
+            Cadastro <small> de Animal </small>
+        </h1>
+    </div>
+
+
+    <form th:object="${requisicaoFormAnimal}" th:action="${action}" 
+    action="/pet/private/animal/" method="post" name="formulario">
+        <div class="  ">
+            <div class="">
+
+                <div class="row">
+                    <div class="form-group col-md-8">
+                        <label for="nome">Nome do Animal</label>
+                        <input type="text" class="form-control" th:field="*{nome}" th:errorclass=" is-invalid"
+                            placeholder="Digite nome do Animal ">
+                        <div class="invalid-feedback" th:errors="*{nome}"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="especie">Especie</label>
+                        <div class="form-group">
+                            <select class="form-select" th:field="*{especie}"
+                                aria-label="Floating label select example">
+                                <option th:each="tipo : ${listaEspecie}" th:value="${tipo}"
+                                    th:errorclass=" is-invalid" th:text="${tipo.descricao}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="raça">Raça</label>
+                        <div class="form-group">
+                            <select class="form-select" th:field="*{raca}"
+                                aria-label="Floating label select example">
+                                <option th:each="traca : ${listaRaca}" th:value="${traca.id}"
+                                    th:errorclass=" is-invalid" th:text="${traca.raca}"></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="porte">Porte do Animal</label>
+                        <div class="form-group">
+                            <select class="form-select" th:field="*{porte}"
+                                aria-label="Floating label select example">
+                                <option th:each="tporte : ${listaPorte}" th:value="${tporte}"
+                                    th:errorclass=" is-invalid" th:text="${tporte.descricao}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="porte">Cor do animal</label>
+                        <div class="form-group">
+                            <select class="form-select " th:field="*{cor}"
+                                aria-label="Floating label select example">
+                                <option th:each="tcor : ${listaCor}" th:value="${tcor.id}"
+                                    th:errorclass=" is-invalid" th:text="${tcor.cor}"></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="nascimento">Nascimento Animal </label>
+                        <input type="date" forma class="form-control" th:field="*{nascimento}" th:errorclass=" is-invalid"
+                            placeholder="nascimento ">
+                    </div>
+
+                    <hr class="mt-4">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="sexo">Sexo</label>
+                            <div class="form-group  ">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" th:field="*{sexo}"
+                                        th:errorclass=" is-invalid" value="2">
+                                    <label class="form-check-label" for="sexo1">
+                                        Macho
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" th:field="*{sexo}"
+                                        th:errorclass=" is-invalid" value="1">
+                                    <label class="form-check-label" for="sexo2">
+                                        Fêmea
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" th:field="*{sexo}"
+                                        th:errorclass=" is-invalid" value="0" checked>
+                                    <label class="form-check-label" for="sexo3">
+                                        Indefinido
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group col-md-4">
+                            <label for="vacina">Vacinado?</label>
+                            <div class="form-group  ">
+                                <div class="form-check form-check-inline ">
+                                    <input class="form-check-input" type="radio" th:field="*{vacina}"
+                                        th:errorclass=" is-invalid" value="2">
+                                    <label class="form-check-label" for="vacina1">
+                                        Sim
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline ">
+                                    <input class="form-check-input" type="radio" th:field="*{vacina}"
+                                        th:errorclass=" is-invalid" value="1">
+                                    <label class="form-check-label" for="vacina2">
+                                        Não
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline ">
+                                    <input class="form-check-input" type="radio" th:field="*{vacina}"
+                                        th:errorclass=" is-invalid" value="0" checked>
+                                    <label class="form-check-label" for="vacina3">
+                                        Não sei informar
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="observações">Descrição do animal</label>
+                            <textarea class="form-control" placeholder="Descreva como é o dia a dia do animal"
+                                id="descricao" name="descricao"></textarea>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="observações">Observações</label>
+                            <textarea class="form-control" placeholder="observações gerais " id="observacoes"
+                                name="observacoes"></textarea>
+                        </div>
+                    </div> -->
+            </div>
+
+
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2 pb-2 ">
+            <button type="submit" class="btn btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    class="bi bi-arrow-right-circle-fill" viewBox="0 0 20 20">
+                    <path
+                        d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+                </svg>
+                Submeter</button>
+        </div>
+    </form>
+
+
+</section>

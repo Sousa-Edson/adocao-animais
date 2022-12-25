@@ -1,6 +1,9 @@
 package com.belval.adocaoanimais.model;
 
-import java.sql.Date;
+ 
+
+
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,7 +12,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.belval.enums.Especie;
+import com.belval.enums.Porte;
+ 
+
 @Entity
+ 
 public class Animal {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,13 +28,14 @@ public class Animal {
 	private String nome;
 	private int raca;
 	private int cor;
-	@Enumerated(EnumType.STRING)
-	private Enum porte;
-	@Enumerated(EnumType.STRING)
-	private Enum especie;
+    @Enumerated(EnumType.STRING)
+	private Porte porte;
+    @Enumerated(EnumType.STRING)
+	private Especie especie;
 	private int sexo;
-	private int vacina;
-	private Date nascimento;
+	private int vacina; 
+    @DateTimeFormat 
+	private LocalDate nascimento;
 
 	 
 	public Animal() {
@@ -32,15 +43,14 @@ public class Animal {
 	}
 
 
-    public Animal(int id, int userId, String nome, int raca, int cor, Enum porte, Enum especie, int sexo, int vacina,
-			Date nascimento) {
+    public Animal(int id, int userId, String nome, int raca, int cor, Porte porte, Especie especie, int sexo, int vacina,
+    LocalDate nascimento) {
 		this.id = id;
 		this.userId = userId;
 		this.nome = nome;
 		this.raca = raca;
 		this.cor = cor;
-		this.porte = porte;
-		this.especie = especie;
+		 
 		this.sexo = sexo;
 		this.vacina = vacina;
 		this.nascimento = nascimento;
@@ -97,25 +107,7 @@ public class Animal {
     }
 
 
-    public Enum getPorte() {
-        return porte;
-    }
-
-
-    public void setPorte(Enum porte) {
-        this.porte = porte;
-    }
-
-
-    public Enum getEspecie() {
-        return especie;
-    }
-
-
-    public void setEspecie(Enum especie) {
-        this.especie = especie;
-    }
-
+   
 
     public int getSexo() {
         return sexo;
@@ -137,14 +129,27 @@ public class Animal {
     }
 
 
-    public Date getNascimento() {
+    public LocalDate getNascimento() {
         return nascimento;
     }
 
 
-    public void setNascimento(Date nascimento) {
+    public void setNascimento(LocalDate nascimento) {
         this.nascimento = nascimento;
     }
+
+
+    public Porte getPorte() {
+        return porte;
+    }
+
+
+    public Especie getEspecie() {
+        return especie;
+    }
+
+
+	 
 	
 
 	 
