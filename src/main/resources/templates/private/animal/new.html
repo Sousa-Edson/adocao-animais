@@ -6,7 +6,7 @@
 <body>
     <nav th:replace="~{fragmentos :: navbar}"></nav>
     <main class="container mt-1   bg-light ">
-
+        <section th:replace="~{private/animal/fragmentos :: section-tab}"></section>
         <section th:replace="~{private/animal/fragmentos :: form(requisicaoFormAnimal,'/pet/private/animal','Cadastrar novo animal')}">  formulario</section>
 				
         
