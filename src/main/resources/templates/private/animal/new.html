@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head th:replace="~{fragmentos :: head('Anuncio animal')}"></head>
+
+<body>
+    <nav th:replace="~{fragmentos :: navbar}"></nav>
+    <main class="container mt-1   bg-light ">
+        <section th:replace="~{private/animal/fragmentos :: section-tab}"></section>
+        <section th:replace="~{private/animal/fragmentos :: form(requisicaoFormAnimal,'/pet/private/animal','Cadastrar novo animal')}">  formulario</section>
+				
+        
+
+    </main>
+</body>
+
+</html>

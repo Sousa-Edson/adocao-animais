@@ -1,127 +1,132 @@
 package com.belval.adocaoanimais.model;
 
- 
-
 import java.sql.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.belval.enums.Especie;
+import com.belval.enums.Porte;
+
 @Entity
 public class Animal {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	private int userId;
-	private String nome;
-	private int raca;
-	private int cor;
-	private int porte;
-	private String especie;
-	private int sexo;
-	private int vacina;
-	private Date nascimento;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    private int userId;
+    private String nome;
+    private int raca;
+    private int cor;
+    @Enumerated(EnumType.STRING)
+    private Porte porte;
+    @Enumerated(EnumType.STRING)
+    private Especie especie;
+    private int sexo;
+    private int vacina;
 
-	public Animal(int id,int userId, String nome, int raca, int cor, int porte, String especie, int sexo, int vacina,
-			Date nascimento) {
-		super();
-		this.id = id;
-		this.userId = userId;
-		this.nome = nome;
-		this.raca = raca;
-		this.cor = cor;
-		this.porte = porte;
-		this.especie = especie;
-		this.sexo = sexo;
-		this.vacina = vacina;
-		this.nascimento = nascimento;
-	}
+    private Date nascimento;
 
-	public Animal() {
-		super();
-	}
+    public Animal() {
 
-	public Date getNascimento() {
-		return nascimento;
-	}
+    }
 
-	public void setNascimento(Date nascimento) {
-		this.nascimento = nascimento;
-	}
+    public Animal(int id, int userId, String nome, int raca, int cor, Porte porte, Especie especie, int sexo,
+            int vacina,
+            Date nascimento) {
+        this.id = id;
+        this.userId = userId;
+        this.nome = nome;
+        this.raca = raca;
+        this.cor = cor;
+        this.porte = porte;
+        this.especie = especie;
+        this.sexo = sexo;
+        this.vacina = vacina;
+        this.nascimento = nascimento;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public int getUserId() {
+        return userId;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
-	public int getRaca() {
-		return raca;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public void setRaca(int raca) {
-		this.raca = raca;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public int getCor() {
-		return cor;
-	}
+    public int getRaca() {
+        return raca;
+    }
 
-	public void setCor(int cor) {
-		this.cor = cor;
-	}
+    public void setRaca(int raca) {
+        this.raca = raca;
+    }
 
-	public int getPorte() {
-		return porte;
-	}
+    public int getCor() {
+        return cor;
+    }
 
-	public void setPorte(int porte) {
-		this.porte = porte;
-	}
+    public void setCor(int cor) {
+        this.cor = cor;
+    }
 
-	public String getEspecie() {
-		return especie;
-	}
+    public Porte getPorte() {
+        return porte;
+    }
 
-	public void setEspecie(String especie) {
-		this.especie = especie;
-	}
+    public void setPorte(Porte porte) {
+        this.porte = porte;
+    }
 
-	public int getSexo() {
-		return sexo;
-	}
+    public Especie getEspecie() {
+        return especie;
+    }
 
-	public void setSexo(int sexo) {
-		this.sexo = sexo;
-	}
+    public void setEspecie(Especie especie) {
+        this.especie = especie;
+    }
 
-	public int getVacina() {
-		return vacina;
-	}
+    public int getSexo() {
+        return sexo;
+    }
 
-	public void setVacina(int vacina) {
-		this.vacina = vacina;
-	}
+    public void setSexo(int sexo) {
+        this.sexo = sexo;
+    }
 
-	public int getUserId() {
-		return userId;
-	}
+    public int getVacina() {
+        return vacina;
+    }
 
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-	
+    public void setVacina(int vacina) {
+        this.vacina = vacina;
+    }
+
+    public Date getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(Date nascimento) {
+        this.nascimento = nascimento;
+    }
 
 }

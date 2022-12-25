@@ -4,34 +4,34 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.belval.adocaoanimais.model.PetRaca;
-import com.belval.enums.TipoAnimal;
+import com.belval.enums.Especie;
 
 public class RequisicaoFormRaca {
     @NotBlank
     @NotNull
     private String raca;
     private boolean ativo;
-    private TipoAnimal tipoAnimal;
+    private Especie especie;
 
     public PetRaca toPetRaca() {
         PetRaca petRaca = new PetRaca();
         petRaca.setRaca(this.raca);
         petRaca.setAtivo(this.ativo);
-        petRaca.setTipoAnimal(this.tipoAnimal);
+        petRaca.setEspecie(this.especie);
         return petRaca;
     }
 
     public PetRaca toPetRaca(PetRaca petRaca) {
         petRaca.setRaca(this.raca);
         petRaca.setAtivo(this.ativo);
-        petRaca.setTipoAnimal(this.tipoAnimal);
+        petRaca.setEspecie(this.especie);
         return petRaca;
     }
 
     public void fromPetRaca(PetRaca petRaca) {
         this.raca = petRaca.getRaca();
         this.ativo = petRaca.isAtivo();
-        this.tipoAnimal = petRaca.getTipoAnimal();
+        this.especie = petRaca.getEspecie();
     }
 
     public PetRaca toPetRacaCheck() {
@@ -63,15 +63,15 @@ public class RequisicaoFormRaca {
 
     @Override
     public String toString() {
-        return "RequisicaoFormRaca [raca=" + raca + ", ativo=" + ativo + ", tipoAnimal=" + tipoAnimal + "]";
+        return "RequisicaoFormRaca [raca=" + raca + ", ativo=" + ativo + ", especie=" + especie + "]";
     }
 
-    public TipoAnimal getTipoAnimal() {
-        return tipoAnimal;
+    public Especie getEspecie() {
+        return especie;
     }
 
-    public void setTipoAnimal(TipoAnimal tipoAnimal) {
-        this.tipoAnimal = tipoAnimal;
+    public void setEspecie(Especie especie) {
+        this.especie = especie;
     }
 
 }

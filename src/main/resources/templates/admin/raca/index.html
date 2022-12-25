@@ -6,7 +6,7 @@
 		<div th:replace="~{admin/fragmentos :: sidebar('raca')}"></div>
 		<div class="col-lg-8  col-md-8 col-sm-12">
 			<section>
-				<h1 class="display-5">Lista de raças</h1>
+				<h1 class="display-5">Lista de Raças</h1>
 				<div th:if="${exc == true}" class="alert alert-danger alert-dismissible fade show text-center"
 					role="alert">
 					<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
@@ -47,8 +47,8 @@
 								<tr>
 									<th style="width: 10px"></th>
 									<th style="width: 10px">#</th>
-									<th>raças</th>
-									<th style="width: 10px">TIPO</th>
+									<th>Raças</th>
+									<th style="min-width: 10px">TIPO</th>
 									<th style="width: 40px">Opções</th>
 								</tr>
 							</thead>
@@ -97,7 +97,7 @@
 									</td>
 									<td><span th:text="${raca.id}"></span>.</td>
 									<td><span th:text="${raca.raca}"></span></td>
-									<td><span th:text="${raca.tipoAnimal}"></span></td>
+									<td><span th:text="${raca.especie}"></span></td>
 									<td>
 										<div class="btn-group">
 											<a th:href="@{/pet/admin/pet-raca/{id} (id=${raca.id})}"

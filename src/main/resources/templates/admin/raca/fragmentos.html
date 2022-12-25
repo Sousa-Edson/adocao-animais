@@ -5,8 +5,8 @@
     <form th:object="${requisicaoFormRaca}" th:action="${action}" method="post" name="formulario">
         <div class="mb-3">
             <label class="form-label">Tipo de animal</label>
-            <select class="form-select"  th:field="*{tipoAnimal}"  >
-                <option th:each="tipo : ${listaTipoAnimal}"
+            <select class="form-select"  th:field="*{especie}"  >
+                <option th:each="tipo : ${listaEspecie}"
                         th:value="${tipo}" th:text="${tipo}"></option>
             </select>
         </div>
@@ -17,7 +17,6 @@
             <div class="invalid-feedback" th:errors="*{raca}"></div>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-
             <button type="submit" class="btn btn-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                     class="bi bi-arrow-right-circle-fill" viewBox="0 0 20 20">

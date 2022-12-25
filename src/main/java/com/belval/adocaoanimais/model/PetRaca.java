@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.belval.enums.TipoAnimal;
+import com.belval.enums.Especie;
 
 @Entity
 public class PetRaca {
@@ -18,7 +18,7 @@ public class PetRaca {
     private boolean ativo;
 
     @Enumerated(EnumType.STRING)
-    private TipoAnimal tipoAnimal;
+    private Especie especie;
 
      
 
@@ -46,17 +46,19 @@ public class PetRaca {
         this.ativo = ativo;
     }
 
-    public TipoAnimal getTipoAnimal() {
-        return tipoAnimal;
+    public Especie getEspecie() {
+        return especie;
     }
 
-    public void setTipoAnimal(TipoAnimal tipoAnimal) {
-        this.tipoAnimal = tipoAnimal;
+    public void setEspecie(Especie especie) {
+        this.especie = especie;
     }
 
     @Override
     public String toString() {
-        return "PetRaca [id=" + id + ", raca=" + raca + ", ativo=" + ativo + ", tipoAnimal=" + tipoAnimal + "]";
+        return "PetRaca [id=" + id + ", raca=" + raca + ", ativo=" + ativo + ", especie=" + especie + "]";
     }
+
+    
 
 }
