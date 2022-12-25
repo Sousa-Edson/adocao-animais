@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head th:replace="fragments/head ">
+
+</head>
+
+<body class="hold-transition layout-top-nav layout-navbar-fixed"
+	style="background-image: './imagens/MicrosoftTeams-image.png';">
+
+	<!-- carroucel - slides-->
+	<section th:replace="fragments/slides :: slides">...</section>
+
+
+	<!-- navbar - barra de menu -->
+	<nav th:replace="fragments/navbar :: navbar">...</nav>
+
+	<div style="margin-top: 10px;"></div>
+
+	<!-- header - banner -->
+	<header class=" container">
+		<div class="card-body text-center ">
+			<div class="row   align-items-center">
+				<div class="col-sm-6">
+					<img class="img-fluid" th:src="@{/imagens/MicrosoftTeams-image.png }" alt="" />
+				</div>
+				<div class="col-sm-6 ">
+					<h3 class="text-mute"> O maior impacto é o abandono de animais em situações precárias.  </h3>
+					<p id="apresentacao" class="text-start">
+						A relação entre humanos e seus animais de estimação se torna cada
+						vez mais evidente no nosso dia a dia. Esse fenômeno não é novo,
+						porém observa-se um grande aumento da importância dada à essa
+						relação nas famílias de todo o mundo, inclusive no Brasil. Mesmo
+						com esse fenômeno, observa-se grandes quantidades de cães
+						abandonados nos centros urbanos. Isso ocorre por alguns fatores
+						como a facilidade de reprodução dos animais, abandono por parte
+						dos responsáveis ou criação de animais a reprodução e
+						comercialização. <small>de sua regiÃ£o!</small>
+					</p>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- informaÃ§Ãµes -->
+
+	<section th:replace="fragments/container-info :: container-info">
+		...</section>
+
+
+
+	<!-- ******************************************************************************************** -->
+	<!-- eventos -->
+	<div class="content-wrapper">
+		<div class="content-header">
+			<div class="content">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="col-sm-6">
+								<h1 th:if="${p.size() != 0}" class="m-0" id="feiras-eventos-regiao">
+									Feiras e eventos <small>de sua região!</small>
+								</h1>
+							</div>
+								<div th:if="${p.size() == 0}" class="card  ">
+									<h1 class="m-3 text-center" id="">
+										Sem <small>eventos registrados no sistema</small>
+									</h1>
+								</div>
+							<!-- separação -->
+
+
+							<div class="card" th:each="p,iStat:${p}">
+								<div class="row featurette align-items-center" style="margin: 20px">
+									<div
+										th:attr="class=${iStat.odd} ? 'col-md-7 order-md-2 text-capitalize' :'col-md-7 order-md-1 text-capitalize' ">
+										<h2 class="featurette-heading">
+											<a th:href="@{{caminho}(caminho=${p.linkEvento})} " target="_blank"
+												class="eaturette-heading" style="text-decoration: none"> <span
+													class="text-muted" th:text="${p.titulo}"> ...</span>
+											</a>
+										</h2>
+
+										<p class="lead text-capitalize" th:text="${p.conteudo}">...</p>
+										<small class="text-muted"
+											th:text="'Data de Publição: '+${p.dataPublicacao}">...</small>
+									</div>
+									<div th:attr="class=${iStat.even} ? 'col-md-5 order-md-2' :'col-md-5 order-md-1' ">
+										<img class="featurette-image img-fluid mx-auto rounded"
+											data-src="holder.js/400x400/auto" alt="400x400"
+											style="width: 500px; height: 400px"
+											th:src="@{/pet/mostrarImagem/{imagem}(imagem=${p.getCaminhoImagem})}"
+											data-holder-rendered="true" />
+									</div>
+								</div>
+
+							</div>
+							<!-- separação -->
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ******************************************************************************************** -->
+	<section class="container">
+		<div class="col-sm-9">
+			<h1 class="m-0" id="estamos-aqui-para-ajudar">
+				Adote <small>um animalzinho!</small>
+			</h1>
+		</div>
+		<div class="row">
+			<div class="col-lg-4 col-sm-12">
+				<div class="card  ">
+					<img th:src="@{/imagens/Revista_Guarda_Responsavel-1.png}" alt="" style="max-width: 100%">
+				</div>
+			</div>
+			<div class="col-lg-4 col-sm-12">
+				<img th:src="@{/imagens/Revista_Guarda_Responsavel-2.png}" alt="" style="max-width: 100%">
+			</div>
+			<div class="col-lg-4 col-sm-12">
+				<img th:src="@{/imagens/Revista_Guarda_Responsavel-3.png}" alt="" style="max-width: 100%">
+			</div>
+		</div>
+	</section>
+	<!-- footer - rodape - quem somos -->
+	<div th:replace="fragments/footer-rodape :: footer-rodape">...</div>
+
+	<!-- footer - rodape basico -->
+	<div th:replace="fragments/footer :: footer">...</div>
+	<section th:replace="fragments/script :: section-script">...
+	</section>
+	<script>
+		const myCarouselElement = document.querySelector('#myCarousel')
+		const carousel = new bootstrap.Carousel(myCarouselElement, {
+			interval: 3000, //aqui conttrola a velocidade do slide
+			ride: "carousel" // aqui inicia automaticamente
+		})
+	</script>
+</body>
+
+</html>

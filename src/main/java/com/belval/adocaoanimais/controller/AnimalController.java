@@ -1,18 +1,45 @@
 package com.belval.adocaoanimais.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.belval.adocaoanimais.model.Animal;
+import com.belval.adocaoanimais.model.PetCor;
+import com.belval.adocaoanimais.model.PetRaca;
 import com.belval.adocaoanimais.repository.AnimalRepository;
+import com.belval.adocaoanimais.repository.CorRepository;
+import com.belval.adocaoanimais.repository.RacaRepository;
+import com.belval.enums.Especie;
+import com.belval.enums.Porte;
 
 @Controller
+@RequestMapping(value = "/pet/private/animal")
 public class AnimalController {
 	@Autowired
 	private AnimalRepository repository;
+	@Autowired
+	private RacaRepository racaRepository;
+	@Autowired
+	private CorRepository corRepository;
+
+	@GetMapping("/new")
+	public ModelAndView nnew( ) { // trabalhar na requisição              RequisicaoFormAnimal requisicao
+		ModelAndView mv = new ModelAndView("private/animal/new");
+		List<PetRaca> racas = racaRepository.findAll();
+		mv.addObject("listaRaca",racas);
+		List<PetCor> cores = corRepository.findAll();
+		mv.addObject("listaCor",cores);
+		mv.addObject("listaEspecie", Especie.values());
+		mv.addObject("listaPorte", Porte.values());
+		return mv;
+	}
+		 
 
 	@PostMapping("/pet/cadastroAnimal")
 	public ModelAndView salvar(Animal animal) {
@@ -25,10 +52,6 @@ public class AnimalController {
 		return mv;
 	}
 
-	@GetMapping("/pet/cadastroAnimal")
-	public String novo() {
-		return "/animal/cadastroAnimal";
-	}
 
 	/*
 	 * private static List<Animal> listaPet = new ArrayList<Animal>(); private

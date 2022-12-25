@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.belval.adocaoanimais.dto.RequisicaoFormRaca;
 import com.belval.adocaoanimais.model.PetRaca;
 import com.belval.adocaoanimais.repository.RacaRepository;
-import com.belval.enums.TipoAnimal;
+import com.belval.enums.Especie;
 
 @Controller
 @RequestMapping(value = "/pet/admin/pet-raca")
@@ -38,7 +38,7 @@ public class RacaController {
 	@GetMapping("/new")
 	public ModelAndView nnew(RequisicaoFormRaca requisicao) {
 		ModelAndView mv = new ModelAndView("admin/raca/new");
-		mv.addObject("listaTipoAnimal", TipoAnimal.values());
+		mv.addObject("listaEspecie", Especie.values());
 		return mv;
 	}
 
@@ -90,7 +90,7 @@ public class RacaController {
 			requisicao.fromPetRaca(petRaca);
 			ModelAndView mv = new ModelAndView("admin/raca/edit");
 			mv.addObject("petId", petRaca.getId());
-			mv.addObject("listaTipoAnimal", TipoAnimal.values());
+			mv.addObject("listaEspecie", Especie.values());
 			return mv;
 		} else {
 			System.out.println("$$$$$$$$$$$ Não achou o raça");

@@ -1,15 +1,10 @@
 package com.belval.adocaoanimais.repository;
 
-import java.util.List;
-
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.belval.adocaoanimais.model.Animal;
 
-public interface AnimalRepository extends CrudRepository<Animal, Integer> {
+public interface AnimalRepository extends JpaRepository<Animal, Long> {
 
-	List<Animal> findByNome(String nome);
-
-	Animal findById(int id);
-
+	 
 }

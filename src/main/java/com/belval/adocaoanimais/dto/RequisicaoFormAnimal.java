@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 import com.belval.adocaoanimais.model.PetRaca;
 import com.belval.enums.Especie;
 
-public class RequisicaoFormRaca {
+public class RequisicaoFormAnimal {
     @NotBlank
     @NotNull
     private String raca;
