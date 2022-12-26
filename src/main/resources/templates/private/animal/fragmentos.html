@@ -1,15 +1,62 @@
-<section th:fragment="form(requisicaoFormAnimal,action,titulo)">
-    
+<section th:fragment="sidebar(barra)" class="col-lg-4 col-md-4 col-sm-12 ">
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light ">
+        <!-- style="width: 280px;"-->
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <span class="bi pe-none me-2" width="40" height="32">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" fill="currentColor" class="bi bi-gear"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
+                    <path
+                        d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
+                </svg>
+            </span>
+            <span class="fs-4">Edson perfil</span>
+        </a>
+        <hr>
+        <span class="fs-4" style="background-color: rgb(212, 212, 233);">Pessoal</span>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link link-dark  custon-hover" aria-current="page">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#home"></use>
+                    </svg>
+                    Perfil
+                </a>
+            </li>
+            <li>
+                <a href="/pet/private/animal" class="nav-link  text-white custon-hover"
+                    th:classappend="${barra.equals('anuncio') ? 'active' : 'link-dark '}">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#speedometer2"></use>
+                    </svg>
+                    Meus anúncios
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link custon-hover"
+                    th:classappend="${barra.equals('solicitacao') ? 'active' : 'link-dark '}">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#table"></use>
+                    </svg>
+                    Minhas solicitações
+                </a>
+            </li>
+        </ul>
+        <hr>
 
+    </div>
+</section>
+
+
+<section th:fragment="form(requisicaoFormAnimal,action,titulo)" class="col-lg-12 col-md-12 col-sm-12">
     <div class="col-md-12">
         <h1 class="m-0 display-5" id="quem-somos" th:text="${titulo}">
             Cadastro <small> de Animal </small>
         </h1>
     </div>
-
-
-    <form th:object="${requisicaoFormAnimal}" th:action="${action}" 
-    action="/pet/private/animal/" method="post" name="formulario">
+    <form th:object="${requisicaoFormAnimal}" th:action="${action}" action="/pet/private/animal/" method="post"
+        name="formulario">
         <div class="  ">
             <div class="">
 
@@ -28,16 +75,15 @@
                         <div class="form-group">
                             <select class="form-select" th:field="*{especie}"
                                 aria-label="Floating label select example">
-                                <option th:each="tipo : ${listaEspecie}" th:value="${tipo}"
-                                    th:errorclass=" is-invalid" th:text="${tipo.descricao}"></option>
+                                <option th:each="tipo : ${listaEspecie}" th:value="${tipo}" th:errorclass=" is-invalid"
+                                    th:text="${tipo.descricao}"></option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="raça">Raça</label>
                         <div class="form-group">
-                            <select class="form-select" th:field="*{raca}"
-                                aria-label="Floating label select example">
+                            <select class="form-select" th:field="*{raca}" aria-label="Floating label select example">
                                 <option th:each="traca : ${listaRaca}" th:value="${traca.id}"
                                     th:errorclass=" is-invalid" th:text="${traca.raca}"></option>
                             </select>
@@ -48,8 +94,7 @@
                     <div class="form-group col-md-6">
                         <label for="porte">Porte do Animal</label>
                         <div class="form-group">
-                            <select class="form-select" th:field="*{porte}"
-                                aria-label="Floating label select example">
+                            <select class="form-select" th:field="*{porte}" aria-label="Floating label select example">
                                 <option th:each="tporte : ${listaPorte}" th:value="${tporte}"
                                     th:errorclass=" is-invalid" th:text="${tporte.descricao}"></option>
                             </select>
@@ -58,10 +103,9 @@
                     <div class="form-group col-md-6">
                         <label for="porte">Cor do animal</label>
                         <div class="form-group">
-                            <select class="form-select " th:field="*{cor}"
-                                aria-label="Floating label select example">
-                                <option th:each="tcor : ${listaCor}" th:value="${tcor.id}"
-                                    th:errorclass=" is-invalid" th:text="${tcor.cor}"></option>
+                            <select class="form-select " th:field="*{cor}" aria-label="Floating label select example">
+                                <option th:each="tcor : ${listaCor}" th:value="${tcor.id}" th:errorclass=" is-invalid"
+                                    th:text="${tcor.cor}"></option>
                             </select>
                         </div>
                     </div>
@@ -69,8 +113,8 @@
                 <div class="row">
                     <div class="form-group col-md-4">
                         <label for="nascimento">Nascimento Animal </label>
-                        <input type="date" forma class="form-control" th:field="*{nascimento}" th:errorclass=" is-invalid"
-                            placeholder="nascimento ">
+                        <input type="date" forma class="form-control" th:field="*{nascimento}"
+                            th:errorclass=" is-invalid" placeholder="nascimento ">
                     </div>
 
                     <hr class="mt-4">
@@ -131,23 +175,25 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="row">
-                        <div class="form-group col-md-12">
-                            <label for="observações">Descrição do animal</label>
-                            <textarea class="form-control" placeholder="Descreva como é o dia a dia do animal"
-                                id="descricao" name="descricao"></textarea>
+                <hr>
+                <div class="row">
+                    <div class="form-group col-md-6 col-sm-12">
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Breve resumo" id="resumo" name="resumo"
+                                maxlength="250" style="height: 200px"></textarea>
+                            <label for="floatingTextarea2">Resumo sobre o animal</label>
                         </div>
-                        <div class="form-group col-md-12">
-                            <label for="observações">Observações</label>
-                            <textarea class="form-control" placeholder="observações gerais " id="observacoes"
-                                name="observacoes"></textarea>
+                    </div>
+                    <div class="form-group col-md-6 col-sm-12">
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Observações" id="observacao" name="observacao"
+                                maxlength="250" style="height: 200px"></textarea>
+                            <label for="floatingTextarea2">Observações gerais</label>
                         </div>
-                    </div> -->
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group col-md-8">
-                aqui
-            </div>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2 pb-2 ">
             <button type="submit" class="btn btn-primary">
@@ -159,23 +205,170 @@
                 Submeter</button>
         </div>
     </form>
+</section>
 
+<!--seção da galeria  -->
+<section th:fragment="galeria" class="col-lg-12 col-md-12 col-sm-12">
+    <div class="col-md-12">
+        <h1 class="m-0 display-5" id="galeria">
+            Galeria <small th:text="${'de imagens #'+animal.id}"> de imagens # </small>
+        </h1>
+    </div>
+    <div class="row">
+        <div class="my-2 col-md-12">
+
+            <img accept="image/png,image/jpeg"
+                src="https://img.freepik.com/fotos-gratis/lindo-retrato-de-cachorro_23-2149218450.jpg?size=626&ext=jpg"
+                class="img-fluid" alt="..." height="100% " width="100%" name="imagemExibir" id="imagemExibir"
+                style="max-height:400px;">
+        </div>
+
+        <div class="mb-3  col-lg-8 col-md-12 col-sm-12">
+            <!-- <label for="formFile" class="form-label">Default file input example</label> -->
+            <input class="form-control" type="file" id="file-img" name="file-img">
+        </div>
+        <div class="mb-3 col-lg-4 col-md-12 col-sm-12">
+            <button type="submit" class="btn btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    class="bi bi-arrow-right-circle-fill" viewBox="0 0 20 20">
+                    <path
+                        d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+                </svg>
+                Incluir</button>
+        </div>
+    </div>
+    <hr>
+    <div class="row  ">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card shadow-sm">
+                <img width="100%" height="100%"
+                    src="https://img.freepik.com/fotos-gratis/lindo-retrato-de-cachorro_23-2149218450.jpg?size=626&ext=jpg"
+                    class="img-thumbnail" alt="...">
+                <div class="d-flex justify-content-between justify-content-md-end">
+                    <div class="btn-group">
+                        <a type="button" class="btn btn-sm btn-outline-primary" href="/pet/private/animal">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-eye" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                <path
+                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                                </svg></i>
+                            </a>
+                        <a href="/pet/private/animal/delete" type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash3"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2 pb-2 ">
+            <a type="submit" class="btn btn-primary" href="/pet/private/animal">                
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list-check" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+                  </svg>
+                Ir para lista</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- area para carregar a seção de tabs -->
+<section th:fragment="section-tab-dados" class="col-md-8 my-3 ">
+    <div class="d-flex align-items-start">
+        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link  active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home"
+                type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Dados</button>
+            <button class="nav-link disabled" id="v-pills-profile-tab" data-bs-toggle="pill"
+                data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
+                aria-selected="false">Galeria</button>
+            <!-- disabled -->
+        </div>
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"
+                tabindex="0">
+                <section
+                    th:replace="~{private/animal/fragmentos :: form(requisicaoFormAnimal,'/pet/private/animal','Cadastrar novo animal')}">
+                    formulario</section>
+            </div>
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"
+                tabindex="0">
+                <!-- <section th:replace="~{private/animal/fragmentos :: galeria}">galeria</section> -->
+            </div>
+        </div>
+    </div>
 
 </section>
 
-<section th:fragment="section-tab">
-	<ul class="nav nav-tabs">
-		<li class="nav-item">
-		  <a class="nav-link active disabled" aria-current="page" href="#">Cadastro</a>
-		</li>
-		<li class="nav-item">
-		  <a class="nav-link disabled" href="#">Descrição do animal</a>
-		</li>
-		<li class="nav-item">
-		  <a class="nav-link disabled" href="#">Observações gerais</a>
-		</li>
-		<li class="nav-item">
-		  <a class="nav-link   disabled">Galeria de fotos</a>
-		</li>
-	  </ul>
+<section th:fragment="section-tab-image" class="col-md-8 my-3 ">
+    <div class="d-flex align-items-start">
+        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link disabled " id="v-pills-home-tab" data-bs-toggle="pill"
+                data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                aria-selected="true">Dados</button>
+            <button class="nav-link active" id="v-pills-profile-tab" data-bs-toggle="pill"
+                data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
+                aria-selected="false">Galeria</button>
+            <!-- disabled -->
+        </div>
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade " id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"
+                tabindex="0">
+                <!-- <section
+                    th:replace="~{private/animal/fragmentos :: form(requisicaoFormAnimal,'/pet/private/animal','Cadastrar novo animal')}">
+                    formulario</section> -->
+            </div>
+            <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel"
+                aria-labelledby="v-pills-profile-tab" tabindex="0">
+                <section th:replace="~{private/animal/fragmentos :: galeria}">galeria</section>
+            </div>
+        </div>
+    </div>
+
 </section>
+<!-- <section th:fragment="section-tab">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active disabled" aria-current="page" href="#">Cadastro</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Descrição do animal</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Observações gerais</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link   disabled">Galeria de fotos</a>
+        </li>
+    </ul>
+</section> -->
+
+<!-- <section th:fragment="form2(requisicaoFormAnimal,action,titulo)" class="col-lg-8 col-md-8 col-sm-12">
+    <div class="col-md-12">
+        <h1 class="m-0 display-5" id="quem-somos" th:text="${titulo}">
+            Cadastro <small> de Animal </small>
+        </h1>
+    </div>
+    <form th:object="${requisicaoFormAnimal}" th:action="${action}" action="/pet/private/animal/" method="post"
+        name="formulario">
+        <div class="  ">
+
+            <div class="d-flex align-items-start">
+                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                  <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
+                  <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
+                  <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</button>
+                  <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>
+                </div>
+                <div class="tab-content" id="v-pills-tabContent">
+                  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">um</div>
+                  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">dois</div>
+                  <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">tres</div>
+                  <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">quatro</div>
+                </div>
+              </div>
+
+        </div>
+
+
+</section> -->

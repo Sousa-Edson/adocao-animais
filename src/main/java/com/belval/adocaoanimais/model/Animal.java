@@ -16,7 +16,7 @@ import com.belval.enums.Porte;
 public class Animal {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     private int userId;
     private String nome;
     private int raca;
@@ -34,7 +34,7 @@ public class Animal {
 
     }
 
-    public Animal(int id, int userId, String nome, int raca, int cor, Porte porte, Especie especie, int sexo,
+    public Animal(Long id, int userId, String nome, int raca, int cor, Porte porte, Especie especie, int sexo,
             int vacina,
             Date nascimento) {
         this.id = id;
@@ -49,11 +49,11 @@ public class Animal {
         this.nascimento = nascimento;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

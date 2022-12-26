@@ -1,11 +1,14 @@
 package com.belval.adocaoanimais.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,49 +33,77 @@ public class AnimalController {
 	@Autowired
 	private CorRepository corRepository;
 
+	@GetMapping("")
+	public ModelAndView index() {
+		List<Animal> animais = this.animalRepository.findAll();
+		ModelAndView mv = new ModelAndView("private/animal/index");
+		mv.addObject("animais", animais);
+		return mv;
+	}
+
 	@GetMapping("/new")
-	public ModelAndView nnew( RequisicaoFormAnimal requisicao ) { // trabalhar na requisição              RequisicaoFormAnimal requisicao
+	public ModelAndView nnew(RequisicaoFormAnimal requisicao) { // trabalhar na requisição RequisicaoFormAnimal
+																// requisicao
 		ModelAndView mv = new ModelAndView("private/animal/new");
 		List<PetRaca> racas = racaRepository.findAll();
-		mv.addObject("listaRaca",racas);
+		mv.addObject("listaRaca", racas);
 		List<PetCor> cores = corRepository.findAll();
-		mv.addObject("listaCor",cores);
+		mv.addObject("listaCor", cores);
 		mv.addObject("listaEspecie", Especie.values());
 		mv.addObject("listaPorte", Porte.values());
 		return mv;
 	}
-		 
 
 	@PostMapping("")
-	public ModelAndView create( RequisicaoFormAnimal requisicao,BindingResult bindingResult ){
+	public ModelAndView create(RequisicaoFormAnimal requisicao, BindingResult bindingResult) {
 		System.out.println("#########################################################################CREATE");
 		System.out.println(requisicao);
 		if (bindingResult.hasErrors()) {
 			System.out.println("\n************************TEM ERROS**********************\n");
-			System.out.println("ERRO \n\n"+bindingResult+"\n\n");
+			System.out.println("ERRO \n\n" + bindingResult + "\n\n");
+			List<PetRaca> racas = racaRepository.findAll();
 			ModelAndView mv = new ModelAndView("private/animal/new");
+			mv.addObject("listaRaca", racas);
+			List<PetCor> cores = corRepository.findAll();
+			mv.addObject("listaCor", cores);
+			mv.addObject("listaEspecie", Especie.values());
+			mv.addObject("listaPorte", Porte.values());
 			return mv;
 		} else {
 			Animal animal = requisicao.toAnimal();
 			// animal.setAtivo(true);
-			
+
 			this.animalRepository.save(animal);
 			// return new ModelAndView("redirect:/pet/home" + animal.getId());
-			return new ModelAndView("redirect:/pet/home" );
+			return new ModelAndView("redirect:/pet/private/animal/new/" + animal.getId());
 		}
 	}
 
+	@GetMapping("/new/{id}")
+	public ModelAndView nNewImage(@PathVariable Long id) {
+		System.out.println("**** ID: " + id);
+		Optional<Animal> optional = this.animalRepository.findById(id);
+		if (optional.isPresent()) {
+			Animal animal = optional.get();
+			ModelAndView mv = new ModelAndView("private/animal/new-image");
+			mv.addObject(animal);
+			return mv;
+		} else {
+			System.out.println("$$$$$$$$$$$ Não achou a ");
+		}
+		System.out.println("\n\n\n#######################Erro");
+		return new ModelAndView("redirect:/pet/private/animal/");
+	}
 	// @PostMapping("/pet/cadastroAnimal")
 	// public ModelAndView salvar(Animal animal) {
-	// 	ModelAndView mv = new ModelAndView("redirect:../pet/home");
+	// ModelAndView mv = new ModelAndView("redirect:../pet/home");
 
-	// 	if (!animal.getNome().isEmpty()) {
-	// 		animal.setUserId(1);
-	// 		repository.save(animal);
-	// 	}
-	// 	return mv;
+	// if (!animal.getNome().isEmpty()) {
+	// animal.setUserId(1);
+	// repository.save(animal);
 	// }
-
+	// return mv;
+	// }
 
 	/*
 	 * private static List<Animal> listaPet = new ArrayList<Animal>(); private

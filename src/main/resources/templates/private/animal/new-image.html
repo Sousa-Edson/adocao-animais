@@ -8,7 +8,7 @@
     <main class="container mt-1   bg-light ">
         <div class="row">
             <section th:replace="~{private/animal/fragmentos :: sidebar('anuncio')}"></section>
-            <section th:replace="~{private/animal/fragmentos :: section-tab-dados}" ></section>
+            <section th:replace="~{private/animal/fragmentos :: section-tab-image}" ></section>
             <!-- <section
                 th:replace="~{private/animal/fragmentos :: form(requisicaoFormAnimal,'/pet/private/animal','Cadastrar novo animal')}">
                 formulario</section> -->
@@ -16,6 +16,30 @@
         </div>
     </main>
     <nav th:replace="~{fragmentos :: section-script}"></nav>
+    <script>
+
+		let photo = document.getElementById('imagemExibir');
+		let file = document.getElementById('file-img');
+
+		photo.addEventListener('click', () => {
+			file.click();
+		});
+
+		file.addEventListener('change', () => {
+
+			if (file.files.length <= 0) {
+				return;
+			}
+
+			let reader = new FileReader();
+
+			reader.onload = () => {
+				photo.src = reader.result;
+			}
+
+			reader.readAsDataURL(file.files[0]);
+		});
+	</script>
 </body>
 
 </html>
