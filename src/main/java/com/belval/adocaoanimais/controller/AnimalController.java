@@ -3,9 +3,11 @@ package com.belval.adocaoanimais.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -55,7 +57,7 @@ public class AnimalController {
 	}
 
 	@PostMapping("")
-	public ModelAndView create(RequisicaoFormAnimal requisicao, BindingResult bindingResult) {
+	public ModelAndView create(@Valid RequisicaoFormAnimal requisicao, BindingResult bindingResult) {
 		System.out.println("#########################################################################CREATE");
 		System.out.println(requisicao);
 		if (bindingResult.hasErrors()) {
@@ -72,7 +74,7 @@ public class AnimalController {
 		} else {
 			Animal animal = requisicao.toAnimal();
 			// animal.setAtivo(true);
-
+			animal.setDisponivel(true);
 			this.animalRepository.save(animal);
 			// return new ModelAndView("redirect:/pet/home" + animal.getId());
 			return new ModelAndView("redirect:/pet/private/animal/new/" + animal.getId());
@@ -94,6 +96,48 @@ public class AnimalController {
 		System.out.println("\n\n\n#######################Erro");
 		return new ModelAndView("redirect:/pet/private/animal/");
 	}
+
+	@GetMapping("/{id}/activate")
+	public String activate(@PathVariable("id") Long id, Model model, RequisicaoFormAnimal requisicao) {
+		Optional<Animal> e = animalRepository.findById(id);
+		if (e == null) {
+			System.out.println("555555555555555555555555555555555");
+		} else {
+			Optional<Animal> optional = this.animalRepository.findById(id);
+			if (optional.isPresent()) {
+				Animal animal = requisicao.toAnimalCheck(optional.get());
+				animal.setId(id);
+				animal.setDisponivel(true);
+				this.animalRepository.save(animal);
+			} else {
+				System.out.println("########### Não achou o animal");
+			}
+			model.addAttribute("animais", animalRepository.findAll());
+		}
+		return "redirect:/pet/private/animal";
+	}
+
+	@GetMapping("/{id}/deactivate")
+	public String deactivate(@PathVariable("id") Long id, Model model, RequisicaoFormAnimal requisicao) {
+		Optional<Animal> e = animalRepository.findById(id);
+		if (e == null) {
+			System.out.println("555555555555555555555555555555555");
+		} else {
+			Optional<Animal> optional = this.animalRepository.findById(id);
+			if (optional.isPresent()) {
+				Animal animal = requisicao.toAnimalCheck(optional.get());
+				animal.setId(id);
+				animal.setDisponivel(false);
+				this.animalRepository.save(animal);
+			} else {
+				System.out.println("########### Não achou o animal");
+			}
+			model.addAttribute("animais", animalRepository.findAll());
+		}
+		return "redirect:/pet/private/animal";
+	}
+
+
 	// @PostMapping("/pet/cadastroAnimal")
 	// public ModelAndView salvar(Animal animal) {
 	// ModelAndView mv = new ModelAndView("redirect:../pet/home");

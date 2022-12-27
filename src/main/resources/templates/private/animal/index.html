@@ -54,46 +54,49 @@
 							<tbody>
 								<tr th:each="animal : ${animais}">
 									<td>
-										<!-- <a type="button" th:class="''+${animal.ativo ? 'text-success' : 'text-warning'}"
-											class=" " data-bs-toggle="modal" th:data-bs-target="|#userModal${animal.id}|">
+										<a type="button"
+											th:class="''+${animal.disponivel ? 'text-success' : 'text-warning'}"
+											class=" " data-bs-toggle="modal"
+											th:data-bs-target="|#userModal${animal.id}|">
 											<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
 												fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
 												<path
 													d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
 											</svg>
-										</a> -->
+										</a>
 										<!-- Modal -->
-										<!-- <div class="modal  fade" th:id="|userModal${animal.id}|" data-bs-backdrop="static"
-											data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-											aria-hidden="true">
+										<div class="modal  fade" th:id="|userModal${animal.id}|"
+											data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+											aria-labelledby="staticBackdropLabel" aria-hidden="true">
 											<div class="modal-dialog ">
 												<div class="modal-content">
 													<div class="modal-header">
 														<h1 class="modal-title fs-5" id="staticBackdropLabel"
-															th:text="${animal.ativo}  ? 'DESATIVAR?' : 'ATIVAR?' ">Modal
+															th:text="${animal.disponivel}  ? 'DESATIVAR?' : 'ATIVAR?' ">
+															Modal
 															title</h1>
 														<button type="button" class="btn-close" data-bs-dismiss="modal"
 															aria-label="Close"></button>
 													</div>
 													<div class="modal-body">
-														Deseja <strong
-															th:text="${animal.ativo}  ? 'desativar' : 'ativar' "></strong>
-														a raca
-														<strong th:text="${animal.nome}"></strong>?
+														Deseja marcar o animal
+														<strong th:text="${animal.nome}"></strong> como 
+														<strong th:text="${animal.disponivel}  ? 'adotado' : 'para adoção' "></strong>
+														?
 													</div>
 													<div class="modal-footer">
 														<button type="button" class="btn btn-secondary"
 															data-bs-dismiss="modal">Fechar</button>
-														<a class="btn btn-warning" th:if="${animal.ativo}"
-															th:href="@{/pet/admin/pet-raca/{id}/deactivate (id=${animal.id})}">Desativar</a>
-														<a class="btn btn-success" th:if="${raca.ativo==false}"
-															th:href="@{/pet/admin/pet-raca/{id}/activate (id=${animal.id})}">Ativar</a>
+														<a class="btn btn-warning" th:if="${animal.disponivel}"
+															th:href="@{/pet/private/animal/{id}/deactivate (id=${animal.id})}">Adotado</a>
+														<a class="btn btn-success" th:if="${animal.disponivel==false}"
+															th:href="@{/pet/private/animal/{id}/activate (id=${animal.id})}">Para adoção</a>
 
 													</div>
 												</div>
 											</div>
-										</div> -->
-										s
+										</div>
+										
 									</td>
 									<td><span th:text="${animal.id}"></span>.</td>
 									<td><span th:text="${animal.nome}"></span></td>

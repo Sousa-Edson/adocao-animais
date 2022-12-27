@@ -49,7 +49,6 @@ public class RacaController {
 		if (bindingResult.hasErrors()) {
 			System.out.println("\n************************TEM ERROS**********************\n");
 			ModelAndView mv = new ModelAndView("admin/raca/new");
-
 			return mv;
 		} else {
 			PetRaca petRaca = requisicao.toPetRaca();

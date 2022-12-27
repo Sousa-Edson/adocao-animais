@@ -20,17 +20,17 @@ public class HomeController {
  
 
 
-	@GetMapping("/")
-	public String home(Model model) {
-		model.addAttribute("permissao", 1);
-		return "home";
-	}
+	// @GetMapping("/")
+	// public String home(Model model) {
+	// 	model.addAttribute("permissao", 1);
+	// 	return "home";
+	// }
  
 
-	@GetMapping("/pet")
-	public String home3(Model model) {
-		model.addAttribute("permissao", 2);
-		return "home";
-	}
+	// @GetMapping("/pet")
+	// public String home3(Model model) {
+	// 	model.addAttribute("permissao", 2);
+	// 	return "home";
+	// }
 
 }
