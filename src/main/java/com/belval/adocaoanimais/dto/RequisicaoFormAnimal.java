@@ -13,8 +13,8 @@ public class RequisicaoFormAnimal {
     @NotBlank
     @NotNull
     private String nome;
-    private int raca;
-    private int cor;
+    private Long raca;
+    private Long cor;
     private Porte porte;
     private Especie especie;
 
@@ -97,19 +97,19 @@ public class RequisicaoFormAnimal {
         this.nome = nome;
     }
 
-    public int getRaca() {
+    public Long getRaca() {
         return raca;
     }
 
-    public void setRaca(int raca) {
+    public void setRaca(Long raca) {
         this.raca = raca;
     }
 
-    public int getCor() {
+    public Long getCor() {
         return cor;
     }
 
-    public void setCor(int cor) {
+    public void setCor(Long cor) {
         this.cor = cor;
     }
 

@@ -19,8 +19,8 @@ public class Animal {
     private Long id;
     private int userId;
     private String nome;
-    private int raca;
-    private int cor;
+    private Long raca;
+    private Long cor;
     @Enumerated(EnumType.STRING)
     private Porte porte;
     @Enumerated(EnumType.STRING)
@@ -38,7 +38,7 @@ public class Animal {
 
     }
 
-    public Animal(Long id, int userId, String nome, int raca, int cor, Porte porte, Especie especie, int sexo,
+    public Animal(Long id, int userId, String nome, Long raca, Long cor, Porte porte, Especie especie, int sexo,
             int vacina, Date nascimento, boolean disponivel, String resumo, String observacao) {
         this.id = id;
         this.userId = userId;
@@ -81,19 +81,19 @@ public class Animal {
         this.nome = nome;
     }
 
-    public int getRaca() {
+    public Long getRaca() {
         return raca;
     }
 
-    public void setRaca(int raca) {
+    public void setRaca(Long raca) {
         this.raca = raca;
     }
 
-    public int getCor() {
+    public Long getCor() {
         return cor;
     }
 
-    public void setCor(int cor) {
+    public void setCor(Long cor) {
         this.cor = cor;
     }
 
