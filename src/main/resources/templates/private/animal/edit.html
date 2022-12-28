@@ -8,7 +8,8 @@
     <main class="container mt-1   bg-light ">
         <div class="row">
             <!-- Editar Animal # -->
-            <section th:replace="~{private/animal/fragmentos :: sidebar('anuncio')}"></section>
+            <!-- <section th:replace="~{private/animal/fragmentos :: sidebar('anuncio')}"></section> -->
+            <div th:replace="~{admin/fragmentos :: sidebar('anuncio')}"></div>
             <section th:fragment="section-tab-dados(cabecalho)" class="col-md-8 my-3 ">
                 <div class="d-flex align-items-start">
                     <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist"
@@ -43,7 +44,7 @@
 
         </div>
     </main>
-    <nav th:replace="~{fragmentos :: section-script}"></nav>
+    <section th:replace="~{fragmentos :: section-script}"></section>
 </body>
 
 </html>

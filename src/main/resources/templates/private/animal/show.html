@@ -8,7 +8,8 @@
     <main class="container mt-1   bg-light  ">
         <div class="row">
             <!-- Editar Animal # -->
-            <section th:replace="~{private/animal/fragmentos :: sidebar('anuncio')}"></section>
+            <!-- <section th:replace="~{private/animal/fragmentos :: sidebar('anuncio')}"></section> -->
+            <div th:replace="~{admin/fragmentos :: sidebar('anuncio')}"></div>
             <section class="col-md-8">
                 <h1 class="display-5">Detalhe de animal #<span th:text="${animal.id}"></span></h1>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -87,6 +88,7 @@
         </div>
     </main>
     <!-- <h1>mostrando</h1> -->
+    <section th:replace="~{fragmentos :: section-script}"></section>
 </body>
 
 </html>
