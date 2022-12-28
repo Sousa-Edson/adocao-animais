@@ -24,6 +24,9 @@ public class RequisicaoFormAnimal {
     private Date nascimento;
     private boolean disponivel;
 
+    private String resumo;
+    private String observacao;
+
     public Animal toAnimal() {
         Animal animal = new Animal();
         animal.setNome(this.nome);
@@ -35,6 +38,8 @@ public class RequisicaoFormAnimal {
         animal.setVacina(this.vacina);
         animal.setNascimento(this.nascimento);
         animal.setDisponivel(disponivel);
+        animal.setObservacao(observacao);
+        animal.setResumo(resumo);
         return animal;
     }
 
@@ -48,6 +53,8 @@ public class RequisicaoFormAnimal {
         animal.setVacina(this.vacina);
         animal.setNascimento(this.nascimento);
         animal.setDisponivel(this.disponivel);
+        animal.setObservacao(observacao);
+        animal.setResumo(resumo);
         return animal;
     }
 
@@ -61,6 +68,8 @@ public class RequisicaoFormAnimal {
         this.vacina = animal.getVacina();
         this.nascimento = animal.getNascimento();
         this.disponivel=animal.isDisponivel();
+        this.observacao=animal.getObservacao();
+        this.resumo=animal.getResumo();
     }
 
     @Override
@@ -150,6 +159,22 @@ public class RequisicaoFormAnimal {
 
     public void setDisponivel(boolean disponivel) {
         this.disponivel = disponivel;
+    }
+
+    public String getResumo() {
+        return resumo;
+    }
+
+    public void setResumo(String resumo) {
+        this.resumo = resumo;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 
    

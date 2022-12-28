@@ -80,8 +80,9 @@
 													</div>
 													<div class="modal-body">
 														Deseja marcar o animal
-														<strong th:text="${animal.nome}"></strong> como 
-														<strong th:text="${animal.disponivel}  ? 'adotado' : 'para adoção' "></strong>
+														<strong th:text="${animal.nome}"></strong> como
+														<strong
+															th:text="${animal.disponivel}  ? 'adotado' : 'para adoção' "></strong>
 														?
 													</div>
 													<div class="modal-footer">
@@ -90,19 +91,20 @@
 														<a class="btn btn-warning" th:if="${animal.disponivel}"
 															th:href="@{/pet/private/animal/{id}/deactivate (id=${animal.id})}">Adotado</a>
 														<a class="btn btn-success" th:if="${animal.disponivel==false}"
-															th:href="@{/pet/private/animal/{id}/activate (id=${animal.id})}">Para adoção</a>
+															th:href="@{/pet/private/animal/{id}/activate (id=${animal.id})}">Para
+															adoção</a>
 
 													</div>
 												</div>
 											</div>
 										</div>
-										
+
 									</td>
 									<td><span th:text="${animal.id}"></span>.</td>
 									<td><span th:text="${animal.nome}"></span></td>
 									<td>
 										<div class="btn-group">
-											<a th:href="@{/pet/admin/pet-raca/{id} (id=${animal.id})}"
+											<a th:href="@{/pet/private/animal/{id} (id=${animal.id})}"
 												class="btn btn-secondary">
 												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 													fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
@@ -111,10 +113,10 @@
 													<path
 														d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
 												</svg>
-												<a th:href="@{/pet/admin/pet-raca/{id}/edit (id=${animal.id})}"
+												<a th:href="@{/pet/private/animal/{id}/edit (id=${animal.id})}"
 													class="btn btn-info">
 													<i class="bi bi-pencil"></i></a>
-												<a th:href="@{/pet/admin/pet-raca/{id}/delete (id=${animal.id})}"
+												<a th:href="@{/pet/private/animal/{id}/delete (id=${animal.id})}"
 													class="btn btn-danger"> <i class="bi bi-trash3"></i></a>
 										</div>
 

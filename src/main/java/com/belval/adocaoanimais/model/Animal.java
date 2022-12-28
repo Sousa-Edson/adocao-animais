@@ -30,13 +30,16 @@ public class Animal {
 
     private Date nascimento;
     private boolean disponivel;
+    private String resumo;
+    private String observacao;
+    
 
     public Animal() {
 
     }
 
     public Animal(Long id, int userId, String nome, int raca, int cor, Porte porte, Especie especie, int sexo,
-            int vacina, Date nascimento, boolean disponivel) {
+            int vacina, Date nascimento, boolean disponivel, String resumo, String observacao) {
         this.id = id;
         this.userId = userId;
         this.nome = nome;
@@ -48,7 +51,11 @@ public class Animal {
         this.vacina = vacina;
         this.nascimento = nascimento;
         this.disponivel = disponivel;
+        this.resumo = resumo;
+        this.observacao = observacao;
     }
+
+     
 
     public Long getId() {
         return id;
@@ -136,6 +143,22 @@ public class Animal {
 
     public void setDisponivel(boolean disponivel) {
         this.disponivel = disponivel;
+    }
+
+    public String getResumo() {
+        return resumo;
+    }
+
+    public void setResumo(String resumo) {
+        this.resumo = resumo;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 
 }

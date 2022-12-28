@@ -137,6 +137,28 @@ public class AnimalController {
 		return "redirect:/pet/private/animal";
 	}
 
+	@GetMapping("/{id}/edit")
+	public ModelAndView edit(@PathVariable Long id, RequisicaoFormAnimal requisicao) {
+		Optional<Animal> optional = this.animalRepository.findById(id);
+
+		if (optional.isPresent()) {
+			ModelAndView mv = new ModelAndView("private/animal/edit");
+			Animal animal = optional.get();
+			requisicao.fromAnimal(animal);
+			mv.addObject("animalId", animal.getId());
+			List<PetRaca> racas = racaRepository.findAll();
+			mv.addObject("listaRaca", racas);
+			List<PetCor> cores = corRepository.findAll();
+			mv.addObject("listaCor", cores);
+			mv.addObject("listaEspecie", Especie.values());
+			mv.addObject("listaPorte", Porte.values());
+			return mv;
+		} else {
+			System.out.println("$$$$$$$$$$$ Não achou o animal");
+			return new ModelAndView("redirect:/private/animal");
+		}
+
+	}
 
 	// @PostMapping("/pet/cadastroAnimal")
 	// public ModelAndView salvar(Animal animal) {

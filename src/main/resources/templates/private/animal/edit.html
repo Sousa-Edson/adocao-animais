@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<head th:replace="~{fragmentos :: head('Anuncio animal')}"></head>
+<head th:replace="~{fragmentos :: head('Editar anuncio animal')}"></head>
 
 <body>
     <nav th:replace="~{fragmentos :: navbar}"></nav>
     <main class="container mt-1   bg-light ">
         <div class="row">
             <section th:replace="~{private/animal/fragmentos :: sidebar('anuncio')}"></section>
-            <section th:replace="~{private/animal/fragmentos :: section-tab-dados('Cadastrar novo animal')}" ></section>  
+            <section th:replace="~{private/animal/fragmentos :: section-tab-dados('Editar Animal #'+${animalId})}" ></section>
             <!-- <section
                 th:replace="~{private/animal/fragmentos :: form(requisicaoFormAnimal,'/pet/private/animal','Cadastrar novo animal')}">
                 formulario</section> -->
