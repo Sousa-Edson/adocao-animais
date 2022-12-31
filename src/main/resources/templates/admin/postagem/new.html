@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<head th:replace="fragments/head ">
+<head th:replace="~{fragmentos :: head('Postagem')}"></head>
 
-</head>
 
 <body class="hold-transition layout-top-nav layout-navbar-fixed"
 	style="background-image: './imagens/MicrosoftTeams-image.png';" onLoad='document.formulario.titulo.focus()'>
-
-
-
-	<!-- navbar - barra de menu -->
-	<nav th:replace="fragments/navbar :: navbar">...</nav>
+	<nav th:replace="~{fragmentos :: navbar}"></nav>
 	<div style="margin-top: 10px;"></div>
 	<main>
 		<div class="content-wrapper" style="min-height: 747px;">

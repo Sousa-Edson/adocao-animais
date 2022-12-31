@@ -13,6 +13,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,6 +23,7 @@ import com.belval.adocaoanimais.model.Postagem;
 import com.belval.adocaoanimais.repository.PostagemRepository;
 
 @Controller
+@RequestMapping(value = "/pet/admin/postagem")
 public class PostagemController {
 	@Autowired
 	private PostagemRepository repository;
@@ -29,17 +31,17 @@ public class PostagemController {
 	public static String caminhoImagens = "/home/edson/Projetos/adocao-animais/img-data/img-post/";
 	// public static String caminhoImagens = "Z:/Modulo	// 2/LIPI/workspace/imagens/img-postagem/";
 
-	@GetMapping("/pet/postagem/postagem-lista")
-	public String list(Model model) {
+	@GetMapping("")
+	public String index(Model model) {
 
 		model.addAttribute("c", new Postagem());
 		model.addAttribute("postagem", repository.findAll());
-		return "postagem/postagem-lista";
+		return "admin/postagem/index";
 	}
 
-	@GetMapping("/pet/postagem/postagem-novo")
+	@GetMapping("/new")
 	public ModelAndView novo(Postagem postagem, Model model) {
-		ModelAndView mv = new ModelAndView("postagem/postagem");
+		ModelAndView mv = new ModelAndView("admin/postagem/new");
 		Postagem p = new Postagem();
 		if (p.getCaminhoImagem() == null) {
 			p.setCaminhoImagem(
@@ -52,7 +54,7 @@ public class PostagemController {
 		return mv;
 	}
 
-	@PostMapping("/pet/postagem/postagem-novo")
+	@PostMapping("new")
 	public ModelAndView novo(Postagem postagem, @RequestParam("file-img") MultipartFile arquivo) {
 		ModelAndView mv = new ModelAndView("redirect:../postagem/postagem-lista");
 		if (!postagem.getTitulo().isEmpty()) {
@@ -150,10 +152,10 @@ public class PostagemController {
 	public String excluirConfirmado(@PathVariable("id") int id, Model model) {
 		Postagem p = repository.findById(id);
 		if (p == null) {
-			return list(model);
+			return index(model);
 		} else {
 			repository.deleteById(id);
-			return list(model);
+			return index(model);
 		}
 	}
 }
