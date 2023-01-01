@@ -40,7 +40,7 @@ public class PostagemController {
 	}
 
 	@GetMapping("/new")
-	public ModelAndView novo(Postagem postagem, Model model) {
+	public ModelAndView nnew(Postagem postagem, Model model) {
 		ModelAndView mv = new ModelAndView("admin/postagem/new");
 		Postagem p = new Postagem();
 		if (p.getCaminhoImagem() == null) {
@@ -54,9 +54,9 @@ public class PostagemController {
 		return mv;
 	}
 
-	@PostMapping("new")
-	public ModelAndView novo(Postagem postagem, @RequestParam("file-img") MultipartFile arquivo) {
-		ModelAndView mv = new ModelAndView("redirect:../postagem/postagem-lista");
+	@PostMapping("")
+	public ModelAndView create(Postagem postagem, @RequestParam("file-img") MultipartFile arquivo) {
+		ModelAndView mv = new ModelAndView("redirect:../admin/postagem");
 		if (!postagem.getTitulo().isEmpty()) {
 			repository.save(postagem);
 		}
