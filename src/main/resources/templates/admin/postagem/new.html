@@ -5,7 +5,7 @@
 <div class="row">
 			<div th:replace="~{admin/fragmentos :: sidebar('postagem')}"></div>
 			<div class="col-lg-8  col-md-8 col-sm-12">
-				<section th:replace="~{admin/postagem/fragmentos :: form(requisicaoFormRaca,'/pet/admin/pet-raca','Cadastrar nova postagem')}">  formulario</section>
+				<section th:replace="~{admin/postagem/fragmentos :: form(requisicaoFormPostagem,'/pet/admin/postagem','Cadastrar nova postagem')}">  formulario</section>
 				 
                 
 			</div>
@@ -16,7 +16,7 @@
 <script>
 
 	let photo = document.getElementById('imagemExibir');
-	let file = document.getElementById('file-img');
+	let file = document.getElementById('caminhoImagem');
 
 	photo.addEventListener('click', () => {
 		file.click();

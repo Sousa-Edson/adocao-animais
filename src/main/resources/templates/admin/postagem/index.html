@@ -48,15 +48,15 @@
 									<th style="width: 10px"></th>
 									<th style="width: 10px">#</th>
 									<th>Título</th>
-									<th style="min-width: 10px"> </th>
+									 
 									<th style="width: 40px">Opções</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="raca : ${racas}">
+								<tr th:each="postagem : ${postagens}">
 									<td>
-										<a type="button" th:class="''+${raca.ativo ? 'text-success' : 'text-warning'}"
-											class=" " data-bs-toggle="modal" th:data-bs-target="|#userModal${raca.id}|">
+										<a type="button" th:class="''+${postagem.ativo ? 'text-success' : 'text-warning'}"
+											class=" " data-bs-toggle="modal" th:data-bs-target="|#userModal${postagem.id}|">
 											<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
 												fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
 												<path
@@ -64,43 +64,43 @@
 											</svg>
 										</a>
 										<!-- Modal -->
-										<div class="modal  fade" th:id="|userModal${raca.id}|" data-bs-backdrop="static"
+										<div class="modal  fade" th:id="|userModal${postagem.id}|" data-bs-backdrop="static"
 											data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
 											aria-hidden="true">
 											<div class="modal-dialog ">
 												<div class="modal-content">
 													<div class="modal-header">
 														<h1 class="modal-title fs-5" id="staticBackdropLabel"
-															th:text="${raca.ativo}  ? 'DESATIVAR?' : 'ATIVAR?' ">Modal
+															th:text="${postagem.ativo}  ? 'DESATIVAR?' : 'ATIVAR?' ">Modal
 															title</h1>
 														<button type="button" class="btn-close" data-bs-dismiss="modal"
 															aria-label="Close"></button>
 													</div>
 													<div class="modal-body">
 														Deseja <strong
-															th:text="${raca.ativo}  ? 'desativar' : 'ativar' "></strong>
+															th:text="${postagem.ativo}  ? 'desativar' : 'ativar' "></strong>
 														a raca
-														<strong th:text="${raca.raca}"></strong>?
+														<strong th:text="${postagem.titulo}"></strong>?
 													</div>
 													<div class="modal-footer">
 														<button type="button" class="btn btn-secondary"
 															data-bs-dismiss="modal">Fechar</button>
-														<a class="btn btn-warning" th:if="${raca.ativo}"
-															th:href="@{/pet/admin/pet-raca/{id}/deactivate (id=${raca.id})}">Desativar</a>
-														<a class="btn btn-success" th:if="${raca.ativo==false}"
-															th:href="@{/pet/admin/pet-raca/{id}/activate (id=${raca.id})}">Ativar</a>
+														<a class="btn btn-warning" th:if="${postagem.ativo}"
+															th:href="@{/pet/admin/pet-raca/{id}/deactivate (id=${postagem.id})}">Desativar</a>
+														<a class="btn btn-success" th:if="${postagem.ativo==false}"
+															th:href="@{/pet/admin/pet-raca/{id}/activate (id=${postagem.id})}">Ativar</a>
 
 													</div>
 												</div>
 											</div>
 										</div>
 									</td>
-									<td><span th:text="${raca.id}"></span>.</td>
-									<td><span th:text="${raca.raca}"></span></td>
-									<td><span th:text="${raca.especie}"></span></td>
+									<td><span th:text="${postagem.id}"></span>.</td>
+									<td><span th:text="${postagem.titulo}"></span></td>
+								 
 									<td>
 										<div class="btn-group">
-											<a th:href="@{/pet/admin/pet-raca/{id} (id=${raca.id})}"
+											<a th:href="@{/pet/admin/pet-raca/{id} (id=${postagem.id})}"
 												class="btn btn-secondary">
 												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 													fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
@@ -109,10 +109,10 @@
 													<path
 														d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
 												</svg>
-												<a th:href="@{/pet/admin/pet-raca/{id}/edit (id=${raca.id})}"
+												<a th:href="@{/pet/admin/pet-raca/{id}/edit (id=${postagem.id})}"
 													class="btn btn-info">
 													<i class="bi bi-pencil"></i></a>
-												<a th:href="@{/pet/admin/pet-raca/{id}/delete (id=${raca.id})}"
+												<a th:href="@{/pet/admin/pet-raca/{id}/delete (id=${postagem.id})}"
 													class="btn btn-danger"> <i class="bi bi-trash3"></i></a>
 										</div>
 

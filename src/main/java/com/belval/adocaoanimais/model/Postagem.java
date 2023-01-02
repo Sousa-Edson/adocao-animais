@@ -13,7 +13,7 @@ import javax.persistence.Id;
 public class Postagem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	private Long id;
 	private String titulo;
 	@Column(name = "conteudo", length = 512) // AQUI EU DEFINO O NOME DA COLUNA ,SE PODE NULA E O TAMANHO
 	private String conteudo;
@@ -30,7 +30,7 @@ public class Postagem {
 		return caminhoImagem;
 	}
 
-	public Postagem(Integer id, String titulo, String conteudo, String caminhoImagem, String dataPublicacao,
+	public Postagem(Long id, String titulo, String conteudo, String caminhoImagem, String dataPublicacao,
 			boolean ativo) {
 		super();
 		this.id = id;
@@ -41,11 +41,11 @@ public class Postagem {
 		this.ativo = ativo;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
