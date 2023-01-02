@@ -11,7 +11,7 @@ public class RequisicaoFormPostagem {
     @NotNull
     private String titulo;
     private String conteudo;
-     private String caminhoImagem;
+    // private String caminhoImagem;
     private String dataPublicacao;
     private URL linkEvento;
     private boolean ativo;
@@ -20,7 +20,7 @@ public class RequisicaoFormPostagem {
         Postagem postagem = new Postagem();
         postagem.setTitulo(this.titulo);
         postagem.setConteudo(this.conteudo);
-         postagem.setCaminhoImagem(this.caminhoImagem);
+        // postagem.setCaminhoImagem(this.caminhoImagem);
         postagem.setDataPublicacao(this.dataPublicacao);
         postagem.setLinkEvento( this.linkEvento);
         postagem.setAtivo(this.ativo);
@@ -30,7 +30,7 @@ public class RequisicaoFormPostagem {
     public Postagem toPostagem(Postagem postagem) {
         postagem.setTitulo(this.titulo);
         postagem.setConteudo(this.conteudo);
-         postagem.setCaminhoImagem(this.caminhoImagem);
+        // postagem.setCaminhoImagem(this.caminhoImagem);
         postagem.setDataPublicacao(this.dataPublicacao);
         postagem.setLinkEvento( this.linkEvento);
         postagem.setAtivo(this.ativo);
@@ -40,13 +40,22 @@ public class RequisicaoFormPostagem {
     public void fromPostagem(Postagem postagem) {
         this.titulo = postagem.getTitulo();
         this.conteudo = postagem.getConteudo();
-         this.caminhoImagem = postagem.getCaminhoImagem();
+        // this.caminhoImagem = postagem.getCaminhoImagem();
         this.dataPublicacao = postagem.getDataPublicacao();
         this.linkEvento = postagem.getLinkEvento();
         this.ativo = postagem.isAtivo();
     }
 
-    
+    public Postagem toPostagemCheck() {
+        Postagem postagem = new Postagem();
+        postagem.setAtivo(this.ativo);
+        return postagem;
+    }
+
+    public Postagem toPostagemCheck(Postagem postagem) {
+        postagem.setAtivo(this.ativo);
+        return postagem;
+    }
 
     
     @Override

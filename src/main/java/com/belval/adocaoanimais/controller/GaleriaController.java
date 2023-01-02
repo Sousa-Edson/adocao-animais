@@ -29,7 +29,7 @@ public class GaleriaController {
 
     @GetMapping("")
     public ModelAndView index() {
-        List<Animal> animais = this.animalRepository.findAll();
+        List<Animal> animais = this.animalRepository.findAllAtivas();
         ModelAndView mv = new ModelAndView("public/galeria/index");
         mv.addObject("animais", animais);
         return mv;

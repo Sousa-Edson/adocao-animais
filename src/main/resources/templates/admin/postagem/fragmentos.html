@@ -38,8 +38,8 @@
 
                         <img name="imagemExibir" id="imagemExibir" class="rounded mx-auto d-block "
                             style="width: 500px; height: 400px" 
-                            alt="imagem erro">
-                            <!-- th:src="@{{imagem}(imagem=${p.getCaminhoImagem})}" -->
+                            alt="imagem erro"  	th:src="@{{imagem}(imagem=${p})}" >
+                            <!-- th:src="@{{imagem}(imagem=${p.getCaminhoImagem})}" th:src="@{{imagem}(imagem=${p})}-->
                     </div>
                 </div>
                 <div class="row">
@@ -70,7 +70,7 @@
                     </div>
                     <div class="form-group  col-md-12 ">
                         <label for="linkEvento">Link </label>
-                        <input type="url" class="form-control" id="linkEvento" name="linkEvento" 
+                        <input type="url" class="form-control"  th:field="*{linkEvento}" 
                        pattern="https://.+"placeholder="https://example.com">
                             <!-- id="linkEvento" name="linkEvento"  th:value="${p.linkEvento}"  -->
                             <!-- <div class="invalid-feedback" th:errors="*{linkEvento}"></div> -->

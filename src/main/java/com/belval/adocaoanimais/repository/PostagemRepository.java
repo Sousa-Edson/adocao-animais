@@ -2,13 +2,13 @@ package com.belval.adocaoanimais.repository;
 
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.belval.adocaoanimais.model.Postagem;
- 
-public interface PostagemRepository extends CrudRepository<Postagem, Integer> {
 
-    List<Postagem> findByTitulo(String postagem);
+public interface PostagemRepository extends JpaRepository<Postagem, Long> {
 
-    Postagem findById(int id);
+    @Query("select p from Postagem p where p.ativo = true")
+    List<Postagem> findAllAtivas();
 }

@@ -1,0 +1,78 @@
+<head th:replace="~{fragmentos :: head('Detalhe de postagem')}"></head>
+<nav th:replace="~{fragmentos :: navbar}"></nav>
+<main class="container mt-1  bg-light ">
+
+    <div class="row">
+        <!-- <div th:replace="~{admin/fragmentos :: sidebar('postagem')}"></div> -->
+        <div class="col-lg-12  col-md-12 col-sm-12">
+            <section>
+                <h1 class="display-5">Detalhe de postagem #<span th:text="${postagem.id}"></span></h1>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+                    <a href=" /pet/admin/postagem" class="btn btn-primary me-md-2 px-5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-list-check" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
+                        </svg>
+                        Lista</a>
+
+                </div>
+                <div class="container mt-3">
+                    <div class="row">
+                        <div class="card">
+                            <!-- <hr class="featurette-divider" /> -->
+                            <div class="row featurette align-items-center" style="margin: 20px">
+                                <div class="col-md-7">
+                                    <h2 class="featurette-heading">
+                                        <a th:href="@{{caminho}(caminho=${postagem.linkEvento})} "
+                                            target="_blank" class="eaturette-heading"
+                                            style="text-decoration: none">
+                                            <span class="text-muted" th:text="${postagem.titulo}"> </span>
+                                        </a>
+                                    </h2>
+
+                                    <p class="lead" th:text="${postagem.conteudo}">
+
+                                    </p>
+                                    <small class="text-muted"
+                                        th:text="'Data de Publicação: '+${postagem.dataPublicacao}"> </small>
+                                </div>
+                                <div class="col-md-5">
+                                    <img class=" img-fluid mx-auto rounded"
+                                        th:src="@{/pet/mostrarImagem/{imagem}(imagem=${postagem.getCaminhoImagem})}"
+                                        data-src="holder.js/400x400/auto" alt="400x400"
+                                        style="width: 500px; height: 400px" data-holder-rendered="true">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-12">
+                            <hr>
+                            <b>Tipo:</b> <span class="form-label" th:text="${petRaca.especie}"></span><br />
+                            <b>Raça:</b> <span class="form-label" th:text="${petRaca.raca}"></span><br />
+                            <b>Ativa:</b> <a th:if="${petRaca.ativo}" class="text-decoration-none"
+                                th:href="@{/pet/admin/pet-raca/{id}/deactivate (id=${petRaca.id})}"> Sim</a> <a
+                                th:unless="${petRaca.ativo}" class="text-decoration-none"
+                                th:href="@{/pet/admin/pet-raca/{id}/activate (id=${petRaca.id})}">Não</a>
+
+                            <br />
+                            <b>Atualizado por:</b> Edson <br />
+                            <b>Atualizado em:</b> 22/12/22 <br />
+                            <hr>
+                        </div> -->
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- <a th:href="@{/professores/{professorId}/edit(professorId = ${professor.id})}">Editar</a> <a href="/professores">Voltar</a> -->
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+
+        </div>
+    </div>
+
+</main>
+<section th:replace="~{fragmentos :: section-script}"></section>

@@ -9,11 +9,11 @@ import com.belval.adocaoanimais.repository.PostagemRepository;
 @Controller
 public class HomeController {
 	@Autowired
-	private PostagemRepository repository;
+	private PostagemRepository postagemRepository;
 
 	@GetMapping("/pet/home")
 	public String list(Model model) {
-		// model.addAttribute("p", repository.findAll());
+		model.addAttribute("postagem", postagemRepository.findAllAtivas());
 		// System.out.println("p é -> "+repository.findAll());
 		return "home";
 	}
