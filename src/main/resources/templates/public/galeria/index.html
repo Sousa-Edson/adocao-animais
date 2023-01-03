@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head th:replace="~{fragmentos :: head('Galeria')}"></head>
+
+<body>
+	<nav th:replace="~{fragmentos :: navbar}"></nav>
+	<main class="container mt-1   bg-light ">
+
+		<div class="content">
+			<div class="container">
+
+				<div class="col-sm-6">
+					<h1 class="m-0" id="adote-animalzinho">
+						Galeria <small> seu novo animalzinho ta aqui!</small>
+					</h1>
+				</div>
+
+
+				<div class="row" >
+					<div class=" col-lg-4 col-md-6 col-sm-12" th:each="animal : ${animais}">
+						<div class="card mb-4 shadow-sm">
+							<img class="card-img-top"
+								src="https://acaochego.org/img/cachorros/634/filhote6_carolzinha8.jpg"
+								alt="Card image cap">
+							<div class="card-body">
+								<span th:text="${'#'+animal.id}"></span>
+								<h1><span th:text="${animal.nome}"></h1>
+								<p class="card-text">Amigavel e brincalão</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="btn-group">
+										<a th:href="@{/pet/public/galeria/{id} (id=${animal.id})}" class="btn btn-sm btn-outline-secondary">Ver</a>
+										<a href="/pet/private/intencao-adotar/new" class="btn btn-sm btn-outline-success">Adotar</a>
+									</div>
+									<small class="text-muted">Macho, 8 anos</small>
+								</div>
+							</div>
+						</div>
+					</div>
+					 
+					 
+					 
+					
+				</div>
+
+
+				<!-- START THE FEATURETTES -->
+
+
+			</div>
+		</div>
+		<section th:replace="~{fragmentos :: section-script}"></section>
+	</main>
+</body>
+
+</html>

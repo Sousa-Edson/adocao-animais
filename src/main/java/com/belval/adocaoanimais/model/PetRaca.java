@@ -7,12 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.belval.enums.Especie;
+import com.belval.adocaoanimais.enums.Especie;
 
 @Entity
 public class PetRaca {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String raca;
     private boolean ativo;
@@ -21,6 +21,9 @@ public class PetRaca {
     private Especie especie;
 
      
+
+    public PetRaca() {
+    }
 
     public Long getId() {
         return id;

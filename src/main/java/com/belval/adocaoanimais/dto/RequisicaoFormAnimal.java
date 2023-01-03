@@ -5,16 +5,16 @@ import java.sql.Date;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.belval.adocaoanimais.enums.Especie;
+import com.belval.adocaoanimais.enums.Porte;
 import com.belval.adocaoanimais.model.Animal;
-import com.belval.enums.Especie;
-import com.belval.enums.Porte;
 
 public class RequisicaoFormAnimal {
     @NotBlank
     @NotNull
     private String nome;
-    private int raca;
-    private int cor;
+    private Long raca;
+    private Long cor;
     private Porte porte;
     private Especie especie;
 
@@ -22,6 +22,10 @@ public class RequisicaoFormAnimal {
     private int vacina;
 
     private Date nascimento;
+    private boolean disponivel;
+
+    private String resumo;
+    private String observacao;
 
     public Animal toAnimal() {
         Animal animal = new Animal();
@@ -33,6 +37,9 @@ public class RequisicaoFormAnimal {
         animal.setSexo(this.sexo);
         animal.setVacina(this.vacina);
         animal.setNascimento(this.nascimento);
+        animal.setDisponivel(disponivel);
+        animal.setObservacao(observacao);
+        animal.setResumo(resumo);
         return animal;
     }
 
@@ -45,6 +52,9 @@ public class RequisicaoFormAnimal {
         animal.setSexo(this.sexo);
         animal.setVacina(this.vacina);
         animal.setNascimento(this.nascimento);
+        animal.setDisponivel(this.disponivel);
+        animal.setObservacao(observacao);
+        animal.setResumo(resumo);
         return animal;
     }
 
@@ -57,12 +67,26 @@ public class RequisicaoFormAnimal {
         this.sexo = animal.getSexo();
         this.vacina = animal.getVacina();
         this.nascimento = animal.getNascimento();
+        this.disponivel=animal.isDisponivel();
+        this.observacao=animal.getObservacao();
+        this.resumo=animal.getResumo();
     }
 
     @Override
     public String toString() {
         return "RequisicaoFormAnimal [nome=" + nome + ", raca=" + raca + ", cor=" + cor + ", porte=" + porte
                 + ", especie=" + especie + ", sexo=" + sexo + ", vacina=" + vacina + ", nascimento=" + nascimento + "]";
+    }
+
+    public Animal toAnimalCheck() {
+        Animal animal = new Animal();
+        animal.setDisponivel(this.disponivel);
+        return animal;
+    }
+
+    public Animal toAnimalCheck(Animal animal) {
+        animal.setDisponivel(this.disponivel);
+        return animal;
     }
 
     public String getNome() {
@@ -73,19 +97,19 @@ public class RequisicaoFormAnimal {
         this.nome = nome;
     }
 
-    public int getRaca() {
+    public Long getRaca() {
         return raca;
     }
 
-    public void setRaca(int raca) {
+    public void setRaca(Long raca) {
         this.raca = raca;
     }
 
-    public int getCor() {
+    public Long getCor() {
         return cor;
     }
 
-    public void setCor(int cor) {
+    public void setCor(Long cor) {
         this.cor = cor;
     }
 
@@ -127,6 +151,30 @@ public class RequisicaoFormAnimal {
 
     public void setNascimento(Date nascimento) {
         this.nascimento = nascimento;
+    }
+
+    public boolean isDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
+    }
+
+    public String getResumo() {
+        return resumo;
+    }
+
+    public void setResumo(String resumo) {
+        this.resumo = resumo;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 
    

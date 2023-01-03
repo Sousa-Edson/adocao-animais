@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.belval.adocaoanimais.dto.RequisicaoFormRaca;
+import com.belval.adocaoanimais.enums.Especie;
 import com.belval.adocaoanimais.model.PetRaca;
 import com.belval.adocaoanimais.repository.RacaRepository;
-import com.belval.enums.Especie;
 
 @Controller
 @RequestMapping(value = "/pet/admin/pet-raca")
@@ -49,7 +49,7 @@ public class RacaController {
 		if (bindingResult.hasErrors()) {
 			System.out.println("\n************************TEM ERROS**********************\n");
 			ModelAndView mv = new ModelAndView("admin/raca/new");
-
+			mv.addObject("listaEspecie", Especie.values());
 			return mv;
 		} else {
 			PetRaca petRaca = requisicao.toPetRaca();

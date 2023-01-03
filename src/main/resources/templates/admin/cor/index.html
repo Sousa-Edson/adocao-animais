@@ -1,4 +1,4 @@
-<head th:replace="~{fragmentos :: head('Lista de cores')}"></head>
+<head th:replace="~{fragmentos :: head('Cores')}"></head>
 <nav th:replace="~{fragmentos :: navbar}"></nav>
 <main class="container mt-1  bg-light ">
 
@@ -16,9 +16,9 @@
 					</svg>
 					<strong>Aviso de exclusão!</strong>
 					<br>
-					Você tem certeza que dejesa excluir o item <strong th:text="${corId}">id</strong> ?
+					Você tem certeza que dejesa excluir o item <strong th:text="${cor.id}">id</strong> ?
 					<br>
-					<a th:href="@{/pet/admin/pet-cor/{id}/destroy (id=${corId})}"
+					<a th:href="@{/pet/admin/pet-cor/{id}/destroy (id=${cor.id})}"
 						class="btn btn-outline-danger btn-sm">Sim
 						desejo excluir</a>
 					<a th:href="@{/pet/admin/pet-cor/}" class="btn btn-outline-primary btn-sm px-3">Cancelar</a>

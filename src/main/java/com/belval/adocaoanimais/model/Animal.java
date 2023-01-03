@@ -9,18 +9,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.belval.enums.Especie;
-import com.belval.enums.Porte;
+import com.belval.adocaoanimais.enums.Especie;
+import com.belval.adocaoanimais.enums.Porte;
 
 @Entity
 public class Animal {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private int userId;
     private String nome;
-    private int raca;
-    private int cor;
+    private Long raca;
+    private Long cor;
     @Enumerated(EnumType.STRING)
     private Porte porte;
     @Enumerated(EnumType.STRING)
@@ -29,14 +29,17 @@ public class Animal {
     private int vacina;
 
     private Date nascimento;
+    private boolean disponivel;
+    private String resumo;
+    private String observacao;
+    
 
     public Animal() {
 
     }
 
-    public Animal(int id, int userId, String nome, int raca, int cor, Porte porte, Especie especie, int sexo,
-            int vacina,
-            Date nascimento) {
+    public Animal(Long id, int userId, String nome, Long raca, Long cor, Porte porte, Especie especie, int sexo,
+            int vacina, Date nascimento, boolean disponivel, String resumo, String observacao) {
         this.id = id;
         this.userId = userId;
         this.nome = nome;
@@ -47,13 +50,18 @@ public class Animal {
         this.sexo = sexo;
         this.vacina = vacina;
         this.nascimento = nascimento;
+        this.disponivel = disponivel;
+        this.resumo = resumo;
+        this.observacao = observacao;
     }
 
-    public int getId() {
+     
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -73,19 +81,19 @@ public class Animal {
         this.nome = nome;
     }
 
-    public int getRaca() {
+    public Long getRaca() {
         return raca;
     }
 
-    public void setRaca(int raca) {
+    public void setRaca(Long raca) {
         this.raca = raca;
     }
 
-    public int getCor() {
+    public Long getCor() {
         return cor;
     }
 
-    public void setCor(int cor) {
+    public void setCor(Long cor) {
         this.cor = cor;
     }
 
@@ -127,6 +135,30 @@ public class Animal {
 
     public void setNascimento(Date nascimento) {
         this.nascimento = nascimento;
+    }
+
+    public boolean isDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
+    }
+
+    public String getResumo() {
+        return resumo;
+    }
+
+    public void setResumo(String resumo) {
+        this.resumo = resumo;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 
 }

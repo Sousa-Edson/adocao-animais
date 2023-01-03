@@ -1,0 +1,39 @@
+<head th:replace="~{fragmentos :: head('Nova postagem')}"></head>
+<nav th:replace="~{fragmentos :: navbar}"></nav>
+<main class="container mt-1  bg-light ">
+
+<div class="row">
+			<div th:replace="~{admin/fragmentos :: sidebar('postagem')}"></div>
+			<div class="col-lg-8  col-md-8 col-sm-12">
+				<section th:replace="~{admin/postagem/fragmentos :: form(requisicaoFormPostagem,'/pet/admin/postagem','Cadastrar nova postagem')}">  formulario</section>
+				 
+                
+			</div>
+		</div>
+
+</main>
+<section th:replace="~{fragmentos :: section-script}"></section>
+<script>
+
+	let photo = document.getElementById('imagemExibir');
+	let file = document.getElementById('caminhoImagem');
+
+	photo.addEventListener('click', () => {
+		file.click();
+	});
+
+	file.addEventListener('change', () => {
+
+		if (file.files.length <= 0) {
+			return;
+		}
+
+		let reader = new FileReader();
+
+		reader.onload = () => {
+			photo.src = reader.result;
+		}
+
+		reader.readAsDataURL(file.files[0]);
+	});
+</script>

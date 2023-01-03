@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head th:replace="~{fragmentos :: head('Home')}"></head>
+
+<body class="hold-transition layout-top-nav layout-navbar-fixed"
+	style="background-image: './imagens/MicrosoftTeams-image.png';">
+
+	<nav th:replace="~{fragmentos :: navbar}"></nav>
+
+	<div style="margin-top: 10px;"></div>
+	<main>
+		<div class="">
+
+
+
+			<div class="container">
+				<div class="row alert alert-warning alert-dismissible fade show" role="alert">
+					<div class="col-2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor"
+							class="bi bi-list-check" viewBox="0 0 20 20">
+							<path
+								d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+						</svg>
+					</div>
+					<div class="col-8">
+
+						<h4 class="alert-heading">Lembre-se!</h4>
+						<p>Não é possível adotar pets que se encontram em
+							outra
+							cidade que não
+							seja a sua.</p>
+						<hr>
+						<p class="mb-0">Portanto procure na sua cidade ou regiões próximas.</p>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<div class="col-sm-12">
+					<h1 class="m-0" id="quem-somos">
+						Formulário <small> de Interesse em Adoção </small>
+					</h1>
+				</div>
+				<div class="card  card-default ">
+					<div class="card-header">
+						<label> Bem-vindo(a) ao nosso Formulário de Interesse. </label>
+					</div>
+
+					<div class="card-header">
+						<p>
+							Ficamos muito felizes por você ter dado o primeiro passo para adotar um animal.
+						</p>
+						<p>
+							Aqui você irá responder algumas perguntas iniciais para que a ONG/protetor parceiro
+							possa te conhecer
+							melhor e dar agilidade ao processo de adoção.
+						</p>
+						<p>
+							Precisaremos de alguns dados pessoais para que possam entrar em contato com você, além
+							de saber um
+							pouco sobre a sua casa, sua família, estrutura, entre outras informações.
+						</p>
+					</div>
+					<!-- <hr class="featurette-divider" /> -->
+					<div class="row featurette align-items-center" style="margin: 20px">
+						<div class="col-md-12 order-md-1">
+							<div class="row">
+
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="" id="term-aceito"
+										name="term-aceito" style="height:30px;width:30px;margin-right: 15px;">
+									<span>
+										Declaro que sou maior de 18 anos, li e estou ciente das informações
+										passadas e de
+										acordo em compartilhar meus dados para fins de contato por uma ONG/protetor
+										parceiro do sistema
+										Adote facil. Entendo que o formulário capta o interesse em ser contactado
+										pela ONG/protetor
+										parceiro para entrevista e não garante reserva do pet caso seja identificado
+										como disponível no
+										sistema.</span>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<form action="/pet/private/intencao-adotar/" method="post" name="formulario">
+					<div class="col-sm-12">
+						<h1 class="m-0" id="quem-somos">
+							Responda <small> o questionário </small>
+						</h1>
+					</div>
+					<div class="card  card-default ">
+						<div class="card-header">
+							<div class="row">
+								<div class="col col-sm-8">Sua residência é própria ou alugada?</div>
+								<div class="col col-sm2">
+									<div class="form-group  ">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="propriedade" id="rb_respa1" value="propria">
+											<label class="form-check-label" for="rb_respa1">
+												Própria
+											</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="propriedade" id="rb_respa2" value="alugada">
+											<label class="form-check-label" for="rb_respa2">
+												Alugada
+											</label>
+										</div>
+										<div class="form-check form-check-inline" style="display: none;">
+											<input class="form-check-input" type="radio" name="propriedade" id="rb_respa3"
+												checked>
+											<label class="form-check-label" for="rb_respa3">
+												Indefinido
+											</label>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="card-header">
+							<div class="row">
+								<div class="col col-sm-8">Mora em apartamento ou casa?</div>
+								<div class="col col-sm2">
+									<div class="form-group  ">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="casa" id="rb_mac1" value="apartamentp">
+											<label class="form-check-label" for="rb_mac1">
+												Apartamento
+											</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="casa" id="rb_mac2" value="casa">
+											<label class="form-check-label" for="rb_mac2">
+												Casa
+											</label>
+										</div>
+										<div class="form-check form-check-inline" style="display: none;">
+											<input class="form-check-input" type="radio" name="casa" id="rb_mac3"
+												checked>
+											<label class="form-check-label" for="rb_mac3">
+												Indefinido
+											</label>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="card-header">
+							<div class="row">
+								<div class="col col-sm-6">Tem crianças em casa?</div>
+								<div class="col col-sm2">
+									<div class="form-group  ">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="crianca" id="rb_tc1" value="apenas um">
+											<label class="form-check-label" for="rb_tc1">
+												Sim, apenas 1 criança
+											</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="crianca" id="rb_tc2" value="maid de dois">
+											<label class="form-check-label" for="rb_tc2">
+												Sim, 2 crianças ou mais
+											</label>
+										</div>
+
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="crianca" id="rb_tc3" value="nao tem">
+											<label class="form-check-label" for="rb_tc3">
+												Não tenho crianças
+											</label>
+										</div>
+										<div class="form-check form-check-inline" style="display: none;">
+											<input class="form-check-input" type="radio" name="rb_tc" id="rb_tc4"
+												checked>
+											<label class="form-check-label" for="rb_tc4">
+												Indefinido
+											</label>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="card-header">
+							<div class="row">
+								<div class="col col-sm-8">Todos os residentes de sua casa estão de acordo?</div>
+								<div class="col col-sm2">
+									<div class="form-group  ">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="acordo" id="rb_tr1" value="sim">
+											<label class="form-check-label" for="rb_tr1">
+												Sim, todos estão
+											</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="acordo" id="rb_tr2" value="nao">
+											<label class="form-check-label" for="rb_tr">
+												Não
+											</label>
+										</div>
+										<div class="form-check form-check-inline" style="display: none;">
+											<input class="form-check-input" type="radio" name="acordo" id="rb_tr3"
+												checked>
+											<label class="form-check-label" for="rb_tr3">
+												Indefinido
+											</label>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="card-header">
+							<div class="row">
+								<div class="col col-sm-8">Se caso você precisar se ausentar existe alguem que possa
+									cuidar do animal?</div>
+								<div class="col col-sm2">
+									<div class="form-group  ">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="ausentar" id="rb_pa1" value="sim">
+											<label class="form-check-label" for="rb_pa1">
+												Sim
+											</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="ausentar" id="rb_pa2" value="nao">
+											<label class="form-check-label" for="rb_pa2">
+												Não
+											</label>
+										</div>
+										<div class="form-check form-check-inline" style="display: none;">
+											<input class="form-check-input" type="radio" name="ausentar" id="vrb_pa3"
+												checked>
+											<label class="form-check-label" for="rb_pa3">
+												Indefinido
+											</label>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="card-header">
+							<div class="row">
+								<div class="col col-sm-8">Sua residência possui quintal ou jardim ?</div>
+								<div class="col col-sm2">
+									<div class="form-group  ">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="quintal" id="rb_rq1" value="sim">
+											<label class="form-check-label" for="rb_rq1">
+												Sim
+											</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="quintal" id="rb_rq2" value="nao">
+											<label class="form-check-label" for="rb_rq2">
+												Não
+											</label>
+										</div>
+										<div class="form-check form-check-inline" style="display: none;">
+											<input class="form-check-input" type="radio" name="quintal" id="vrb_rq3"
+												checked>
+											<label class="form-check-label" for="rb_rq3">
+												Indefinido
+											</label>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="card-header">
+							<div class="row">
+								<div class="col col-sm-8">Possui tempo para passeios ?</div>
+								<div class="col col-sm2">
+									<div class="form-group  ">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="passeios" id="rb_pp1" value="sim">
+											<label class="form-check-label" for="rb_pp1">
+												Sim
+											</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="passeios" id="rb_pp2" value="nao">
+											<label class="form-check-label" for="rb_pp2">
+												Não
+											</label>
+										</div>
+										<div class="form-check form-check-inline" style="display: none;">
+											<input class="form-check-input" type="radio" name="passeios" id="rb_pp3"
+												checked>
+											<label class="form-check-label" for="rb_pp3">
+												Indefinido
+											</label>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="card-header">
+							<div class="row">
+								<div class="col col-sm-8">Tem algum outro animal na casa?</div>
+								<div class="col col-sm2">
+									<div class="form-group  ">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="animalCasa" id="rb_ta1" value="sim">
+											<label class="form-check-label" for="rb_ta1">
+												Sim
+											</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="animalCasa" id="rb_ta2" value="nao">
+											<label class="form-check-label" for="rb_ta2">
+												Não
+											</label>
+										</div>
+										<div class="form-check form-check-inline" style="display: none;">
+											<input class="form-check-input" type="radio" name="animalCasa" id="vacina3"
+												checked>
+											<label class="form-check-label" for="rb_ta3">
+												Indefinido
+											</label>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+			</div>
+			<div class="  container">
+				<hr>
+				<div class="row featurette align-items-center" style="margin: 20px">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+						<div class="row">
+
+							<button type="submit" class="btn btn-success  ">
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+									class="bi bi-list-check" viewBox="0 0 20 20">
+									<path
+										d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+								</svg>
+								Enviar requisição</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			</form>
+		</div>
+	</main>
+
+	<section th:replace="~{fragmentos :: section-script}"></section>
+</body>
+
+</html>

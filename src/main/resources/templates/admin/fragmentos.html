@@ -50,7 +50,7 @@
                     <svg class="bi pe-none me-2" width="16" height="16">
                         <use xlink:href="#grid"></use>
                     </svg>
-                    Requisição de adoções
+                    Solicitações de adoção
                 </a>
             </li>
 
@@ -76,11 +76,11 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link link-dark custon-hover">
+                <a href="/pet/admin/postagem" class="nav-link  custon-hover" th:classappend="${barra.equals('postagem') ? 'active' : 'link-dark '}">
                     <svg class="bi pe-none me-2" width="16" height="16">
                         <use xlink:href="#table"></use>
                     </svg>
-                    Eventos
+                    Postagem
                 </a>
             </li>
 
@@ -97,7 +97,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link link-dark custon-hover">
+                <a href="/pet/private/animal/" class="nav-link  custon-hover" th:classappend="${barra.equals('anuncio') ? 'active' : 'link-dark '}"> 
                     <svg class="bi pe-none me-2" width="16" height="16">
                         <use xlink:href="#speedometer2"></use>
                     </svg>
@@ -105,11 +105,11 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link link-dark custon-hover">
+                <a href="/pet/private/intencao-adotar/" class="nav-link custon-hover" th:classappend="${barra.equals('intencao') ? 'active' : 'link-dark '}">
                     <svg class="bi pe-none me-2" width="16" height="16">
                         <use xlink:href="#table"></use>
                     </svg>
-                    Minhas requisições
+                    Minhas solicitações
                 </a>
             </li>
 
