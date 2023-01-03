@@ -12,7 +12,7 @@ import javax.persistence.Id;
 @Entity
 public class Postagem {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String titulo;
 	@Column(name = "conteudo", length = 512) // AQUI EU DEFINO O NOME DA COLUNA ,SE PODE NULA E O TAMANHO
@@ -23,7 +23,7 @@ public class Postagem {
 	private boolean ativo;
 
 	public Postagem() {
-		super();
+		 
 	}
 
 	public String getCaminhoImagem() {

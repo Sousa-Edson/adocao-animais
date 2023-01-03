@@ -12,7 +12,7 @@ import com.belval.enums.Especie;
 @Entity
 public class PetRaca {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String raca;
     private boolean ativo;
@@ -21,6 +21,9 @@ public class PetRaca {
     private Especie especie;
 
      
+
+    public PetRaca() {
+    }
 
     public Long getId() {
         return id;

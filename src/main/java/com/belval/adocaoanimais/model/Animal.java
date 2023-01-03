@@ -15,7 +15,7 @@ import com.belval.enums.Porte;
 @Entity
 public class Animal {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int userId;
     private String nome;
