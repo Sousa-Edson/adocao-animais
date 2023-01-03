@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.belval.adocaoanimais.dto.RequisicaoFormAnimal;
+import com.belval.adocaoanimais.enums.Especie;
+import com.belval.adocaoanimais.enums.Porte;
 import com.belval.adocaoanimais.model.Animal;
 import com.belval.adocaoanimais.model.PetCor;
 import com.belval.adocaoanimais.model.PetRaca;
 import com.belval.adocaoanimais.repository.AnimalRepository;
 import com.belval.adocaoanimais.repository.CorRepository;
 import com.belval.adocaoanimais.repository.RacaRepository;
-import com.belval.enums.Especie;
-import com.belval.enums.Porte;
 
 @Controller
 @RequestMapping(value = "/pet/private/animal")

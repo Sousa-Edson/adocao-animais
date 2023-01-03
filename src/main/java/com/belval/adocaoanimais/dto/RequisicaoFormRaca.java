@@ -3,8 +3,8 @@ package com.belval.adocaoanimais.dto;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.belval.adocaoanimais.enums.Especie;
 import com.belval.adocaoanimais.model.PetRaca;
-import com.belval.enums.Especie;
 
 public class RequisicaoFormRaca {
     @NotBlank

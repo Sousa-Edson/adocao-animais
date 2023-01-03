@@ -5,9 +5,9 @@ import java.sql.Date;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.belval.adocaoanimais.enums.Especie;
+import com.belval.adocaoanimais.enums.Porte;
 import com.belval.adocaoanimais.model.Animal;
-import com.belval.enums.Especie;
-import com.belval.enums.Porte;
 
 public class RequisicaoFormAnimal {
     @NotBlank

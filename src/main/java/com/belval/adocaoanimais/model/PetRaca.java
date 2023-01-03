@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.belval.enums.Especie;
+import com.belval.adocaoanimais.enums.Especie;
 
 @Entity
 public class PetRaca {

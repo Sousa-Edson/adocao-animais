@@ -9,8 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.belval.enums.Especie;
-import com.belval.enums.Porte;
+import com.belval.adocaoanimais.enums.Especie;
+import com.belval.adocaoanimais.enums.Porte;
 
 @Entity
 public class Animal {

@@ -1,4 +1,4 @@
-package com.belval.enums;
+package com.belval.adocaoanimais.enums;
 
 public enum Especie {
     CACHORRO("Cachorro"),
