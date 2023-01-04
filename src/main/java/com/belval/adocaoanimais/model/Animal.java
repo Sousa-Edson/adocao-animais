@@ -1,13 +1,16 @@
 package com.belval.adocaoanimais.model;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.belval.adocaoanimais.enums.Especie;
 import com.belval.adocaoanimais.enums.Porte;
@@ -32,7 +35,9 @@ public class Animal {
     private boolean disponivel;
     private String resumo;
     private String observacao;
-    
+
+    @OneToMany(mappedBy = "animal", fetch = FetchType.LAZY) // , fetch = FetchType.EAGER
+    private List <Adotar> adotar;
 
     public Animal() {
 
@@ -54,8 +59,6 @@ public class Animal {
         this.resumo = resumo;
         this.observacao = observacao;
     }
-
-     
 
     public Long getId() {
         return id;
