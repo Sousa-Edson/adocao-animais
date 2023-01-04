@@ -56,14 +56,18 @@ public class AdotarController {
 	@GetMapping("/{id}")
 	public ModelAndView show(@PathVariable Long id) {
 		System.out.println("**** ID: " + id);
-		Optional<Animal> optional = this.animalRepository.findById(id);
+		Optional<Adotar> optional= this.adotarRepository.findById(id);
+		System.out.println("*************************\n\n\n\n"+optional.get().getId());
+		// Optional<Animal> optional = this.animalRepository.findById(optionalAdotar.get().getAnimal().getId());
+		// System.out.println("*************************\n\n\n"+optional.get());
 		if (optional.isPresent()) {
-			Animal animal = optional.get();
+			Animal animal = optional.get().getAnimal();
 			ModelAndView mv = new ModelAndView("private/intencao/show");
-			Optional<PetRaca> racas = racaRepository.findById(optional.get().getRaca());
-			mv.addObject("listaRaca", racas.get());
-			Optional<PetCor> cores = corRepository.findById(optional.get().getCor());
+			// Optional<PetRaca> racas = racaRepository.findById(optional.get().getRaca());
+			// mv.addObject("listaRaca", racas.get());
+			Optional<PetCor> cores = corRepository.findById((long) 1); // ## aqui eu mudo quando fizer a lgação de cor com animal
 			mv.addObject("listaCor", cores.get());
+			mv.addObject(optional.get());
 			mv.addObject(animal);
 			return mv;
 		} else {

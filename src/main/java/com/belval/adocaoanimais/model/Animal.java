@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.belval.adocaoanimais.enums.Especie;
@@ -22,7 +24,7 @@ public class Animal {
     private Long id;
     private int userId;
     private String nome;
-    private Long raca;
+
     private Long cor;
     @Enumerated(EnumType.STRING)
     private Porte porte;
@@ -37,18 +39,22 @@ public class Animal {
     private String observacao;
 
     @OneToMany(mappedBy = "animal", fetch = FetchType.LAZY) // , fetch = FetchType.EAGER
-    private List <Adotar> adotar;
+    private List<Adotar> adotar;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "raca_id", nullable = true)
+    private PetRaca petRaca;
 
     public Animal() {
 
     }
 
-    public Animal(Long id, int userId, String nome, Long raca, Long cor, Porte porte, Especie especie, int sexo,
+    public Animal(Long id, int userId, String nome, Long cor, Porte porte, Especie especie, int sexo,
             int vacina, Date nascimento, boolean disponivel, String resumo, String observacao) {
         this.id = id;
         this.userId = userId;
         this.nome = nome;
-        this.raca = raca;
+
         this.cor = cor;
         this.porte = porte;
         this.especie = especie;
@@ -82,14 +88,6 @@ public class Animal {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Long getRaca() {
-        return raca;
-    }
-
-    public void setRaca(Long raca) {
-        this.raca = raca;
     }
 
     public Long getCor() {
@@ -162,6 +160,22 @@ public class Animal {
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+
+    public List<Adotar> getAdotar() {
+        return adotar;
+    }
+
+    public void setAdotar(List<Adotar> adotar) {
+        this.adotar = adotar;
+    }
+
+    public PetRaca getPetRaca() {
+        return petRaca;
+    }
+
+    public void setPetRaca(PetRaca petRaca) {
+        this.petRaca = petRaca;
     }
 
 }

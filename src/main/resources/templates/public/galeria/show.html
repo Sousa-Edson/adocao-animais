@@ -36,7 +36,7 @@
                             <h1 class="fs-4">Dados do animal  </h1>
                             <b>Nome:</b> <span class="form-label" th:text="${animal.nome}"></span><br />
                             <b>Especie:</b> <span class="form-label" th:text="${animal.especie.descricao}"></span><br />
-                            <b>Raça:</b> <span class="form-label" th:text="${listaRaca.raca}"></span><br />
+                            <b>Raça:</b> <span class="form-label" th:text="${animal.getPetRaca.getRaca}"></span><br />
                             <b>Porte:</b> <span class="form-label" th:text="${animal.porte.descricao}"></span><br />
                             <b>Cor de pelagem:</b> <span class="form-label" th:text="${listaCor.cor}"></span><br />
 

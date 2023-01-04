@@ -82,7 +82,7 @@
                     <div class="form-group col-md-6">
                         <label for="raça">Raça</label>
                         <div class="form-group">
-                            <select class="form-select" th:field="*{raca}" aria-label="Floating label select example">
+                            <select class="form-select" th:field="*{petRaca}" aria-label="Floating label select example">
                                 <option th:each="traca : ${listaRaca}" th:value="${traca.id}"
                                     th:errorclass=" is-invalid" th:text="${traca.raca}"></option>
                             </select>

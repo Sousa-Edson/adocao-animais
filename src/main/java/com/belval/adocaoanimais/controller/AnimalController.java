@@ -198,8 +198,8 @@ public class AnimalController {
 		if (optional.isPresent()) {
 			Animal animal = optional.get();
 			ModelAndView mv = new ModelAndView("private/animal/show");
-			Optional<PetRaca> racas = racaRepository.findById(optional.get().getRaca());
-			mv.addObject("listaRaca", racas.get());
+			// Optional<PetRaca> racas = racaRepository.findById(optional.get().getRaca());
+			// mv.addObject("listaRaca", racas.get());
 			Optional<PetCor> cores = corRepository.findById(optional.get().getCor());
 			mv.addObject("listaCor", cores.get());
 			mv.addObject(animal);

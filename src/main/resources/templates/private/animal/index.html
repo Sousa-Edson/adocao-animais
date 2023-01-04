@@ -48,8 +48,10 @@
 								<tr>
 									<th style="width: 10px"></th>
 									<th style="width: 10px">#</th>
-									<th>Animais</th>
-									<th style="width: 40px">Opções</th>
+									<th>Nome animal</th>
+									<th style="min-width: 10px">Especie</th>
+									<th style="min-width: 10px">Raça </th>
+									<th style=" width: 10px">Opções</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -103,6 +105,11 @@
 									</td>
 									<td><span th:text="${animal.id}"></span>.</td>
 									<td><span th:text="${animal.nome}"></span></td>
+									<td>
+										<span th:text="${animal.getEspecie.descricao}"></span>
+									</td>
+									<td><span th:text="${animal.getPetRaca.getRaca}"></span></td>
+
 									<td>
 										<div class="btn-group">
 											<a th:href="@{/pet/private/animal/{id} (id=${animal.id})}"

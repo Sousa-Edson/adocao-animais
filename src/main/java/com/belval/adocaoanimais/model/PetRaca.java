@@ -1,11 +1,15 @@
 package com.belval.adocaoanimais.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.belval.adocaoanimais.enums.Especie;
 
@@ -20,6 +24,8 @@ public class PetRaca {
     @Enumerated(EnumType.STRING)
     private Especie especie;
 
+    @OneToMany(mappedBy = "petRaca", fetch = FetchType.LAZY) // , fetch = FetchType.EAGER
+    private List<Animal> disciplinas;
      
 
     public PetRaca() {
