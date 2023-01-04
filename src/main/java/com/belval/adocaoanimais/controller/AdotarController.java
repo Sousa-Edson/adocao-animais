@@ -38,16 +38,17 @@ public class AdotarController {
 
 	@GetMapping("")
 	public ModelAndView index() {
-		List<Animal> animais = this.animalRepository.findAll();
+		List<Adotar> animais = this.adotarRepository.findAll();
 		ModelAndView mv = new ModelAndView("private/intencao/index");
 		mv.addObject("animais", animais);
 		return mv;
 	}
 
-	@GetMapping("/new")
-	public ModelAndView nnew(RequisicaoFormAdotar requisicao) {
+	@GetMapping("/new/{id}")
+	public ModelAndView nnew(@PathVariable Long id,RequisicaoFormAdotar requisicao) {
 		List<Animal> animais = this.animalRepository.findAll();
 		ModelAndView mv = new ModelAndView("private/intencao/new");
+		mv.addObject("petId", id);
 		mv.addObject("animais", animais);
 		return mv;
 	}
@@ -71,10 +72,10 @@ public class AdotarController {
 		}
 	}
 
-	@PostMapping("")
-	public ModelAndView create(@Valid RequisicaoFormAdotar requisicao, BindingResult bindingResult) {
+	@PostMapping("/{id}")
+	public ModelAndView create(@PathVariable Long id,@Valid RequisicaoFormAdotar requisicao, BindingResult bindingResult) {
 		System.out.println("Salvando");
-		bindingResult.addError(null);
+		//bindingResult.addError(null);
 		if (bindingResult.hasErrors()) {
 			System.out.println("\n************************TEM ERROS**********************\n");
 			System.out.println("ERRO \n\n" + bindingResult + "\n\n");
@@ -84,7 +85,9 @@ public class AdotarController {
 			Adotar adotar = requisicao.toAdotar();
 			adotar.setAtivo(true);
 			adotar.setUserId((long) 1);
-			adotar.setAnimalId((long) 2);
+			// adotar.setAnimalId((long) 2);  
+			Optional<Animal> optionalAnimal = animalRepository.findById(id);
+			adotar.setAnimal(optionalAnimal.get());
 			this.adotarRepository.save(adotar);
 			System.out.println("salvo");
 			return new ModelAndView("redirect:/pet/private/intencao-adotar");
