@@ -21,6 +21,7 @@ public class Adotar {
     private String quintal;
     private String passeios;
     private String animalCasa;
+    private boolean declaro;
 
     public Adotar() {
     }
@@ -119,6 +120,14 @@ public class Adotar {
 
     public void setAnimalCasa(String animalCasa) {
         this.animalCasa = animalCasa;
+    }
+
+    public boolean isDeclaro() {
+        return declaro;
+    }
+
+    public void setDeclaro(boolean declaro) {
+        this.declaro = declaro;
     }
 
 }
