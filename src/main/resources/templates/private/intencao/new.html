@@ -39,7 +39,7 @@
 
 			<div class="container">
 				
-				<section th:replace="~{private/intencao/fragmentos :: form(requisicaoFormAdotar,'/pet/private/intencao-adotar','Cadastrar nova coisa')}">  formulario</section>
+				<section th:replace="~{private/intencao/fragmentos :: form(requisicaoFormAdotar,'/pet/private/intencao-adotar/'+${petId},'Cadastrar nova coisa')}">  formulario</section>
 				
 			</div>
 	</main>
