@@ -3,8 +3,16 @@
   background-color: #ffc107;
    	border-radius: 5px;
 }
-main{
+body{
     /* min-height: 80vh; */
+    /* background-image: url('./imagens/MicrosoftTeams-image.jpeg');
+    background-color: #cccccc;  
+  height: 100vh;  
+  background-position: center;  
+  background-repeat: no-repeat;  
+  background-size: cover;  */
+  /* background-color: #cccccc; */
+  /* background-image: linear-gradient(red, yellow,green); */
 }
 
 .login-page{
