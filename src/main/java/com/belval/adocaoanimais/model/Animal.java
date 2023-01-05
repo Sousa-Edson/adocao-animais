@@ -24,8 +24,7 @@ public class Animal {
     private Long id;
     private int userId;
     private String nome;
-
-    private Long cor;
+ 
     @Enumerated(EnumType.STRING)
     private Porte porte;
     @Enumerated(EnumType.STRING)
@@ -45,17 +44,20 @@ public class Animal {
     @JoinColumn(name = "raca_id", nullable = true)
     private PetRaca petRaca;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cor_id", nullable = true)
+    private PetCor petCor;
+
     public Animal() {
 
     }
 
-    public Animal(Long id, int userId, String nome, Long cor, Porte porte, Especie especie, int sexo,
+    public Animal(Long id, int userId, String nome,  Porte porte, Especie especie, int sexo,
             int vacina, Date nascimento, boolean disponivel, String resumo, String observacao) {
         this.id = id;
         this.userId = userId;
         this.nome = nome;
-
-        this.cor = cor;
+ 
         this.porte = porte;
         this.especie = especie;
         this.sexo = sexo;
@@ -90,13 +92,7 @@ public class Animal {
         this.nome = nome;
     }
 
-    public Long getCor() {
-        return cor;
-    }
-
-    public void setCor(Long cor) {
-        this.cor = cor;
-    }
+   
 
     public Porte getPorte() {
         return porte;
@@ -177,5 +173,14 @@ public class Animal {
     public void setPetRaca(PetRaca petRaca) {
         this.petRaca = petRaca;
     }
+
+    public PetCor getPetCor() {
+        return petCor;
+    }
+
+    public void setPetCor(PetCor petCor) {
+        this.petCor = petCor;
+    }
+    
 
 }

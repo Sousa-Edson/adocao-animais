@@ -12,11 +12,11 @@ public class Usuario {
 	private Integer id;
 	private String nome;
 	private String sobreNome;
-	private String endereco;
 	private String email;
 	private String senha;
 	private boolean ativo;
-
+	
+	private String endereco;
 	private String cep;
 
 	private String bairro;

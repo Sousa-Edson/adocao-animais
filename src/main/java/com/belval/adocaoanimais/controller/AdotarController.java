@@ -63,10 +63,6 @@ public class AdotarController {
 		if (optional.isPresent()) {
 			Animal animal = optional.get().getAnimal();
 			ModelAndView mv = new ModelAndView("private/intencao/show");
-			// Optional<PetRaca> racas = racaRepository.findById(optional.get().getRaca());
-			// mv.addObject("listaRaca", racas.get());
-			Optional<PetCor> cores = corRepository.findById((long) 1); // ## aqui eu mudo quando fizer a lgação de cor com animal
-			mv.addObject("listaCor", cores.get());
 			mv.addObject(optional.get());
 			mv.addObject(animal);
 			return mv;

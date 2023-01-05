@@ -25,7 +25,7 @@ public class PetRaca {
     private Especie especie;
 
     @OneToMany(mappedBy = "petRaca", fetch = FetchType.LAZY) // , fetch = FetchType.EAGER
-    private List<Animal> disciplinas;
+    private List<Animal> animais;
      
 
     public PetRaca() {

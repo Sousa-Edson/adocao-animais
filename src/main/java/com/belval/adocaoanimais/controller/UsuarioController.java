@@ -28,6 +28,14 @@ public class UsuarioController {
 	public static String caminhoImagens = "/home/edson/Projetos/adocao-animais/img-data/img-user/";
 //	public static String caminhoImagens = "/home/edson/Dev/workspace/adocao-animais/src/main/resources/imagens/img-usuario/";
 
+@GetMapping("/pet/usuario/new")
+public String nnew(){
+
+
+	return "newUsuario";
+
+} 
+
 	@PostMapping("/pet/usuario/usuario-novo")
 	public ModelAndView registro(Usuario usuario) {
 		ModelAndView mv = new ModelAndView("redirect:../login/novo");
@@ -67,15 +75,16 @@ public class UsuarioController {
 	}
 
 	/* LOGIN */
-	@GetMapping("/pet/login")
-	public String login() {
-		return "login";
-	}
+	// @GetMapping("/pet/login")
+	// public String login() {
+	// 	return "login";
+	// }
 
 	/* LOGIN-CADASTRO */
 	@GetMapping("/pet/login/novo")
 	public ModelAndView cadastro(Usuario usuario, Model model) {
-		ModelAndView mv = new ModelAndView("/pessoa/cadastroUsu");
+		System.out.println("AQUI###########################");
+		ModelAndView mv = new ModelAndView("private/usuario/cadastroUsu");
 		model.addAttribute("u", usuario);
 		return mv;
 	}
@@ -117,7 +126,7 @@ public class UsuarioController {
 			}
 
 			model.addAttribute("u", u);
-			return "/pessoa/perfil-pessoa-editar";
+			return "private/usuario/perfil-pessoa-editar";
 		}
 	}
 	

@@ -197,11 +197,7 @@ public class AnimalController {
 		Optional<Animal> optional = this.animalRepository.findById(id);
 		if (optional.isPresent()) {
 			Animal animal = optional.get();
-			ModelAndView mv = new ModelAndView("private/animal/show");
-			// Optional<PetRaca> racas = racaRepository.findById(optional.get().getRaca());
-			// mv.addObject("listaRaca", racas.get());
-			Optional<PetCor> cores = corRepository.findById(optional.get().getCor());
-			mv.addObject("listaCor", cores.get());
+			ModelAndView mv = new ModelAndView("private/animal/show"); 
 			mv.addObject(animal);
 			return mv;
 		} else {
