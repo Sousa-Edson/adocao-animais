@@ -22,9 +22,9 @@ public class Animal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int userId;
+     
     private String nome;
- 
+
     @Enumerated(EnumType.STRING)
     private Porte porte;
     @Enumerated(EnumType.STRING)
@@ -48,16 +48,20 @@ public class Animal {
     @JoinColumn(name = "cor_id", nullable = true)
     private PetCor petCor;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "usuario_id", nullable = true)
+    private Usuario usuario;
+
     public Animal() {
 
     }
 
-    public Animal(Long id, int userId, String nome,  Porte porte, Especie especie, int sexo,
+    public Animal(Long id,   String nome, Porte porte, Especie especie, int sexo,
             int vacina, Date nascimento, boolean disponivel, String resumo, String observacao) {
         this.id = id;
-        this.userId = userId;
+        
         this.nome = nome;
- 
+
         this.porte = porte;
         this.especie = especie;
         this.sexo = sexo;
@@ -76,13 +80,7 @@ public class Animal {
         this.id = id;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+     
 
     public String getNome() {
         return nome;
@@ -91,8 +89,6 @@ public class Animal {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-   
 
     public Porte getPorte() {
         return porte;
@@ -181,6 +177,15 @@ public class Animal {
     public void setPetCor(PetCor petCor) {
         this.petCor = petCor;
     }
-    
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+   
 
 }

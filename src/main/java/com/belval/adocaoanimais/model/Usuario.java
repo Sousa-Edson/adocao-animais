@@ -3,15 +3,18 @@ package com.belval.adocaoanimais.model;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 import com.belval.adocaoanimais.enums.Permissao;
 
 @Entity
 public class Usuario {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -36,7 +39,10 @@ public class Usuario {
 	private boolean ativo;
 
 	@Enumerated(EnumType.STRING)
-    private Permissao permissao;
+	private Permissao permissao;
+
+	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY) // , fetch = FetchType.EAGER
+	private List<Animal> animais;
 
 	public Usuario() {
 
@@ -186,25 +192,21 @@ public class Usuario {
 		this.ativo = ativo;
 	}
 
- 
-
 	@Override
-    public String toString() {
-        return "Usuario [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", cpf=" + cpf + ", nascimento="
-                + nascimento + ", sexo=" + sexo + ", email=" + email + ", telefone=" + telefone + ", telefone2="
-                + telefone2 + ", senha=" + senha + ", cep=" + cep + ", rua=" + rua + ", numero=" + numero + ", bairro="
-                + bairro + ", cidade=" + cidade + ", estado=" + estado + ", caminhoImagem=" + caminhoImagem + ", ativo="
-                + ativo + ", permissao=" + permissao + "]";
-    }
+	public String toString() {
+		return "Usuario [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", cpf=" + cpf + ", nascimento="
+				+ nascimento + ", sexo=" + sexo + ", email=" + email + ", telefone=" + telefone + ", telefone2="
+				+ telefone2 + ", senha=" + senha + ", cep=" + cep + ", rua=" + rua + ", numero=" + numero + ", bairro="
+				+ bairro + ", cidade=" + cidade + ", estado=" + estado + ", caminhoImagem=" + caminhoImagem + ", ativo="
+				+ ativo + ", permissao=" + permissao + "]";
+	}
 
-    public Permissao getPermissao() {
-        return permissao;
-    }
+	public Permissao getPermissao() {
+		return permissao;
+	}
 
-    public void setPermissao(Permissao permissao) {
-        this.permissao = permissao;
-    }
-
-    
+	public void setPermissao(Permissao permissao) {
+		this.permissao = permissao;
+	}
 
 }

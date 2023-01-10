@@ -23,6 +23,7 @@ import com.belval.adocaoanimais.enums.Porte;
 import com.belval.adocaoanimais.model.Animal;
 import com.belval.adocaoanimais.model.PetCor;
 import com.belval.adocaoanimais.model.PetRaca;
+import com.belval.adocaoanimais.model.Usuario;
 import com.belval.adocaoanimais.repository.AnimalRepository;
 import com.belval.adocaoanimais.repository.CorRepository;
 import com.belval.adocaoanimais.repository.RacaRepository;
@@ -80,7 +81,10 @@ public class AnimalController {
 			return mv;
 		} else {
 			Animal animal = requisicao.toAnimal();
-			// animal.setAtivo(true);
+			Usuario usuario = new Usuario();
+			usuario.setId((long) 1);
+			System.out.println("ID DE USUARIO"+ usuario.getId());
+			animal.setUsuario(usuario);
 			animal.setDisponivel(true);
 			this.animalRepository.save(animal);
 			// return new ModelAndView("redirect:/pet/home" + animal.getId());
