@@ -104,7 +104,17 @@ public class RequisicaoFormUsuario {
         this.permissao = usuario.getPermissao();
     }
 
-    
+    public Usuario toUsuarioCheck() {
+        Usuario usuario = new Usuario();
+        usuario.setAtivo(this.ativo);
+        return usuario;
+    }
+
+    public Usuario toUsuarioCheck(Usuario usuario) {
+        usuario.setAtivo(this.ativo);
+        return usuario;
+    }
+
     @Override
     public String toString() {
         return "RequisicaoFormUsuario [nome=" + nome + ", sobrenome=" + sobrenome + ", cpf=" + cpf + ", nascimento="

@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
-                        <a href=" /pet/dashboard/usuarios" class="btn btn-primary me-md-2 px-5 ">
+                        <a href=" /pet/admin/usuario" class="btn btn-primary me-md-2 px-5 ">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                 class="bi bi-list-check" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -23,7 +23,7 @@
 
                 </div>
                 <div class=" ">
-                    <form  th:object="${requisicaoFormUsuario}" th:action="${'/pet/usuario/permissao/'}+${usuario.id}+${'/update'}"  method="post">
+                    <form  th:object="${requisicaoFormUsuario}" th:action="${'/pet/admin/usuario/permissao/'}+${usuario.id}+${'/update'}"  method="post">
 
 
                         <div class="container mt-3">

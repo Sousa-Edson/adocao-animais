@@ -22,13 +22,6 @@ public class DashboardController {
         return "dashboard";
     }
 
-    @GetMapping("/pet/dashboard/usuarios")
-    public ModelAndView usuarios() {
-        ModelAndView mv = new ModelAndView("admin/dashboard/usuarios");
-        List<Usuario> usuarios = this.usuarioRepository.findAll();
-        mv.addObject("usuario", usuarios);
-        mv.addObject("listaPermissao", Permissao.values());
-        return mv;
-    }
+ 
      
 }
