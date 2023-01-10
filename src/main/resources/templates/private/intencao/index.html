@@ -3,10 +3,10 @@
 <main class="container mt-1  bg-light ">
 
 	<div class="row">
-		<div th:replace="~{admin/fragmentos :: sidebar('intencao')}"></div>
+		<div th:replace="~{admin/fragmentos :: sidebar(${menu.selecao})}"></div>
 		<div class="col-lg-8  col-md-8 col-sm-12">
 			<section>
-				<h1 class="display-5"> Minhas solicitações de adotação </h1>
+				<h1 class="display-5" th:text="${menu.titulo}"> Minhas solicitações de adotação </h1>
 				<div th:if="${exc == true}" class="alert alert-danger alert-dismissible fade show text-center"
 					role="alert">
 					<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"

@@ -14,11 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.belval.adocaoanimais.auxiliar.Menu;
 import com.belval.adocaoanimais.dto.RequisicaoFormAdotar;
 import com.belval.adocaoanimais.model.Adotar;
 import com.belval.adocaoanimais.model.Animal;
-import com.belval.adocaoanimais.model.PetCor;
-import com.belval.adocaoanimais.model.PetRaca;
 import com.belval.adocaoanimais.repository.AdotarRepository;
 import com.belval.adocaoanimais.repository.AnimalRepository;
 import com.belval.adocaoanimais.repository.CorRepository;
@@ -38,9 +37,13 @@ public class AdotarController {
 
 	@GetMapping("")
 	public ModelAndView index() {
+		Menu menu = new Menu();
+		menu.setTitulo("Minhas solicitações de adotação");
+		menu.setSelecao("intencao");
 		List<Adotar> animais = this.adotarRepository.findAll();
 		ModelAndView mv = new ModelAndView("private/intencao/index");
 		mv.addObject("animais", animais);
+		mv.addObject("menu", menu);
 		return mv;
 	}
 

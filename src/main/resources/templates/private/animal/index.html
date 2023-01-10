@@ -4,10 +4,10 @@
 
 	<div class="row">
 		<!-- <div th:replace="~{private/animal/fragmentos :: sidebar('anuncio')}"></div> -->
-		<div th:replace="~{admin/fragmentos :: sidebar('anuncio')}"></div>
+		<div th:replace="~{admin/fragmentos :: sidebar(${menu.selecao})}"></div>
 		<div class="col-lg-8  col-md-8 col-sm-12">
 			<section>
-				<h1 class="display-5"> Meus anúncios</h1>
+				<h1 class="display-5" th:text="${menu.titulo}"> texto</h1>
 				<div th:if="${exc == true}" class="alert alert-danger alert-dismissible fade show text-center"
 					role="alert">
 					<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"

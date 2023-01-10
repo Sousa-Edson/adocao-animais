@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.belval.adocaoanimais.auxiliar.Menu;
 import com.belval.adocaoanimais.dto.RequisicaoFormAnimal;
 import com.belval.adocaoanimais.enums.Especie;
 import com.belval.adocaoanimais.enums.Porte;
@@ -38,9 +39,13 @@ public class AnimalController {
 
 	@GetMapping("")
 	public ModelAndView index() {
+		Menu menu = new Menu();
+		menu.setTitulo("Meus anúncios");
+		menu.setSelecao("anuncio");
 		List<Animal> animais = this.animalRepository.findAll();
 		ModelAndView mv = new ModelAndView("private/animal/index");
 		mv.addObject("animais", animais);
+		mv.addObject("menu", menu);
 		return mv;
 	}
 
