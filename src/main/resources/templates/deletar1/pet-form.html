@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>INovo Pet</title>
+</head>
+
+<body>
+	<h1>Novo Pet</h1>
+
+	<form action="/pet" method="post">
+		
+		<input type="hidden" name="id" th:value="${pet.id}"> <br>
+
+		<span for="nome">Nome:</span>
+		<input type="text" name="nome" th:value="${pet.nome}"> <br>
+
+		<span for="raca">Raça:</span>
+		<input type="text" name="raca" th:value="${pet.raca}"> <br>
+
+		<span for="idade">Idade:</span>
+		<input type="text" name="idade" th:value="${pet.idade}"> <br>
+
+		<input type="submit" value="Enviar">
+	</form>
+</body>
+
+</html>

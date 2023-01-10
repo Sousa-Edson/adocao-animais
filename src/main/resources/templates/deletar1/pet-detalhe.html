@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Detalhe Pet</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<h1>Detalhe Pet</h1>
+		<table border="1">
+	<tr>
+	<th>ID:</th>
+	<td><span th:text="${pet.id}"></span></td>
+	</tr>
+	<tr>
+	<th>Nome:</th>
+	<td><span th:text="${pet.nome}"></span></td>
+	</tr>
+	<tr>
+	<th>Raca:</th>
+	<td><span th:text="${pet.raca}"></span></td>
+	</tr>
+	<tr>
+	<th>Idade:</th>
+	<td><span th:text="${pet.idade}"></span></td>
+	</tr>
+	
+	</table>
+	
+<a th:href="@{/list}"><button>Lista</button></a>
+
+	</body>
+</html>

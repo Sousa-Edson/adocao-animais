@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Lista de Pet</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<h1>Lista de Pets</h1>
+		
+		<table border="1">
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Raça</th>
+				<th>Idade</th>
+				<th>Detalhes</th>
+				<th></th>
+			</tr>
+			<tr th:each="pet : ${pet}">
+				<td>
+					<span th:text="${pet.id}"></span> 
+				</td>
+				<td>
+					<span th:text="${pet.nome}"></span>
+				</td>
+				<td>
+					<span th:text="${pet.raca}"></span>
+				</td>
+				<td>
+					<span th:text="${pet.idade}"></span>
+				</td>
+				<td>
+					<a th:href="@{/pet/{id} (id=${pet.id})}">Detalhes</a>
+				</td>
+				<td>
+				<a th:href="@{/pet/{id}/edit (id=${pet.id}) }">Editar</a>
+				</td>
+			</tr>
+		</table>
+<a href="../pet"><button>Voltar para novo pet</button></a>
+	</body>
+</html>
