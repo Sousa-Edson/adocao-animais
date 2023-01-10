@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head th:replace="~{fragmentos :: head('Usuario')}"></head>
+
+<body>
+    <div style="background-color: rgb(153, 0, 204); ">
+        <div class="container p-1">
+            <a class="h2 text-white text-decoration-none" href="/pet/home"><img th:src="@{/MicrosoftTeams-image.png}"
+                    alt="" width="40" height="34"> Adote fácil</a>
+        </div>
+    </div>
+    <div class="container">
+
+        <main class=" px-5 pb-0 mt-1   bg-light ">
+            <div class="row mx-auto">
+                <div class="col">
+                    <div class=" row align-items-center" style="height: 50vh;">
+
+                        <div class="card-body text-center   ">
+                            <img class="img-fluid rounded-4 "
+                                src="https://blog.cobasi.com.br/wp-content/webpc-passthru.php?src=https://blog.cobasi.com.br/wp-content/uploads/2020/08/cachorros-pequenos-pug.png&nocache=1"
+                                alt="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+
+                    <h1 class="text-center  display-5 p-1 ">Novo usuário</h1>
+                    <div class="card-body text-center ">
+                        <img class="img-fluid border border-1 rounded-circle p-0"
+                            th:src="@{/imagens/MicrosoftTeams-image.png} " alt="" style="height: 10vh;" />
+                    </div>
+
+                    <form class="form-horizontal">
+                        <!-- Text input-->
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label class="col-md-8 control-label" for="Nome">Nome <h11>*</h11></label>
+                                <div class="col-md-12">
+                                    <input id="Nome" name="Nome" placeholder="Digite seu nome"
+                                        class="form-control input-md" required="" type="text">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class=" col-12 form-group">
+                                <label class="col-md-12 control-label" for="prependedtext">Email <h11>*</h11>
+                                </label>
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i
+                                                class="glyphicon glyphicon-envelope"></i></span>
+                                        <input id="prependedtext" name="prependedtext" class="form-control"
+                                            placeholder="email@email.com" required="" type="text"
+                                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 form-group">
+                                <label class="col-md-12 control-label" for="senha">Senha <h11>*</h11></label>
+                                <div class="col-md-12">
+                                    <input id="senha" name="senha" placeholder="***" class="form-control input-md"
+                                        required="" type="password">
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label class="col-md-12 control-label" for="confirma">Confirma senha <h11>*</h11></label>
+                                <div class="col-md-12">
+                                    <input id="confirma" name="confirma" placeholder="***" class="form-control input-md"
+                                        required="" type="password">
+                                </div>
+
+                            </div>
+                            <!-- Button (Double) -->
+                            <div class="form-group">
+                                <label class="col-md-12 control-label" for="Cadastrar"></label>
+                                <div class="col-md-6 col-sm-12">
+                                    <button id="Cadastrar" name="Cadastrar" class="btn btn-primary"
+                                        type="Submit">Cadastrar</button>
+                                    <button id="Cancelar" name="Cancelar" class="btn btn-danger"
+                                        type="Reset">Cancelar</button>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+
+</html>

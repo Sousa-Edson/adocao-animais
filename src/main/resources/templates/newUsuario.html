@@ -19,7 +19,7 @@
                 </p>
             </div>
             <h1 class="text-center  display-5 p-2 ">Novo usuário</h1>
-            <form class="form-horizontal">
+            <form class="" name="formUser" action="/pet/usuario" method="post">
 
                 <div class="panel panel-primary">
 
@@ -28,19 +28,20 @@
 
 
                         <!-- Text input-->
+                        <h5 class="col-md-2  mt-2" for=" ">Dados </h5>
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <label class="col-md-8 control-label" for="Nome">Nome <h11>*</h11></label>
+                                <label class="col-md-8 control-label" for="nome">Nome <h11>*</h11></label>
                                 <div class="col-md-12">
-                                    <input id="Nome" name="Nome" placeholder="" class="form-control input-md"
+                                    <input id="nome" name="nome" placeholder="Nome" class="form-control input-md"
                                         required="" type="text">
                                 </div>
                             </div>
                             <div class="col-md-6 form-group">
-                                <label class="col-md-8 control-label" for="Nome">Nome <h11>*</h11></label>
+                                <label class="col-md-8 control-label" for="sobrenome">Sobrenome <h11>*</h11></label>
                                 <div class="col-md12">
-                                    <input id="Nome" name="Nome" placeholder="" class="form-control input-md"
-                                        required="" type="text">
+                                    <input id="sobrenome" name="sobrenome" placeholder="Sobrenome"
+                                        class="form-control input-md" required="" type="text">
                                 </div>
                             </div>
                         </div>
@@ -49,7 +50,7 @@
                         <!-- Text input-->
                         <div class="row">
                             <div class=" col form-group">
-                                <label class="col-md-12 control-label" for="Nome">CPF <h11>*</h11></label>
+                                <label class="col-md-12 control-label" for="cpf">CPF <h11>*</h11></label>
                                 <div class="col-md-12">
                                     <input id="cpf" name="cpf" placeholder="Apenas números"
                                         class="form-control input-md" required="" type="text" maxlength="11"
@@ -57,9 +58,9 @@
                                 </div>
                             </div>
                             <div class="col form-group">
-                                <label class="col-md-12 control-label" for="Nome">Nascimento<h11>*</h11></label>
+                                <label class="col-md-12 control-label" for="nascimento">Nascimento<h11>*</h11></label>
                                 <div class="col-md-12">
-                                    <input id="dtnasc" name="dtnasc" placeholder="DD/MM/AAAA"
+                                    <input id="nascimento" name="nascimento" placeholder="DD/MM/AAAA"
                                         class="form-control input-md" required="" type="text" maxlength="10"
                                         OnKeyPress="formatar('##/##/####', this)" onBlur="showhide()">
                                 </div>
@@ -85,27 +86,27 @@
 
                         <!-- Prepended text-->
                         <div class="row">
-                            <div class="col-4 form-group">
-                                <label class="col-md-12 control-label" for="prependedtext">Telefone <h11>*</h11>
+                            <div class="col-lg-4 col-md-6 form-group">
+                                <label class="col-md-12 control-label" for="telefone">Telefone <h11>*</h11>
                                 </label>
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i
                                                 class="glyphicon glyphicon-earphone"></i></span>
-                                        <input id="prependedtext" name="prependedtext" class="form-control"
+                                        <input id="telefone" name="telefone" class="form-control"
                                             placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13"
                                             pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
                                             OnKeyPress="formatar('## #####-####', this)">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-4 form-group">
-                                <label class="col-md-12 control-label" for="prependedtext">Telefone</label>
+                            <div class="col-lg-4 col-md-6 form-group">
+                                <label class="col-md-12 control-label" for="telefone2">Telefone</label>
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i
                                                 class="glyphicon glyphicon-earphone"></i></span>
-                                        <input id="prependedtext" name="prependedtext" class="form-control"
+                                        <input id="telefone2" name="telefone2" class="form-control"
                                             placeholder="XX XXXXX-XXXX" type="text" maxlength="13"
                                             pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
                                             OnKeyPress="formatar('## #####-####', this)">
@@ -114,17 +115,17 @@
                             </div>
 
                         </div>
-
+                        <!-- prependedtext -->
 
                         <!-- Prepended text-->
                         <div class="row">
-                            <div class=" col-8 form-group">
-                                <label class="col-md-2 control-label" for="prependedtext">Email <h11>*</h11></label>
+                            <div class=" col-lg-8 form-group">
+                                <label class="col-md-2 control-label" for="email">Email <h11>*</h11></label>
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i
                                                 class="glyphicon glyphicon-envelope"></i></span>
-                                        <input id="prependedtext" name="prependedtext" class="form-control"
+                                        <input id="email" name="email" class="form-control"
                                             placeholder="email@email.com" required="" type="text"
                                             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                                     </div>
@@ -137,14 +138,17 @@
                         <!-- Search input-->
                         <div class="row">
                             <div class="col-md-3  ">
-                                <label class="col-md-12 control-label" for="CEP">CEP <h11>*</h11></label>
+                                <label class="col-md-12 control-label" for="cep">CEP <h11>*</h11></label>
                                 <div class="col-md-12">
                                     <input id="cep" name="cep" placeholder="Apenas números"
                                         class="form-control input-md" required="" value="" type="search" maxlength="8"
                                         pattern="[0-9]+$">
                                 </div>
                             </div>
-                            <div class="col-md-2 mt-4 ">
+                            <div class="col-md-2 ">
+                                <label class="col-md-12 control-label" for=" ">
+                                    <h11></h11>
+                                </label>
                                 <button type="button" class="btn btn-secondary"
                                     onclick="pesquisacep(cep.value)">Pesquisar</button>
                             </div>
@@ -158,8 +162,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <span class="input-group-addon">Rua</span>
-                                        <input id="rua" name="rua" class="form-control" placeholder="" required=""
-                                            disabled readonly type="text">
+                                        <input id="rua" name="rua" class="form-control  bg-secondary bg-opacity-25 " placeholder="" required=""
+                                        readonly =""    type="text">
                                     </div>
 
                                 </div>
@@ -174,9 +178,9 @@
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <span class="input-group-addon">Bairro</span>
-                                        <input id="bairro" name="bairro" class="form-control" placeholder="" required=""
-                                            disabled readonly type="text">
+                                        <span class="input-group-addon ">Bairro</span>
+                                        <input id="bairro" name="bairro" class="form-control bg-secondary bg-opacity-25 " placeholder="" required=""
+                                              readonly ="" type="text">
                                     </div>
 
                                 </div>
@@ -185,8 +189,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <span class="input-group-addon">Cidade</span>
-                                        <input id="cidade" name="cidade" class="form-control" placeholder="" required=""
-                                            disabled readonly type="text">
+                                        <input id="cidade" name="cidade" class="form-control  bg-secondary bg-opacity-25 " placeholder="" required=""
+                                              readonly type="text">
                                     </div>
 
                                 </div>
@@ -194,37 +198,41 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <span class="input-group-addon">Estado</span>
-                                        <input id="estado" name="estado" class="form-control" placeholder="" required=""
-                                            disabled readonly type="text">
+                                        <input id="estado" name="estado" class="form-control  bg-secondary bg-opacity-25 " placeholder="" required=""
+                                              readonly type="text">
                                     </div>
 
                                 </div>
 
                             </div>
                         </div>
-
-
-
                         <!-- Prepended checkbox -->
-
-
-
-
                     </div>
 
+                    <h5 class="col-md-2  mt-2" for=" ">Senha </h5>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label class="col-md-12 control-label" for="senha">Senha <h11>*</h11></label>
+                            <div class="col-md-12">
+                                <input id="senha" name="senha" placeholder="***" class="form-control input-md"
+                                    required="" type="password">
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label class="col-md-12 control-label" for="confirma">Confirma senha <h11>*</h11></label>
+                            <div class="col-md-12">
+                                <input id="confirma" name="confirma" placeholder="***" class="form-control input-md"
+                                    required="" type="password">
+                            </div>
 
-
-
-
-
-
-
+                        </div>
+                    </div>
                     <!-- Button (Double) -->
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="Cadastrar"></label>
                         <div class="col-md-8">
-                            <button id="Cadastrar" name="Cadastrar" class="btn btn-primary"
-                                type="Submit">Cadastrar</button>
+                            <button id="Cadastrar" name="Cadastrar" class="btn btn-primary" type="Submit"
+                                onclick="return validar()">Cadastrar</button>
                             <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
                         </div>
                     </div>
@@ -237,6 +245,33 @@
             </form>
         </main>
     </div>
+    <script type="text/javascript">
+        function validar() {
+
+            var senha = formUser.senha.value;
+            var confirma = formUser.confirma.value;
+
+            if (senha == "" | senha.length <= 5) {
+                alert("Preencha senha com pelo menos 6 caracteres!");
+                formUser.senha.focus();
+                return false;
+            }
+
+            if (confirma == "" | confirma.length <= 5) {
+                alert("Preencha confirma senha com pelo menos 6 caracteres!");
+                formUser.confirma.focus();
+                return false;
+            }
+
+            if (senha != confirma) {
+                alert("Preencha  senhas iguais!");
+                formUser.senha.focus();
+                return false;
+            }
+
+
+        }
+    </script>
     <script>
         function limpa_formulario_cep() {
             //Limpa valores do formulário de cep.
