@@ -36,10 +36,11 @@ public class AnimalController {
 	private RacaRepository racaRepository;
 	@Autowired
 	private CorRepository corRepository;
-
+	
+	Menu menu = new Menu();
 	@GetMapping("")
 	public ModelAndView index() {
-		Menu menu = new Menu();
+	
 		menu.setTitulo("Meus anúncios");
 		menu.setSelecao("anuncio");
 		List<Animal> animais = this.animalRepository.findAll();

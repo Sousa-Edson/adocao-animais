@@ -64,6 +64,20 @@ public class UsuarioController {
 		}
 	}
 
+	@GetMapping("/pet/private/perfil/{id}")
+	public ModelAndView showUsuario(@PathVariable Long id) {
+		Optional<Usuario> optional = this.usuarioRepository.findById(id);
+		if (optional.isPresent()) {
+			Usuario usuario = optional.get();
+			ModelAndView mv = new ModelAndView("private/usuario/show");
+			// mv.addObject("listaPermissao", Permissao.values());
+			mv.addObject(usuario);
+			return mv;
+		} else {
+			return new ModelAndView("home");
+		}
+	}
+
 	/* SEPARAÇÃO DE CADASTRO COMUN PARA A PARTE ADMINISTRATIVA */
 
 	@GetMapping("/pet/admin/usuario")

@@ -35,9 +35,10 @@ public class AdotarController {
 	@Autowired
 	private CorRepository corRepository;
 
+	Menu menu = new Menu();
 	@GetMapping("")
 	public ModelAndView index() {
-		Menu menu = new Menu();
+		
 		menu.setTitulo("Minhas solicitações de adotação");
 		menu.setSelecao("intencao");
 		List<Adotar> animais = this.adotarRepository.findAll();

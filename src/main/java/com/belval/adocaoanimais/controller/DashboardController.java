@@ -24,6 +24,8 @@ public class DashboardController {
     @Autowired
     private AdotarRepository adotarRepository;
 
+    Menu menu = new Menu();
+
     @GetMapping("/pet/dashboard")
     public String novo() {
         return "dashboard";
@@ -32,7 +34,6 @@ public class DashboardController {
     /* ANIMAL */
     @GetMapping("/pet/admin/animal")
     public ModelAndView indexAnimalAll() {
-        Menu menu = new Menu();
         menu.setTitulo("Todos os anúncios de animais");
         menu.setSelecao("anuncioAll");
         List<Animal> animais = this.animalRepository.findAll();
@@ -42,9 +43,9 @@ public class DashboardController {
         return mv;
     }
 
+    /* INTENÇÃO DE ADOTAR */
     @GetMapping("/pet/admin/intencao-adotar")
     public ModelAndView index() {
-        Menu menu = new Menu();
         menu.setTitulo("Todas as solicitações de adotação");
         menu.setSelecao("intencaoAll");
         List<Adotar> animais = this.adotarRepository.findAll();
