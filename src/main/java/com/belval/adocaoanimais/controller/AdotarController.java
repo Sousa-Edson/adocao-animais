@@ -3,18 +3,21 @@ package com.belval.adocaoanimais.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.belval.adocaoanimais.auxiliar.Menu;
+import com.belval.adocaoanimais.dto.RequisicaoFormAdotar;
 import com.belval.adocaoanimais.model.Adotar;
 import com.belval.adocaoanimais.model.Animal;
-import com.belval.adocaoanimais.model.PetCor;
-import com.belval.adocaoanimais.model.PetRaca;
 import com.belval.adocaoanimais.repository.AdotarRepository;
 import com.belval.adocaoanimais.repository.AnimalRepository;
 import com.belval.adocaoanimais.repository.CorRepository;
@@ -32,18 +35,24 @@ public class AdotarController {
 	@Autowired
 	private CorRepository corRepository;
 
+	Menu menu = new Menu();
 	@GetMapping("")
 	public ModelAndView index() {
-		List<Animal> animais = this.animalRepository.findAll();
+		
+		menu.setTitulo("Minhas solicitações de adotação");
+		menu.setSelecao("intencao");
+		List<Adotar> animais = this.adotarRepository.findAll();
 		ModelAndView mv = new ModelAndView("private/intencao/index");
 		mv.addObject("animais", animais);
+		mv.addObject("menu", menu);
 		return mv;
 	}
 
-	@GetMapping("/new")
-	public ModelAndView nnew() {
+	@GetMapping("/new/{id}")
+	public ModelAndView nnew(@PathVariable Long id,RequisicaoFormAdotar requisicao) {
 		List<Animal> animais = this.animalRepository.findAll();
 		ModelAndView mv = new ModelAndView("private/intencao/new");
+		mv.addObject("petId", id);
 		mv.addObject("animais", animais);
 		return mv;
 	}
@@ -51,14 +60,14 @@ public class AdotarController {
 	@GetMapping("/{id}")
 	public ModelAndView show(@PathVariable Long id) {
 		System.out.println("**** ID: " + id);
-		Optional<Animal> optional = this.animalRepository.findById(id);
+		Optional<Adotar> optional= this.adotarRepository.findById(id);
+		System.out.println("*************************\n\n\n\n"+optional.get().getId());
+		// Optional<Animal> optional = this.animalRepository.findById(optionalAdotar.get().getAnimal().getId());
+		// System.out.println("*************************\n\n\n"+optional.get());
 		if (optional.isPresent()) {
-			Animal animal = optional.get();
+			Animal animal = optional.get().getAnimal();
 			ModelAndView mv = new ModelAndView("private/intencao/show");
-			Optional<PetRaca> racas = racaRepository.findById(optional.get().getRaca());
-			mv.addObject("listaRaca", racas.get());
-			Optional<PetCor> cores = corRepository.findById(optional.get().getCor());
-			mv.addObject("listaCor", cores.get());
+			mv.addObject(optional.get());
 			mv.addObject(animal);
 			return mv;
 		} else {
@@ -67,17 +76,28 @@ public class AdotarController {
 		}
 	}
 
-	@PostMapping("")
-	public ModelAndView create(Adotar adotar) {
+	@PostMapping("/{id}")
+	public ModelAndView create(@PathVariable Long id,@Valid RequisicaoFormAdotar requisicao, BindingResult bindingResult) {
 		System.out.println("Salvando");
-		adotar.setUserId((long) 12);
-		adotar.setAnimalId((long) 2);
-		adotar.setAtivo(true);
-		adotar.setAtivo(true);
-		this.adotarRepository.save(adotar);
-		System.out.println("salvo");
+		//bindingResult.addError(null);
+		if (bindingResult.hasErrors()) {
+			System.out.println("\n************************TEM ERROS**********************\n");
+			System.out.println("ERRO \n\n" + bindingResult + "\n\n");
+			ModelAndView mv = new ModelAndView("private/intencao/new");
+			return mv;
+		} else {
+			Adotar adotar = requisicao.toAdotar();
+			adotar.setAtivo(true);
+			adotar.setUserId((long) 1);
+			// adotar.setAnimalId((long) 2);  
+			Optional<Animal> optionalAnimal = animalRepository.findById(id);
+			adotar.setAnimal(optionalAnimal.get());
+			this.adotarRepository.save(adotar);
+			System.out.println("salvo");
+			return new ModelAndView("redirect:/pet/private/intencao-adotar");
+		}
+
 		// return new ModelAndView("redirect:/pet/home" + animal.getId());
-		return new ModelAndView("redirect:/pet/private/intencao-adotar");
 
 	}
 

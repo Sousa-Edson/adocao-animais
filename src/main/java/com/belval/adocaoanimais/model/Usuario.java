@@ -1,39 +1,58 @@
 package com.belval.adocaoanimais.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
+
+import com.belval.adocaoanimais.enums.Permissao;
 
 @Entity
 public class Usuario {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	private String nome;
-	private String sobreNome;
-	private String endereco;
+	private String sobrenome;
+	private String cpf;
+	private String nascimento;
+	private String sexo;
 	private String email;
+	private String telefone;
+	private String telefone2;
 	private String senha;
-	private boolean ativo;
 
 	private String cep;
-
+	private String rua;
+	private String numero;
 	private String bairro;
 	private String cidade;
 	private String estado;
-	
+
 	private String caminhoImagem;
+	private boolean ativo;
+
+	@Enumerated(EnumType.STRING)
+	private Permissao permissao;
+
+	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY) // , fetch = FetchType.EAGER
+	private List<Animal> animais;
 
 	public Usuario() {
-		super();
+
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -45,20 +64,36 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getSobreNome() {
-		return sobreNome;
+	public String getSobrenome() {
+		return sobrenome;
 	}
 
-	public void setSobreNome(String sobreNome) {
-		this.sobreNome = sobreNome;
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
 	}
 
-	public String getEndereco() {
-		return endereco;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getNascimento() {
+		return nascimento;
+	}
+
+	public void setNascimento(String nascimento) {
+		this.nascimento = nascimento;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
 
 	public String getEmail() {
@@ -69,6 +104,22 @@ public class Usuario {
 		this.email = email;
 	}
 
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getTelefone2() {
+		return telefone2;
+	}
+
+	public void setTelefone2(String telefone2) {
+		this.telefone2 = telefone2;
+	}
+
 	public String getSenha() {
 		return senha;
 	}
@@ -77,20 +128,28 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public boolean isAtivo() {
-		return ativo;
-	}
-
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
-	}
-
 	public String getCep() {
 		return cep;
 	}
 
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+
+	public String getRua() {
+		return rua;
+	}
+
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 
 	public String getBairro() {
@@ -125,6 +184,29 @@ public class Usuario {
 		this.caminhoImagem = caminhoImagem;
 	}
 
-	 
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", cpf=" + cpf + ", nascimento="
+				+ nascimento + ", sexo=" + sexo + ", email=" + email + ", telefone=" + telefone + ", telefone2="
+				+ telefone2 + ", senha=" + senha + ", cep=" + cep + ", rua=" + rua + ", numero=" + numero + ", bairro="
+				+ bairro + ", cidade=" + cidade + ", estado=" + estado + ", caminhoImagem=" + caminhoImagem + ", ativo="
+				+ ativo + ", permissao=" + permissao + "]";
+	}
+
+	public Permissao getPermissao() {
+		return permissao;
+	}
+
+	public void setPermissao(Permissao permissao) {
+		this.permissao = permissao;
+	}
 
 }

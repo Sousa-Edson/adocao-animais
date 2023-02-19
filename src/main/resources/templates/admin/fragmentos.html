@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link link-dark custon-hover">
+                <a href="/pet/admin/usuario" class="nav-link  custon-hover" th:classappend="${barra.equals('usuarios') ? 'active' : 'link-dark '}">
                     <svg class="bi pe-none me-2" width="16" height="16">
                         <use xlink:href="#speedometer2"></use>
                     </svg>
@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link link-dark custon-hover">
+                <a href="/pet/admin/animal" class="nav-link   custon-hover" th:classappend="${barra.equals('anuncioAll') ? 'active' : 'link-dark '}">
                     <svg class="bi pe-none me-2" width="16" height="16">
                         <use xlink:href="#table"></use>
                     </svg>
@@ -46,7 +46,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link link-dark custon-hover">
+                <a href="/pet/admin/intencao-adotar" class="nav-link  custon-hover" th:classappend="${barra.equals('intencaoAll') ? 'active' : 'link-dark '}">
                     <svg class="bi pe-none me-2" width="16" height="16">
                         <use xlink:href="#grid"></use>
                     </svg>
@@ -89,7 +89,7 @@
         <span class="fs-4" style="background-color: rgb(212, 212, 233);">Pessoal</span>
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-                <a href="#" class="nav-link link-dark custon-hover" aria-current="page">
+                <a href="/pet/private/perfil/1" class="nav-link  custon-hover" aria-current="page" th:classappend="${barra.equals('perfil') ? 'active' : 'link-dark '}">
                     <svg class="bi pe-none me-2" width="16" height="16">
                         <use xlink:href="#home"></use>
                     </svg>

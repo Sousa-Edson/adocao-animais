@@ -8,13 +8,15 @@ import javax.validation.constraints.NotNull;
 import com.belval.adocaoanimais.enums.Especie;
 import com.belval.adocaoanimais.enums.Porte;
 import com.belval.adocaoanimais.model.Animal;
+import com.belval.adocaoanimais.model.PetCor;
+import com.belval.adocaoanimais.model.PetRaca;
 
 public class RequisicaoFormAnimal {
     @NotBlank
     @NotNull
     private String nome;
-    private Long raca;
-    private Long cor;
+    // private Long raca;
+    // private Long cor;
     private Porte porte;
     private Especie especie;
 
@@ -27,55 +29,60 @@ public class RequisicaoFormAnimal {
     private String resumo;
     private String observacao;
 
+    private PetRaca petRaca;
+    private PetCor petCor;
+
     public Animal toAnimal() {
         Animal animal = new Animal();
         animal.setNome(this.nome);
-        animal.setRaca(this.raca);
-        animal.setCor(this.cor);
-        animal.setPorte(this.porte);
-        animal.setEspecie(this.especie);
-        animal.setSexo(this.sexo);
-        animal.setVacina(this.vacina);
-        animal.setNascimento(this.nascimento);
-        animal.setDisponivel(disponivel);
-        animal.setObservacao(observacao);
-        animal.setResumo(resumo);
-        return animal;
-    }
-
-    public Animal toAnimal(Animal animal) {
-        animal.setNome(this.nome);
-        animal.setRaca(this.raca);
-        animal.setCor(this.cor);
         animal.setPorte(this.porte);
         animal.setEspecie(this.especie);
         animal.setSexo(this.sexo);
         animal.setVacina(this.vacina);
         animal.setNascimento(this.nascimento);
         animal.setDisponivel(this.disponivel);
-        animal.setObservacao(observacao);
-        animal.setResumo(resumo);
+        animal.setObservacao(this.observacao);
+        animal.setResumo(this.resumo);
+        animal.setPetRaca(this.petRaca);
+        animal.setPetCor(this.petCor);
+        return animal;
+    }
+
+    public Animal toAnimal(Animal animal) {
+        animal.setNome(this.nome);
+        animal.setPorte(this.porte);
+        animal.setEspecie(this.especie);
+        animal.setSexo(this.sexo);
+        animal.setVacina(this.vacina);
+        animal.setNascimento(this.nascimento);
+        animal.setDisponivel(this.disponivel);
+        animal.setObservacao(this.observacao);
+        animal.setResumo(this.resumo);
+        animal.setPetRaca(this.petRaca);
+        animal.setPetCor(this.petCor);
         return animal;
     }
 
     public void fromAnimal(Animal animal) {
         this.nome = animal.getNome();
-        this.raca = animal.getRaca();
-        this.cor = animal.getCor();
+        this.petRaca = animal.getPetRaca();
+        this.petCor = animal.getPetCor();
         this.porte = animal.getPorte();
         this.especie = animal.getEspecie();
         this.sexo = animal.getSexo();
         this.vacina = animal.getVacina();
         this.nascimento = animal.getNascimento();
-        this.disponivel=animal.isDisponivel();
-        this.observacao=animal.getObservacao();
-        this.resumo=animal.getResumo();
+        this.disponivel = animal.isDisponivel();
+        this.observacao = animal.getObservacao();
+        this.resumo = animal.getResumo();
     }
 
     @Override
     public String toString() {
-        return "RequisicaoFormAnimal [nome=" + nome + ", raca=" + raca + ", cor=" + cor + ", porte=" + porte
-                + ", especie=" + especie + ", sexo=" + sexo + ", vacina=" + vacina + ", nascimento=" + nascimento + "]";
+        return "RequisicaoFormAnimal [nome=" + nome + ",   porte=" + porte + ", especie=" + especie
+                + ", sexo=" + sexo + ", vacina=" + vacina + ", nascimento=" + nascimento + ", disponivel=" + disponivel
+                + ", resumo=" + resumo + ", observacao=" + observacao + ", petRaca=" + petRaca + ", petCor=" + petCor
+                + "]";
     }
 
     public Animal toAnimalCheck() {
@@ -95,22 +102,6 @@ public class RequisicaoFormAnimal {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Long getRaca() {
-        return raca;
-    }
-
-    public void setRaca(Long raca) {
-        this.raca = raca;
-    }
-
-    public Long getCor() {
-        return cor;
-    }
-
-    public void setCor(Long cor) {
-        this.cor = cor;
     }
 
     public Porte getPorte() {
@@ -177,6 +168,20 @@ public class RequisicaoFormAnimal {
         this.observacao = observacao;
     }
 
-   
+    public PetRaca getPetRaca() {
+        return petRaca;
+    }
+
+    public void setPetRaca(PetRaca petRaca) {
+        this.petRaca = petRaca;
+    }
+
+    public PetCor getPetCor() {
+        return petCor;
+    }
+
+    public void setPetCor(PetCor petCor) {
+        this.petCor = petCor;
+    }
 
 }

@@ -1,10 +1,14 @@
 
 package com.belval.adocaoanimais.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class PetCor {
@@ -15,12 +19,11 @@ public class PetCor {
 	private String cor;
 	private boolean ativo;
 
-	public PetCor(Long id, String cor, boolean ativo) {
-		super();
-		this.id = id;
-		this.cor = cor;
-		this.ativo = ativo;
-	}
+
+    @OneToMany(mappedBy = "petCor", fetch = FetchType.LAZY) // , fetch = FetchType.EAGER
+    private List<Animal> animais;
+
+	 
 
 	public PetCor() {
 		super();

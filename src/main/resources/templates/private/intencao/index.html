@@ -3,10 +3,10 @@
 <main class="container mt-1  bg-light ">
 
 	<div class="row">
-		<div th:replace="~{admin/fragmentos :: sidebar('intencao')}"></div>
+		<div th:replace="~{admin/fragmentos :: sidebar(${menu.selecao})}"></div>
 		<div class="col-lg-8  col-md-8 col-sm-12">
 			<section>
-				<h1 class="display-5"> Minhas solicitações de adotação </h1>
+				<h1 class="display-5" th:text="${menu.titulo}"> Minhas solicitações de adotação </h1>
 				<div th:if="${exc == true}" class="alert alert-danger alert-dismissible fade show text-center"
 					role="alert">
 					<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
@@ -32,62 +32,24 @@
 						<table class="table table-striped  table-hover">
 							<thead>
 								<tr>
-									<th style="width: 10px"></th>
 									<th style="width: 10px">#</th>
 									<th>Nome animal</th>
-									<th style="min-width: 10px"> </th>
+									<th style="width: 10px">Especie</th>
+									<th style="min-width: 10px">Raça </th>
 									<th style="width: 40px">Opções</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="raca : ${racas}">
+								<tr th:each="animal : ${animais}">
+									<td><span th:text="${animal.id}"></span>.</td>
+									<td><span th:text="${animal.animal.getNome}"></span></td>
 									<td>
-										<a type="button" th:class="''+${raca.ativo ? 'text-success' : 'text-warning'}"
-											class=" " data-bs-toggle="modal" th:data-bs-target="|#userModal${raca.id}|">
-											<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-												fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
-												<path
-													d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-											</svg>
-										</a>
-										<!-- Modal -->
-										<div class="modal  fade" th:id="|userModal${raca.id}|" data-bs-backdrop="static"
-											data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-											aria-hidden="true">
-											<div class="modal-dialog ">
-												<div class="modal-content">
-													<div class="modal-header">
-														<h1 class="modal-title fs-5" id="staticBackdropLabel"
-															th:text="${raca.ativo}  ? 'DESATIVAR?' : 'ATIVAR?' ">Modal
-															title</h1>
-														<button type="button" class="btn-close" data-bs-dismiss="modal"
-															aria-label="Close"></button>
-													</div>
-													<div class="modal-body">
-														Deseja <strong
-															th:text="${raca.ativo}  ? 'desativar' : 'ativar' "></strong>
-														a raca
-														<strong th:text="${raca.raca}"></strong>?
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-secondary"
-															data-bs-dismiss="modal">Fechar</button>
-														<a class="btn btn-warning" th:if="${raca.ativo}"
-															th:href="@{/pet/admin/pet-raca/{id}/deactivate (id=${raca.id})}">Desativar</a>
-														<a class="btn btn-success" th:if="${raca.ativo==false}"
-															th:href="@{/pet/admin/pet-raca/{id}/activate (id=${raca.id})}">Ativar</a>
-
-													</div>
-												</div>
-											</div>
-										</div>
+										<span th:text="${animal.animal.getEspecie.descricao}"></span>
 									</td>
-									<td><span th:text="${raca.id}"></span>.</td>
-									<td><span th:text="${raca.raca}"></span></td>
-									<td><span th:text="${raca.especie}"></span></td>
+									<td><span th:text="${animal.animal.getPetRaca.getRaca}"></span></td>
 									<td>
 										<div class="btn-group">
-											<a th:href="@{/pet/admin/pet-raca/{id} (id=${raca.id})}"
+											<a th:href="@{/pet/private/intencao-adotar/{id} (id=${animal.id})}"
 												class="btn btn-secondary">
 												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 													fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
@@ -96,10 +58,8 @@
 													<path
 														d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
 												</svg>
-												<a th:href="@{/pet/admin/pet-raca/{id}/edit (id=${raca.id})}"
-													class="btn btn-info">
-													<i class="bi bi-pencil"></i></a>
-												<a th:href="@{/pet/admin/pet-raca/{id}/delete (id=${raca.id})}"
+												 
+												<a th:href="@{/pet/private/intencao-adotar/{id}/delete (id=${animal.id})}"
 													class="btn btn-danger"> <i class="bi bi-trash3"></i></a>
 										</div>
 

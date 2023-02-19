@@ -41,11 +41,7 @@ public class GaleriaController {
 		Optional<Animal> optional = this.animalRepository.findById(id);
 		if (optional.isPresent()) {
 			Animal animal = optional.get();
-			ModelAndView mv = new ModelAndView("public/galeria/show");
-			Optional<PetRaca> racas = racaRepository.findById(optional.get().getRaca());
-			mv.addObject("listaRaca", racas.get());
-			Optional<PetCor> cores = corRepository.findById(optional.get().getCor());
-			mv.addObject("listaCor", cores.get());
+			ModelAndView mv = new ModelAndView("public/galeria/show"); 
 			mv.addObject(animal);
 			return mv;
 		} else {

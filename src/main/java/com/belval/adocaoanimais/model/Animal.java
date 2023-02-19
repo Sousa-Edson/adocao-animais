@@ -1,13 +1,18 @@
 package com.belval.adocaoanimais.model;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.belval.adocaoanimais.enums.Especie;
 import com.belval.adocaoanimais.enums.Porte;
@@ -17,10 +22,9 @@ public class Animal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int userId;
+     
     private String nome;
-    private Long raca;
-    private Long cor;
+
     @Enumerated(EnumType.STRING)
     private Porte porte;
     @Enumerated(EnumType.STRING)
@@ -32,19 +36,32 @@ public class Animal {
     private boolean disponivel;
     private String resumo;
     private String observacao;
-    
+
+    @OneToMany(mappedBy = "animal", fetch = FetchType.LAZY) // , fetch = FetchType.EAGER
+    private List<Adotar> adotar;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "raca_id", nullable = true)
+    private PetRaca petRaca;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cor_id", nullable = true)
+    private PetCor petCor;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "usuario_id", nullable = true)
+    private Usuario usuario;
 
     public Animal() {
 
     }
 
-    public Animal(Long id, int userId, String nome, Long raca, Long cor, Porte porte, Especie especie, int sexo,
+    public Animal(Long id,   String nome, Porte porte, Especie especie, int sexo,
             int vacina, Date nascimento, boolean disponivel, String resumo, String observacao) {
         this.id = id;
-        this.userId = userId;
+        
         this.nome = nome;
-        this.raca = raca;
-        this.cor = cor;
+
         this.porte = porte;
         this.especie = especie;
         this.sexo = sexo;
@@ -55,8 +72,6 @@ public class Animal {
         this.observacao = observacao;
     }
 
-     
-
     public Long getId() {
         return id;
     }
@@ -65,13 +80,7 @@ public class Animal {
         this.id = id;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+     
 
     public String getNome() {
         return nome;
@@ -79,22 +88,6 @@ public class Animal {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Long getRaca() {
-        return raca;
-    }
-
-    public void setRaca(Long raca) {
-        this.raca = raca;
-    }
-
-    public Long getCor() {
-        return cor;
-    }
-
-    public void setCor(Long cor) {
-        this.cor = cor;
     }
 
     public Porte getPorte() {
@@ -160,5 +153,39 @@ public class Animal {
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
+
+    public List<Adotar> getAdotar() {
+        return adotar;
+    }
+
+    public void setAdotar(List<Adotar> adotar) {
+        this.adotar = adotar;
+    }
+
+    public PetRaca getPetRaca() {
+        return petRaca;
+    }
+
+    public void setPetRaca(PetRaca petRaca) {
+        this.petRaca = petRaca;
+    }
+
+    public PetCor getPetCor() {
+        return petCor;
+    }
+
+    public void setPetCor(PetCor petCor) {
+        this.petCor = petCor;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+   
 
 }

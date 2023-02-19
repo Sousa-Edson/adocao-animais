@@ -1,13 +1,12 @@
-<head th:replace="~{fragmentos :: head('Anuncio')}"></head>
+<head th:replace="~{fragmentos :: head('Usuarios')}"></head>
 <nav th:replace="~{fragmentos :: navbar}"></nav>
 <main class="container mt-1  bg-light ">
 
 	<div class="row">
-		<!-- <div th:replace="~{private/animal/fragmentos :: sidebar('anuncio')}"></div> -->
-		<div th:replace="~{admin/fragmentos :: sidebar(${menu.selecao})}"></div>
+		<div th:replace="~{admin/fragmentos :: sidebar('usuarios')}"></div>
 		<div class="col-lg-8  col-md-8 col-sm-12">
 			<section>
-				<h1 class="display-5" th:text="${menu.titulo}"> texto</h1>
+				<h1 class="display-5">Lista de usuarios</h1>
 				<div th:if="${exc == true}" class="alert alert-danger alert-dismissible fade show text-center"
 					role="alert">
 					<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
@@ -17,28 +16,14 @@
 					</svg>
 					<strong>Aviso de exclusão!</strong>
 					<br>
-					Você tem certeza que dejesa excluir o item <strong th:text="${animalId}">id</strong> ?
+					Você tem certeza que dejesa excluir o item <strong th:text="${usuarioId}">id</strong> ?
 					<br>
-					<a th:href="@{/pet/private/animal/{id}/destroy (id=${animalId})}"
+					<a th:href="@{/pet/admin/usuario/{id}/destroy (id=${usuarioId})}"
 						class="btn btn-outline-danger btn-sm">Sim
 						desejo excluir</a>
-					<a th:href="@{/pet/private/animal/}" class="btn btn-outline-primary btn-sm px-3">Cancelar</a>
+					<a th:href="@{/pet/admin/usuario/}" class="btn btn-outline-primary btn-sm px-3">Cancelar</a>
 					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-				</div>
-				<div class="row">
-					<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-
-						<a href="/pet/private/animal/new" class="btn btn-primary me-md-2 px-5 ">
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-								class="bi bi-cloud-plus-fill" viewBox="0 0 20 20">
-								<path
-									d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm.5 4v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z" />
-							</svg>
-							Novo</a>
-
-					</div>
-
-				</div>
+				</div> 
 				<div class=" ">
 
 					<!-- /.card-header -->
@@ -48,19 +33,17 @@
 								<tr>
 									<th style="width: 10px"></th>
 									<th style="width: 10px">#</th>
-									<th>Nome animal</th>
-									<th style="min-width: 10px">Especie</th>
-									<th style="min-width: 10px">Raça </th>
-									<th style=" width: 10px">Opções</th>
+									<th>Nome</th>
+									<th style="width: 40px">Permissão</th>
+									<th style="width: 40px">Opções</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="animal : ${animais}">
+								<tr th:each="usuario : ${usuario}">
 									<td>
 										<a type="button"
-											th:class="''+${animal.disponivel ? 'text-success' : 'text-warning'}"
-											class=" " data-bs-toggle="modal"
-											th:data-bs-target="|#userModal${animal.id}|">
+											th:class="''+${usuario.ativo ? 'text-success' : 'text-warning'}" class=" "
+											data-bs-toggle="modal" th:data-bs-target="|#userModal${usuario.id}|">
 											<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
 												fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
 												<path
@@ -68,51 +51,51 @@
 											</svg>
 										</a>
 										<!-- Modal -->
-										<div class="modal  fade" th:id="|userModal${animal.id}|"
+										<div class="modal  fade" th:id="|userModal${usuario.id}|"
 											data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
 											aria-labelledby="staticBackdropLabel" aria-hidden="true">
 											<div class="modal-dialog ">
 												<div class="modal-content">
 													<div class="modal-header">
 														<h1 class="modal-title fs-5" id="staticBackdropLabel"
-															th:text="${animal.disponivel}  ? 'DESATIVAR?' : 'ATIVAR?' ">
+															th:text="${usuario.ativo}  ? 'DESATIVAR?' : 'ATIVAR?' ">
 															Modal
 															title</h1>
 														<button type="button" class="btn-close" data-bs-dismiss="modal"
 															aria-label="Close"></button>
 													</div>
 													<div class="modal-body">
-														Deseja marcar o animal
-														<strong th:text="${animal.nome}"></strong> como
-														<strong
-															th:text="${animal.disponivel}  ? 'adotado' : 'para adoção' "></strong>
-														?
+														Deseja <strong
+															th:text="${usuario.ativo}  ? 'desativar' : 'ativar' "></strong>
+														o usuário
+														<strong th:text="${usuario.nome}"></strong>?
 													</div>
 													<div class="modal-footer">
 														<button type="button" class="btn btn-secondary"
 															data-bs-dismiss="modal">Fechar</button>
-														<a class="btn btn-warning" th:if="${animal.disponivel}"
-															th:href="@{/pet/private/animal/{id}/deactivate (id=${animal.id})}">Adotado</a>
-														<a class="btn btn-success" th:if="${animal.disponivel==false}"
-															th:href="@{/pet/private/animal/{id}/activate (id=${animal.id})}">Para
-															adoção</a>
+														<a class="btn btn-warning" th:if="${usuario.ativo}"
+															th:href="@{/pet/admin/usuario/{id}/deactivate (id=${usuario.id})}">Desativar</a>
+														<a class="btn btn-success" th:if="${usuario.ativo==false}"
+															th:href="@{/pet/admin/usuario/{id}/activate (id=${usuario.id})}">Ativar</a>
 
 													</div>
 												</div>
 											</div>
 										</div>
+									</td>
+									<td><span th:text="${usuario.id}"></span>.</td>
+									<td><span th:text="${usuario.nome}"></span></td>
+									<td > 
+										<a th:href="@{/pet/admin/usuario/permissao/{id} (id=${usuario.id})}"> 
+											<span
+												th:class="'  col-12 badge '+${usuario.permissao.descricao == 'Administrador' ? ' text-bg-danger' : usuario.permissao.descricao == 'Suporte' ? ' text-bg-Warning' : usuario.permissao.descricao == 'Colaborador' ? ' text-bg-success' : 'text-bg-info'}"
+												th:text="${usuario.permissao.descricao}" style="height: 26px;">
+												Comun</span></a>
 
 									</td>
-									<td><span th:text="${animal.id}"></span>.</td>
-									<td><span th:text="${animal.nome}"></span></td>
-									<td>
-										<span th:text="${animal.getEspecie.descricao}"></span>
-									</td>
-									<td><span th:text="${animal.getPetRaca.getRaca}"></span></td>
-
 									<td>
 										<div class="btn-group">
-											<a th:href="@{/pet/private/animal/{id} (id=${animal.id})}"
+											<a th:href="@{/pet/admin/usuario/{id} (id=${usuario.id})}"
 												class="btn btn-secondary">
 												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 													fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
@@ -121,11 +104,11 @@
 													<path
 														d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
 												</svg>
-												<a th:href="@{/pet/private/animal/{id}/edit (id=${animal.id})}"
-													class="btn btn-info">
-													<i class="bi bi-pencil"></i></a>
-												<a th:href="@{/pet/private/animal/{id}/delete (id=${animal.id})}"
-													class="btn btn-danger"> <i class="bi bi-trash3"></i></a>
+											</a>
+
+											<a th:href="@{/pet/admin/usuario/{id}/delete (id=${usuario.id})}"
+												class="btn btn-danger">
+												<i class="bi bi-trash3"></i></a>
 										</div>
 
 									</td>

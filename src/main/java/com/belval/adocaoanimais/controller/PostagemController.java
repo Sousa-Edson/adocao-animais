@@ -164,7 +164,7 @@ public class PostagemController {
 	}
 
 	@GetMapping("/{id}")
-	public String detalhe(@PathVariable("id") Long id, Model model) {
+	public String show(@PathVariable("id") Long id, Model model) {
 		Optional<Postagem> p = postagemRepository.findById(id);
 		if (p == null) {
 			return "nao-encontrada";

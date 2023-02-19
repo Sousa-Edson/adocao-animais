@@ -16,12 +16,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.belval.adocaoanimais.auxiliar.Menu;
 import com.belval.adocaoanimais.dto.RequisicaoFormAnimal;
 import com.belval.adocaoanimais.enums.Especie;
 import com.belval.adocaoanimais.enums.Porte;
 import com.belval.adocaoanimais.model.Animal;
 import com.belval.adocaoanimais.model.PetCor;
 import com.belval.adocaoanimais.model.PetRaca;
+import com.belval.adocaoanimais.model.Usuario;
 import com.belval.adocaoanimais.repository.AnimalRepository;
 import com.belval.adocaoanimais.repository.CorRepository;
 import com.belval.adocaoanimais.repository.RacaRepository;
@@ -35,12 +37,17 @@ public class AnimalController {
 	private RacaRepository racaRepository;
 	@Autowired
 	private CorRepository corRepository;
-
+	
+	Menu menu = new Menu();
 	@GetMapping("")
 	public ModelAndView index() {
+	
+		menu.setTitulo("Meus anúncios");
+		menu.setSelecao("anuncio");
 		List<Animal> animais = this.animalRepository.findAll();
 		ModelAndView mv = new ModelAndView("private/animal/index");
 		mv.addObject("animais", animais);
+		mv.addObject("menu", menu);
 		return mv;
 	}
 
@@ -74,7 +81,10 @@ public class AnimalController {
 			return mv;
 		} else {
 			Animal animal = requisicao.toAnimal();
-			// animal.setAtivo(true);
+			Usuario usuario = new Usuario();
+			usuario.setId((long) 1);
+			System.out.println("ID DE USUARIO"+ usuario.getId());
+			animal.setUsuario(usuario);
 			animal.setDisponivel(true);
 			this.animalRepository.save(animal);
 			// return new ModelAndView("redirect:/pet/home" + animal.getId());
@@ -197,11 +207,7 @@ public class AnimalController {
 		Optional<Animal> optional = this.animalRepository.findById(id);
 		if (optional.isPresent()) {
 			Animal animal = optional.get();
-			ModelAndView mv = new ModelAndView("private/animal/show");
-			Optional<PetRaca> racas = racaRepository.findById(optional.get().getRaca());
-			mv.addObject("listaRaca", racas.get());
-			Optional<PetCor> cores = corRepository.findById(optional.get().getCor());
-			mv.addObject("listaCor", cores.get());
+			ModelAndView mv = new ModelAndView("private/animal/show"); 
 			mv.addObject(animal);
 			return mv;
 		} else {

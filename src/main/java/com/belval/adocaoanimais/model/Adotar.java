@@ -1,9 +1,12 @@
 package com.belval.adocaoanimais.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Adotar {
@@ -11,8 +14,7 @@ public class Adotar {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long userId;
-    private Long animalId;
-    private boolean ativo;
+        private boolean ativo;
     private String propriedade;
     private String casa;
     private String crianca;
@@ -21,6 +23,13 @@ public class Adotar {
     private String quintal;
     private String passeios;
     private String animalCasa;
+    private boolean declaro;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "animalId", nullable = true)
+    private Animal animal; 
+   
+
 
     public Adotar() {
     }
@@ -41,13 +50,7 @@ public class Adotar {
         this.userId = userId;
     }
 
-    public Long getAnimalId() {
-        return animalId;
-    }
-
-    public void setAnimalId(Long animalId) {
-        this.animalId = animalId;
-    }
+   
 
     public boolean isAtivo() {
         return ativo;
@@ -119,6 +122,22 @@ public class Adotar {
 
     public void setAnimalCasa(String animalCasa) {
         this.animalCasa = animalCasa;
+    }
+
+    public boolean isDeclaro() {
+        return declaro;
+    }
+
+    public void setDeclaro(boolean declaro) {
+        this.declaro = declaro;
+    }
+
+    public Animal getAnimal() {
+        return animal;
+    }
+
+    public void setAnimal(Animal animal) {
+        this.animal = animal;
     }
 
 }

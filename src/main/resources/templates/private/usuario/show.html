@@ -1,0 +1,49 @@
+<head th:replace="~{fragmentos :: head('Permissão')}"></head>
+<nav th:replace="~{fragmentos :: navbar}"></nav>
+<main class="container mt-1  bg-light ">
+
+    <div class="row">
+        <div th:replace="~{admin/fragmentos :: sidebar('perfil')}"></div>
+        <div class="col-lg-8  col-md-8 col-sm-12">
+            <section>
+                <h1 class="display-5">Usuário # <span th:text="${usuario.id}"></span></h1>
+
+
+                <div class=" ">
+                    <form th:object="${requisicaoFormUsuario}"
+                        th:action="${'/pet/usuario/permissao/'}+${usuario.id}+${'/update'}" method="post">
+
+
+                        <div class="container mt-3">
+                            <div class="row">
+                                <div class="col-12">
+                                    <hr>
+                                    <h3><span class="form-label" th:text="'#'+${usuario.id}"></span></h3>
+                                    <b>Nome:</b> <span class="form-label" th:text="${usuario.nome}"></span><br />
+                                    <b>Permissão atual:</b> <span class="form-label"
+                                        th:text="${usuario.permissao.descricao}"></span><br />
+                                    <b>Ativo(a):</b> <span th:if="${usuario.ativo}">
+                                        Sim</span> <span th:unless="${usuario.ativo}">Não</span>
+
+                                    <br />
+                                    <b>Atualizado por:</b> Edson <br />
+                                    <b>Atualizado em:</b> 22/12/22 <br />
+                                    <hr>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </form>
+                </div>
+            </section>
+
+
+        </div>
+    </div>
+
+</main>
+<section th:replace="~{fragmentos :: section-script}"></section>

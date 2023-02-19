@@ -3,6 +3,7 @@ package com.belval.adocaoanimais.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.swing.JOptionPane;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,7 @@ public class RacaController {
 			return mv;
 		} else {
 			PetRaca petRaca = requisicao.toPetRaca();
-			 petRaca.setAtivo(true);
+			petRaca.setAtivo(true);
 			this.racaRepository.save(petRaca);
 			return new ModelAndView("redirect:/pet/admin/pet-raca/" + petRaca.getId());
 		}
@@ -136,7 +137,13 @@ public class RacaController {
 
 	@GetMapping("/{id}/destroy")
 	public String destroy(@PathVariable("id") Long id, Model model) {
-		racaRepository.deleteById(id);
+		try {
+
+			racaRepository.deleteById(id);
+		} catch (Exception e) {
+			System.out.println("#############################################################\n\n\n ERRO " + e
+					+ "\n\n\n#############################");
+		}
 		return "redirect:/pet/admin/pet-raca";
 	}
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<head th:replace="~{fragmentos :: head('Solicitação ')}"></head>
+<head th:replace="~{fragmentos :: head('intencao')}"></head>
 
 <body>
     <nav th:replace="~{fragmentos :: navbar}"></nav>
@@ -9,12 +9,12 @@
         <div class="row">
             <!-- Editar Animal # -->
             <!-- <section th:replace="~{private/animal/fragmentos :: sidebar('anuncio')}"></section> -->
-            <div th:replace="~{admin/fragmentos :: sidebar('solicitacao')}"></div>
+            <div th:replace="~{admin/fragmentos :: sidebar('intencao')}"></div>
             <section class="col-md-8">
-                <h1 class="display-5">Detalhe de animal #<span th:text="${animal.id}"></span></h1>
+                <h1 class="display-5">Detalhe da solicitação #<span th:text="${adotar.id}"></span></h1>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
-                    <a href="/pet/private/animal" class="btn btn-primary me-md-2 px-5">
+                    <a href="/pet/private/intencao-adotar/" class="btn btn-primary me-md-2 px-5">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                             class="bi bi-list-check" viewBox="0 0 20 20">
                             <path fill-rule="evenodd"
@@ -27,12 +27,12 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-12">
                             <hr>
-                            <h1 class="fs-4">Dados do animal  </h1>
+                            <h1 class="fs-4">Dados do animal  #<span th:text="${animal.id}"></span></h1>
                             <b>Nome:</b> <span class="form-label" th:text="${animal.nome}"></span><br />
                             <b>Especie:</b> <span class="form-label" th:text="${animal.especie.descricao}"></span><br />
-                            <b>Raça:</b> <span class="form-label" th:text="${listaRaca.raca}"></span><br />
+                            <b>Raça:</b> <span class="form-label" th:text="${animal.getPetRaca.getRaca}"></span><br />
                             <b>Porte:</b> <span class="form-label" th:text="${animal.porte.descricao}"></span><br />
-                            <b>Cor de pelagem:</b> <span class="form-label" th:text="${listaCor.cor}"></span><br />
+                            <b>Cor de pelagem:</b> <span class="form-label" th:text="${animal.getPetCor.getCor}"></span><br />
 
                             <b>Especie:</b> <span class="form-label" th:text="${animal.especie.descricao}"></span><br />
 
@@ -50,10 +50,10 @@
                             <hr>
                             <h1 class="fs-4">Dados do tutor  </h1>
                             <b>Nome:</b> <span class="form-label" th:text="${animal.nome}"></span><br />
-                            <b>Especie:</b> <span class="form-label" th:text="${animal.especie.descricao}"></span><br />
-                            <b>Raça:</b> <span class="form-label" th:text="${listaRaca.raca}"></span><br />
-                            <b>Porte:</b> <span class="form-label" th:text="${animal.porte.descricao}"></span><br />
-                            <b>Cor de pelagem:</b> <span class="form-label" th:text="${listaCor.cor}"></span><br />
+                            <b>Telefone:</b> <span class="form-label" th:text="${animal.especie.descricao}"></span><br />
+                            <b>Cidade:</b> <span class="form-label" th:text="${animal.getPetRaca.getRaca}"></span><br />
+                            <b>Estado:</b> <span class="form-label" th:text="${animal.porte.descricao}"></span><br />
+                            <!-- <b>Cor de pelagem:</b> <span class="form-label" th:text="${listaCor.cor}"></span><br />
 
                             <b>Especie:</b> <span class="form-label" th:text="${animal.especie.descricao}"></span><br />
 
@@ -65,7 +65,7 @@
 
                             <br />
                             <b>Atualizado por:</b> Edson <br />
-                            <b>Atualizado em:</b> 22/12/22 <br />
+                            <b>Atualizado em:</b> 22/12/22 <br /> -->
                         </div>
                     </div>
                     <hr>
