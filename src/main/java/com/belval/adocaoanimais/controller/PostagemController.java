@@ -29,9 +29,7 @@ public class PostagemController {
 	@Autowired
 	private PostagemRepository postagemRepository;
 	@Autowired
-	public static String caminhoImagens = "/home/edson/Projetos/adocao-animais/img-data/img-post/";
-	// public static String caminhoImagens = "Z:/Modulo //
-	// 2/LIPI/workspace/imagens/img-postagem/";
+	public static String caminhoImagens = "/home/edson/Imagens/img-data/img-post/";
 
 	@GetMapping("")
 	public String index(Model model) {
@@ -51,7 +49,7 @@ public class PostagemController {
 					"data:image/jpeg;base64,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");
 		} else {
 			// p.setCaminhoImagem(" " + p.getCaminhoImagem());
-			mv.addObject("p", "/pet/mostrarImagem/" + p.getCaminhoImagem());
+			mv.addObject("p", "/pet/mostrarImagem/img-post/" + p.getCaminhoImagem());
 		}
 		// mv.addObject("p", p);
 		return mv;
@@ -69,7 +67,7 @@ public class PostagemController {
 			return mv;
 		} else {
 			Postagem postagem = requisicao.toPostagem();
-			// animal.setAtivo(true);
+
 			postagem.setAtivo(true);
 			this.postagemRepository.save(postagem);
 			System.out.println(
@@ -89,15 +87,12 @@ public class PostagemController {
 			System.out.println("entrando");
 			if (!arquivo.isEmpty()) {
 				byte[] bytes = arquivo.getBytes();
-				Path caminho = Paths
-						.get(caminhoImagens + String.valueOf(id) + "-" +
-								arquivo.getOriginalFilename());
+				Path caminho = Paths.get(caminhoImagens + String.valueOf(id) + "-" + arquivo.getOriginalFilename());
 				Files.write(caminho, bytes);
 
 				postagem.setId(id);
 				postagem.setAtivo(true);
-				postagem.setCaminhoImagem(String.valueOf(id) + "-" +
-						arquivo.getOriginalFilename());
+				postagem.setCaminhoImagem(String.valueOf(id) + "-" + arquivo.getOriginalFilename());
 				this.postagemRepository.save(postagem);
 			}
 		} catch (Exception e) {
@@ -123,7 +118,7 @@ public class PostagemController {
 			} else {
 				// System.out.println("\n\n##################"+"/pet/mostrarImagem/" +
 				// p.get().getCaminhoImagem());
-				model.addAttribute("p", "/pet/mostrarImagem/" + p.get().getCaminhoImagem());
+				model.addAttribute("p", "/pet/mostrarImagem/img-post/" + p.get().getCaminhoImagem());
 				// mv.addObject("p", p.get().getCaminhoImagem());
 			}
 
@@ -138,8 +133,7 @@ public class PostagemController {
 
 	@PostMapping("/{id}")
 	public ModelAndView update(@PathVariable Long id, @Valid RequisicaoFormPostagem requisicao,
-			@RequestParam("caminhoImagem") MultipartFile arquivo,
-			BindingResult bindingResult) {
+			@RequestParam("caminhoImagem") MultipartFile arquivo, BindingResult bindingResult) {
 		System.out.println(requisicao);
 		if (bindingResult.hasErrors()) {
 			ModelAndView mv = new ModelAndView("admin/postagem/edit");
@@ -242,28 +236,28 @@ public class PostagemController {
 	// }
 	// }
 
-	// @GetMapping("/pet/postagem/postagem-lista/{id}/excluir")
-	// public String listExcluir(@PathVariable("id") Long id, Model model) {
-	// Postagem p = repository.findById(id);
-	// if (p == null) {
-	// return "postagem-nao-encontrada";
-	// } else {
-	// model.addAttribute("postagem", repository.findAll());
-	// model.addAttribute("p", p);
-	// model.addAttribute("exc", true);
+	@GetMapping("/{id}/delete")
+	public String listExcluir(@PathVariable("id") Long id, Model model) {
+		Optional<Postagem> p = postagemRepository.findById(id);
+		if (p == null) {
+			return "postagem-nao-encontrada";
+		} else {
 
-	// return "postagem/postagem-lista";
-	// }
-	// }
+			model.addAttribute("postagens", postagemRepository.findAll());
+			model.addAttribute("pId", p);
+			model.addAttribute("exc", true);
 
-	// @GetMapping("/pet/postagem/postagem-lista/{id}/excluindo")
-	// public String excluirConfirmado(@PathVariable("id") Long id, Model model) {
-	// Postagem p = repository.findById(id);
-	// if (p == null) {
-	// return index(model);
-	// } else {
-	// repository.deleteById(id);
-	// return index(model);
-	// }
-	// }
+			return "admin/postagem/index";
+		}
+	}
+
+	@GetMapping("/{id}/destroy")
+	public String excluirConfirmado(@PathVariable("id") Long id, Model model) {
+		Optional<Postagem> p = postagemRepository.findById(id);
+		if (p == null) {
+		} else {
+			postagemRepository.deleteById(id);
+		}
+		return "redirect:/pet/admin/postagem";
+	}
 }

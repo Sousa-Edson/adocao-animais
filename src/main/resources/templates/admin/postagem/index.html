@@ -16,9 +16,9 @@
 					</svg>
 					<strong>Aviso de exclusão!</strong>
 					<br>
-					Você tem certeza que dejesa excluir o item <strong th:text="${racaId}">id</strong> ?
+					Você tem certeza que dejesa excluir o item <strong th:text="${pId.get().getTitulo()}">id</strong> ?
 					<br>
-					<a th:href="@{/pet/admin/postagem/{id}/destroy (id=${racaId})}"
+					<a th:href="@{/pet/admin/postagem/{id}/destroy (id=${pId.get().getId()})}"
 						class="btn btn-outline-danger btn-sm">Sim
 						desejo excluir</a>
 					<a th:href="@{/pet/admin/postagem/}" class="btn btn-outline-primary btn-sm px-3">Cancelar</a>
