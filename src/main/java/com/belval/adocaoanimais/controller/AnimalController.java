@@ -1,5 +1,8 @@
 package com.belval.adocaoanimais.controller;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,15 +17,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.belval.adocaoanimais.auxiliar.Menu;
 import com.belval.adocaoanimais.dto.RequisicaoFormAnimal;
+import com.belval.adocaoanimais.dto.RequisicaoFormPostagem;
 import com.belval.adocaoanimais.enums.Especie;
 import com.belval.adocaoanimais.enums.Porte;
 import com.belval.adocaoanimais.model.Animal;
 import com.belval.adocaoanimais.model.PetCor;
 import com.belval.adocaoanimais.model.PetRaca;
+import com.belval.adocaoanimais.model.Postagem;
 import com.belval.adocaoanimais.model.Usuario;
 import com.belval.adocaoanimais.repository.AnimalRepository;
 import com.belval.adocaoanimais.repository.CorRepository;
@@ -31,6 +38,8 @@ import com.belval.adocaoanimais.repository.RacaRepository;
 @Controller
 @RequestMapping(value = "/pet/private/animal")
 public class AnimalController {
+	@Autowired
+	public static String caminhoImagens = "/home/edson/Imagens/img-data/img-pet/";
 	@Autowired
 	private AnimalRepository animalRepository;
 	@Autowired
@@ -107,6 +116,47 @@ public class AnimalController {
 		System.out.println("\n\n\n#######################Erro");
 		return new ModelAndView("redirect:/pet/private/animal/");
 	}
+	
+	
+	/* PENSAR NESTA PARTE PARA INSERIR IMAGEM DO ANIMAL*/
+	@PostMapping("/new/{id}")
+	public ModelAndView saveImage(@PathVariable Long id,@RequestParam("file-img") MultipartFile arquivo) {
+		System.out.println("**** ID: " + id);
+		System.out.println("arquivo : "+arquivo);
+//		Optional<Animal> optional = this.animalRepository.findById(id);
+//		if (optional.isPresent()) {
+//			Animal animal = optional.get();
+//			ModelAndView mv = new ModelAndView("private/animal/new-image");
+//			mv.addObject(animal);
+//			return mv;
+//		} else {
+//			System.out.println("$$$$$$$$$$$ Não achou a ");
+//		}
+//		System.out.println("\n\n\n#######################Erro");
+//		
+//		
+//		try {
+//			Postagem postagem = requisicao.toPostagem();
+//			System.out.println("entrando");
+//			if (!arquivo.isEmpty()) {
+//				byte[] bytes = arquivo.getBytes();
+//				Path caminho = Paths.get(caminhoImagens + String.valueOf(id) + "-" + arquivo.getOriginalFilename());
+//				Files.write(caminho, bytes);
+//
+//				postagem.setId(id);
+//				postagem.setAtivo(true);
+//				postagem.setCaminhoImagem(String.valueOf(id) + "-" + arquivo.getOriginalFilename());
+//				this.postagemRepository.save(postagem);
+//			}
+//		} catch (Exception e) {
+//			System.out.println("erro--> " + e);
+//			e.printStackTrace();
+//		}
+		
+		return new ModelAndView("redirect:/pet/private/animal/");
+	}
+	
+	 
 
 	@GetMapping("/{id}/activate")
 	public String activate(@PathVariable("id") Long id, Model model, RequisicaoFormAnimal requisicao) {
