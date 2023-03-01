@@ -101,6 +101,7 @@ public class AnimalController {
 			animal.setDisponivel(true);
 			this.animalRepository.save(animal);
 			// return new ModelAndView("redirect:/pet/home" + animal.getId());
+			System.out.println("IR PARA NEW/ID:" + animal.getId());
 			return new ModelAndView("redirect:/pet/private/animal/new/" + animal.getId());
 		}
 	}
@@ -108,18 +109,20 @@ public class AnimalController {
 	@GetMapping("/new/{id}")
 	public ModelAndView nNewImage(@PathVariable Long id) {
 		System.out.println("**** ID: " + id);
+		ModelAndView mv = new ModelAndView("redirect:/pet/private/animal/");
 		Optional<Animal> optional = this.animalRepository.findById(id);
 		if (optional.isPresent()) {
 			Animal animal = optional.get();
-			ModelAndView mv = new ModelAndView("private/animal/new-image");
+			  mv = new ModelAndView("private/animal/new-image");
 //			List<PetImagem> petImagem =  this.petImagemRepository.findAll();
 //			mv.addObject(petImagem);
-			mv.addObject(animal); 
+			mv.addObject(animal);
 		} else {
 			System.out.println("$$$$$$$$$$$ Não achou a ");
+
 		}
 //		System.out.println("\n\n\n#######################Erro");
-		return new ModelAndView("redirect:/pet/private/animal/");
+		return mv;
 	}
 
 	/* PENSAR NESTA PARTE PARA INSERIR IMAGEM DO ANIMAL */

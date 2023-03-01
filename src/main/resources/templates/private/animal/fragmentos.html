@@ -48,7 +48,7 @@
 </section> -->
 
 <!-- seção dos dados  -->
-<section th:fragment="form(requisicaoFormAnimal,action,titulo)"
+<section th:fragment="formulario-novo(requisicaoFormAnimal,action,titulo)"
 	class="col-lg-12 col-md-12 col-sm-12">
 	<div class="col-md-12">
 		<h1 class="m-0 display-5" id="quem-somos" th:text="${titulo}">
@@ -211,7 +211,7 @@
 <section th:fragment="galeria(requisicaoFormAnimal,action,titulo)"
 	class="col-lg-12 col-md-12 col-sm-12">
 	<form th:object="${requisicaoFormAnimal}" th:action="${action}"
-		method="post" name="formulario" enctype="multipart/form-data">
+		method="post" name="formulario-img" enctype="multipart/form-data">
 		<div class="col-md-12">
 			<h1 class="m-0 display-5" id="galeria">
 				Galeria <small th:text="${'de imagens #'+animal.id}"> de
