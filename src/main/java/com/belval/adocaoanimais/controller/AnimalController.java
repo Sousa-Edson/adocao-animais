@@ -23,16 +23,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.belval.adocaoanimais.auxiliar.Menu;
 import com.belval.adocaoanimais.dto.RequisicaoFormAnimal;
-import com.belval.adocaoanimais.dto.RequisicaoFormPostagem;
 import com.belval.adocaoanimais.enums.Especie;
 import com.belval.adocaoanimais.enums.Porte;
 import com.belval.adocaoanimais.model.Animal;
 import com.belval.adocaoanimais.model.PetCor;
+import com.belval.adocaoanimais.model.PetImagem;
 import com.belval.adocaoanimais.model.PetRaca;
-import com.belval.adocaoanimais.model.Postagem;
 import com.belval.adocaoanimais.model.Usuario;
 import com.belval.adocaoanimais.repository.AnimalRepository;
 import com.belval.adocaoanimais.repository.CorRepository;
+import com.belval.adocaoanimais.repository.PetImagemRepository;
 import com.belval.adocaoanimais.repository.RacaRepository;
 
 @Controller
@@ -46,11 +46,15 @@ public class AnimalController {
 	private RacaRepository racaRepository;
 	@Autowired
 	private CorRepository corRepository;
-	
+
+	@Autowired
+	private PetImagemRepository petImagemRepository;
+
 	Menu menu = new Menu();
+
 	@GetMapping("")
 	public ModelAndView index() {
-	
+
 		menu.setTitulo("Meus anúncios");
 		menu.setSelecao("anuncio");
 		List<Animal> animais = this.animalRepository.findAll();
@@ -92,7 +96,7 @@ public class AnimalController {
 			Animal animal = requisicao.toAnimal();
 			Usuario usuario = new Usuario();
 			usuario.setId((long) 1);
-			System.out.println("ID DE USUARIO"+ usuario.getId());
+			System.out.println("ID DE USUARIO" + usuario.getId());
 			animal.setUsuario(usuario);
 			animal.setDisponivel(true);
 			this.animalRepository.save(animal);
@@ -108,55 +112,53 @@ public class AnimalController {
 		if (optional.isPresent()) {
 			Animal animal = optional.get();
 			ModelAndView mv = new ModelAndView("private/animal/new-image");
-			mv.addObject(animal);
-			return mv;
+//			List<PetImagem> petImagem =  this.petImagemRepository.findAll();
+//			mv.addObject(petImagem);
+			mv.addObject(animal); 
 		} else {
 			System.out.println("$$$$$$$$$$$ Não achou a ");
 		}
-		System.out.println("\n\n\n#######################Erro");
+//		System.out.println("\n\n\n#######################Erro");
 		return new ModelAndView("redirect:/pet/private/animal/");
 	}
-	
-	
-	/* PENSAR NESTA PARTE PARA INSERIR IMAGEM DO ANIMAL*/
+
+	/* PENSAR NESTA PARTE PARA INSERIR IMAGEM DO ANIMAL */
 	@PostMapping("/new/{id}")
-	public ModelAndView saveImage(@PathVariable Long id,@RequestParam("file-img") MultipartFile arquivo) {
+	public ModelAndView saveImage(@PathVariable Long id, @RequestParam("file-img") MultipartFile arquivo) {
 		System.out.println("**** ID: " + id);
-		System.out.println("arquivo : "+arquivo);
-//		Optional<Animal> optional = this.animalRepository.findById(id);
+		System.out.println("arquivo : " + arquivo);
+		Optional<Animal> optional = this.animalRepository.findById(id);
 //		if (optional.isPresent()) {
 //			Animal animal = optional.get();
 //			ModelAndView mv = new ModelAndView("private/animal/new-image");
 //			mv.addObject(animal);
 //			return mv;
 //		} else {
-//			System.out.println("$$$$$$$$$$$ Não achou a ");
+		System.out.println("$$$$$$$$$$$ Não achou a ");
 //		}
 //		System.out.println("\n\n\n#######################Erro");
 //		
 //		
-//		try {
-//			Postagem postagem = requisicao.toPostagem();
-//			System.out.println("entrando");
-//			if (!arquivo.isEmpty()) {
-//				byte[] bytes = arquivo.getBytes();
-//				Path caminho = Paths.get(caminhoImagens + String.valueOf(id) + "-" + arquivo.getOriginalFilename());
-//				Files.write(caminho, bytes);
-//
-//				postagem.setId(id);
-//				postagem.setAtivo(true);
-//				postagem.setCaminhoImagem(String.valueOf(id) + "-" + arquivo.getOriginalFilename());
-//				this.postagemRepository.save(postagem);
-//			}
-//		} catch (Exception e) {
-//			System.out.println("erro--> " + e);
-//			e.printStackTrace();
-//		}
-		
-		return new ModelAndView("redirect:/pet/private/animal/");
+		try {
+			PetImagem petImagem = new PetImagem();
+			System.out.println("entrando");
+			if (!arquivo.isEmpty()) {
+				byte[] bytes = arquivo.getBytes();
+				Path caminho = Paths.get(caminhoImagens + String.valueOf(id) + "-" + arquivo.getOriginalFilename());
+				Files.write(caminho, bytes);
+
+				petImagem.setId(id);
+				petImagem.setAnimal(optional.get());
+				petImagem.setCaminhoImagem(String.valueOf(id) + "-" + arquivo.getOriginalFilename());
+				this.petImagemRepository.save(petImagem);
+			}
+		} catch (Exception e) {
+			System.out.println("erro--> " + e);
+			e.printStackTrace();
+		}
+		System.out.println("$$$$$$$$$$$ funcionou ");
+		return new ModelAndView("redirect:/pet/private/animal/new/" + id);
 	}
-	
-	 
 
 	@GetMapping("/{id}/activate")
 	public String activate(@PathVariable("id") Long id, Model model, RequisicaoFormAnimal requisicao) {
@@ -257,7 +259,7 @@ public class AnimalController {
 		Optional<Animal> optional = this.animalRepository.findById(id);
 		if (optional.isPresent()) {
 			Animal animal = optional.get();
-			ModelAndView mv = new ModelAndView("private/animal/show"); 
+			ModelAndView mv = new ModelAndView("private/animal/show");
 			mv.addObject(animal);
 			return mv;
 		} else {
