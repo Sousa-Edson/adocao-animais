@@ -246,10 +246,12 @@
 	</form>
 	<hr>
 	<div class="row  " >  
-		<div class="col-lg-4 col-md-6 col-sm-12">
-			<div class="card shadow-sm">
-				<img width="100%" height="100%"
-					src="https://img.freepik.com/fotos-gratis/lindo-retrato-de-cachorro_23-2149218450.jpg?size=626&ext=jpg"
+<!-- 	lista de imagens -->
+		<div class="col-lg-4 col-md-6 col-sm-12" th:each="imagens : ${petImagem}" style="max-height:250px;margin: 10px 0; box-sizing: border-box;">
+		 
+			<div class="card shadow-sm" style="max-height:250px;box-sizing: border-box;">
+				<img width="100%" height="100%" style="height:200px;"
+						th:src="@{/pet/mostrarImagem/img-pet/{imagem}(imagem=${imagens.getCaminhoImagem})}"
 					class="img-thumbnail" alt="...">
 				<div class="d-flex justify-content-between justify-content-md-end">
 					<div class="btn-group">
@@ -269,6 +271,7 @@
 				</div>
 			</div>
 		</div>
+		
 
 		<div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2 pb-2 ">
 			<a type="submit" class="btn btn-primary" href="/pet/private/animal">

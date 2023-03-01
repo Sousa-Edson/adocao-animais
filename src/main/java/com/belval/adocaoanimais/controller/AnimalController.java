@@ -114,8 +114,8 @@ public class AnimalController {
 		if (optional.isPresent()) {
 			Animal animal = optional.get();
 			  mv = new ModelAndView("private/animal/new-image");
-//			List<PetImagem> petImagem =  this.petImagemRepository.findAll();
-//			mv.addObject(petImagem);
+			List<PetImagem> petImagem =  this.petImagemRepository.findAll();
+			mv.addObject("petImagem",petImagem);
 			mv.addObject(animal);
 		} else {
 			System.out.println("$$$$$$$$$$$ Não achou a ");
