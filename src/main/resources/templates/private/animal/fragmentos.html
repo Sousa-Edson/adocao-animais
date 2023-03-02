@@ -247,13 +247,13 @@
 	<hr>
 	<div class="row  " >  
 <!-- 	lista de imagens -->
-		<div class="col-lg-4 col-md-6 col-sm-12" th:each="imagens : ${petImagem}" style="max-height:250px;margin: 10px 0; box-sizing: border-box;">
+		<div class="col-lg-4 col-md-6 col-sm-12" th:each="imagens : ${petImagem}" style="max-height:250px;margin: 2px 0; box-sizing: border-box;">
 		 
 			<div class="card shadow-sm" style="max-height:250px;box-sizing: border-box;">
 				<img width="100%" height="100%" style="height:200px;"
 						th:src="@{/pet/mostrarImagem/img-pet/{imagem}(imagem=${imagens.getCaminhoImagem})}"
 					class="img-thumbnail" alt="...">
-				<div class="d-flex justify-content-between justify-content-md-end">
+				<div class="d-flex justify-content-between justify-content-md-end mt-1" >
 					<div class="btn-group">
 						<a type="button" class="btn btn-sm btn-outline-primary"
 							href="/pet/private/animal"> <svg
