@@ -203,6 +203,8 @@ public class AnimalController {
 			mv.addObject("listaCor", cores);
 			mv.addObject("listaEspecie", Especie.values());
 			mv.addObject("listaPorte", Porte.values());
+			List<PetImagem> petImagem = this.petImagemRepository.findByAnimal(animal);
+			mv.addObject("petImagem", petImagem);
 			return mv;
 		} else {
 			System.out.println("$$$$$$$$$$$ Não achou o animal");

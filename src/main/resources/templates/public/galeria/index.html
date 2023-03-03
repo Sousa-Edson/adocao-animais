@@ -17,30 +17,42 @@
 				</div>
 
 
-				<div class="row" >
-					<div class=" col-lg-4 col-md-6 col-sm-12" th:each="animal : ${animais}">
-						<div class="card mb-4 shadow-sm">
-							<img class="card-img-top"
-								src="https://acaochego.org/img/cachorros/634/filhote6_carolzinha8.jpg"
+				<div class="row">
+					<div class=" col-lg-4 col-md-6 col-sm-12"
+						th:each="animal : ${animais}">
+						<div class="card mb-4 shadow-sm" style="min-height: 600px">
+
+							<img class="card-img-top" style="min-height: 400px"
+								th:src="@{/pet/mostrarImagem/img-pet/{imagem}(imagem=${animal.petImagem[0].caminhoImagem})}"
 								alt="Card image cap">
 							<div class="card-body">
 								<span th:text="${'#'+animal.id}"></span>
-								<h1><span th:text="${animal.nome}"></h1>
-								<p class="card-text">Amigavel e brincalão</p>
+								<h1>
+									<span th:text="${animal.nome}"></span>
+								</h1>
+								<p class="card-text">
+									<span th:text="${animal.resumo}"></span>
+								</p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
-										<a th:href="@{/pet/public/galeria/{id} (id=${animal.id})}" class="btn btn-sm btn-outline-secondary">Ver</a>
-										<a th:href="@{/pet/private/intencao-adotar/new/{id} (id=${animal.id})}" class="btn btn-sm btn-outline-success">Adotar</a>
+										<a th:href="@{/pet/public/galeria/{id} (id=${animal.id})}"
+											class="btn btn-sm btn-outline-secondary">Ver</a> <a
+											th:href="@{/pet/private/intencao-adotar/new/{id} (id=${animal.id})}"
+											class="btn btn-sm btn-outline-success">Adotar</a>
 									</div>
-									<small class="text-muted">Macho, 8 anos</small>
+									<small class="text-muted"> <span
+										th:if="${animal.sexo == 2}">Macho</span> <span
+										th:if="${animal.sexo == 1}">Fêmea</span> <span
+										th:unless="${animal.sexo == 1}">Indefinido</span> <span
+										th:text="${animal.nascimento}"></span></small>
 								</div>
 							</div>
 						</div>
 					</div>
-					 
-					 
-					 
-					
+
+
+
+
 				</div>
 
 
