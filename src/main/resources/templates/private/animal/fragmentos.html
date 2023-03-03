@@ -48,7 +48,8 @@
 </section> -->
 
 <!-- seção dos dados  -->
-<section th:fragment="formulario-novo(requisicaoFormAnimal,action,titulo)"
+<section
+	th:fragment="formulario-novo(requisicaoFormAnimal,action,titulo)"
 	class="col-lg-12 col-md-12 col-sm-12">
 	<div class="col-md-12">
 		<h1 class="m-0 display-5" id="quem-somos" th:text="${titulo}">
@@ -222,9 +223,9 @@
 			<div class="my-2 col-md-12">
 
 				<img accept="image/png,image/jpeg"
-					src="https://img.freepik.com/fotos-gratis/lindo-retrato-de-cachorro_23-2149218450.jpg?size=626&ext=jpg"
+					src="https://triunfo.pe.gov.br/pm_tr430/wp-content/uploads/2018/03/sem-foto.jpg"
 					class="img-fluid" alt="..." height="100% " width="100%"
-					name="imagemExibir" id="imagemExibir" style="max-height: 400px;">
+					name="imagemExibir" id="imagemExibir" style="max-height: 500px;">
 			</div>
 
 			<div class="mb-3  col-lg-8 col-md-12 col-sm-12">
@@ -245,18 +246,25 @@
 		</div>
 	</form>
 	<hr>
-	<div class="row  " >  
-<!-- 	lista de imagens -->
-		<div class="col-lg-4 col-md-6 col-sm-12" th:each="imagens : ${petImagem}" style="max-height:250px;margin: 2px 0; box-sizing: border-box;">
-		 
-			<div class="card shadow-sm" style="max-height:250px;box-sizing: border-box;">
-				<img width="100%" height="100%" style="height:200px;"
-						th:src="@{/pet/mostrarImagem/img-pet/{imagem}(imagem=${imagens.getCaminhoImagem})}"
+	<div class="row  ">
+		<!-- 	lista de imagens -->
+		<div class="col-lg-4 col-md-6 col-sm-12"
+			th:each="imagens : ${petImagem}"
+			style="max-height: 250px; margin: 2px 0; box-sizing: border-box;">
+
+			<div class="card shadow-sm"
+				style="max-height: 250px; box-sizing: border-box;">
+				<img width="100%" height="100%" style="height: 200px;"
+					th:src="@{/pet/mostrarImagem/img-pet/{imagem}(imagem=${imagens.getCaminhoImagem})}"
 					class="img-thumbnail" alt="...">
-				<div class="d-flex justify-content-between justify-content-md-end mt-1" >
+					
+				<div
+					class="d-flex justify-content-between justify-content-md-end mt-1">
 					<div class="btn-group">
-						<a type="button" class="btn btn-sm btn-outline-primary"
-							href="/pet/private/animal"> <svg
+						<a type="button" class="btn btn-sm btn-outline-primary" href="#"
+							data-bs-toggle="modal" data-bs-target="#exampleModal"> 
+							
+							<svg
 								xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 								fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                                 <path
@@ -264,14 +272,33 @@
                                 <path
 									d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                                 </svg></i>
-						</a> <a href="/pet/private/animal/delete" type="button"
-							class="btn btn-sm btn-outline-danger"><i class="bi bi-trash3"></i>
-						</a>
+						</a> <a
+							th:href="@{/pet/private/animal/img/{id}/destroy (id=${imagens.id})}"
+							type="button" class="btn btn-sm btn-outline-danger"><i
+							class="bi bi-trash3"></i> </a>
+
+
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModal" tabindex="-1"
+							aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog modal-xl">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel"></h5>
+										<button type="button" class="btn-close"
+											data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<img width="100%" height="100%" style="height: 800px;"
+										th:src="@{/pet/mostrarImagem/img-pet/{imagem}(imagem=${imagens.getCaminhoImagem})}"
+										class="img-thumbnail" alt="...">
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+
 
 		<div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2 pb-2 ">
 			<a type="submit" class="btn btn-primary" href="/pet/private/animal">

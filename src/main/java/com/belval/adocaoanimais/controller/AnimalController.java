@@ -113,15 +113,13 @@ public class AnimalController {
 		Optional<Animal> optional = this.animalRepository.findById(id);
 		if (optional.isPresent()) {
 			Animal animal = optional.get();
-			  mv = new ModelAndView("private/animal/new-image");
-			List<PetImagem> petImagem =  this.petImagemRepository.findByAnimal(animal);
-			mv.addObject("petImagem",petImagem);
+			mv = new ModelAndView("private/animal/new-image");
+			List<PetImagem> petImagem = this.petImagemRepository.findByAnimal(animal);
+			mv.addObject("petImagem", petImagem);
 			mv.addObject(animal);
 		} else {
 			System.out.println("$$$$$$$$$$$ Não achou a ");
-
 		}
-//		System.out.println("\n\n\n#######################Erro");
 		return mv;
 	}
 
@@ -131,26 +129,13 @@ public class AnimalController {
 		System.out.println("**** ID: " + id);
 		System.out.println("arquivo : " + arquivo);
 		Optional<Animal> optional = this.animalRepository.findById(id);
-//		if (optional.isPresent()) {
-//			Animal animal = optional.get();
-//			ModelAndView mv = new ModelAndView("private/animal/new-image");
-//			mv.addObject(animal);
-//			return mv;
-//		} else {
 		System.out.println("$$$$$$$$$$$ Não achou a ");
-//		}
-//		System.out.println("\n\n\n#######################Erro");
-//		
-//		
 		try {
 			PetImagem petImagem = new PetImagem();
-			System.out.println("entrando");
 			if (!arquivo.isEmpty()) {
 				byte[] bytes = arquivo.getBytes();
 				Path caminho = Paths.get(caminhoImagens + String.valueOf(id) + "-" + arquivo.getOriginalFilename());
 				Files.write(caminho, bytes);
-
-				petImagem.setId(id);
 				petImagem.setAnimal(optional.get());
 				petImagem.setCaminhoImagem(String.valueOf(id) + "-" + arquivo.getOriginalFilename());
 				this.petImagemRepository.save(petImagem);
@@ -159,7 +144,6 @@ public class AnimalController {
 			System.out.println("erro--> " + e);
 			e.printStackTrace();
 		}
-		System.out.println("$$$$$$$$$$$ funcionou ");
 		return new ModelAndView("redirect:/pet/private/animal/new/" + id);
 	}
 
@@ -299,6 +283,22 @@ public class AnimalController {
 					+ "\n\n################################");
 		}
 		return "redirect:/pet/private/animal";
+	}
+
+	/* DELETAR IMAGEM */
+	@GetMapping("/img/{id}/destroy")
+	public String destroyImagem(@PathVariable("id") Long id, Model model) {
+		Optional<PetImagem> pet = petImagemRepository.findById(id);
+		try {
+			Path caminho = Paths.get(caminhoImagens + pet.get().getCaminhoImagem());
+			Files.delete(caminho);
+			petImagemRepository.deleteById(id);
+
+		} catch (Exception e) {
+			System.err.println("\n\n\n#########################\n\nErro do try cath - destroy\n\n" + e
+					+ "\n\n################################");
+		}
+		return "redirect:/pet/private/animal/new/" + pet.get().getAnimal().getId();
 	}
 
 }
