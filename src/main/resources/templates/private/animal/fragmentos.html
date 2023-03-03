@@ -262,7 +262,7 @@
 					class="d-flex justify-content-between justify-content-md-end mt-1">
 					<div class="btn-group">
 						<a type="button" class="btn btn-sm btn-outline-primary" href="#"
-							data-bs-toggle="modal" data-bs-target="#exampleModal"> 
+							data-bs-toggle="modal"  th:attr="data-bs-target='#exampleModal'+${imagens.id }"   > 
 							
 							<svg
 								xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -279,7 +279,7 @@
 
 
 						<!-- Modal -->
-						<div class="modal fade" id="exampleModal" tabindex="-1"
+						<div class="modal fade" th:attr="id='exampleModal'+${imagens.id }"  tabindex="-1"
 							aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog modal-xl">
 								<div class="modal-content">
