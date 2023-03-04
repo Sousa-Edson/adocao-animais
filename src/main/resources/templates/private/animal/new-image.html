@@ -13,9 +13,8 @@
                 <div class="d-flex align-items-start">
                     <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist"
                         aria-orientation="vertical">
-                        <button class="nav-link disabled " id="v-pills-home-tab" data-bs-toggle="pill"
-                            data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
-                            aria-selected="true">Dados</button>
+                        <a class="nav-link  "  th:href="@{/pet/private/animal/{id}/edit (id = ${animal.id})}"
+                             >Dados2</a>
                         <button class="nav-link active " id="v-pills-profile-tab" data-bs-toggle="pill"
                             data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
                             aria-selected="false">Galeria</button>
@@ -24,13 +23,13 @@
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="tab-pane fade " id="v-pills-home" role="tabpanel"
                             aria-labelledby="v-pills-home-tab" tabindex="0">
-                            <!-- <section
-                                th:replace="~{private/animal/fragmentos :: form(requisicaoFormAnimal,'/pet/private/animal','Cadastrar novo animal')}">
-                                formulario</section> -->
+<!--                              <section -->
+<!--                                 th:replace="~{private/animal/fragmentos :: form(requisicaoFormAnimal,'/pet/private/animal','Cadastrar novo animal')}"> -->
+<!--                                 formulario</section>  -->
                         </div>
                         <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel"
                             aria-labelledby="v-pills-profile-tab" tabindex="0">
-                            <section th:replace="~{private/animal/fragmentos :: galeria}">galeria</section>
+                            <section th:replace="~{private/animal/fragmentos :: galeria(requisicaoFormAnimal,'/pet/private/animal/new/'+${animal.id},'Cadastrar novo animal')}">galeria</section>
                         </div>
                     </div>
                 </div>

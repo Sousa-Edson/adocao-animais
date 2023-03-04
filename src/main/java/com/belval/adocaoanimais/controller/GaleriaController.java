@@ -12,9 +12,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.belval.adocaoanimais.model.Animal;
 import com.belval.adocaoanimais.model.PetCor;
+import com.belval.adocaoanimais.model.PetImagem;
 import com.belval.adocaoanimais.model.PetRaca;
 import com.belval.adocaoanimais.repository.AnimalRepository;
 import com.belval.adocaoanimais.repository.CorRepository;
+import com.belval.adocaoanimais.repository.PetImagemRepository;
 import com.belval.adocaoanimais.repository.RacaRepository;
 
 @Controller
@@ -26,6 +28,8 @@ public class GaleriaController {
 	private RacaRepository racaRepository;
 	@Autowired
 	private CorRepository corRepository;
+	@Autowired
+	private PetImagemRepository petImagemRepository;
 
     @GetMapping("")
     public ModelAndView index() {
@@ -43,6 +47,9 @@ public class GaleriaController {
 			Animal animal = optional.get();
 			ModelAndView mv = new ModelAndView("public/galeria/show"); 
 			mv.addObject(animal);
+			List<PetImagem> petImagem = this.petImagemRepository.findByAnimal(animal);
+			mv.addObject("petImagem", petImagem);
+			System.out.println("$$$$$$$$$$$ CERTO");
 			return mv;
 		} else {
 			System.out.println("$$$$$$$$$$$ Não achou animal");

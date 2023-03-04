@@ -1,5 +1,8 @@
 package com.belval.adocaoanimais.controller;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.belval.adocaoanimais.auxiliar.Menu;
@@ -22,26 +27,34 @@ import com.belval.adocaoanimais.enums.Especie;
 import com.belval.adocaoanimais.enums.Porte;
 import com.belval.adocaoanimais.model.Animal;
 import com.belval.adocaoanimais.model.PetCor;
+import com.belval.adocaoanimais.model.PetImagem;
 import com.belval.adocaoanimais.model.PetRaca;
 import com.belval.adocaoanimais.model.Usuario;
 import com.belval.adocaoanimais.repository.AnimalRepository;
 import com.belval.adocaoanimais.repository.CorRepository;
+import com.belval.adocaoanimais.repository.PetImagemRepository;
 import com.belval.adocaoanimais.repository.RacaRepository;
 
 @Controller
 @RequestMapping(value = "/pet/private/animal")
 public class AnimalController {
 	@Autowired
+	public static String caminhoImagens = "/home/edson/Imagens/img-data/img-pet/";
+	@Autowired
 	private AnimalRepository animalRepository;
 	@Autowired
 	private RacaRepository racaRepository;
 	@Autowired
 	private CorRepository corRepository;
-	
+
+	@Autowired
+	private PetImagemRepository petImagemRepository;
+
 	Menu menu = new Menu();
+
 	@GetMapping("")
 	public ModelAndView index() {
-	
+
 		menu.setTitulo("Meus anúncios");
 		menu.setSelecao("anuncio");
 		List<Animal> animais = this.animalRepository.findAll();
@@ -83,11 +96,12 @@ public class AnimalController {
 			Animal animal = requisicao.toAnimal();
 			Usuario usuario = new Usuario();
 			usuario.setId((long) 1);
-			System.out.println("ID DE USUARIO"+ usuario.getId());
+			System.out.println("ID DE USUARIO" + usuario.getId());
 			animal.setUsuario(usuario);
 			animal.setDisponivel(true);
 			this.animalRepository.save(animal);
 			// return new ModelAndView("redirect:/pet/home" + animal.getId());
+			System.out.println("IR PARA NEW/ID:" + animal.getId());
 			return new ModelAndView("redirect:/pet/private/animal/new/" + animal.getId());
 		}
 	}
@@ -95,17 +109,42 @@ public class AnimalController {
 	@GetMapping("/new/{id}")
 	public ModelAndView nNewImage(@PathVariable Long id) {
 		System.out.println("**** ID: " + id);
+		ModelAndView mv = new ModelAndView("redirect:/pet/private/animal/");
 		Optional<Animal> optional = this.animalRepository.findById(id);
 		if (optional.isPresent()) {
 			Animal animal = optional.get();
-			ModelAndView mv = new ModelAndView("private/animal/new-image");
+			mv = new ModelAndView("private/animal/new-image");
+			List<PetImagem> petImagem = this.petImagemRepository.findByAnimal(animal);
+			mv.addObject("petImagem", petImagem);
 			mv.addObject(animal);
-			return mv;
 		} else {
 			System.out.println("$$$$$$$$$$$ Não achou a ");
 		}
-		System.out.println("\n\n\n#######################Erro");
-		return new ModelAndView("redirect:/pet/private/animal/");
+		return mv;
+	}
+
+	/* PENSAR NESTA PARTE PARA INSERIR IMAGEM DO ANIMAL */
+	@PostMapping("/new/{id}")
+	public ModelAndView saveImage(@PathVariable Long id, @RequestParam("file-img") MultipartFile arquivo) {
+		System.out.println("**** ID: " + id);
+		System.out.println("arquivo : " + arquivo);
+		Optional<Animal> optional = this.animalRepository.findById(id);
+		System.out.println("$$$$$$$$$$$ Não achou a ");
+		try {
+			PetImagem petImagem = new PetImagem();
+			if (!arquivo.isEmpty()) {
+				byte[] bytes = arquivo.getBytes();
+				Path caminho = Paths.get(caminhoImagens + String.valueOf(id) + "-" + arquivo.getOriginalFilename());
+				Files.write(caminho, bytes);
+				petImagem.setAnimal(optional.get());
+				petImagem.setCaminhoImagem(String.valueOf(id) + "-" + arquivo.getOriginalFilename());
+				this.petImagemRepository.save(petImagem);
+			}
+		} catch (Exception e) {
+			System.out.println("erro--> " + e);
+			e.printStackTrace();
+		}
+		return new ModelAndView("redirect:/pet/private/animal/new/" + id);
 	}
 
 	@GetMapping("/{id}/activate")
@@ -164,6 +203,8 @@ public class AnimalController {
 			mv.addObject("listaCor", cores);
 			mv.addObject("listaEspecie", Especie.values());
 			mv.addObject("listaPorte", Porte.values());
+			List<PetImagem> petImagem = this.petImagemRepository.findByAnimal(animal);
+			mv.addObject("petImagem", petImagem);
 			return mv;
 		} else {
 			System.out.println("$$$$$$$$$$$ Não achou o animal");
@@ -207,7 +248,7 @@ public class AnimalController {
 		Optional<Animal> optional = this.animalRepository.findById(id);
 		if (optional.isPresent()) {
 			Animal animal = optional.get();
-			ModelAndView mv = new ModelAndView("private/animal/show"); 
+			ModelAndView mv = new ModelAndView("private/animal/show");
 			mv.addObject(animal);
 			return mv;
 		} else {
@@ -244,6 +285,22 @@ public class AnimalController {
 					+ "\n\n################################");
 		}
 		return "redirect:/pet/private/animal";
+	}
+
+	/* DELETAR IMAGEM */
+	@GetMapping("/img/{id}/destroy")
+	public String destroyImagem(@PathVariable("id") Long id, Model model) {
+		Optional<PetImagem> pet = petImagemRepository.findById(id);
+		try {
+			Path caminho = Paths.get(caminhoImagens + pet.get().getCaminhoImagem());
+			Files.delete(caminho);
+			petImagemRepository.deleteById(id);
+
+		} catch (Exception e) {
+			System.err.println("\n\n\n#########################\n\nErro do try cath - destroy\n\n" + e
+					+ "\n\n################################");
+		}
+		return "redirect:/pet/private/animal/new/" + pet.get().getAnimal().getId();
 	}
 
 }

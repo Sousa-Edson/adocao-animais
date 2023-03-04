@@ -10,134 +10,130 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Adotar {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private Long userId;
-        private boolean ativo;
-    private String propriedade;
-    private String casa;
-    private String crianca;
-    private String acordo;
-    private String ausentar;
-    private String quintal;
-    private String passeios;
-    private String animalCasa;
-    private boolean declaro;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private Long userId;
+	private boolean ativo;
+	private String propriedade;
+	private String casa;
+	private String crianca;
+	private String acordo;
+	private String ausentar;
+	private String quintal;
+	private String passeios;
+	private String animalCasa;
+	private boolean declaro;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "animalId", nullable = true)
-    private Animal animal; 
-   
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "animalId", nullable = true)
+	private Animal animal;
 
+	public Adotar() {
+	}
 
-    public Adotar() {
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getUserId() {
+		return userId;
+	}
 
-    public Long getUserId() {
-        return userId;
-    }
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+	public boolean isAtivo() {
+		return ativo;
+	}
 
-   
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
 
-    public boolean isAtivo() {
-        return ativo;
-    }
+	public String getPropriedade() {
+		return propriedade;
+	}
 
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
-    }
+	public void setPropriedade(String propriedade) {
+		this.propriedade = propriedade;
+	}
 
-    public String getPropriedade() {
-        return propriedade;
-    }
+	public String getCasa() {
+		return casa;
+	}
 
-    public void setPropriedade(String propriedade) {
-        this.propriedade = propriedade;
-    }
+	public void setCasa(String casa) {
+		this.casa = casa;
+	}
 
-    public String getCasa() {
-        return casa;
-    }
+	public String getCrianca() {
+		return crianca;
+	}
 
-    public void setCasa(String casa) {
-        this.casa = casa;
-    }
+	public void setCrianca(String crianca) {
+		this.crianca = crianca;
+	}
 
-    public String getCrianca() {
-        return crianca;
-    }
+	public String getAcordo() {
+		return acordo;
+	}
 
-    public void setCrianca(String crianca) {
-        this.crianca = crianca;
-    }
+	public void setAcordo(String acordo) {
+		this.acordo = acordo;
+	}
 
-    public String getAcordo() {
-        return acordo;
-    }
+	public String getAusentar() {
+		return ausentar;
+	}
 
-    public void setAcordo(String acordo) {
-        this.acordo = acordo;
-    }
+	public void setAusentar(String ausentar) {
+		this.ausentar = ausentar;
+	}
 
-    public String getAusentar() {
-        return ausentar;
-    }
+	public String getQuintal() {
+		return quintal;
+	}
 
-    public void setAusentar(String ausentar) {
-        this.ausentar = ausentar;
-    }
+	public void setQuintal(String quintal) {
+		this.quintal = quintal;
+	}
 
-    public String getQuintal() {
-        return quintal;
-    }
+	public String getPasseios() {
+		return passeios;
+	}
 
-    public void setQuintal(String quintal) {
-        this.quintal = quintal;
-    }
+	public void setPasseios(String passeios) {
+		this.passeios = passeios;
+	}
 
-    public String getPasseios() {
-        return passeios;
-    }
+	public String getAnimalCasa() {
+		return animalCasa;
+	}
 
-    public void setPasseios(String passeios) {
-        this.passeios = passeios;
-    }
+	public void setAnimalCasa(String animalCasa) {
+		this.animalCasa = animalCasa;
+	}
 
-    public String getAnimalCasa() {
-        return animalCasa;
-    }
+	public boolean isDeclaro() {
+		return declaro;
+	}
 
-    public void setAnimalCasa(String animalCasa) {
-        this.animalCasa = animalCasa;
-    }
+	public void setDeclaro(boolean declaro) {
+		this.declaro = declaro;
+	}
 
-    public boolean isDeclaro() {
-        return declaro;
-    }
+	public Animal getAnimal() {
+		return animal;
+	}
 
-    public void setDeclaro(boolean declaro) {
-        this.declaro = declaro;
-    }
-
-    public Animal getAnimal() {
-        return animal;
-    }
-
-    public void setAnimal(Animal animal) {
-        this.animal = animal;
-    }
+	public void setAnimal(Animal animal) {
+		this.animal = animal;
+	}
 
 }

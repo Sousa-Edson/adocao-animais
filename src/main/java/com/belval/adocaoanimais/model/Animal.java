@@ -49,8 +49,10 @@ public class Animal {
     private PetCor petCor;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "usuario_id", nullable = true)
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
+    @OneToMany(mappedBy = "animal")
+    private List<PetImagem> petImagem;
 
     public Animal() {
 
@@ -185,6 +187,14 @@ public class Animal {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+	public List<PetImagem> getPetImagem() {
+		return petImagem;
+	}
+
+	public void setPetImagem(List<PetImagem> petImagem) {
+		this.petImagem = petImagem;
+	}
 
    
 
