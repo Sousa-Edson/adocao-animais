@@ -65,8 +65,7 @@ public class AnimalController {
 	}
 
 	@GetMapping("/new")
-	public ModelAndView nnew(RequisicaoFormAnimal requisicao) { // trabalhar na requisição RequisicaoFormAnimal
-																// requisicao
+	public ModelAndView nnew(RequisicaoFormAnimal requisicao) {  
 		ModelAndView mv = new ModelAndView("private/animal/new");
 		List<PetRaca> racas = racaRepository.findAll();
 		mv.addObject("listaRaca", racas);

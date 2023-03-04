@@ -229,3 +229,50 @@
 	</div>
 	<hr>
 </section>
+
+ <!-- carroucel - slides-->
+    <section class=" navbar-expand-lg" th:fragment="slides">
+        <div id="myCarousel" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img  src="https://img.freepik.com/fotos-gratis/lindo-retrato-de-cachorro_23-2149218452.jpg?w=1480&t=st=1677899066~exp=1677899666~hmac=4c625410898d5e36b275183dcf62ad1faa4ac697e75b01dd673b78b4caaf98bc"
+                        class="d-block w-100 " alt="..." style="height:600px ;"> <!--                     th:src="@{/imagens/img1.png}"  -->
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Adote fácil</h5>
+                        <p>Adote e transfome uma vida, a sua!</p>
+                    </div> 
+                </div>
+                <div class="carousel-item">
+                    <img src="https://img.freepik.com/fotos-gratis/cachorro-branco_95678-2.jpg?w=1380&t=st=1677899117~exp=1677899717~hmac=0981c8db9d4107e9048ac54a788795637f86ca238b6340dc850f748aa730d439"
+                    class="d-block w-100"
+                        alt="..." style="height:600px ;">  <!--  th:src="@{/imagens/img2.png}" -->  
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Adote fácil</h5>
+                        <p>Adote e transfome uma vida, a sua!</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img th:src="@{/imagens/img3.png}"  class="d-block w-100" alt="..."
+                        style="height:600px ;">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Adote fácil</h5>
+                        <p>Adote e transfome uma vida, a sua!</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
