@@ -18,9 +18,11 @@ import com.belval.adocaoanimais.auxiliar.Menu;
 import com.belval.adocaoanimais.dto.RequisicaoFormAdotar;
 import com.belval.adocaoanimais.model.Adotar;
 import com.belval.adocaoanimais.model.Animal;
+import com.belval.adocaoanimais.model.PetImagem;
 import com.belval.adocaoanimais.repository.AdotarRepository;
 import com.belval.adocaoanimais.repository.AnimalRepository;
 import com.belval.adocaoanimais.repository.CorRepository;
+import com.belval.adocaoanimais.repository.PetImagemRepository;
 import com.belval.adocaoanimais.repository.RacaRepository;
 
 @Controller
@@ -34,6 +36,8 @@ public class AdotarController {
 	private RacaRepository racaRepository;
 	@Autowired
 	private CorRepository corRepository;
+	@Autowired
+	private PetImagemRepository petImagemRepository;
 
 	Menu menu = new Menu();
 	@GetMapping("")
@@ -69,6 +73,9 @@ public class AdotarController {
 			ModelAndView mv = new ModelAndView("private/intencao/show");
 			mv.addObject(optional.get());
 			mv.addObject(animal);
+			mv.addObject(animal);
+			List<PetImagem> petImagem = this.petImagemRepository.findByAnimal(animal);
+			mv.addObject("petImagem", petImagem);
 			return mv;
 		} else {
 			System.out.println("$$$$$$$$$$$ Não achou animal");
