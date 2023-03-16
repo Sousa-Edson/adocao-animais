@@ -249,6 +249,8 @@ public class AnimalController {
 			Animal animal = optional.get();
 			ModelAndView mv = new ModelAndView("private/animal/show");
 			mv.addObject(animal);
+			List<PetImagem> petImagem = this.petImagemRepository.findByAnimal(animal);
+			mv.addObject("petImagem", petImagem);
 			return mv;
 		} else {
 			System.out.println("$$$$$$$$$$$ Não achou animal");
