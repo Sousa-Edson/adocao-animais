@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.belval.adocaoanimais.dto.RequisicaoFormPostagem;
 import com.belval.adocaoanimais.model.Postagem;
+import com.belval.adocaoanimais.model.Usuario;
 import com.belval.adocaoanimais.repository.PostagemRepository;
 
 @Controller
@@ -62,8 +63,11 @@ public class PostagemController {
 			ModelAndView mv = new ModelAndView("admin/postagem/new");
 			return mv;
 		} else {
-			Postagem postagem = requisicao.toPostagem();
+			Usuario usuario = new Usuario();
+			usuario.setId((long) 1);
 
+			Postagem postagem = requisicao.toPostagem();
+			postagem.setUsuario(usuario);
 			postagem.setAtivo(true);
 			this.postagemRepository.save(postagem);
 			System.out.println(
@@ -199,7 +203,7 @@ public class PostagemController {
 		}
 		return "redirect:/pet/admin/postagem";
 	}
-	 
+
 	@GetMapping("/{id}/delete")
 	public String listExcluir(@PathVariable("id") Long id, Model model) {
 		Optional<Postagem> p = postagemRepository.findById(id);
