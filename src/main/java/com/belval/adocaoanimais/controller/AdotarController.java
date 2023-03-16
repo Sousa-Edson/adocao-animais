@@ -21,9 +21,7 @@ import com.belval.adocaoanimais.model.Animal;
 import com.belval.adocaoanimais.model.PetImagem;
 import com.belval.adocaoanimais.repository.AdotarRepository;
 import com.belval.adocaoanimais.repository.AnimalRepository;
-import com.belval.adocaoanimais.repository.CorRepository;
 import com.belval.adocaoanimais.repository.PetImagemRepository;
-import com.belval.adocaoanimais.repository.RacaRepository;
 
 @Controller
 @RequestMapping(value = "/pet/private/intencao-adotar")
@@ -32,10 +30,7 @@ public class AdotarController {
 	private AdotarRepository adotarRepository;
 	@Autowired
 	private AnimalRepository animalRepository;
-	@Autowired
-	private RacaRepository racaRepository;
-	@Autowired
-	private CorRepository corRepository;
+	 
 	@Autowired
 	private PetImagemRepository petImagemRepository;
 

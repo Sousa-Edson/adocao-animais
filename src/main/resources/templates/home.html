@@ -2,7 +2,9 @@
 <html lang="pt-br">
 	<head th:replace="~{fragmentos :: head('Home')}"></head>
  <body>
+ <section th:replace="~{fragmentos :: slides}"></section>
 	<nav th:replace="~{fragmentos :: navbar}"></nav>
+	
 	<main class="container mt-1   bg-light ">
 		<header class="  navbar-expand-lg">
 			<div class="card-body text-center ">
@@ -106,5 +108,12 @@
 
 		<section th:replace="~{fragmentos :: section-script}"></section>
 	</main>
+	<script>
+		const myCarouselElement = document.querySelector('#myCarousel')
+		const carousel = new bootstrap.Carousel(myCarouselElement, {
+			interval: 3000, //aqui conttrola a velocidade do slide
+			ride: "carousel" // aqui inicia automaticamente
+		})
+	</script>
 </body>
 </html>

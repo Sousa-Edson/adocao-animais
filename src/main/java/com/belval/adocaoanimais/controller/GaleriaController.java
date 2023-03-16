@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.belval.adocaoanimais.model.Animal;
-import com.belval.adocaoanimais.model.PetCor;
 import com.belval.adocaoanimais.model.PetImagem;
-import com.belval.adocaoanimais.model.PetRaca;
 import com.belval.adocaoanimais.repository.AnimalRepository;
 import com.belval.adocaoanimais.repository.CorRepository;
 import com.belval.adocaoanimais.repository.PetImagemRepository;
