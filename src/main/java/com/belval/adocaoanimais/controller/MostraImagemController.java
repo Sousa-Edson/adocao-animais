@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MostraImagemController {
-//	@Autowired
 	@Value("${fileStorageLocationPost}")
 	private static String caminhoImagensPost;
 
