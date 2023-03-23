@@ -48,6 +48,21 @@ public class Usuario {
 
 	}
 
+	public Usuario(String nome, String sobrenome, String cpf, String nascimento, String sexo, String email,
+			String telefone, String senha, Permissao permissao, boolean ativo) {
+		super();
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.cpf = cpf;
+		this.nascimento = nascimento;
+		this.sexo = sexo;
+		this.email = email;
+		this.telefone = telefone;
+		this.senha = senha;
+		this.permissao = permissao;
+		this.ativo = ativo;
+	}
+
 	public Long getId() {
 		return id;
 	}

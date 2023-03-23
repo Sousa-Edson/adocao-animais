@@ -8,6 +8,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,8 +30,14 @@ import com.belval.adocaoanimais.repository.PostagemRepository;
 public class PostagemController {
 	@Autowired
 	private PostagemRepository postagemRepository;
-	@Autowired
-	public static String caminhoImagens = "/home/edson/Imagens/img-data/img-post/";
+
+	@Value("${fileStorageLocationPost}")
+	private static String fileStorageLocation;
+	public static String caminhoImagens = fileStorageLocation;
+
+	PostagemController(String caminhoImagens) {
+		PostagemController.caminhoImagens = caminhoImagens;
+	}
 
 	@GetMapping("")
 	public String index(Model model) {
