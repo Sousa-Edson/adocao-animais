@@ -32,6 +32,19 @@ public class Postagem {
 	public Postagem() {
 		 
 	}
+	
+
+	public Postagem(String titulo, String conteudo, String caminhoImagem, String dataPublicacao,  
+			boolean ativo, Usuario usuario) {
+		super();
+		this.titulo = titulo;
+		this.conteudo = conteudo;
+		this.caminhoImagem = caminhoImagem;
+		this.dataPublicacao = dataPublicacao;
+		this.ativo = ativo;
+		this.usuario = usuario;
+	}
+
 
 	public String getCaminhoImagem() {
 		return caminhoImagem;

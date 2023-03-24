@@ -30,8 +30,17 @@ public class PetRaca {
 
     public PetRaca() {
     }
+    
 
-    public Long getId() {
+    public PetRaca(String raca, boolean ativo, Especie especie) {
+		super();
+		this.raca = raca;
+		this.ativo = ativo;
+		this.especie = especie;
+	}
+
+
+	public Long getId() {
         return id;
     }
 

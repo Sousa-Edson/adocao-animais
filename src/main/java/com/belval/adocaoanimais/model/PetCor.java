@@ -28,6 +28,14 @@ public class PetCor {
 	public PetCor() {
 		super();
 	}
+	
+
+	public PetCor(String cor, boolean ativo) {
+		super();
+		this.cor = cor;
+		this.ativo = ativo;
+	}
+
 
 	public Long getId() {
 		return id;
