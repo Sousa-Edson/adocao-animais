@@ -41,7 +41,7 @@ public class AdotarController {
 		menu.setTitulo("Minhas solicitações de adotação");
 		menu.setSelecao("intencao");
 		List<Adotar> animais = this.adotarRepository.findAll();
-		ModelAndView mv = new ModelAndView("private/intencao/index");
+		ModelAndView mv = new ModelAndView("intencao/index");
 		mv.addObject("animais", animais);
 		mv.addObject("menu", menu);
 		return mv;
@@ -50,7 +50,7 @@ public class AdotarController {
 	@GetMapping("/new/{id}")
 	public ModelAndView nnew(@PathVariable Long id,RequisicaoFormAdotar requisicao) {
 		List<Animal> animais = this.animalRepository.findAll();
-		ModelAndView mv = new ModelAndView("private/intencao/new");
+		ModelAndView mv = new ModelAndView("intencao/new");
 		mv.addObject("petId", id);
 		mv.addObject("animais", animais);
 		return mv;
@@ -65,7 +65,7 @@ public class AdotarController {
 		// System.out.println("*************************\n\n\n"+optional.get());
 		if (optional.isPresent()) {
 			Animal animal = optional.get().getAnimal();
-			ModelAndView mv = new ModelAndView("private/intencao/show");
+			ModelAndView mv = new ModelAndView("intencao/show");
 			mv.addObject(optional.get());
 			mv.addObject(animal);
 			mv.addObject(animal);
@@ -85,7 +85,7 @@ public class AdotarController {
 		if (bindingResult.hasErrors()) {
 			System.out.println("\n************************TEM ERROS**********************\n");
 			System.out.println("ERRO \n\n" + bindingResult + "\n\n");
-			ModelAndView mv = new ModelAndView("private/intencao/new");
+			ModelAndView mv = new ModelAndView("intencao/new");
 			return mv;
 		} else {
 			Adotar adotar = requisicao.toAdotar();

@@ -49,7 +49,7 @@ public class DashboardController {
         menu.setTitulo("Todas as solicitações de adotação");
         menu.setSelecao("intencaoAll");
         List<Adotar> animais = this.adotarRepository.findAll();
-        ModelAndView mv = new ModelAndView("private/intencao/index");
+        ModelAndView mv = new ModelAndView("intencao/index");
         mv.addObject("animais", animais);
         mv.addObject("menu", menu);
         return mv;
