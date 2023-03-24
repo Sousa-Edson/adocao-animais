@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -24,11 +25,14 @@ import com.belval.adocaoanimais.repository.UsuarioRepository;
 public class UsuarioController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	@Autowired
-	public static String caminhoImagens = "/home/edson/Projetos/adocao-animais/img-data/img-user/";
-	// public static String caminhoImagens =
-	// "/home/edson/Dev/workspace/adocao-animais/src/main/resources/imagens/img-usuario/";
-
+	
+	@Value("${fileStorageLocationUsuario}")
+	public static String caminhoImagens  ;
+	
+	UsuarioController(String caminhoImagens) {
+		UsuarioController.caminhoImagens = caminhoImagens;
+	}
+	
 	@GetMapping("/pet/usuario")
 	public String nnew() {
 		return "newUsuario";
@@ -82,7 +86,7 @@ public class UsuarioController {
 
 	@GetMapping("/pet/admin/usuario")
 	public ModelAndView index() {
-		ModelAndView mv = new ModelAndView("admin/usuario/index");
+		ModelAndView mv = new ModelAndView("usuario/index");
 		List<Usuario> usuarios = this.usuarioRepository.findAll();
 		mv.addObject("usuario", usuarios);
 		// mv.addObject("listaPermissao", Permissao.values());
@@ -94,13 +98,13 @@ public class UsuarioController {
 		Optional<Usuario> optional = this.usuarioRepository.findById(id);
 		if (optional.isPresent()) {
 			Usuario usuario = optional.get();
-			ModelAndView mv = new ModelAndView("admin/usuario/permission");
+			ModelAndView mv = new ModelAndView("usuario/permission");
 			requisicao.fromPermissao(usuario);
 			mv.addObject("listaPermissao", Permissao.values());
 			mv.addObject(usuario);
 			return mv;
 		} else {
-			return new ModelAndView("admin/dashboard");
+			return new ModelAndView("dashboard");
 		}
 	}
 
@@ -115,7 +119,7 @@ public class UsuarioController {
 			// return new ModelAndView("redirect:/pet/admin/pet-raca/" + petRaca.getId());
 		} else {
 			System.out.println("########### Não achou o @@@@@@@@@@@@@@@@");
-			return new ModelAndView("admin/dashboard");
+			return new ModelAndView("dashboard");
 		}
 	}
 
@@ -124,12 +128,12 @@ public class UsuarioController {
 		Optional<Usuario> optional = this.usuarioRepository.findById(id);
 		if (optional.isPresent()) {
 			Usuario usuario = optional.get();
-			ModelAndView mv = new ModelAndView("admin/usuario/show");
+			ModelAndView mv = new ModelAndView("usuario/show");
 			// mv.addObject("listaPermissao", Permissao.values());
 			mv.addObject(usuario);
 			return mv;
 		} else {
-			return new ModelAndView("admin/dashboard");
+			return new ModelAndView("dashboard");
 		}
 	}
 
