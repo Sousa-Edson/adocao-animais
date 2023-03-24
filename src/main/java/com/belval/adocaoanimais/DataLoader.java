@@ -68,7 +68,10 @@ public class DataLoader implements CommandLineRunner {
 		Optional<Usuario> usuario=usuarioRepository.findById(1l);
 		Usuario uu= usuario.get();
 //		postagemRepository.save(new Postagem("Adoção 1", "conteudo","dataPublicacao",true,uu));
-//		postagemRepository.save(new Postagem("titulo","conteudo","caminhoImagem","dataPublicacao",true,uu));
+		postagemRepository.save(new Postagem("titulo","conteudo","caminhoImagem","dataPublicacao",new URL("https://www.local.com"),true,uu));
+		Postagem p = new Postagem();
+		 
+		p.setLinkEvento( new URL("https:;;www.local.com"));
 
 		/** SALVAR COR **/
 		corRepository.save(new PetCor("Preto", true));

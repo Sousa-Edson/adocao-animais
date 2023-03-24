@@ -34,13 +34,14 @@ public class Postagem {
 	}
 	
 
-	public Postagem(String titulo, String conteudo, String caminhoImagem, String dataPublicacao,  
+	public Postagem(String titulo, String conteudo, String caminhoImagem, String dataPublicacao, URL linkEvento,
 			boolean ativo, Usuario usuario) {
 		super();
 		this.titulo = titulo;
 		this.conteudo = conteudo;
 		this.caminhoImagem = caminhoImagem;
 		this.dataPublicacao = dataPublicacao;
+		this.linkEvento = linkEvento;
 		this.ativo = ativo;
 		this.usuario = usuario;
 	}
