@@ -30,14 +30,14 @@ public class RacaController {
 	@GetMapping("")
 	public ModelAndView index() {
 		List<PetRaca> racas = this.racaRepository.findAll();
-		ModelAndView mv = new ModelAndView("admin/raca/index");
+		ModelAndView mv = new ModelAndView("raca/index");
 		mv.addObject("racas", racas);
 		return mv;
 	}
 
 	@GetMapping("/new")
 	public ModelAndView nnew(RequisicaoFormRaca requisicao) {
-		ModelAndView mv = new ModelAndView("admin/raca/new");
+		ModelAndView mv = new ModelAndView("raca/new");
 		mv.addObject("listaEspecie", Especie.values());
 		return mv;
 	}
@@ -48,7 +48,7 @@ public class RacaController {
 		System.out.println(requisicao);
 		if (bindingResult.hasErrors()) {
 			System.out.println("\n************************TEM ERROS**********************\n");
-			ModelAndView mv = new ModelAndView("admin/raca/new");
+			ModelAndView mv = new ModelAndView("raca/new");
 			mv.addObject("listaEspecie", Especie.values());
 			return mv;
 		} else {
@@ -65,7 +65,7 @@ public class RacaController {
 		Optional<PetRaca> optional = this.racaRepository.findById(id);
 		if (optional.isPresent()) {
 			PetRaca petRaca = optional.get();
-			ModelAndView mv = new ModelAndView("admin/raca/show");
+			ModelAndView mv = new ModelAndView("raca/show");
 			mv.addObject(petRaca);
 			return mv;
 		} else {
@@ -88,7 +88,7 @@ public class RacaController {
 		if (optional.isPresent()) {
 			PetRaca petRaca = optional.get();
 			requisicao.fromPetRaca(petRaca);
-			ModelAndView mv = new ModelAndView("admin/raca/edit");
+			ModelAndView mv = new ModelAndView("raca/edit");
 			mv.addObject("petId", petRaca.getId());
 			mv.addObject("listaEspecie", Especie.values());
 			return mv;
@@ -104,7 +104,7 @@ public class RacaController {
 			BindingResult bindingResult) {
 		System.out.println(requisicao);
 		if (bindingResult.hasErrors()) {
-			ModelAndView mv = new ModelAndView("admin/raca/edit");
+			ModelAndView mv = new ModelAndView("raca/edit");
 			mv.addObject("petId", id);
 			return mv;
 		} else {

@@ -42,6 +42,7 @@ public class DataLoader implements CommandLineRunner {
 
 		usuarioRepository.save(new Usuario("Victor", "Bombastic", "230.339.982-06", "01/10/2010", "masculino",
 				"victor@victor.com", "11 8521-0105", "123", permissao.USUARIO, true));
+		
 		usuarioRepository.save(new Usuario("Mariah", "Victoria", "250.789.452-26", "01/10/2010", "feminino",
 				"mariah@mariah.com", "11 8581-0158", "123", permissao.ADMINISTRADOR, true));
 	}
