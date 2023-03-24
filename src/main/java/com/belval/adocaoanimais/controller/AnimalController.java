@@ -9,6 +9,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -38,8 +39,14 @@ import com.belval.adocaoanimais.repository.RacaRepository;
 @Controller
 @RequestMapping(value = "/pet/private/animal")
 public class AnimalController {
-	@Autowired
-	public static String caminhoImagens = "/home/edson/Imagens/img-data/img-pet/";
+	  
+	@Value("${fileStorageLocationAnimal}")
+	private static String caminhoImagens;
+
+	AnimalController(String caminhoImagens) {
+		AnimalController.caminhoImagens = caminhoImagens;
+	}
+	
 	@Autowired
 	private AnimalRepository animalRepository;
 	@Autowired

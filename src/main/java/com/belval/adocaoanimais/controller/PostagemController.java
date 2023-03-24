@@ -152,8 +152,6 @@ public class PostagemController {
 				// + postagem.getId()
 			} else {
 				System.out.println("########### Não achou o postagem");
-				// return this.retornaError("UPDATE ERROR: raça #" + id + " não encontrado no
-				// banco!");
 				return null;
 			}
 		}
