@@ -43,12 +43,12 @@ public class PostagemController {
 	public String index(Model model) {
 		model.addAttribute("c", new Postagem());
 		model.addAttribute("postagens", postagemRepository.findAll());
-		return "admin/postagem/index";
+		return "postagem/index";
 	}
 
 	@GetMapping("/new")
 	public ModelAndView nnew(RequisicaoFormPostagem requisicao) {
-		ModelAndView mv = new ModelAndView("admin/postagem/new");
+		ModelAndView mv = new ModelAndView("postagem/new");
 		Postagem p = new Postagem();
 		if (p.getCaminhoImagem() == null) {
 			mv.addObject("p",
@@ -67,7 +67,7 @@ public class PostagemController {
 		if (bindingResult.hasErrors()) {
 			System.out.println("\n************************TEM ERROS**********************\n");
 			System.out.println("ERRO \n\n" + bindingResult + "\n\n");
-			ModelAndView mv = new ModelAndView("admin/postagem/new");
+			ModelAndView mv = new ModelAndView("postagem/new");
 			return mv;
 		} else {
 			Usuario usuario = new Usuario();
@@ -115,7 +115,7 @@ public class PostagemController {
 		if (optional.isPresent()) {
 			Postagem postagem = optional.get();
 			requisicao.fromPostagem(postagem);
-			ModelAndView mv = new ModelAndView("admin/postagem/edit");
+			ModelAndView mv = new ModelAndView("postagem/edit");
 			mv.addObject("postagemId", postagem.getId());
 
 			Optional<Postagem> p = postagemRepository.findById(id);
@@ -138,7 +138,7 @@ public class PostagemController {
 			@RequestParam("caminhoImagem") MultipartFile arquivo, BindingResult bindingResult) {
 		System.out.println(requisicao);
 		if (bindingResult.hasErrors()) {
-			ModelAndView mv = new ModelAndView("admin/postagem/edit");
+			ModelAndView mv = new ModelAndView("postagem/edit");
 			mv.addObject("postagemId", id);
 			return mv;
 		} else {
@@ -166,7 +166,7 @@ public class PostagemController {
 			return "nao-encontrada";
 		} else {
 			model.addAttribute("postagem", p.get());
-			return "admin/postagem/show";
+			return "postagem/show";
 		}
 
 	}

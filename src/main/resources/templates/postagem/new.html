@@ -1,11 +1,11 @@
-<head th:replace="~{fragmentos :: head('Editar postagem')}"></head>
+<head th:replace="~{fragmentos :: head('Nova postagem')}"></head>
 <nav th:replace="~{fragmentos :: navbar}"></nav>
 <main class="container mt-1  bg-light ">
 
 <div class="row">
 			<div th:replace="~{admin/fragmentos :: sidebar('postagem')}"></div>
 			<div class="col-lg-8  col-md-8 col-sm-12">
-				<section th:replace="~{admin/postagem/fragmentos :: form(requisicaoFormPostagem,'/pet/admin/postagem/'+${postagemId},'Editar postagem #'+${postagemId})}">  formulario</section>
+				<section th:replace="~{postagem/fragmentos :: form(requisicaoFormPostagem,'/pet/admin/postagem','Cadastrar nova postagem')}">  formulario</section>
 				 
                 
 			</div>

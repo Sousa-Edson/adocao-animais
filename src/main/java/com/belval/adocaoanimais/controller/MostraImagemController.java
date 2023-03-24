@@ -29,11 +29,17 @@ public class MostraImagemController {
 	public byte[] retornarImagemPostagem(@PathVariable("imagem") String imagem) throws IOException {
 //		caminhoImagensPost = "eeee";
 		File imagemArquivo = new File(caminhoImagensPost + "" + imagem);
-		System.out.println("\n\n\n######################################################   ola mundo\n\n\n");
-		if (imagem != null || imagem.trim().length() > 0) {
+		try {
+			System.out.println(
+					"\n\n\n######################################################   Mostra imagem\n\n\nimg-post: "
+							+ imagem);
 			return Files.readAllBytes(imagemArquivo.toPath());
+		} catch (Exception e) {
+			System.out.println(
+					"\n\n\n######################################################   Mostra imagem\n\n\nimg-post ---- sem-imagem.jpeg\n:"+e);
+			return Files.readAllBytes(new File(caminhoImagensPost + "/sem-imagem.jpeg").toPath());
 		}
-		return null;
+
 	}
 
 	@ResponseBody
@@ -45,5 +51,6 @@ public class MostraImagemController {
 			return Files.readAllBytes(imagemArquivo.toPath());
 		}
 		return null;
+		//@{/pet/mostrarImagem/{imagem}(imagem=${p.getCaminhoImagem})}
 	}
 }
