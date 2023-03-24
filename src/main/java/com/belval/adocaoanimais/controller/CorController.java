@@ -29,14 +29,14 @@ public class CorController {
 	@GetMapping("")
 	public ModelAndView index() {
 		List<PetCor> cores = this.corRepository.findAll();
-		ModelAndView mv = new ModelAndView("admin/cor/index");
+		ModelAndView mv = new ModelAndView("cor/index");
 		mv.addObject("cores", cores);
 		return mv;
 	}
 
 	@GetMapping("/new")
 	public ModelAndView nnew(RequisicaoFormCor requisicao) {
-		ModelAndView mv = new ModelAndView("admin/cor/new");
+		ModelAndView mv = new ModelAndView("cor/new");
 		return mv;
 	}
 
@@ -46,7 +46,7 @@ public class CorController {
 		System.out.println(requisicao);
 		if (bindingResult.hasErrors()) {
 			System.out.println("\n************************TEM ERROS**********************\n");
-			ModelAndView mv = new ModelAndView("admin/cor/new");
+			ModelAndView mv = new ModelAndView("cor/new");
 
 			return mv;
 		} else {
@@ -63,7 +63,7 @@ public class CorController {
 		Optional<PetCor> optional = this.corRepository.findById(id);
 		if (optional.isPresent()) {
 			PetCor petCor = optional.get();
-			ModelAndView mv = new ModelAndView("admin/cor/show");
+			ModelAndView mv = new ModelAndView("cor/show");
 			mv.addObject(petCor);
 			return mv;
 		} else {
@@ -79,7 +79,7 @@ public class CorController {
 		if (optional.isPresent()) {
 			PetCor petCor = optional.get();
 			requisicao.fromPetCor(petCor);
-			ModelAndView mv = new ModelAndView("admin/cor/edit");
+			ModelAndView mv = new ModelAndView("cor/edit");
 			mv.addObject("petId", petCor.getId());
 			return mv;
 		} else {
@@ -94,7 +94,7 @@ public class CorController {
 			BindingResult bindingResult) {
 		System.out.println(requisicao);
 		if (bindingResult.hasErrors()) {
-			ModelAndView mv = new ModelAndView("admin/cor/edit");
+			ModelAndView mv = new ModelAndView("cor/edit");
 			mv.addObject("petId", id);
 			return mv;
 		} else {
