@@ -37,7 +37,7 @@ public class DashboardController {
         menu.setTitulo("Todos os anúncios de animais");
         menu.setSelecao("anuncioAll");
         List<Animal> animais = this.animalRepository.findAll();
-        ModelAndView mv = new ModelAndView("private/animal/index");
+        ModelAndView mv = new ModelAndView("animal/index");
         mv.addObject("animais", animais);
         mv.addObject("menu", menu);
         return mv;

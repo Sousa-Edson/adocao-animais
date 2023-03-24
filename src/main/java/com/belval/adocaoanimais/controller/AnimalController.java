@@ -58,7 +58,7 @@ public class AnimalController {
 		menu.setTitulo("Meus anúncios");
 		menu.setSelecao("anuncio");
 		List<Animal> animais = this.animalRepository.findAll();
-		ModelAndView mv = new ModelAndView("private/animal/index");
+		ModelAndView mv = new ModelAndView("animal/index");
 		mv.addObject("animais", animais);
 		mv.addObject("menu", menu);
 		return mv;
@@ -66,7 +66,7 @@ public class AnimalController {
 
 	@GetMapping("/new")
 	public ModelAndView nnew(RequisicaoFormAnimal requisicao) {  
-		ModelAndView mv = new ModelAndView("private/animal/new");
+		ModelAndView mv = new ModelAndView("animal/new");
 		List<PetRaca> racas = racaRepository.findAll();
 		mv.addObject("listaRaca", racas);
 		List<PetCor> cores = corRepository.findAll();
@@ -84,7 +84,7 @@ public class AnimalController {
 			System.out.println("\n************************TEM ERROS**********************\n");
 			System.out.println("ERRO \n\n" + bindingResult + "\n\n");
 			List<PetRaca> racas = racaRepository.findAll();
-			ModelAndView mv = new ModelAndView("private/animal/new");
+			ModelAndView mv = new ModelAndView("animal/new");
 			mv.addObject("listaRaca", racas);
 			List<PetCor> cores = corRepository.findAll();
 			mv.addObject("listaCor", cores);
@@ -112,7 +112,7 @@ public class AnimalController {
 		Optional<Animal> optional = this.animalRepository.findById(id);
 		if (optional.isPresent()) {
 			Animal animal = optional.get();
-			mv = new ModelAndView("private/animal/new-image");
+			mv = new ModelAndView("animal/new-image");
 			List<PetImagem> petImagem = this.petImagemRepository.findByAnimal(animal);
 			mv.addObject("petImagem", petImagem);
 			mv.addObject(animal);
@@ -191,7 +191,7 @@ public class AnimalController {
 		Optional<Animal> optional = this.animalRepository.findById(id);
 
 		if (optional.isPresent()) {
-			ModelAndView mv = new ModelAndView("private/animal/edit");
+			ModelAndView mv = new ModelAndView("animal/edit");
 			Animal animal = optional.get();
 			requisicao.fromAnimal(animal);
 			mv.addObject(animal);
@@ -217,7 +217,7 @@ public class AnimalController {
 			BindingResult bindingResult) {
 		System.out.println(requisicao);
 		if (bindingResult.hasErrors()) {
-			ModelAndView mv = new ModelAndView("private/animal");
+			ModelAndView mv = new ModelAndView("animal");
 			mv.addObject("petId", id);
 			return mv;
 		} else {
@@ -247,7 +247,7 @@ public class AnimalController {
 		Optional<Animal> optional = this.animalRepository.findById(id);
 		if (optional.isPresent()) {
 			Animal animal = optional.get();
-			ModelAndView mv = new ModelAndView("private/animal/show");
+			ModelAndView mv = new ModelAndView("animal/show");
 			mv.addObject(animal);
 			List<PetImagem> petImagem = this.petImagemRepository.findByAnimal(animal);
 			mv.addObject("petImagem", petImagem);

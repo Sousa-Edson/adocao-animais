@@ -7,7 +7,7 @@
     <nav th:replace="~{fragmentos :: navbar}"></nav>
     <main class="container mt-1   bg-light ">
         <div class="row">
-            <!-- <section th:replace="~{private/animal/fragmentos :: sidebar('anuncio')}"></section> -->
+            <!-- <section th:replace="~{animal/fragmentos :: sidebar('anuncio')}"></section> -->
             <div th:replace="~{admin/fragmentos :: sidebar('anuncio')}"></div>
 			<section th:fragment="section-tab-dados(cabecalho)" class="col-md-8 my-3 ">
                 <div class="d-flex align-items-start">
@@ -24,7 +24,7 @@
                         <div class="tab-pane fade " id="v-pills-home" role="tabpanel"
                             aria-labelledby="v-pills-home-tab" tabindex="0">
 <!--                              <section -->
-<!--                                 th:replace="~{private/animal/fragmentos :: form(requisicaoFormAnimal,'/pet/private/animal','Cadastrar novo animal')}"> -->
+<!--                                 th:replace="~{animal/fragmentos :: form(requisicaoFormAnimal,'/pet/private/animal','Cadastrar novo animal')}"> -->
 <!--                                 formulario</section>  -->
                         </div>
                         <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel"
