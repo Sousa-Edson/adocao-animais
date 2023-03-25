@@ -1,6 +1,7 @@
 package com.belval.adocaoanimais;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
@@ -107,10 +108,15 @@ public class DataLoader implements CommandLineRunner {
 		racaRepository.save(new PetRaca("Persa", true, Especie.GATO));
 		racaRepository.save(new PetRaca("Egípcio", true, Especie.GATO));
 
+		/** DATA **/
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+
 		/** SALVAR ANIMAL **/
 
 		Animal a = new Animal();
+
 		a.setNome("Trovão");
+		a.setNascimento(formato.parse("23/11/2015"));
 		a.setObservacao(
 				"	Lorem ipsum arcu aptent integer suspendisse urna nec, platea porttitor aliquam class mauris feugiat tempor, sollicitudin a integer porttitor aenean curabitur. conubia lobortis curae donec libero primis maecenas, ut conubia ligula proin augue metus, lacus varius accumsan phasellus interdum. dui rutrum id curabitur donec imperdiet himenaeos conubia nisl, arcu maecenas pharetra convallis semper rutrum lobortis. ");
 		a.setResumo(
@@ -121,7 +127,72 @@ public class DataLoader implements CommandLineRunner {
 		a.setPorte(Porte.GRANDE);
 		a.setSexo(1);
 		a.setEspecie(Especie.CACHORRO);
+		a.setPetImagem(null);
 		animalRepository.save(a);
+
+		Animal b = new Animal();
+		b.setNome("Raio");
+		b.setNascimento(formato.parse("23/12/2002"));
+		b.setObservacao(
+				"	Lorem ipsum arcu aptent integer suspendisse urna nec, platea porttitor aliquam class mauris feugiat tempor, sollicitudin a integer porttitor aenean curabitur. conubia lobortis curae donec libero primis maecenas, ut conubia ligula proin augue metus, lacus varius accumsan phasellus interdum. dui rutrum id curabitur donec imperdiet himenaeos conubia nisl, arcu maecenas pharetra convallis semper rutrum lobortis. ");
+		b.setResumo(
+				"	Purus commodo dapibus urna suscipit magna morbi eget senectus, lacus pharetra placerat aliquam ornare sapien curabitur leo, ullamcorper risus a consectetur sociosqu pretium nibh. ligula blandit fusce quisque libero lobortis lacinia ut turpis ipsum eget, odio imperdiet consequat augue semper sociosqu interdum luctus interdum neque primis, neque porttitor nec odio imperdiet nunc convallis et rutrum. ");
+		b.setDisponivel(true);
+		b.setPetCor(corRepository.findById(1l).get());
+		b.setPetRaca(racaRepository.findById(1l).get());
+		b.setPorte(Porte.MEDIO);
+		b.setSexo(2);
+		b.setEspecie(Especie.CACHORRO);
+		b.setPetImagem(null);
+		animalRepository.save(b);
+
+		Animal c = new Animal();
+		c.setNome("Relampago");
+		c.setNascimento(formato.parse("01/01/2020"));
+		c.setObservacao(
+				"	Lorem ipsum arcu aptent integer suspendisse urna nec, platea porttitor aliquam class mauris feugiat tempor, sollicitudin a integer porttitor aenean curabitur. conubia lobortis curae donec libero primis maecenas, ut conubia ligula proin augue metus, lacus varius accumsan phasellus interdum. dui rutrum id curabitur donec imperdiet himenaeos conubia nisl, arcu maecenas pharetra convallis semper rutrum lobortis. ");
+		c.setResumo(
+				"	Purus commodo dapibus urna suscipit magna morbi eget senectus, lacus pharetra placerat aliquam ornare sapien curabitur leo, ullamcorper risus a consectetur sociosqu pretium nibh. ligula blandit fusce quisque libero lobortis lacinia ut turpis ipsum eget, odio imperdiet consequat augue semper sociosqu interdum luctus interdum neque primis, neque porttitor nec odio imperdiet nunc convallis et rutrum. ");
+		c.setDisponivel(true);
+		c.setPetCor(corRepository.findById(1l).get());
+		c.setPetRaca(racaRepository.findById(1l).get());
+		c.setPorte(Porte.PEQUENO);
+		c.setSexo(2);
+		c.setEspecie(Especie.GATO);
+		c.setPetImagem(null);
+		animalRepository.save(c);
+
+		Animal d = new Animal();
+		d.setNome("Nuvem");
+		d.setNascimento(formato.parse("18/05/2005"));
+		d.setObservacao(
+				"	Lorem ipsum arcu aptent integer suspendisse urna nec, platea porttitor aliquam class mauris feugiat tempor, sollicitudin a integer porttitor aenean curabitur. conubia lobortis curae donec libero primis maecenas, ut conubia ligula proin augue metus, lacus varius accumsan phasellus interdum. dui rutrum id curabitur donec imperdiet himenaeos conubia nisl, arcu maecenas pharetra convallis semper rutrum lobortis. ");
+		d.setResumo(
+				"	Purus commodo dapibus urna suscipit magna morbi eget senectus, lacus pharetra placerat aliquam ornare sapien curabitur leo, ullamcorper risus a consectetur sociosqu pretium nibh. ligula blandit fusce quisque libero lobortis lacinia ut turpis ipsum eget, odio imperdiet consequat augue semper sociosqu interdum luctus interdum neque primis, neque porttitor nec odio imperdiet nunc convallis et rutrum. ");
+		d.setDisponivel(true);
+		d.setPetCor(corRepository.findById(1l).get());
+		d.setPetRaca(racaRepository.findById(1l).get());
+		d.setPorte(Porte.GRANDE);
+		d.setSexo(0);
+		d.setEspecie(Especie.GATO);
+		d.setPetImagem(null);
+		animalRepository.save(d);
+
+		Animal e = new Animal();
+		e.setNome("Chuva");
+		e.setNascimento(formato.parse("02/01/2001"));
+		e.setObservacao(
+				"	Lorem ipsum arcu aptent integer suspendisse urna nec, platea porttitor aliquam class mauris feugiat tempor, sollicitudin a integer porttitor aenean curabitur. conubia lobortis curae donec libero primis maecenas, ut conubia ligula proin augue metus, lacus varius accumsan phasellus interdum. dui rutrum id curabitur donec imperdiet himenaeos conubia nisl, arcu maecenas pharetra convallis semper rutrum lobortis. ");
+		e.setResumo(
+				"	Purus commodo dapibus urna suscipit magna morbi eget senectus, lacus pharetra placerat aliquam ornare sapien curabitur leo, ullamcorper risus a consectetur sociosqu pretium nibh. ligula blandit fusce quisque libero lobortis lacinia ut turpis ipsum eget, odio imperdiet consequat augue semper sociosqu interdum luctus interdum neque primis, neque porttitor nec odio imperdiet nunc convallis et rutrum. ");
+		e.setDisponivel(true);
+		e.setPetCor(corRepository.findById(1l).get());
+		e.setPetRaca(racaRepository.findById(1l).get());
+		e.setPorte(Porte.MEDIO);
+		e.setSexo(1);
+		e.setEspecie(Especie.CACHORRO);
+		e.setPetImagem(null);
+		animalRepository.save(e);
 	}
 
 }
