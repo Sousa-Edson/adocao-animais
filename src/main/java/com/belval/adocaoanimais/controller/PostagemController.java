@@ -31,10 +31,10 @@ public class PostagemController {
 	@Autowired
 	private PostagemRepository postagemRepository;
 
-	@Value("${fileStorageLocationPost}")
-	private static String fileStorageLocation;
-	public static String caminhoImagens = fileStorageLocation;
+	@Value("${fileStorageLocation}")
+		public static String caminhoImagens ;
 
+	
 	PostagemController(String caminhoImagens) {
 		PostagemController.caminhoImagens = caminhoImagens;
 	}
@@ -82,6 +82,8 @@ public class PostagemController {
 			createImage(requisicao, arquivo, postagem.getId());
 			System.out.println(
 					"###########################################################################\n\n\n DEPOIS DE CRIAR IMAGEM\n\n\n###############################################");
+			
+			System.out.println("fileStorage "+caminhoImagens);
 			return new ModelAndView("redirect:/pet/admin/postagem/");
 		}
 
@@ -94,7 +96,7 @@ public class PostagemController {
 			System.out.println("entrando");
 			if (!arquivo.isEmpty()) {
 				byte[] bytes = arquivo.getBytes();
-				Path caminho = Paths.get(caminhoImagens + String.valueOf(id) + "-" + arquivo.getOriginalFilename());
+				Path caminho = Paths.get(caminhoImagens + "/img-post/"+ String.valueOf(id) + "-" + arquivo.getOriginalFilename());
 				Files.write(caminho, bytes);
 
 				postagem.setId(id);

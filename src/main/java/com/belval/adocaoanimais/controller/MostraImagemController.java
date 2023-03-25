@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MostraImagemController {
-	@Value("${fileStorageLocationPost}")
+	@Value("${fileStorageLocation}")
 	private static String caminhoImagensPost;
 
 	@Value("${fileStorageLocationAnimal}")
 	private static String caminhoImagensAnimal;
+	
 
 	MostraImagemController(String caminhoImagensPost, String caminhoImagensAnimal) {
 		MostraImagemController.caminhoImagensPost = caminhoImagensPost;
@@ -27,7 +28,7 @@ public class MostraImagemController {
 	@ResponseBody
 	@GetMapping("/pet/mostrarImagem/img-post/{imagem}")
 	public byte[] retornarImagemPostagem(@PathVariable("imagem") String imagem) throws IOException {
-		File imagemArquivo = new File(caminhoImagensPost + "" + imagem);
+		File imagemArquivo = new File(caminhoImagensPost + "/img-post/" + imagem);
 		if (imagem == null || imagem.trim().length() <= 3) {
 			imagemArquivo = new File("sem-imagem.jpeg");
 		}
@@ -46,7 +47,7 @@ public class MostraImagemController {
 	@ResponseBody
 	@GetMapping("/pet/mostrarImagem/img-pet/{imagem}")
 	public byte[] retornarImagemPet(@PathVariable("imagem") String imagem) throws IOException {
-		File imagemArquivo = new File(caminhoImagensAnimal + "" + imagem);
+		File imagemArquivo = new File(caminhoImagensAnimal + "/img-animal/" + imagem);
 		System.out.println("\n\n\n######################################################   IMAGEM PET\n\n\n");
 		if (imagem != null || imagem.trim().length() > 0) {
 			return Files.readAllBytes(imagemArquivo.toPath());

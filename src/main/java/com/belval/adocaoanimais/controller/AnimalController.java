@@ -41,12 +41,13 @@ import com.belval.adocaoanimais.repository.RacaRepository;
 @RequestMapping(value = "/pet/private/animal")
 public class AnimalController {
 	  
-	@Value("${fileStorageLocationAnimal}")
-	private static String caminhoImagens;
+	@Value("${fileStorageLocation}")
+	public static String caminhoImagens ;
+
 
 	AnimalController(String caminhoImagens) {
 		AnimalController.caminhoImagens = caminhoImagens;
-	}
+}
 	
 	@Autowired
 	private AnimalRepository animalRepository;
@@ -141,11 +142,12 @@ public class AnimalController {
 			PetImagem petImagem = new PetImagem();
 			if (!arquivo.isEmpty()) {
 				byte[] bytes = arquivo.getBytes();
-				Path caminho = Paths.get(caminhoImagens + String.valueOf(id) + "-" + arquivo.getOriginalFilename());
+				Path caminho = Paths.get(caminhoImagens + "/img-animal/"+ String.valueOf(id) + "-" + arquivo.getOriginalFilename());
 				Files.write(caminho, bytes);
 				petImagem.setAnimal(optional.get());
 				petImagem.setCaminhoImagem(String.valueOf(id) + "-" + arquivo.getOriginalFilename());
 				this.petImagemRepository.save(petImagem);
+				System.out.println("private static String caminhoImagensAnimal: "+caminhoImagens);
 			}
 		} catch (Exception e) {
 			System.out.println("erro--> " + e);

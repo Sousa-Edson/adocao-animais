@@ -12,27 +12,30 @@ public class FileStorageConfig {
 
 	@PostConstruct
 	public void init() {
+		img();
 		postagem();
 		animal();
 		usuario();
 	}
 
 	@Bean
-	public String fileStorageLocationPost() {
-		return System.getProperty("user.dir") + "/img-post/";
+	public String fileStorageLocation() {
+		return System.getProperty("user.dir") + "/";
 	}
-	 
-	public String fileStorageLocationAnimal() {
-		return System.getProperty("user.dir") + "/img-animal/";
-	}
-	 
-	public String fileStorageLocationUsuario() {
-		return System.getProperty("user.dir") + "/img-usuario/";
+
+	public void img() {
+		String folderName = "img";
+		String folderPath = System.getProperty("user.dir") + "/" + folderName;
+		File folder = new File(folderPath);
+
+		if (!folder.exists()) {
+			folder.mkdir();
+		}
 	}
 
 	public void postagem() {
 		String folderName = "img-post";
-		String folderPath = System.getProperty("user.dir") + "/" + folderName;
+		String folderPath = System.getProperty("user.dir") + "" + folderName;
 		File folder = new File(folderPath);
 
 		if (!folder.exists()) {
@@ -42,7 +45,7 @@ public class FileStorageConfig {
 
 	public void animal() {
 		String folderName = "img-animal";
-		String folderPath = System.getProperty("user.dir") + "/" + folderName;
+		String folderPath = System.getProperty("user.dir") + "" + folderName;
 		File folder = new File(folderPath);
 
 		if (!folder.exists()) {
@@ -52,7 +55,7 @@ public class FileStorageConfig {
 
 	public void usuario() {
 		String folderName = "img-usuario";
-		String folderPath = System.getProperty("user.dir") + "/" + folderName;
+		String folderPath = System.getProperty("user.dir") + "" + folderName;
 		File folder = new File(folderPath);
 
 		if (!folder.exists()) {
