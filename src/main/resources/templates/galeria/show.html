@@ -56,32 +56,63 @@
 
 						<div class="col">
 							<div class="row">
-								<div class="col-12">
-									<hr>
-									<h1 class="fs-4">Dados do animal</h1>
-									<b>Nome:</b> <span class="form-label" th:text="${animal.nome}"></span><br />
-									<b>Especie:</b> <span class="form-label"
-										th:text="${animal.especie.descricao}"></span><br /> <b>Raça:</b>
-									<span class="form-label" th:text="${animal.getPetRaca.getRaca}"></span><br />
-									<b>Porte:</b> <span class="form-label"
-										th:text="${animal.porte.descricao}"></span><br /> <b>Cor
-										de pelagem:</b> <span class="form-label"
-										th:text="${animal.getPetCor.getCor}"></span><br /> <b>Especie:</b>
-									<span class="form-label" th:text="${animal.especie.descricao}"></span><br />
+								<div class="col-md-12">
+									<div class="row">
+										<div class="col-12">
+											<hr>
+											<h1 class="fs-4">Dados do animal</h1>
+											<div class="form-group col-md-12">
+												<label for="nome">Nome do Animal</label> <span type="text"
+													th:text="${animal.nome}" class="form-control  "
+													placeholder="Digite nome do Animal " id="nome" name="nome"
+													value=""></span>
+											</div>
+											<div class="form-group col-md-12">
+												<label for="nome">Especie</label> <span type="text"
+													th:text="${animal.especie.descricao}"
+													class="form-control  " placeholder="Digite nome do Animal "
+													id="nome" name="nome" value=""></span>
+											</div>
+											<div class="form-group col-md-12">
+												<label for="nome">Raça</label> <span type="text"
+													th:text="${animal.getPetRaca.getRaca}"
+													class="form-control  " placeholder="Digite nome do Animal "
+													id="nome" name="nome" value=""></span>
+											</div>
+											<div class="form-group col-md-12">
+												<label for="nome">Cor de pelagem</label> <span type="text"
+													th:text="${animal.porte.descricao}" class="form-control  "
+													placeholder="Digite nome do Animal " id="nome" name="nome"
+													value=""></span>
+											</div>
+											<div class="form-group col-md-12">
+												<label for="nome">Porte</label> <span type="text"
+													th:text="${animal.getPetRaca.getRaca}"
+													class="form-control  " placeholder="Digite nome do Animal "
+													id="nome" name="nome" value=""></span>
+											</div>
+											<div class="form-group col-md-12">
+												<label for="nome">Idade</label> <span type="text"
+													th:text="${animal.nascimento}" class="form-control  "
+													placeholder="Digite nome do Animal " id="nome" name="nome"
+													value=""></span>
+											</div>
 
 
-									<b>Disponivel:</b> <a th:if="${animal.disponivel}"
-										class="text-decoration-none"
-										th:href="@{/pet/private/animal/{id}/deactivate (id=${animal.id})}">
-										Sim</a> <a th:unless="${animal.disponivel}"
-										class="text-decoration-none"
-										th:href="@{/pet/private/animal/{id}/activate (id=${animal.id})}">Não</a>
 
-									<br /> <b>Atualizado por:</b> Edson <br /> <b>Atualizado
-										em:</b> 22/12/22 <br />
+											<b>Disponivel:</b> <a th:if="${animal.disponivel}"
+												class="text-decoration-none"
+												th:href="@{/pet/private/animal/{id}/deactivate (id=${animal.id})}">
+												Sim</a> <a th:unless="${animal.disponivel}"
+												class="text-decoration-none"
+												th:href="@{/pet/private/animal/{id}/activate (id=${animal.id})}">Não</a>
+
+											<br /> <b>Atualizado por:</b> Edson <br /> <b>Atualizado
+												em:</b> 22/12/22 <br />
+										</div>
+									</div>
 								</div>
 							</div>
-							<hr>
 						</div>
 
 					</div>

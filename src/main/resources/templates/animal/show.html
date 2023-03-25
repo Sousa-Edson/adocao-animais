@@ -28,58 +28,85 @@
 				</div>
 
 				<div class="container mt-3">
-					 
-						<div class="row">
-							<div class="col-md-6">
-								<hr>
-								<h1 class="fs-4" th:text="${animal.nome}">imagem</h1>
-								<div
-									th:if="${animal.petImagem != null and animal.petImagem.size() > 0}">
-									<img class="card-img-top" style="min-height: 400px"
-										th:src="@{/pet/mostrarImagem/img-pet/{imagem}(imagem=${animal.petImagem[0].caminhoImagem})}"
-										alt="Card image cap">
-								</div>
-								<div
-									th:if="${animal.petImagem == null || animal.petImagem.size() == 0}">
-									<img class="card-img-top" style="min-height: 400px"
-										th:src="@{/pet/mostrarImagem/img-pet/}" alt="Card image cap">
 
-								</div>
+					<div class="row">
+						<div class="col-md-6">
+							<hr>
+							<h1 class="fs-4" th:text="${animal.nome}">imagem</h1>
+							<div
+								th:if="${animal.petImagem != null and animal.petImagem.size() > 0}">
+								<img class="card-img-top" style="min-height: 400px"
+									th:src="@{/pet/mostrarImagem/img-pet/{imagem}(imagem=${animal.petImagem[0].caminhoImagem})}"
+									alt="Card image cap">
 							</div>
+							<div
+								th:if="${animal.petImagem == null || animal.petImagem.size() == 0}">
+								<img class="card-img-top" style="min-height: 400px"
+									th:src="@{/pet/mostrarImagem/img-pet/}" alt="Card image cap">
 
-							<div class="col-md-6">
-								<div class="row">
-									<div class="col-12">
-										<hr>
-										<h1 class="fs-4">Dados do animal</h1>
-										<b>Nome:</b> <span class="form-label" th:text="${animal.nome}"></span><br />
-										<b>Especie:</b> <span class="form-label"
-											th:text="${animal.especie.descricao}"></span><br /> <b>Raça:</b>
-										<span class="form-label"
-											th:text="${animal.getPetRaca.getRaca}"></span><br /> <b>Porte:</b>
-										<span class="form-label" th:text="${animal.porte.descricao}"></span><br />
-										<b>Cor de pelagem:</b> <span class="form-label"
-											th:text="${animal.getPetCor.getCor}"></span><br /> <b>Especie:</b>
-										<span class="form-label" th:text="${animal.especie.descricao}"></span><br />
-
-
-										<b>Disponivel:</b> <a th:if="${animal.disponivel}"
-											class="text-decoration-none"
-											th:href="@{/pet/private/animal/{id}/deactivate (id=${animal.id})}">
-											Sim</a> <a th:unless="${animal.disponivel}"
-											class="text-decoration-none"
-											th:href="@{/pet/private/animal/{id}/activate (id=${animal.id})}">Não</a>
-
-										<br /> <b>Atualizado por:</b> Edson <br /> <b>Atualizado
-											em:</b> 22/12/22 <br />
-									</div>
-								</div>
-								<hr>
 							</div>
-
 						</div>
 
-					 
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-12">
+									<hr>
+									<h1 class="fs-4">Dados do animal</h1>
+									<div class="form-group col-md-12">
+										<label for="nome">Nome do Animal</label> <span type="text"
+											th:text="${animal.nome}" class="form-control  "
+											placeholder="Digite nome do Animal " id="nome" name="nome"
+											value=""></span>
+									</div>
+									<div class="form-group col-md-12">
+										<label for="nome">Especie</label> <span type="text"
+											th:text="${animal.especie.descricao}" class="form-control  "
+											placeholder="Digite nome do Animal " id="nome" name="nome"
+											value=""></span>
+									</div>
+									<div class="form-group col-md-12">
+										<label for="nome">Raça</label> <span type="text"
+											th:text="${animal.getPetRaca.getRaca}" class="form-control  "
+											placeholder="Digite nome do Animal " id="nome" name="nome"
+											value=""></span>
+									</div>
+									<div class="form-group col-md-12">
+										<label for="nome">Cor de pelagem</label> <span type="text"
+											th:text="${animal.porte.descricao}" class="form-control  "
+											placeholder="Digite nome do Animal " id="nome" name="nome"
+											value=""></span>
+									</div>
+									<div class="form-group col-md-12">
+										<label for="nome">Porte</label> <span type="text"
+											th:text="${animal.getPetRaca.getRaca}" class="form-control  "
+											placeholder="Digite nome do Animal " id="nome" name="nome"
+											value=""></span>
+									</div>
+									<div class="form-group col-md-12">
+										<label for="nome">Idade</label> <span type="text"
+											th:text="${animal.nascimento}" class="form-control  "
+											placeholder="Digite nome do Animal " id="nome" name="nome"
+											value=""></span>
+									</div>
+
+
+
+									<b>Disponivel:</b> <a th:if="${animal.disponivel}"
+										class="text-decoration-none"
+										th:href="@{/pet/private/animal/{id}/deactivate (id=${animal.id})}">
+										Sim</a> <a th:unless="${animal.disponivel}"
+										class="text-decoration-none"
+										th:href="@{/pet/private/animal/{id}/activate (id=${animal.id})}">Não</a>
+
+									<br /> <b>Atualizado por:</b> Edson <br /> <b>Atualizado
+										em:</b> 22/12/22 <br />
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+
 					<hr>
 					<h1 class="fs-4">Imagens do animal</h1>
 					<section>

@@ -73,7 +73,7 @@ public class UsuarioController {
 		Optional<Usuario> optional = this.usuarioRepository.findById(id);
 		if (optional.isPresent()) {
 			Usuario usuario = optional.get();
-			ModelAndView mv = new ModelAndView("private/usuario/show");
+			ModelAndView mv = new ModelAndView("usuario/perfil");
 			// mv.addObject("listaPermissao", Permissao.values());
 			mv.addObject(usuario);
 			return mv;
