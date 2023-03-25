@@ -17,6 +17,7 @@ import com.belval.adocaoanimais.model.PetCor;
 import com.belval.adocaoanimais.model.PetRaca;
 import com.belval.adocaoanimais.model.Postagem;
 import com.belval.adocaoanimais.model.Usuario;
+import com.belval.adocaoanimais.repository.AnimalRepository;
 import com.belval.adocaoanimais.repository.CorRepository;
 import com.belval.adocaoanimais.repository.PostagemRepository;
 import com.belval.adocaoanimais.repository.RacaRepository;
@@ -35,7 +36,7 @@ public class DataLoader implements CommandLineRunner {
 
 	@Autowired
 	UsuarioRepository usuarioRepository;
-	
+
 	@Autowired
 	PostagemRepository postagemRepository;
 
@@ -44,9 +45,12 @@ public class DataLoader implements CommandLineRunner {
 
 	@Autowired
 	RacaRepository racaRepository;
+	
+	@Autowired
+	AnimalRepository animalRepository;
 
 	Permissao permissao;
-	
+
 	Especie especie;
 
 	@Override
@@ -61,31 +65,49 @@ public class DataLoader implements CommandLineRunner {
 				"victor@victor.com", "11 8521-0105", "123", permissao.USUARIO, true));
 		usuarioRepository.save(new Usuario("Mariah", "Victoria", "250.789.452-26", "01/10/2010", "feminino",
 				"mariah@mariah.com", "11 8581-0158", "123", permissao.ADMINISTRADOR, true));
-		
+
 		/** SALVAR POSTAGEM **/
-//		tring titulo, String conteudo, String caminhoImagem, String dataPublicacao, URL linkEvento,
-//		boolean ativo, Usuario usuario
-		Optional<Usuario> usuario=usuarioRepository.findById(1l);
-		Usuario uu= usuario.get();
-//		postagemRepository.save(new Postagem("Adoção 1", "conteudo","dataPublicacao",true,uu));
-		postagemRepository.save(new Postagem("titulo","conteudo","caminhoImagem","dataPublicacao",new URL("https://www.local.com"),true,uu));
-		Postagem p = new Postagem();
-		 
-		p.setLinkEvento( new URL("https:;;www.local.com"));
+		Optional<Usuario> usuario = usuarioRepository.findById(1l);
+		Usuario user = usuario.get();
+
+		postagemRepository.save(
+				new Postagem("titulo", "conteudo", "", "dataPublicacao", new URL("https://www.local.com"), true, user));
+		postagemRepository.save(new Postagem("Na quarta-feira acontece o agendamento de castração de pets",
+				"Será aberto na quarta-feira (8 de março) o agendamento para castração de cães e gatos, promovido pelo Centro de Proteção ao Animal Doméstico (Cepad), da Secretaria de Recursos Naturais e Meio Ambiente de Barueri (Sema).\r\n"
+						+ "\r\n"
+						+ "Ele ocorrerá exclusivamente pela internet, clicando AQUI. As vagas são limitadas, totalizando 230 (80 caninos fêmeas, 50 caninos machos, 60 felinos fêmeas e 40 felinos machos). O agendamento permanecerá aberto até que as vagas acabem. \r\n"
+						+ "\r\n"
+						+ "O tutor ficará sabendo sobre o dia, horário, local e procedimentos para cirurgia no momento da marcação. É importante ler atentamente as as orientações pré-operatórias expostas na Ficha de Agendamento, que deverá ser impressa, preenchida e entregue no dia da cirurgia. \r\n"
+						+ "",
+				"quarta.jpg", " 01 DE MARÇO DE 2023",
+				new URL("https://portal.barueri.sp.gov.br/Noticia/01032023-na-quarta-feira-acontece-o-agendamento-de-castracao-de-pets"),
+				true, user));
+
+		postagemRepository.save(new Postagem("Feira Especial de Adoção de Pets acontece neste sábado",
+				" No próximo sábado, dia 11, acontece a Feira Especial de Adoção de Pets do Cepad (Centro de Proteção ao Animal Doméstico), da Secretaria de Recursos Naturais e Meio Ambiente (Sema). O evento, aberto ao público, será das 9h às 16h na unidade 1 do Cepad, que fica na rua Vera Cruz, 340 - Bairro dos Altos.\r\n"
+						+ "\r\n"
+						+ "O Cepad disponibiliza para adoção os cães e gatos resgatados pelo setor. Os animais são tratados completamente e passam por uma adaptação até serem colocados para adoção. Cada animal adotado abre espaço para que o Cepad resgate mais pets em situação de abandono ou em risco de morte.",
+				"feira.jpg", " 09 DE FEVEREIRO DE 2023",
+				new URL("https://portal.barueri.sp.gov.br/Noticia/08022023-feira-especial-de-adocao-de-pets-acontece-neste-sabado"),
+				true, user));
 
 		/** SALVAR COR **/
 		corRepository.save(new PetCor("Preto", true));
 		corRepository.save(new PetCor("Amarelo", true));
 		corRepository.save(new PetCor("Cinza", true));
 		corRepository.save(new PetCor("Marrom", true));
-		
+
 		/** SALVAR RACA **/
-		racaRepository.save(new PetRaca("Huski", true,especie.CACHORRO));
-		racaRepository.save(new PetRaca("Vira-lata", true,especie.CACHORRO));
-		racaRepository.save(new PetRaca("Doberman", true,especie.CACHORRO));
-		racaRepository.save(new PetRaca("Pit-bull", true,especie.CACHORRO));
-		racaRepository.save(new PetRaca("Persa", true,especie.GATO));
-		racaRepository.save(new PetRaca("Egípcio", true,especie.GATO));
+		racaRepository.save(new PetRaca("Huski", true, especie.CACHORRO));
+		racaRepository.save(new PetRaca("Vira-lata", true, especie.CACHORRO));
+		racaRepository.save(new PetRaca("Doberman", true, especie.CACHORRO));
+		racaRepository.save(new PetRaca("Pit-bull", true, especie.CACHORRO));
+		racaRepository.save(new PetRaca("Persa", true, especie.GATO));
+		racaRepository.save(new PetRaca("Egípcio", true, especie.GATO));
+		
+		/** SALVAR ANIMAL**/
+		
+		
 	}
 
 }

@@ -18,7 +18,7 @@ public class Postagem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String titulo;
-	@Column(name = "conteudo", length = 512) // AQUI EU DEFINO O NOME DA COLUNA ,SE PODE NULA E O TAMANHO
+	@Column(name = "conteudo", length = 1024) // AQUI EU DEFINO O NOME DA COLUNA ,SE PODE NULA E O TAMANHO
 	private String conteudo;
 	private String caminhoImagem;
 	private String dataPublicacao;

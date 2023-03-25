@@ -28,8 +28,8 @@ public class MostraImagemController {
 	@GetMapping("/pet/mostrarImagem/img-post/{imagem}")
 	public byte[] retornarImagemPostagem(@PathVariable("imagem") String imagem) throws IOException {
 		File imagemArquivo = new File(caminhoImagensPost + "" + imagem);
-		if (imagem == null || imagem.trim().length() == 0) {
-			imagemArquivo = new File(caminhoImagensPost + "sem-imagem.jpeg");
+		if (imagem == null || imagem.trim().length() <= 3) {
+			imagemArquivo = new File("sem-imagem.jpeg");
 		}
 		return Files.readAllBytes(imagemArquivo.toPath());
 	}
@@ -37,7 +37,7 @@ public class MostraImagemController {
 	@ResponseBody
 	@GetMapping("/pet/mostrarImagem/img-post/")
 	public byte[] retornarImagemPostagemVazia() throws IOException {
-		File imagemArquivo = new File(  "sem-imagem.jpeg");
+		File imagemArquivo = new File( "sem-imagem.jpeg");
 		System.out.println(
 				"\n\n\n######################################################   Mostra imagem\n\n\nimg-post ---- sem-imagem.jpeg\n:");
 		return Files.readAllBytes(imagemArquivo.toPath());
