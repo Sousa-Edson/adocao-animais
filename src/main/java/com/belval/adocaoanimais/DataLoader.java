@@ -1,6 +1,7 @@
 package com.belval.adocaoanimais;
 
 import java.net.URL;
+import java.util.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -110,13 +111,16 @@ public class DataLoader implements CommandLineRunner {
 
 		/** DATA **/
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		 Date data = new Date();
+		
 
 		/** SALVAR ANIMAL **/
 
 		Animal a = new Animal();
 
 		a.setNome("Trovão");
-		a.setNascimento(formato.parse("23/11/2015"));
+		 data= formato.parse("18/05/2005");
+		a.setNascimento(new java.sql.Date(data.getTime()));
 		a.setObservacao(
 				"	Lorem ipsum arcu aptent integer suspendisse urna nec, platea porttitor aliquam class mauris feugiat tempor, sollicitudin a integer porttitor aenean curabitur. conubia lobortis curae donec libero primis maecenas, ut conubia ligula proin augue metus, lacus varius accumsan phasellus interdum. dui rutrum id curabitur donec imperdiet himenaeos conubia nisl, arcu maecenas pharetra convallis semper rutrum lobortis. ");
 		a.setResumo(
@@ -132,7 +136,8 @@ public class DataLoader implements CommandLineRunner {
 
 		Animal b = new Animal();
 		b.setNome("Raio");
-		b.setNascimento(formato.parse("23/12/2002"));
+		 data= formato.parse("16/06/2006");
+		b.setNascimento(new java.sql.Date(data.getTime()));
 		b.setObservacao(
 				"	Lorem ipsum arcu aptent integer suspendisse urna nec, platea porttitor aliquam class mauris feugiat tempor, sollicitudin a integer porttitor aenean curabitur. conubia lobortis curae donec libero primis maecenas, ut conubia ligula proin augue metus, lacus varius accumsan phasellus interdum. dui rutrum id curabitur donec imperdiet himenaeos conubia nisl, arcu maecenas pharetra convallis semper rutrum lobortis. ");
 		b.setResumo(
@@ -148,7 +153,8 @@ public class DataLoader implements CommandLineRunner {
 
 		Animal c = new Animal();
 		c.setNome("Relampago");
-		c.setNascimento(formato.parse("01/01/2020"));
+		data= formato.parse("17/07/2007");
+		c.setNascimento(new java.sql.Date(data.getTime()));
 		c.setObservacao(
 				"	Lorem ipsum arcu aptent integer suspendisse urna nec, platea porttitor aliquam class mauris feugiat tempor, sollicitudin a integer porttitor aenean curabitur. conubia lobortis curae donec libero primis maecenas, ut conubia ligula proin augue metus, lacus varius accumsan phasellus interdum. dui rutrum id curabitur donec imperdiet himenaeos conubia nisl, arcu maecenas pharetra convallis semper rutrum lobortis. ");
 		c.setResumo(
@@ -163,8 +169,9 @@ public class DataLoader implements CommandLineRunner {
 		animalRepository.save(c);
 
 		Animal d = new Animal();
-		d.setNome("Nuvem");
-		d.setNascimento(formato.parse("18/05/2005"));
+		d.setNome("Nuvem"); 
+		data= formato.parse("19/09/2009");
+		d.setNascimento(new java.sql.Date(data.getTime()));
 		d.setObservacao(
 				"	Lorem ipsum arcu aptent integer suspendisse urna nec, platea porttitor aliquam class mauris feugiat tempor, sollicitudin a integer porttitor aenean curabitur. conubia lobortis curae donec libero primis maecenas, ut conubia ligula proin augue metus, lacus varius accumsan phasellus interdum. dui rutrum id curabitur donec imperdiet himenaeos conubia nisl, arcu maecenas pharetra convallis semper rutrum lobortis. ");
 		d.setResumo(
@@ -180,7 +187,8 @@ public class DataLoader implements CommandLineRunner {
 
 		Animal e = new Animal();
 		e.setNome("Chuva");
-		e.setNascimento(formato.parse("02/01/2001"));
+		data= formato.parse("20/10/2010");
+		e.setNascimento(new java.sql.Date(data.getTime()));
 		e.setObservacao(
 				"	Lorem ipsum arcu aptent integer suspendisse urna nec, platea porttitor aliquam class mauris feugiat tempor, sollicitudin a integer porttitor aenean curabitur. conubia lobortis curae donec libero primis maecenas, ut conubia ligula proin augue metus, lacus varius accumsan phasellus interdum. dui rutrum id curabitur donec imperdiet himenaeos conubia nisl, arcu maecenas pharetra convallis semper rutrum lobortis. ");
 		e.setResumo(
@@ -193,6 +201,8 @@ public class DataLoader implements CommandLineRunner {
 		e.setEspecie(Especie.CACHORRO);
 		e.setPetImagem(null);
 		animalRepository.save(e);
+
+		System.out.println("############################## nascimento: " + a.getNascimento());
 	}
 
 }

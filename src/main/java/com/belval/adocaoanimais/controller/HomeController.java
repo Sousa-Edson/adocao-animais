@@ -53,7 +53,7 @@ public class HomeController {
 		Optional<Animal> optional = this.animalRepository.findById(id);
 		if (optional.isPresent()) {
 			Animal animal = optional.get();
-			ModelAndView mv = new ModelAndView("public/galeria/show");
+			ModelAndView mv = new ModelAndView("galeria/show");
 			mv.addObject(animal);
 			List<PetImagem> petImagem = this.petImagemRepository.findByAnimal(animal);
 			mv.addObject("petImagem", petImagem);
