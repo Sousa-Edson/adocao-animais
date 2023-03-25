@@ -1,6 +1,7 @@
 package com.belval.adocaoanimais.dto;
+ 
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
