@@ -21,10 +21,20 @@
 					<div class=" col-lg-4 col-md-6 col-sm-12"
 						th:each="animal : ${animais}">
 						<div class="card mb-4 shadow-sm" style="min-height: 600px">
+							<div
+								th:if="${animal.petImagem != null and animal.petImagem.size() > 0}">
+								<img class="card-img-top" style="min-height: 400px"
+									th:src="@{/pet/mostrarImagem/img-pet/{imagem}(imagem=${animal.petImagem[0].caminhoImagem})}"
+									alt="Card image cap">
+							</div>
+							<div
+								th:if="${animal.petImagem == null || animal.petImagem.size() == 0}">
+								<img class="card-img-top" style="min-height: 400px"
+									th:src="@{/pet/mostrarImagem/img-pet/}"
+									alt="Card image cap">
+									 
+							</div>
 
-							<img class="card-img-top" style="min-height: 400px"
-								th:src="@{/pet/mostrarImagem/img-pet/{imagem}(imagem=${animal.petImagem[0].caminhoImagem})}"
-								alt="Card image cap">
 							<div class="card-body">
 								<span th:text="${'#'+animal.id}"></span>
 								<h1>

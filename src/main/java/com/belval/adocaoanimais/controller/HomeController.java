@@ -42,7 +42,7 @@ public class HomeController {
 	@GetMapping("/pet/public/galeria")
 	public ModelAndView index() {
 		List<Animal> animais = this.animalRepository.findAllAtivas();
-		ModelAndView mv = new ModelAndView("public/galeria/index");
+		ModelAndView mv = new ModelAndView("galeria/index");
 		mv.addObject("animais", animais);
 		return mv;
 	}
