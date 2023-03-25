@@ -3,6 +3,7 @@ package com.belval.adocaoanimais.model;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -19,174 +20,174 @@ import com.belval.adocaoanimais.enums.Porte;
 
 @Entity
 public class Animal {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-     
-    private String nome;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Enumerated(EnumType.STRING)
-    private Porte porte;
-    @Enumerated(EnumType.STRING)
-    private Especie especie;
-    private int sexo;
-    private int vacina;
+	private String nome;
 
-    private Date nascimento;
-    private boolean disponivel;
-    private String resumo;
-    private String observacao;
+	@Enumerated(EnumType.STRING)
+	private Porte porte;
+	@Enumerated(EnumType.STRING)
+	private Especie especie;
+	private int sexo;
+	private int vacina;
 
-    @OneToMany(mappedBy = "animal", fetch = FetchType.LAZY) // , fetch = FetchType.EAGER
-    private List<Adotar> adotar;
+	private Date nascimento;
+	private boolean disponivel;
+	@Column(length = 512) // AQUI EU DEFINO O NOME DA COLUNA ,SE PODE NULA E O TAMANHO
+	private String resumo;
+	@Column(length = 512) // AQUI EU DEFINO O NOME DA COLUNA ,SE PODE NULA E O TAMANHO
+	private String observacao;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "raca_id", nullable = true)
-    private PetRaca petRaca;
+	@OneToMany(mappedBy = "animal", fetch = FetchType.LAZY) // , fetch = FetchType.EAGER
+	private List<Adotar> adotar;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "cor_id", nullable = true)
-    private PetCor petCor;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "raca_id", nullable = true)
+	private PetRaca petRaca;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
-    @OneToMany(mappedBy = "animal")
-    private List<PetImagem> petImagem;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "cor_id", nullable = true)
+	private PetCor petCor;
 
-    public Animal() {
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "usuario_id")
+	private Usuario usuario;
+	@OneToMany(mappedBy = "animal")
+	private List<PetImagem> petImagem;
 
-    }
+	public Animal() {
 
-    public Animal(Long id,   String nome, Porte porte, Especie especie, int sexo,
-            int vacina, Date nascimento, boolean disponivel, String resumo, String observacao) {
-        this.id = id;
-        
-        this.nome = nome;
+	}
 
-        this.porte = porte;
-        this.especie = especie;
-        this.sexo = sexo;
-        this.vacina = vacina;
-        this.nascimento = nascimento;
-        this.disponivel = disponivel;
-        this.resumo = resumo;
-        this.observacao = observacao;
-    }
+	public Animal(Long id, String nome, Porte porte, Especie especie, int sexo, int vacina, Date nascimento,
+			boolean disponivel, String resumo, String observacao) {
+		this.id = id;
 
-    public Long getId() {
-        return id;
-    }
+		this.nome = nome;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+		this.porte = porte;
+		this.especie = especie;
+		this.sexo = sexo;
+		this.vacina = vacina;
+		this.nascimento = nascimento;
+		this.disponivel = disponivel;
+		this.resumo = resumo;
+		this.observacao = observacao;
+	}
 
-     
+	public Long getId() {
+		return id;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public Porte getPorte() {
-        return porte;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public void setPorte(Porte porte) {
-        this.porte = porte;
-    }
+	public Porte getPorte() {
+		return porte;
+	}
 
-    public Especie getEspecie() {
-        return especie;
-    }
+	public void setPorte(Porte porte) {
+		this.porte = porte;
+	}
 
-    public void setEspecie(Especie especie) {
-        this.especie = especie;
-    }
+	public Especie getEspecie() {
+		return especie;
+	}
 
-    public int getSexo() {
-        return sexo;
-    }
+	public void setEspecie(Especie especie) {
+		this.especie = especie;
+	}
 
-    public void setSexo(int sexo) {
-        this.sexo = sexo;
-    }
+	public int getSexo() {
+		return sexo;
+	}
 
-    public int getVacina() {
-        return vacina;
-    }
+	public void setSexo(int sexo) {
+		this.sexo = sexo;
+	}
 
-    public void setVacina(int vacina) {
-        this.vacina = vacina;
-    }
+	public int getVacina() {
+		return vacina;
+	}
 
-    public Date getNascimento() {
-        return nascimento;
-    }
+	public void setVacina(int vacina) {
+		this.vacina = vacina;
+	}
 
-    public void setNascimento(Date nascimento) {
-        this.nascimento = nascimento;
-    }
+	public Date getNascimento() {
+		return nascimento;
+	}
 
-    public boolean isDisponivel() {
-        return disponivel;
-    }
+	public void setNascimento(Date nascimento) {
+		this.nascimento = nascimento;
+	}
 
-    public void setDisponivel(boolean disponivel) {
-        this.disponivel = disponivel;
-    }
+	public boolean isDisponivel() {
+		return disponivel;
+	}
 
-    public String getResumo() {
-        return resumo;
-    }
+	public void setDisponivel(boolean disponivel) {
+		this.disponivel = disponivel;
+	}
 
-    public void setResumo(String resumo) {
-        this.resumo = resumo;
-    }
+	public String getResumo() {
+		return resumo;
+	}
 
-    public String getObservacao() {
-        return observacao;
-    }
+	public void setResumo(String resumo) {
+		this.resumo = resumo;
+	}
 
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
-    }
+	public String getObservacao() {
+		return observacao;
+	}
 
-    public List<Adotar> getAdotar() {
-        return adotar;
-    }
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
 
-    public void setAdotar(List<Adotar> adotar) {
-        this.adotar = adotar;
-    }
+	public List<Adotar> getAdotar() {
+		return adotar;
+	}
 
-    public PetRaca getPetRaca() {
-        return petRaca;
-    }
+	public void setAdotar(List<Adotar> adotar) {
+		this.adotar = adotar;
+	}
 
-    public void setPetRaca(PetRaca petRaca) {
-        this.petRaca = petRaca;
-    }
+	public PetRaca getPetRaca() {
+		return petRaca;
+	}
 
-    public PetCor getPetCor() {
-        return petCor;
-    }
+	public void setPetRaca(PetRaca petRaca) {
+		this.petRaca = petRaca;
+	}
 
-    public void setPetCor(PetCor petCor) {
-        this.petCor = petCor;
-    }
+	public PetCor getPetCor() {
+		return petCor;
+	}
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
+	public void setPetCor(PetCor petCor) {
+		this.petCor = petCor;
+	}
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 	public List<PetImagem> getPetImagem() {
 		return petImagem;
@@ -195,7 +196,5 @@ public class Animal {
 	public void setPetImagem(List<PetImagem> petImagem) {
 		this.petImagem = petImagem;
 	}
-
-   
 
 }

@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 
 import com.belval.adocaoanimais.enums.Especie;
 import com.belval.adocaoanimais.enums.Permissao;
+import com.belval.adocaoanimais.enums.Porte;
+import com.belval.adocaoanimais.model.Animal;
 import com.belval.adocaoanimais.model.PetCor;
 import com.belval.adocaoanimais.model.PetRaca;
 import com.belval.adocaoanimais.model.Postagem;
@@ -45,13 +47,13 @@ public class DataLoader implements CommandLineRunner {
 
 	@Autowired
 	RacaRepository racaRepository;
-	
+
 	@Autowired
 	AnimalRepository animalRepository;
 
 	Permissao permissao;
 
-	Especie especie;
+//	Especie especie;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -98,16 +100,28 @@ public class DataLoader implements CommandLineRunner {
 		corRepository.save(new PetCor("Marrom", true));
 
 		/** SALVAR RACA **/
-		racaRepository.save(new PetRaca("Huski", true, especie.CACHORRO));
-		racaRepository.save(new PetRaca("Vira-lata", true, especie.CACHORRO));
-		racaRepository.save(new PetRaca("Doberman", true, especie.CACHORRO));
-		racaRepository.save(new PetRaca("Pit-bull", true, especie.CACHORRO));
-		racaRepository.save(new PetRaca("Persa", true, especie.GATO));
-		racaRepository.save(new PetRaca("Egípcio", true, especie.GATO));
-		
-		/** SALVAR ANIMAL**/
-		
-		
+		racaRepository.save(new PetRaca("Huski", true, Especie.CACHORRO));
+		racaRepository.save(new PetRaca("Vira-lata", true, Especie.CACHORRO));
+		racaRepository.save(new PetRaca("Doberman", true, Especie.CACHORRO));
+		racaRepository.save(new PetRaca("Pit-bull", true, Especie.CACHORRO));
+		racaRepository.save(new PetRaca("Persa", true, Especie.GATO));
+		racaRepository.save(new PetRaca("Egípcio", true, Especie.GATO));
+
+		/** SALVAR ANIMAL **/
+
+		Animal a = new Animal();
+		a.setNome("Trovão");
+		a.setObservacao(
+				"	Lorem ipsum arcu aptent integer suspendisse urna nec, platea porttitor aliquam class mauris feugiat tempor, sollicitudin a integer porttitor aenean curabitur. conubia lobortis curae donec libero primis maecenas, ut conubia ligula proin augue metus, lacus varius accumsan phasellus interdum. dui rutrum id curabitur donec imperdiet himenaeos conubia nisl, arcu maecenas pharetra convallis semper rutrum lobortis. ");
+		a.setResumo(
+				"	Purus commodo dapibus urna suscipit magna morbi eget senectus, lacus pharetra placerat aliquam ornare sapien curabitur leo, ullamcorper risus a consectetur sociosqu pretium nibh. ligula blandit fusce quisque libero lobortis lacinia ut turpis ipsum eget, odio imperdiet consequat augue semper sociosqu interdum luctus interdum neque primis, neque porttitor nec odio imperdiet nunc convallis et rutrum. ");
+		a.setDisponivel(true);
+		a.setPetCor(corRepository.findById(1l).get());
+		a.setPetRaca(racaRepository.findById(1l).get());
+		a.setPorte(Porte.GRANDE);
+		a.setSexo(1);
+		a.setEspecie(Especie.CACHORRO);
+		animalRepository.save(a);
 	}
 
 }
