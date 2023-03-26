@@ -91,11 +91,16 @@
 													class="form-control  " placeholder="Digite nome do Animal "
 													id="nome" name="nome" value=""></span>
 											</div>
+											 
 											<div class="form-group col-md-12">
 												<label for="nome">Idade</label> <span type="text"
-													th:text="${animal.nascimento}" class="form-control  "
-													placeholder="Digite nome do Animal " id="nome" name="nome"
-													value=""></span>
+													th:text="${animal.idade[0] ==1  ? animal.idade[1] + ' ano ' : ''}
+													 + ${animal.idade[0] > 1 ? ' ' + animal.idade[0] + ' anos ' : ''} 
+													 + ${animal.idade[1] == 1 ? ' ' + animal.idade[1] + ' mes ' : ''} 
+													 + ${animal.idade[1] > 1 ? ' ' + animal.idade[1] + ' meses ' : ''} 
+													 + ${animal.idade[2] == 1 ? ' ' + animal.idade[2] + ' dia ' : ''} 
+													 + ${animal.idade[2] > 1 ? ' ' + animal.idade[2] + ' dias  ' : ''} "
+													class="form-control  "></span>
 											</div>
 
 

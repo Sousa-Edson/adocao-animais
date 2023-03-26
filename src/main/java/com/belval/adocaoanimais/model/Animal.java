@@ -1,8 +1,8 @@
 package com.belval.adocaoanimais.model;
 
- 
- 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -199,4 +199,14 @@ public class Animal {
 		this.petImagem = petImagem;
 	}
 
+	/** IDADE **/
+	public int[] getIdade() {
+		LocalDate hoje = LocalDate.now();
+		LocalDate dataNascimentoLocalDate = nascimento.toLocalDate();
+		Period periodo = Period.between(dataNascimentoLocalDate, hoje);
+		int anos = periodo.getYears();
+		int meses = periodo.getMonths();
+		int dias = periodo.getDays();
+		return new int[] { anos, meses, dias };
+	}
 }

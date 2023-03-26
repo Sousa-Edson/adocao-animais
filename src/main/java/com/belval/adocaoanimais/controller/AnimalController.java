@@ -49,6 +49,8 @@ public class AnimalController {
 		AnimalController.caminhoImagens = caminhoImagens;
 }
 	
+	
+	
 	@Autowired
 	private AnimalRepository animalRepository;
 	@Autowired
@@ -253,10 +255,12 @@ public class AnimalController {
 
 	@GetMapping("/{id}")
 	public ModelAndView show(@PathVariable Long id) {
+		
 		System.out.println("**** ID: " + id);
 		Optional<Animal> optional = this.animalRepository.findById(id);
 		if (optional.isPresent()) {
 			Animal animal = optional.get();
+			
 			ModelAndView mv = new ModelAndView("animal/show");
 			mv.addObject(animal);
 			List<PetImagem> petImagem = this.petImagemRepository.findByAnimal(animal);

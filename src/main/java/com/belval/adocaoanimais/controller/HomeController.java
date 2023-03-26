@@ -1,5 +1,9 @@
 package com.belval.adocaoanimais.controller;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,6 +58,27 @@ public class HomeController {
 		if (optional.isPresent()) {
 			Animal animal = optional.get();
 			ModelAndView mv = new ModelAndView("galeria/show");
+//			Date dataNascimento = animal.getNascimento();
+//			LocalDate localDataNascimento = dataNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//			LocalDate hoje = LocalDate.now();
+//			Period periodo = Period.between(localDataNascimento, hoje);
+//			int idadeAnos = periodo.getYears();
+//			int idadeMeses = periodo.getMonths();
+//			 
+//			mv.addObject("idadeAnos", idadeAnos);
+//			mv.addObject("idadeMeses", idadeMeses);
+			
+			Date dataNascimento = animal.getNascimento(); // obtém o valor de animal.nascimento
+			LocalDate localDataNascimento = dataNascimento.toLocalDate();
+			LocalDate hoje = LocalDate.now();
+			Period periodo = Period.between(localDataNascimento, hoje);
+			int anos = periodo.getYears();
+			int meses = periodo.getMonths();
+			String idadeFormatada = anos + " anos e " + meses + " meses";
+
+
+			System.out.println("anos: "+idadeFormatada);
+			mv.addObject("idadeFormatada",idadeFormatada);
 			mv.addObject(animal);
 			List<PetImagem> petImagem = this.petImagemRepository.findByAnimal(animal);
 			mv.addObject("petImagem", petImagem);
