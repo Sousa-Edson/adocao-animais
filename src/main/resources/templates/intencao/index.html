@@ -17,12 +17,12 @@
 					</svg>
 					<strong>Aviso de exclusão!</strong>
 					<br>
-					Você tem certeza que dejesa excluir o item <strong th:text="${racaId}">id</strong> ?
+					Você tem certeza que dejesa excluir o item <strong th:text="${animalId}">id</strong> ?
 					<br>
-					<a th:href="@{/pet/admin/pet-raca/{id}/destroy (id=${racaId})}"
+					<a th:href="@{/pet/private/intencao-adotar/{id}/destroy (id=${animalId})}"
 						class="btn btn-outline-danger btn-sm">Sim
 						desejo excluir</a>
-					<a th:href="@{/pet/admin/pet-raca/}" class="btn btn-outline-primary btn-sm px-3">Cancelar</a>
+					<a th:href="@{/pet/private/intencao-adotar/}" class="btn btn-outline-primary btn-sm px-3">Cancelar</a>
 					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
 				 

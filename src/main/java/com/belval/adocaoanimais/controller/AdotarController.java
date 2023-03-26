@@ -7,6 +7,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,14 +32,15 @@ public class AdotarController {
 	private AdotarRepository adotarRepository;
 	@Autowired
 	private AnimalRepository animalRepository;
-	 
+
 	@Autowired
 	private PetImagemRepository petImagemRepository;
 
 	Menu menu = new Menu();
+
 	@GetMapping("")
 	public ModelAndView index() {
-		
+
 		menu.setTitulo("Minhas solicitações de adoção (animal)");
 		menu.setSelecao("intencao");
 		List<Adotar> animais = this.adotarRepository.findAll();
@@ -48,7 +51,7 @@ public class AdotarController {
 	}
 
 	@GetMapping("/new/{id}")
-	public ModelAndView nnew(@PathVariable Long id,RequisicaoFormAdotar requisicao) {
+	public ModelAndView nnew(@PathVariable Long id, RequisicaoFormAdotar requisicao) {
 		List<Animal> animais = this.animalRepository.findAll();
 		ModelAndView mv = new ModelAndView("intencao/new");
 		mv.addObject("petId", id);
@@ -59,9 +62,10 @@ public class AdotarController {
 	@GetMapping("/{id}")
 	public ModelAndView show(@PathVariable Long id) {
 		System.out.println("**** ID: " + id);
-		Optional<Adotar> optional= this.adotarRepository.findById(id);
-		System.out.println("*************************\n\n\n\n"+optional.get().getId());
-		// Optional<Animal> optional = this.animalRepository.findById(optionalAdotar.get().getAnimal().getId());
+		Optional<Adotar> optional = this.adotarRepository.findById(id);
+		System.out.println("*************************\n\n\n\n" + optional.get().getId());
+		// Optional<Animal> optional =
+		// this.animalRepository.findById(optionalAdotar.get().getAnimal().getId());
 		// System.out.println("*************************\n\n\n"+optional.get());
 		if (optional.isPresent()) {
 			Animal animal = optional.get().getAnimal();
@@ -79,9 +83,10 @@ public class AdotarController {
 	}
 
 	@PostMapping("/{id}")
-	public ModelAndView create(@PathVariable Long id,@Valid RequisicaoFormAdotar requisicao, BindingResult bindingResult) {
+	public ModelAndView create(@PathVariable Long id, @Valid RequisicaoFormAdotar requisicao,
+			BindingResult bindingResult) {
 		System.out.println("Salvando");
-		//bindingResult.addError(null);
+		// bindingResult.addError(null);
 		if (bindingResult.hasErrors()) {
 			System.out.println("\n************************TEM ERROS**********************\n");
 			System.out.println("ERRO \n\n" + bindingResult + "\n\n");
@@ -92,7 +97,7 @@ public class AdotarController {
 			Adotar adotar = requisicao.toAdotar();
 			adotar.setAtivo(true);
 			adotar.setUserId((long) 1);
-			// adotar.setAnimalId((long) 2);  
+			// adotar.setAnimalId((long) 2);
 			Optional<Animal> optionalAnimal = animalRepository.findById(id);
 			adotar.setAnimal(optionalAnimal.get());
 			this.adotarRepository.save(adotar);
@@ -102,6 +107,43 @@ public class AdotarController {
 
 		// return new ModelAndView("redirect:/pet/home" + animal.getId());
 
+	}
+
+	@GetMapping("/{id}/delete")
+	public String delete(@PathVariable("id") Long id, Model model, ModelMap m) {
+
+		menu.setTitulo("Minhas solicitações de adoção (animal)");
+		menu.setSelecao("intencao");
+
+		try {
+			Optional<Animal> e = animalRepository.findById(id);
+			if (e == null) {
+				System.out.println("555555555555555555555555555555555");
+			} else {
+				List<Adotar> animais = this.adotarRepository.findAll();
+				model.addAttribute("animais", animais);
+				model.addAttribute("menu", menu);
+				model.addAttribute("animalId", e.get().getId());
+				m.addAttribute("exc", true);
+				model.addAttribute("menu", menu);
+			}
+		} catch (Exception e) {
+			System.err.println("\n\n\n#########################\n\nErro do try cath - delete\n\n" + e
+					+ "\n\n################################");
+		}
+		return "intencao/index";
+	}
+
+	@GetMapping("/{id}/destroy")
+	public String destroy(@PathVariable("id") Long id, Model model) {
+		try {
+
+			adotarRepository.deleteById(id);
+		} catch (Exception e) {
+			System.err.println("\n\n\n#########################\n\nErro do try cath - destroy\n\n" + e
+					+ "\n\n################################");
+		}
+		return "redirect:/pet/private/intencao-adotar";
 	}
 
 }
