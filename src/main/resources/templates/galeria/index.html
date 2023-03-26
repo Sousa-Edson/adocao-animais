@@ -30,9 +30,8 @@
 							<div
 								th:if="${animal.petImagem == null || animal.petImagem.size() == 0}">
 								<img class="card-img-top" style="min-height: 400px"
-									th:src="@{/pet/mostrarImagem/img-pet/}"
-									alt="Card image cap">
-									 
+									th:src="@{/pet/mostrarImagem/img-pet/}" alt="Card image cap">
+
 							</div>
 
 							<div class="card-body">
@@ -53,8 +52,16 @@
 									<small class="text-muted"> <span
 										th:if="${animal.sexo == 2}">Macho</span> <span
 										th:if="${animal.sexo == 1}">Fêmea</span> <span
-										th:unless="${animal.sexo == 1}">Indefinido</span> <span
-										th:text="${animal.nascimento}"></span></small>
+										th:unless="${animal.sexo }">Indefinido</span> <span
+										type="text"
+										th:text="${animal.idade[0] ==1  ? animal.idade[1] + ' ano ' : ''}
+													 + ${animal.idade[0] > 1 ? ' ' + animal.idade[0] + ' anos ' : ''} 
+													 + ${animal.idade[1] == 1 ? ' ' + animal.idade[1] + ' mes ' : ''} 
+													 + ${animal.idade[1] > 1 ? ' ' + animal.idade[1] + ' meses ' : ''} 
+													 + ${animal.idade[2] == 1 ? ' ' + animal.idade[2] + ' dia ' : ''} 
+													 + ${animal.idade[2] > 1 ? ' ' + animal.idade[2] + ' dias  ' : ''} "
+										class="  "></span>
+									</small>
 								</div>
 							</div>
 						</div>
