@@ -128,7 +128,7 @@ public class CorController {
 			model.addAttribute("corId", e.get().getId());
 			m.addAttribute("exc", true);
 		}
-		return "admin/cor/index";
+		return "cor/index";
 	}
 
 	@GetMapping("/{id}/destroy")

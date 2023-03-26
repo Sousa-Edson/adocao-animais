@@ -131,7 +131,7 @@ public class RacaController {
 			model.addAttribute("racaId", e.get().getId());
 			m.addAttribute("exc", true);
 		}
-		return "admin/raca/index";
+		return "raca/index";
 	}
 
 	@GetMapping("/{id}/destroy")

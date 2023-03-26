@@ -220,7 +220,7 @@ public class PostagemController {
 			model.addAttribute("postagens", postagemRepository.findAll());
 			model.addAttribute("pId", p);
 			model.addAttribute("exc", true);
-			return "admin/postagem/index";
+			return "postagem/index";
 		}
 	}
 

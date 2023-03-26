@@ -274,6 +274,10 @@ public class AnimalController {
 
 	@GetMapping("/{id}/delete")
 	public String delete(@PathVariable("id") Long id, Model model, ModelMap m) {
+		
+		menu.setTitulo("Meus anúncios");
+		menu.setSelecao("anuncio");
+		
 		try {
 			Optional<Animal> e = animalRepository.findById(id);
 			if (e == null) {
@@ -282,12 +286,13 @@ public class AnimalController {
 				model.addAttribute("animais", animalRepository.findAll());
 				model.addAttribute("animalId", e.get().getId());
 				m.addAttribute("exc", true);
+				model.addAttribute("menu", menu);
 			}
 		} catch (Exception e) {
 			System.err.println("\n\n\n#########################\n\nErro do try cath - delete\n\n" + e
 					+ "\n\n################################");
 		}
-		return "private/animal/index";
+		return "animal/index";
 	}
 
 	@GetMapping("/{id}/destroy")
