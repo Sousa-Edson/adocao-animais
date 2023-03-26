@@ -41,7 +41,7 @@
 										data-bs-target="#profile-settings" aria-selected="false"
 										role="tab" tabindex="-1">
 										<font style="vertical-align: inherit;"><font
-											style="vertical-align: inherit;">Configurações</font></font>
+											style="vertical-align: inherit;">Imagem de perfil</font></font>
 									</button>
 								</li>
 
@@ -193,159 +193,154 @@
 									<!-- Profile Edit Form -->
 									<form class="" name="formUser" th:object="${usuario}"
 										th:action="'/pet/private/perfil/'+${usuario.id}" method="post">
+										
+
 										<div class="row mb-3">
-											<label for="profileImage"
+											<label for="nome" class="col-md-4 col-lg-3 col-form-label"><font
+												style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">Nome</font></font></label>
+											<div class="col-md-8 col-lg-9">
+												<input type="text" class="form-control" th:field="*{nome}"
+													th:errorclass=" is-invalid">
+												<div class="invalid-feedback" th:errors="*{nome}"></div>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<label for="sobrenome"
 												class="col-md-4 col-lg-3 col-form-label"><font
 												style="vertical-align: inherit;"><font
-													style="vertical-align: inherit;">Imagem de perfil</font></font></label>
+													style="vertical-align: inherit;">Sobrenome</font></font></label>
 											<div class="col-md-8 col-lg-9">
-												<img src="assets/img/profile-img.jpg" alt="Perfil">
-												<div class="pt-2">
-													<a href="#" class="btn btn-primary btn-sm"
-														title="Carregar nova imagem de perfil"><i
-														class="bi bi-upload"></i></a> <a href="#"
-														class="btn btn-danger btn-sm"
-														title="Remover minha imagem de perfil"><i
-														class="bi bi-trash"></i></a>
+												<input type="text" class="form-control"
+													th:field="*{sobrenome}" th:errorclass=" is-invalid">
+												<div class="invalid-feedback" th:errors="*{sobrenome}"></div>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<label for="cpf" class="col-md-4 col-lg-3 col-form-label"><font
+												style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">CPF</font></font></label>
+											<div class="col-md-8 col-lg-9">
+												<input type="text" class="form-control" th:field="*{cpf}"
+													th:errorclass=" is-invalid">
+												<div class="invalid-feedback" th:errors="*{cpf}"></div>
+											</div>
+										</div>
+
+										<div class="row mb-3">
+											<label for="nascimento"
+												class="col-md-4 col-lg-3 col-form-label"><font
+												style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">Nascimento</font></font></label>
+											<div class="col-md-6 col-lg-3">
+												<input type="text" class="form-control"
+													th:field="*{nascimento}" th:errorclass=" is-invalid">
+												<div class="invalid-feedback" th:errors="*{nascimento}"></div>
+											</div>
+										</div>
+
+										<div class="row mb-3">
+											<label for="sexo" class="col-md-4 col-lg-3 col-form-label"><font
+												style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">Sexo</font></font></label>
+											<div class="col-md-8 col-lg-9">
+
+												<div class="col-md-12">
+													<label required="" class="form-check-label" for="sexo1">
+														<input class="form-check-input" name="sexo" id="sexo1"
+														value="feminino" type="radio" required="">
+														Feminino
+													</label> <label clclass="form-check-label" for="sexo2"> <input
+														class="form-check-input" name="sexo" id="sexo2"
+														value="masculino" type="radio"> Masculino
+													</label>
 												</div>
 											</div>
 										</div>
 
 										<div class="row mb-3">
-											<label for="fullName"
+											<label for="telefone"
 												class="col-md-4 col-lg-3 col-form-label"><font
-												style="vertical-align: inherit;"><font
-													style="vertical-align: inherit;">Nome</font></font></label>
-											<div class="col-md-8 col-lg-9">
-												<input name="fullName" type="text" class="form-control"
-													th:field="*{nome}" th:errorclass=" is-invalid">
-												<div class="invalid-feedback" th:errors="*{nome}"></div>
-											</div>
-										</div>
-										<div class="row mb-3">
-											<label for="fullName"
-												class="col-md-4 col-lg-3 col-form-label"><font
-												style="vertical-align: inherit;"><font
-													style="vertical-align: inherit;">Sobrenome</font></font></label>
-											<div class="col-md-8 col-lg-9">
-												<input name="fullName" type="text" class="form-control"
-													id="fullName" value="Kevin Anderson">
-											</div>
-										</div>
-
-
-										<div class="row mb-3">
-											<label for="about" class="col-md-4 col-lg-3 col-form-label"><font
-												style="vertical-align: inherit;"><font
-													style="vertical-align: inherit;">Sobre</font></font></label>
-											<div class="col-md-8 col-lg-9">
-												<textarea name="about" class="form-control" id="about"
-													style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
-											</div>
-										</div>
-
-										<div class="row mb-3">
-											<label for="company" class="col-md-4 col-lg-3 col-form-label"><font
-												style="vertical-align: inherit;"><font
-													style="vertical-align: inherit;">Empresa</font></font></label>
-											<div class="col-md-8 col-lg-9">
-												<input name="company" type="text" class="form-control"
-													id="company" value="Lueilwitz, Wisoky and Leuschke">
-											</div>
-										</div>
-
-										<div class="row mb-3">
-											<label for="Job" class="col-md-4 col-lg-3 col-form-label"><font
-												style="vertical-align: inherit;"><font
-													style="vertical-align: inherit;">Trabalho</font></font></label>
-											<div class="col-md-8 col-lg-9">
-												<input name="job" type="text" class="form-control" id="Job"
-													value="Web Designer">
-											</div>
-										</div>
-
-										<div class="row mb-3">
-											<label for="Country" class="col-md-4 col-lg-3 col-form-label"><font
-												style="vertical-align: inherit;"><font
-													style="vertical-align: inherit;">País</font></font></label>
-											<div class="col-md-8 col-lg-9">
-												<input name="country" type="text" class="form-control"
-													id="Country" value="USA">
-											</div>
-										</div>
-
-										<div class="row mb-3">
-											<label for="Address" class="col-md-4 col-lg-3 col-form-label"><font
-												style="vertical-align: inherit;"><font
-													style="vertical-align: inherit;">Endereço</font></font></label>
-											<div class="col-md-8 col-lg-9">
-												<input name="address" type="text" class="form-control"
-													id="Address" value="A108 Adam Street, New York, NY 535022">
-											</div>
-										</div>
-
-										<div class="row mb-3">
-											<label for="Phone" class="col-md-4 col-lg-3 col-form-label"><font
 												style="vertical-align: inherit;"><font
 													style="vertical-align: inherit;">Telefone</font></font></label>
-											<div class="col-md-8 col-lg-9">
-												<input name="phone" type="text" class="form-control"
-													id="Phone" value="(436) 486-3538 x29071">
+											<div class="col-md-4 col-lg-5">
+												<input type="text" class="form-control"
+													th:field="*{telefone}" th:errorclass=" is-invalid">
+												<div class="invalid-feedback" th:errors="*{telefone}"></div>
+											</div>
+											<div class="col-md-4 col-lg-4">
+												<input type="text" class="form-control"
+													th:field="*{telefone2}" th:errorclass=" is-invalid">
+												<div class="invalid-feedback" th:errors="*{telefone2}"></div>
 											</div>
 										</div>
-
 										<div class="row mb-3">
-											<label for="Email" class="col-md-4 col-lg-3 col-form-label"><font
+											<label for="email" class="col-md-4 col-lg-3 col-form-label"><font
 												style="vertical-align: inherit;"><font
-													style="vertical-align: inherit;">E-mail</font></font></label>
+													style="vertical-align: inherit;">Email</font></font></label>
 											<div class="col-md-8 col-lg-9">
-												<input name="email" type="email" class="form-control"
-													id="Email" value="k.anderson@example.com">
+												<input type="text" class="form-control" th:field="*{email}"
+													th:errorclass=" is-invalid">
+												<div class="invalid-feedback" th:errors="*{email}"></div>
 											</div>
 										</div>
 
 										<div class="row mb-3">
-											<label for="Twitter" class="col-md-4 col-lg-3 col-form-label"><font
+											<label for="cep" class="col-md-4 col-lg-3 col-form-label"><font
 												style="vertical-align: inherit;"><font
-													style="vertical-align: inherit;">Perfil do Twitter</font></font></label>
-											<div class="col-md-8 col-lg-9">
-												<input name="twitter" type="text" class="form-control"
-													id="Twitter" value="https://twitter.com/#">
+													style="vertical-align: inherit;">CEP</font></font></label>
+											<div class="col-md-6 col-lg-3">
+												<input type="text" class="form-control" th:field="*{cep}"
+													th:errorclass=" is-invalid">
+												<div class="invalid-feedback" th:errors="*{cep}"></div>
 											</div>
 										</div>
 
 										<div class="row mb-3">
-											<label for="Facebook"
+											<label for="endereco"
 												class="col-md-4 col-lg-3 col-form-label"><font
 												style="vertical-align: inherit;"><font
-													style="vertical-align: inherit;">Perfil do Facebook</font></font></label>
-											<div class="col-md-8 col-lg-9">
-												<input name="facebook" type="text" class="form-control"
-													id="Facebook" value="https://facebook.com/#">
+													style="vertical-align: inherit;">Endereço</font></font></label>
+											<div class="col-md-7 col-lg-7">
+												<input type="text" class="form-control" th:field="*{rua}"
+													th:errorclass=" is-invalid">
+												<div class="invalid-feedback" th:errors="*{rua}"></div>
+											</div>
+											<div class="col-md-2 col-lg-2">
+												<input type="text" class="form-control" th:field="*{numero}"
+													th:errorclass=" is-invalid">
+												<div class="invalid-feedback" th:errors="*{numero}"></div>
 											</div>
 										</div>
 
 										<div class="row mb-3">
-											<label for="Instagram"
-												class="col-md-4 col-lg-3 col-form-label"><font
+											<label for="bairro" class="col-md-4 col-lg-3 col-form-label"><font
 												style="vertical-align: inherit;"><font
-													style="vertical-align: inherit;">Perfil do Instagram</font></font></label>
+													style="vertical-align: inherit;">Bairro</font></font></label>
 											<div class="col-md-8 col-lg-9">
-												<input name="instagram" type="text" class="form-control"
-													id="Instagram" value="https://instagram.com/#">
+												<input type="text" class="form-control" th:field="*{bairro}"
+													th:errorclass=" is-invalid">
+												<div class="invalid-feedback" th:errors="*{bairro}"></div>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<label for="cidade" class="col-md-4 col-lg-3 col-form-label"><font
+												style="vertical-align: inherit;"><font
+													style="vertical-align: inherit;">Cidade / Estado</font></font></label>
+											<div class="col-md-7 col-lg-7">
+												<input type="text" class="form-control" th:field="*{cidade}"
+													th:errorclass=" is-invalid">
+												<div class="invalid-feedback" th:errors="*{cidade}"></div>
+											</div>
+											<div class="col-md-2 col-lg-2">
+												<input type="text" class="form-control" th:field="*{estado}"
+													th:errorclass=" is-invalid">
+												<div class="invalid-feedback" th:errors="*{estado}"></div>
 											</div>
 										</div>
 
-										<div class="row mb-3">
-											<label for="Linkedin"
-												class="col-md-4 col-lg-3 col-form-label"><font
-												style="vertical-align: inherit;"><font
-													style="vertical-align: inherit;">Perfil do linkedIn</font></font></label>
-											<div class="col-md-8 col-lg-9">
-												<input name="linkedin" type="text" class="form-control"
-													id="Linkedin" value="https://linkedin.com/#">
-											</div>
-										</div>
+								 
+ 
 
 										<div class="text-center">
 											<button type="submit" class="btn btn-primary">
@@ -362,48 +357,27 @@
 									role="tabpanel">
 
 									<!-- Settings Form -->
-									<form>
+								<form class="" name="formUser" th:object="${usuario}"
+										th:action="'/pet/private/perfil/'+${usuario.id}" method="post">
 
 										<div class="row mb-3">
-											<label for="fullName"
+											 <div class="row mb-3">
+											<label for="profileImage"
 												class="col-md-4 col-lg-3 col-form-label"><font
 												style="vertical-align: inherit;"><font
-													style="vertical-align: inherit;">Notificações por
-														e-mail</font></font></label>
+													style="vertical-align: inherit;">Imagem de perfil</font></font></label>
 											<div class="col-md-8 col-lg-9">
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox"
-														id="changesMade" checked=""> <label
-														class="form-check-label" for="changesMade"><font
-														style="vertical-align: inherit;"><font
-															style="vertical-align: inherit;"> Alterações
-																feitas em sua conta </font></font></label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox"
-														id="newProducts" checked=""> <label
-														class="form-check-label" for="newProducts"><font
-														style="vertical-align: inherit;"><font
-															style="vertical-align: inherit;"> Informações
-																sobre novos produtos e serviços </font></font></label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox"
-														id="proOffers"> <label class="form-check-label"
-														for="proOffers"><font
-														style="vertical-align: inherit;"><font
-															style="vertical-align: inherit;"> Marketing e
-																ofertas promocionais </font></font></label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox"
-														id="securityNotify" checked="" disabled=""> <label
-														class="form-check-label" for="securityNotify"><font
-														style="vertical-align: inherit;"><font
-															style="vertical-align: inherit;"> Alertas de
-																segurança </font></font></label>
+												<img src="assets/img/profile-img.jpg" alt="Perfil">
+												<div class="pt-2">
+													<a href="#" class="btn btn-primary btn-sm"
+														title="Carregar nova imagem de perfil"><i
+														class="bi bi-upload"></i></a> <a href="#"
+														class="btn btn-danger btn-sm"
+														title="Remover minha imagem de perfil"><i
+														class="bi bi-trash"></i></a>
 												</div>
 											</div>
+										</div>
 										</div>
 
 										<div class="text-center">
@@ -420,7 +394,8 @@
 								<div class="tab-pane fade pt-3" id="profile-change-password"
 									role="tabpanel">
 									<!-- Change Password Form -->
-									<form>
+									<form class="" name="formUser" th:object="${usuario}"
+										th:action="'/pet/private/perfil/'+${usuario.id}" method="post">
 
 										<div class="row mb-3">
 											<label for="currentPassword"
@@ -515,4 +490,24 @@
 	</div>
 
 </main>
+<!-- footer - rodape basico -->
+<div class="container">
+	<footer
+		class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+		<div class="col-md-4 d-flex align-items-center">
+			<a href="/"
+				class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+				<div class="  text-center ">
+					<img class="img-fluid"
+						th:src="@{/imagens/MicrosoftTeams-image.png }" alt=""
+						style="height: 5vh;" />
+				</div>
+			</a> <span class="mb-3 mb-md-0 text-muted">© 2023 Adote fácil</span>
+		</div>
+		<div class="nav col-md-4 justify-content-end list-unstyled d-flex">
+			<span class="mb-3 mb-md-0 text-muted"> Adote e transfome uma
+				vida, a sua!</span>
+		</div>
+	</footer>
+</div>
 <section th:replace="~{fragmentos :: section-script}"></section>
