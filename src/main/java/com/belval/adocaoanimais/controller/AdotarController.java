@@ -38,7 +38,7 @@ public class AdotarController {
 	@GetMapping("")
 	public ModelAndView index() {
 		
-		menu.setTitulo("Minhas solicitações de adotação");
+		menu.setTitulo("Minhas solicitações de adoção (animal)");
 		menu.setSelecao("intencao");
 		List<Adotar> animais = this.adotarRepository.findAll();
 		ModelAndView mv = new ModelAndView("intencao/index");
@@ -86,6 +86,7 @@ public class AdotarController {
 			System.out.println("\n************************TEM ERROS**********************\n");
 			System.out.println("ERRO \n\n" + bindingResult + "\n\n");
 			ModelAndView mv = new ModelAndView("intencao/new");
+			mv.addObject("petId", id);
 			return mv;
 		} else {
 			Adotar adotar = requisicao.toAdotar();

@@ -2,61 +2,89 @@
 <nav th:replace="~{fragmentos :: navbar}"></nav>
 <main class="container mt-1  bg-light ">
 
-    <div class="row">
-        <div th:replace="~{admin/fragmentos :: sidebar('usuarios')}"></div>
-        <div class="col-lg-8  col-md-8 col-sm-12">
-            <section>
-                <h1 class="display-5">Usuário # <span th:text="${usuario.id}"></span></h1>
+	<div class="row">
+		<div th:replace="~{admin/fragmentos :: sidebar('usuarios')}"></div>
+		<div class="col-lg-8  col-md-8 col-sm-12">
+			<section>
+				<h1 class="display-5">
+					Usuário # <span th:text="${usuario.id}"></span>
+				</h1>
 
-                <div class="row">
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+				<div class="row">
+					<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
-                        <a href=" /pet/admin/usuario" class="btn btn-primary me-md-2 px-5 ">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                class="bi bi-list-check" viewBox="0 0 20 20">
+						<a href=" /pet/admin/usuario"
+							class="btn btn-primary me-md-2 px-5 "> <svg
+								xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+								fill="currentColor" class="bi bi-list-check" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
-                                    d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
-                            </svg>
-                            Lista</a>
+									d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
+                            </svg> Lista
+						</a>
 
-                    </div>
+					</div>
 
-                </div>
-                <div class=" ">
-                    <form  th:object="${requisicaoFormUsuario}" th:action="${'/pet/usuario/permissao/'}+${usuario.id}+${'/update'}"  method="post">
-
-
-                        <div class="container mt-3">
-                            <div class="row">
-                                <div class="col-12">
-                                    <hr>
-                                    <h3><span class="form-label" th:text="'#'+${usuario.id}"></span></h3>
-                                    <b>Nome:</b> <span class="form-label" th:text="${usuario.nome}"></span><br />
-                                    <b>Permissão atual:</b> <span class="form-label" th:text="${usuario.permissao.descricao}"></span><br />
-                                    <b>Ativo(a):</b> <a th:if="${usuario.ativo}" class="text-decoration-none"
-                                        th:href="@{/pet/admin/pet-raca/{id}/deactivate (id=${usuario.id})}"> Sim</a> <a
-                                        th:unless="${usuario.ativo}" class="text-decoration-none"
-                                        th:href="@{/pet/admin/pet-raca/{id}/activate (id=${usuario.id})}">Não</a>
-
-                                    <br />
-                                    <b>Atualizado por:</b> Edson <br />
-                                    <b>Atualizado em:</b> 22/12/22 <br />
-                                    <hr>
-                                     
-                                </div>
-                            </div>
-                           
-                        </div>
- 
-                     
-
-                    </form>
-                </div>
-            </section>
+				</div>
+				<div class=" ">
+					<form th:object="${requisicaoFormUsuario}"
+						th:action="${'/pet/usuario/permissao/'}+${usuario.id}+${'/update'}"
+						method="post">
 
 
-        </div>
-    </div>
+						<div class="container mt-3">
+							<div class="row">
+								<div class="col-12">
+									<hr>
+									<h3>
+										<span class="form-label" th:text="'#'+${usuario.id}"></span>
+									</h3>
+									<b>Nome:</b> <span class="form-label" th:text="${usuario.nome}"></span><br />
+									<b>Permissão atual:</b> <span class="form-label"
+										th:text="${usuario.permissao.descricao}"></span><br /> <b>Ativo(a):</b>
+									<a th:if="${usuario.ativo}" class="text-decoration-none"
+										th:href="@{/pet/admin/pet-raca/{id}/deactivate (id=${usuario.id})}">
+										Sim</a> <a th:unless="${usuario.ativo}"
+										class="text-decoration-none"
+										th:href="@{/pet/admin/pet-raca/{id}/activate (id=${usuario.id})}">Não</a>
+
+									<br /> <b>Atualizado por:</b> Edson <br /> <b>Atualizado
+										em:</b> 22/12/22 <br />
+									<hr>
+
+								</div>
+							</div>
+
+						</div>
+
+
+
+					</form>
+				</div>
+			</section>
+
+
+		</div>
+	</div>
 
 </main>
+<!-- footer - rodape basico -->
+<div class="container">
+	<footer
+		class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+		<div class="col-md-4 d-flex align-items-center">
+			<a href="/"
+				class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+				<div class="  text-center ">
+					<img class="img-fluid"
+						th:src="@{/imagens/MicrosoftTeams-image.png }" alt=""
+						style="height: 5vh;" />
+				</div>
+			</a> <span class="mb-3 mb-md-0 text-muted">© 2023 Adote fácil</span>
+		</div>
+		<div class="nav col-md-4 justify-content-end list-unstyled d-flex">
+			<span class="mb-3 mb-md-0 text-muted"> Adote e transfome uma
+				vida, a sua!</span>
+		</div>
+	</footer>
+</div>
 <section th:replace="~{fragmentos :: section-script}"></section>

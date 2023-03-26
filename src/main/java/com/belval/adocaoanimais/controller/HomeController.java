@@ -58,15 +58,6 @@ public class HomeController {
 		if (optional.isPresent()) {
 			Animal animal = optional.get();
 			ModelAndView mv = new ModelAndView("galeria/show");
-//			Date dataNascimento = animal.getNascimento();
-//			LocalDate localDataNascimento = dataNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//			LocalDate hoje = LocalDate.now();
-//			Period periodo = Period.between(localDataNascimento, hoje);
-//			int idadeAnos = periodo.getYears();
-//			int idadeMeses = periodo.getMonths();
-//			 
-//			mv.addObject("idadeAnos", idadeAnos);
-//			mv.addObject("idadeMeses", idadeMeses);
 			
 			Date dataNascimento = animal.getNascimento(); // obtém o valor de animal.nascimento
 			LocalDate localDataNascimento = dataNascimento.toLocalDate();

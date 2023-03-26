@@ -28,31 +28,61 @@
 				</div>
 				<div class="container mt-3">
 					<div class="row">
-						<div class="col-lg-6 col-md-12">
-							<hr>
-							<h1 class="fs-4">
-								Dados do animal #<span th:text="${animal.id}"></span>
-							</h1>
-							<b>Nome:</b> <span class="form-label" th:text="${animal.nome}"></span><br />
-							<b>Especie:</b> <span class="form-label"
-								th:text="${animal.especie.descricao}"></span><br /> <b>Raça:</b>
-							<span class="form-label" th:text="${animal.getPetRaca.getRaca}"></span><br />
-							<b>Porte:</b> <span class="form-label"
-								th:text="${animal.porte.descricao}"></span><br /> <b>Cor de
-								pelagem:</b> <span class="form-label"
-								th:text="${animal.getPetCor.getCor}"></span><br /> <b>Especie:</b>
-							<span class="form-label" th:text="${animal.especie.descricao}"></span><br />
+						<div class="col-lg-6">
+							<div class="row">
+								<div class="col-12">
+									<hr>
+									<h1 class="fs-4">Dados do animal</h1>
+									<div class="form-group col-md-12">
+										<label for="nome">Nome do Animal</label> <span type="text"
+											th:text="${animal.nome}" class="form-control  "
+											placeholder="Digite nome do Animal " id="nome" name="nome"
+											value=""></span>
+									</div>
+									<div class="form-group col-md-12">
+										<label for="nome">Especie</label> <span type="text"
+											th:text="${animal.especie.descricao}" class="form-control  "
+											placeholder="Digite nome do Animal " id="nome" name="nome"
+											value=""></span>
+									</div>
+									<div class="form-group col-md-12">
+										<label for="nome">Raça</label> <span type="text"
+											th:text="${animal.getPetRaca.getRaca}" class="form-control  "
+											placeholder="Digite nome do Animal " id="nome" name="nome"
+											value=""></span>
+									</div>
+									<div class="form-group col-md-12">
+										<label for="nome">Cor de pelagem</label> <span type="text"
+											th:text="${animal.porte.descricao}" class="form-control  "
+											placeholder="Digite nome do Animal " id="nome" name="nome"
+											value=""></span>
+									</div>
+									<div class="form-group col-md-12">
+										<label for="nome">Porte</label> <span type="text"
+											th:text="${animal.getPetRaca.getRaca}" class="form-control  "
+											placeholder="Digite nome do Animal " id="nome" name="nome"
+											value=""></span>
+									</div>
+									<div class="form-group col-md-12">
+										<label for="nome">Idade</label> <span type="text"
+											th:text="${animal.nascimento}" class="form-control  "
+											placeholder="Digite nome do Animal " id="nome" name="nome"
+											value=""></span>
+									</div>
 
 
-							<b>Disponivel:</b> <a th:if="${animal.disponivel}"
-								class="text-decoration-none"
-								th:href="@{/pet/private/animal/{id}/deactivate (id=${animal.id})}">
-								Sim</a> <a th:unless="${animal.disponivel}"
-								class="text-decoration-none"
-								th:href="@{/pet/private/animal/{id}/activate (id=${animal.id})}">Não</a>
 
-							<br /> <b>Atualizado por:</b> Edson <br /> <b>Atualizado
-								em:</b> 22/12/22 <br />
+									<b>Disponivel:</b> <a th:if="${animal.disponivel}"
+										class="text-decoration-none"
+										th:href="@{/pet/private/animal/{id}/deactivate (id=${animal.id})}">
+										Sim</a> <a th:unless="${animal.disponivel}"
+										class="text-decoration-none"
+										th:href="@{/pet/private/animal/{id}/activate (id=${animal.id})}">Não</a>
+
+									<br /> <b>Atualizado por:</b> Edson <br /> <b>Atualizado
+										em:</b> 22/12/22 <br />
+								</div>
+							</div>
 						</div>
 						<div class="col-lg-6 col-md-12">
 							<hr>
@@ -83,6 +113,16 @@
 					<section>
 						<div class="row  ">
 							<!-- 	lista de imagens -->
+							<div class="col-lg-4 col-md-6 col-sm-12"
+								th:if="${petImagem == null || petImagem.size() == 0}">
+								<div class="card shadow-sm" style="">
+									<a type="button" class=" " href="#"> <img width="100%"
+										height="100%" style="height: 200px;"
+										th:src="@{/pet/mostrarImagem/img-pet/}" class="img-thumbnail"
+										alt="...">
+									</a>
+								</div>
+							</div>
 							<div class="col-lg-4 col-md-6 col-sm-12"
 								th:each="imagens : ${petImagem}">
 								<div class="">
@@ -123,6 +163,26 @@
 
 				</div>
 	</main>
+	<!-- footer - rodape basico -->
+	<div class="container">
+		<footer
+			class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+			<div class="col-md-4 d-flex align-items-center">
+				<a href="/"
+					class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+					<div class="  text-center ">
+						<img class="img-fluid"
+							th:src="@{/imagens/MicrosoftTeams-image.png }" alt=""
+							style="height: 5vh;" />
+					</div>
+				</a> <span class="mb-3 mb-md-0 text-muted">© 2023 Adote fácil</span>
+			</div>
+			<div class="nav col-md-4 justify-content-end list-unstyled d-flex">
+				<span class="mb-3 mb-md-0 text-muted"> Adote e transfome uma
+					vida, a sua!</span>
+			</div>
+		</footer>
+	</div>
 	<!-- <h1>mostrando</h1> -->
 	<section th:replace="~{fragmentos :: section-script}"></section>
 </body>

@@ -96,8 +96,8 @@
         <div class="card  card-default ">
             <div class="card-header">
                 <div class="row">
-                    <div class="col col-sm-8">Sua residência é própria ou alugada?</div>
-                    <div class="col col-sm2">
+                    <div class="col col-md-6">Sua residência é própria ou alugada?</div>
+                    <div class="col col-md-6">
                         <div class="form-group  ">
                              <div class="invalid-feedback" th:errors="*{propriedade}"></div>
                             <div class="form-check form-check-inline">
@@ -122,8 +122,8 @@
             </div>
             <div class="card-header">
                 <div class="row">
-                    <div class="col col-sm-8">Mora em apartamento ou casa?</div>
-                    <div class="col col-sm2">
+                    <div class="col col-md-6">Mora em apartamento ou casa?</div>
+                    <div class="col col-md-6">
                         <div class="form-group  ">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" th:field="*{casa}"
@@ -147,23 +147,23 @@
             </div>
             <div class="card-header">
                 <div class="row">
-                    <div class="col col-sm-6">Tem crianças em casa?</div>
-                    <div class="col col-sm2">
+                    <div class="col col-md-6">Tem crianças em casa?</div>
+                    <div class="col col-md-6">
                         <div class="form-group  ">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" th:field="*{crianca}"
                                     th:errorclass=" is-invalid" value="apenas um">
                                 <label class="form-check-label" for="rb_tc1">
-                                    Sim, apenas 1 criança
+                                    Sim 
                                 </label>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" th:field="*{crianca}"
-                                    th:errorclass=" is-invalid" value="mais de dois">
-                                <label class="form-check-label" for="rb_tc2">
-                                    Sim, 2 crianças ou mais
-                                </label>
-                            </div>
+<!--                             <div class="form-check form-check-inline"> -->
+<!--                                 <input class="form-check-input" type="radio" th:field="*{crianca}" -->
+<!--                                     th:errorclass=" is-invalid" value="mais de dois"> -->
+<!--                                 <label class="form-check-label" for="rb_tc2"> -->
+<!--                                     Sim, 2 crianças ou mais -->
+<!--                                 </label> -->
+<!--                             </div> -->
 
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" th:field="*{crianca}"
@@ -181,8 +181,8 @@
 
             <div class="card-header">
                 <div class="row">
-                    <div class="col col-sm-8">Todos os residentes de sua casa estão de acordo?</div>
-                    <div class="col col-sm2">
+                    <div class="col col-md-6">Todos os residentes de sua casa estão de acordo?</div>
+                    <div class="col col-md-6">
                         <div class="form-group  ">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" th:field="*{acordo}"
@@ -206,9 +206,9 @@
             </div>
             <div class="card-header">
                 <div class="row">
-                    <div class="col col-sm-8">Se caso você precisar se ausentar existe alguem que possa
+                    <div class="col col-md-6">Se caso você precisar se ausentar existe alguem que possa
                         cuidar do animal?</div>
-                    <div class="col col-sm2">
+                    <div class="col col-md-6">
                         <div class="form-group  ">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" th:field="*{ausentar}"
@@ -232,8 +232,8 @@
             </div>
             <div class="card-header">
                 <div class="row">
-                    <div class="col col-sm-8">Sua residência possui quintal ou jardim ?</div>
-                    <div class="col col-sm2">
+                    <div class="col col-md-6">Sua residência possui quintal ou jardim ?</div>
+                    <div class="col col-md-6">
                         <div class="form-group  ">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" th:field="*{quintal}"
@@ -257,8 +257,8 @@
             </div>
             <div class="card-header">
                 <div class="row">
-                    <div class="col col-sm-8">Possui tempo para passeios ?</div>
-                    <div class="col col-sm2">
+                    <div class="col col-md-6">Possui tempo para passeios ?</div>
+                    <div class="col col-md-6">
                         <div class="form-group  ">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" th:field="*{passeios}"
@@ -282,8 +282,8 @@
             </div>
             <div class="card-header">
                 <div class="row">
-                    <div class="col col-sm-8">Tem algum outro animal na casa?</div>
-                    <div class="col col-sm2">
+                    <div class="col col-md-6">Tem algum outro animal na casa?</div>
+                    <div class="col col-md-6">
                         <div class="form-group  ">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" th:field="*{animalCasa}"

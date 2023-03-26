@@ -2,58 +2,81 @@
 <nav th:replace="~{fragmentos :: navbar}"></nav>
 <main class="container mt-1  bg-light ">
 
-    <div class="row">
-        <div th:replace="~{admin/fragmentos :: sidebar('cor')}"></div>
-        <div class="col-lg-8  col-md-8 col-sm-12">
-            <section>
-                <h1 class="display-5">Detalhe de cor #<span th:text="${petCor.id}"></span></h1>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+	<div class="row">
+		<div th:replace="~{admin/fragmentos :: sidebar('cor')}"></div>
+		<div class="col-lg-8  col-md-8 col-sm-12">
+			<section>
+				<h1 class="display-5">
+					Detalhe de cor #<span th:text="${petCor.id}"></span>
+				</h1>
+				<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
-                    <a href=" /pet/admin/pet-cor" class="btn btn-primary me-md-2 px-5">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                            class="bi bi-list-check" viewBox="0 0 20 20">
+					<a href=" /pet/admin/pet-cor" class="btn btn-primary me-md-2 px-5">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+							fill="currentColor" class="bi bi-list-check" viewBox="0 0 20 20">
                             <path fill-rule="evenodd"
-                                d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
-                        </svg>
-                        Lista</a>
-
-                    <a href=" /pet/admin/pet-cor/new" class="btn btn-primary me-md-2 px-5 ">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                            class="bi bi-cloud-plus-fill" viewBox="0 0 20 20">
+								d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
+                        </svg> Lista
+					</a> <a href=" /pet/admin/pet-cor/new"
+						class="btn btn-primary me-md-2 px-5 "> <svg
+							xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+							fill="currentColor" class="bi bi-cloud-plus-fill"
+							viewBox="0 0 20 20">
                             <path
-                                d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm.5 4v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z" />
-                        </svg>
-                        Novo</a>
+								d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm.5 4v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z" />
+                        </svg> Novo
+					</a>
 
-                </div>
-                <div class="container mt-3">
-                    <div class="row">
-                        <div class="col-12">
-                            <hr>
-                            <b>Cor:</b> <span class="form-label" th:text="${petCor.cor}"></span><br />
-                            <b>Ativa:</b> <a th:if="${petCor.ativo}" class="text-decoration-none"
-                                th:href="@{/pet/admin/pet-cor/{id}/deactivate (id=${petCor.id})}"> Sim</a> <a
-                                th:unless="${petCor.ativo}" class="text-decoration-none"
-                                th:href="@{/pet/admin/pet-cor/{id}/activate (id=${petCor.id})}">Não</a>
+				</div>
+				<div class="container mt-3">
+					<div class="row">
+						<div class="col-12">
+							<hr>
+							<b>Cor:</b> <span class="form-label" th:text="${petCor.cor}"></span><br />
+							<b>Ativa:</b> <a th:if="${petCor.ativo}"
+								class="text-decoration-none"
+								th:href="@{/pet/admin/pet-cor/{id}/deactivate (id=${petCor.id})}">
+								Sim</a> <a th:unless="${petCor.ativo}" class="text-decoration-none"
+								th:href="@{/pet/admin/pet-cor/{id}/activate (id=${petCor.id})}">Não</a>
 
-                            <br />
-                            <b>Atualizado por:</b> Edson <br />
-                            <b>Atualizado em:</b> 22/12/22 <br />
-                            <hr>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <!-- <a th:href="@{/professores/{professorId}/edit(professorId = ${professor.id})}">Editar</a> <a href="/professores">Voltar</a> -->
-                        </div>
-                    </div>
-                </div>
+							<br /> <b>Atualizado por:</b> Edson <br /> <b>Atualizado
+								em:</b> 22/12/22 <br />
+							<hr>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<!-- <a th:href="@{/professores/{professorId}/edit(professorId = ${professor.id})}">Editar</a> <a href="/professores">Voltar</a> -->
+						</div>
+					</div>
+				</div>
 
-            </section>
+			</section>
 
 
-        </div>
-    </div>
+		</div>
+	</div>
 
 </main>
+<!-- footer - rodape basico -->
+<div class="container">
+	<footer
+		class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+		<div class="col-md-4 d-flex align-items-center">
+			<a href="/"
+				class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+				<div class="  text-center ">
+					<img class="img-fluid"
+						th:src="@{/imagens/MicrosoftTeams-image.png }" alt=""
+						style="height: 5vh;" />
+				</div>
+			</a> <span class="mb-3 mb-md-0 text-muted">© 2023 Adote fácil</span>
+		</div>
+		<div class="nav col-md-4 justify-content-end list-unstyled d-flex">
+			<span class="mb-3 mb-md-0 text-muted"> Adote e transfome uma
+				vida, a sua!</span>
+		</div>
+	</footer>
+</div>
+
 <section th:replace="~{fragmentos :: section-script}"></section>
