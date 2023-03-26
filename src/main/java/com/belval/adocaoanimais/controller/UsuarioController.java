@@ -187,7 +187,7 @@ public class UsuarioController {
 			model.addAttribute("usuarioId", e.get().getId());
 			m.addAttribute("exc", true);
 		}
-		return "admin/usuario/index";
+		return "usuario/index";
 	}
 
 	@GetMapping("/pet/admin/usuario/{id}/destroy")
