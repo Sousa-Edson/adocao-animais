@@ -34,9 +34,9 @@
 								<label class="col-md-8 control-label" for="nome">Nome <h11>*</h11></label>
 								<div class="col-md-12">
 									<input th:field="*{nome}" placeholder="Nome"
-										class="form-control input-md" required="" type="text"
+										class="form-control input-md" type="text"
 										th:errorclass=" is-invalid">
-									<div class="invalid-feedback" th:errors="*{nome}">asaddadaa</div>
+									<div class="invalid-feedback" th:errors="*{nome}"></div>
 								</div>
 							</div>
 							<div class="col-md-6 form-group">
@@ -44,8 +44,10 @@
 									<h11>*</h11>
 								</label>
 								<div class="col-md12">
-									<input id="sobrenome" name="sobrenome" placeholder="Sobrenome"
-										class="form-control input-md" required="" type="text">
+									<input th:field="*{sobrenome}" th:errorclass=" is-invalid"
+										placeholder="Sobrenome" class="form-control input-md"
+										  type="text">
+									<div class="invalid-feedback" th:errors="*{sobrenome}"></div>
 								</div>
 							</div>
 						</div>
@@ -56,18 +58,20 @@
 							<div class=" col form-group">
 								<label class="col-md-12 control-label" for="cpf">CPF <h11>*</h11></label>
 								<div class="col-md-12">
-									<input id="cpf" name="cpf" placeholder="Apenas números"
-										class="form-control input-md" required="" type="text"
-										maxlength="11" pattern="[0-9]+$">
+									<input th:field="*{cpf}" th:errorclass=" is-invalid"
+										placeholder="Apenas números" class="form-control input-md"
+										 type="text" maxlength="11" pattern="[0-9]+$">
+									<div class="invalid-feedback" th:errors="*{cpf}"></div>
 								</div>
 							</div>
 							<div class="col form-group">
 								<label class="col-md-12 control-label" for="nascimento">Nascimento<h11>*</h11></label>
 								<div class="col-md-12">
-									<input id="nascimento" name="nascimento"
+									<input th:field="*{nascimento}" th:errorclass=" is-invalid"
 										placeholder="DD/MM/AAAA" class="form-control input-md"
 										required="" type="text" maxlength="10"
 										OnKeyPress="formatar('##/##/####', this)" onBlur="showhide()">
+									<div class="invalid-feedback" th:errors="*{nascimento}"></div>
 								</div>
 							</div>
 							<!-- Multiple Radios (inline) -->
@@ -75,12 +79,16 @@
 								<label class="col-md-12 control-label" for="radios">Sexo
 									*</label>
 								<div class="col-md-12">
-									<label required="" class="form-check-label" for="sexo1">
-										<input class="form-check-input" name="sexo" id="sexo1"
-										value="feminino" type="radio" required> Feminino
+									<label class="form-check-label" for="sexo1"> <input
+										class="form-check-input" th:field="*{sexo}"
+										th:errorclass=" is-invalid" value="feminino" type="radio">
+										Feminino
+										<div class="invalid-feedback" th:errors="*{sexo}"></div>
 									</label> <label clclass="form-check-label" for="sexo2"> <input
-										class="form-check-input" name="sexo" id="sexo2"
-										value="masculino" type="radio"> Masculino
+										class="form-check-input" th:field="*{sexo}"
+										th:errorclass=" is-invalid" value="masculino" type="radio">
+										Masculino
+										<div class="invalid-feedback" th:errors="*{sexo}"></div>
 									</label>
 								</div>
 							</div>
