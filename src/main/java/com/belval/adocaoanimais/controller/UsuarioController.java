@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,17 +26,17 @@ import com.belval.adocaoanimais.repository.UsuarioRepository;
 public class UsuarioController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
+
 	@Value("${fileStorageLocationUsuario}")
-	public static String caminhoImagens  ;
-	
+	public static String caminhoImagens;
+
 	UsuarioController(String caminhoImagens) {
 		UsuarioController.caminhoImagens = caminhoImagens;
 	}
-	
+
 	@GetMapping("/pet/usuario")
-	public String nnew() {
-		return "newUsuario";
+	public ModelAndView nnew( RequisicaoFormUsuario requisicao) {
+		return new ModelAndView("newUsuario");
 	}
 
 	@GetMapping("/pet/usuario/new2")
@@ -68,14 +69,45 @@ public class UsuarioController {
 		}
 	}
 
+	/* UPDATE DE PERFIL DE USUARIO */
+
+	@PostMapping("/pet/private/perfil/{id}/perfil")
+	public ModelAndView updatePerfil(@PathVariable Long id, @Valid RequisicaoFormUsuario requisicao,
+			BindingResult bindingResult) {
+		Optional<Usuario> optional = this.usuarioRepository.findById(id);
+//		Usuario usuario = requisicao.toUsuario();
+		if (bindingResult.hasErrors()) {
+
+			System.out.println("\n************************TEM ERROS (updatePerfil)**********************\n");
+			ModelAndView mv = new ModelAndView("usuario/perfil");
+			Usuario usuario = optional.get();
+			usuario.setId(id);
+			mv.addObject("usuario", usuario);
+			mv.addObject("idUser", id);
+			System.out.println("ERRO: " + bindingResult);
+			mv.addObject("erro", true);
+			return mv;
+		} else {
+			System.out.println("\n************************DEU CERTO (updatePerfil)**********************\n");
+			Usuario usuario = requisicao.toUsuario();
+//			usuario.setAtivo(true);
+//			usuario.setPermissao(Permissao.USUARIO);
+			this.usuarioRepository.save(usuario);
+			return new ModelAndView("redirect:/pet/private/perfil/{id}");
+		}
+	}
+
 	@GetMapping("/pet/private/perfil/{id}")
-	public ModelAndView showUsuario(@PathVariable Long id) {
+	public ModelAndView showUsuario(@PathVariable Long id,RequisicaoFormUsuario requisicao) {
 		Optional<Usuario> optional = this.usuarioRepository.findById(id);
 		if (optional.isPresent()) {
 			Usuario usuario = optional.get();
 			ModelAndView mv = new ModelAndView("usuario/perfil");
 			// mv.addObject("listaPermissao", Permissao.values());
-			mv.addObject(usuario);
+			requisicao.fromUsuario(usuario);
+			mv.addObject("idUser", id);
+			mv.addObject("usuario", usuario);
+			mv.addObject("requisicaoFormUsuario",requisicao);
 			return mv;
 		} else {
 			return new ModelAndView("home");
@@ -130,6 +162,7 @@ public class UsuarioController {
 			Usuario usuario = optional.get();
 			ModelAndView mv = new ModelAndView("usuario/show");
 			// mv.addObject("listaPermissao", Permissao.values());
+			mv.addObject("idUser", id);
 			mv.addObject(usuario);
 			return mv;
 		} else {

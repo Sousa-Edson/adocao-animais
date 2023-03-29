@@ -1,271 +1,316 @@
 package com.belval.adocaoanimais.dto;
 
+import javax.validation.constraints.NotBlank;
+
 import com.belval.adocaoanimais.enums.Permissao;
 import com.belval.adocaoanimais.model.Usuario;
 
 public class RequisicaoFormUsuario {
 
-    private String nome;
-    private String sobrenome;
-    private String cpf;
-    private String nascimento;
-    private String sexo;
-    private String email;
-    private String telefone;
-    private String telefone2;
-    private String senha;
+	@NotBlank
+	private String nome;
+	@NotBlank
+	private String sobrenome;
+	@NotBlank
+	private String cpf;
+	@NotBlank
+	private String nascimento;
+	@NotBlank
+	private String sexo;
+	@NotBlank
+	private String email;
+	@NotBlank
+	private String telefone;
+	private String telefone2;
 
-    private String cep;
-    private String rua;
-    private String numero;
-    private String bairro;
-    private String cidade;
-    private String estado;
+	private String senha;
 
-    private String caminhoImagem;
-    private boolean ativo;
+	@NotBlank
+	private String cep;
+	@NotBlank
+	private String rua;
 
-    private Permissao permissao;
+	private String numero;
+	@NotBlank
+	private String bairro;
+	@NotBlank
+	private String cidade;
+	@NotBlank
+	private String estado;
+	@NotBlank
 
-    public Usuario toUsuario() {
+	private String caminhoImagem;
+	private boolean ativo;
 
-        Usuario usuario = new Usuario();
+	private Permissao permissao;
 
-        usuario.setNome(this.nome);
-        usuario.setSobrenome(this.sobrenome);
-        usuario.setCpf(this.cpf);
-        usuario.setNascimento(this.nascimento);
-        usuario.setSexo(this.sexo);
-        usuario.setEmail(this.email);
-        usuario.setTelefone(this.telefone);
-        usuario.setTelefone2(this.telefone2);
-        usuario.setSenha(this.senha);
-        usuario.setCep(this.cep);
-        usuario.setRua(this.rua);
-        usuario.setNumero(this.numero);
-        usuario.setBairro(this.bairro);
-        usuario.setCidade(this.cidade);
-        usuario.setEstado(this.estado);
+	public RequisicaoFormUsuario() {
 
-        return usuario;
-    }
+	}
 
-    public Usuario toUsuario(Usuario usuario) {
+	public Usuario toUsuario() {
 
-        usuario.setNome(this.nome);
-        usuario.setSobrenome(this.sobrenome);
-        usuario.setCpf(this.cpf);
-        usuario.setNascimento(this.nascimento);
-        usuario.setSexo(this.sexo);
-        usuario.setEmail(this.email);
-        usuario.setTelefone(this.telefone);
-        usuario.setTelefone2(this.telefone2);
-        usuario.setSenha(this.senha);
-        usuario.setCep(this.cep);
-        usuario.setRua(this.rua);
-        usuario.setNumero(this.numero);
-        usuario.setBairro(this.bairro);
-        usuario.setCidade(this.cidade);
-        usuario.setEstado(this.estado);
+		Usuario usuario = new Usuario();
 
-        return usuario;
-    }
+		usuario.setNome(this.nome);
+		usuario.setSobrenome(this.sobrenome);
+		usuario.setCpf(this.cpf);
+		usuario.setNascimento(this.nascimento);
+		usuario.setSexo(this.sexo);
+		usuario.setEmail(this.email);
+		usuario.setTelefone(this.telefone);
+		usuario.setTelefone2(this.telefone2);
+		usuario.setSenha(this.senha);
+		usuario.setCep(this.cep);
+		usuario.setRua(this.rua);
+		usuario.setNumero(this.numero);
+		usuario.setBairro(this.bairro);
+		usuario.setCidade(this.cidade);
+		usuario.setEstado(this.estado);
 
-    public void fromUsuario(Usuario usuario) {
-        this.nome = usuario.getNome();
-        this.sobrenome = usuario.getSobrenome();
-        this.cpf = usuario.getCpf();
-        this.nascimento = usuario.getNascimento();
-        this.sexo = usuario.getSexo();
-        this.email = usuario.getEmail();
-        this.telefone = usuario.getTelefone();
-        this.telefone2 = usuario.getTelefone2();
-        this.senha = usuario.getSenha();
-        this.cep = usuario.getCep();
-        this.rua = usuario.getRua();
-        this.numero = usuario.getNumero();
-        this.bairro = usuario.getBairro();
-        this.cidade = usuario.getCidade();
-        this.estado = usuario.getEstado();
-    }
+		return usuario;
+	}
 
-    public Usuario toPermissao() {
-        Usuario usuario = new Usuario();
-        usuario.setPermissao(this.permissao);
-        return usuario;
-    }
+	public Usuario toUsuario(Usuario usuario) {
 
-    public Usuario toPermissao(Usuario usuario) {
-        usuario.setPermissao(this.permissao);
-        return usuario;
-    }
+		usuario.setNome(this.nome);
+		usuario.setSobrenome(this.sobrenome);
+		usuario.setCpf(this.cpf);
+		usuario.setNascimento(this.nascimento);
+		usuario.setSexo(this.sexo);
+		usuario.setEmail(this.email);
+		usuario.setTelefone(this.telefone);
+		usuario.setTelefone2(this.telefone2);
+		usuario.setSenha(this.senha);
+		usuario.setCep(this.cep);
+		usuario.setRua(this.rua);
+		usuario.setNumero(this.numero);
+		usuario.setBairro(this.bairro);
+		usuario.setCidade(this.cidade);
+		usuario.setEstado(this.estado);
 
-    public void fromPermissao(Usuario usuario) {
-        this.permissao = usuario.getPermissao();
-    }
+		return usuario;
+	}
 
-    public Usuario toUsuarioCheck() {
-        Usuario usuario = new Usuario();
-        usuario.setAtivo(this.ativo);
-        return usuario;
-    }
+	public void fromUsuario(Usuario usuario) {
+		this.nome = usuario.getNome();
+		this.sobrenome = usuario.getSobrenome();
+		this.cpf = usuario.getCpf();
+		this.nascimento = usuario.getNascimento();
+		this.sexo = usuario.getSexo();
+		this.email = usuario.getEmail();
+		this.telefone = usuario.getTelefone();
+		this.telefone2 = usuario.getTelefone2();
+		this.senha = usuario.getSenha();
+		this.cep = usuario.getCep();
+		this.rua = usuario.getRua();
+		this.numero = usuario.getNumero();
+		this.bairro = usuario.getBairro();
+		this.cidade = usuario.getCidade();
+		this.estado = usuario.getEstado();
+	}
 
-    public Usuario toUsuarioCheck(Usuario usuario) {
-        usuario.setAtivo(this.ativo);
-        return usuario;
-    }
+	public Usuario toPermissao() {
+		Usuario usuario = new Usuario();
+		usuario.setPermissao(this.permissao);
+		return usuario;
+	}
 
-    @Override
-    public String toString() {
-        return "RequisicaoFormUsuario [nome=" + nome + ", sobrenome=" + sobrenome + ", cpf=" + cpf + ", nascimento="
-                + nascimento + ", sexo=" + sexo + ", email=" + email + ", telefone=" + telefone + ", telefone2="
-                + telefone2 + ", senha=" + senha + ", cep=" + cep + ", rua=" + rua + ", numero=" + numero + ", bairro="
-                + bairro + ", cidade=" + cidade + ", estado=" + estado + ", caminhoImagem=" + caminhoImagem + ", ativo="
-                + ativo + ", permissao=" + permissao + "]";
-    }
+	public Usuario toPermissao(Usuario usuario) {
+		usuario.setPermissao(this.permissao);
+		return usuario;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public void fromPermissao(Usuario usuario) {
+		this.permissao = usuario.getPermissao();
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public Usuario toUsuarioCheck() {
+		Usuario usuario = new Usuario();
+		usuario.setAtivo(this.ativo);
+		return usuario;
+	}
 
-    public String getCpf() {
-        return cpf;
-    }
+	public Usuario toUsuarioCheck(Usuario usuario) {
+		usuario.setAtivo(this.ativo);
+		return usuario;
+	}
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+	@Override
+	public String toString() {
+		return "RequisicaoFormUsuario [nome=" + nome + ", sobrenome=" + sobrenome + ", cpf=" + cpf + ", nascimento="
+				+ nascimento + ", sexo=" + sexo + ", email=" + email + ", telefone=" + telefone + ", telefone2="
+				+ telefone2 + ", senha=" + senha + ", cep=" + cep + ", rua=" + rua + ", numero=" + numero + ", bairro="
+				+ bairro + ", cidade=" + cidade + ", estado=" + estado + ", caminhoImagem=" + caminhoImagem + ", ativo="
+				+ ativo + ", permissao=" + permissao + "]";
+	}
 
-    public String getNascimento() {
-        return nascimento;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setNascimento(String nascimento) {
-        this.nascimento = nascimento;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public String getSexo() {
-        return sexo;
-    }
+	public String getCpf() {
+		return cpf;
+	}
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getNascimento() {
+		return nascimento;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setNascimento(String nascimento) {
+		this.nascimento = nascimento;
+	}
 
-    public String getTelefone() {
-        return telefone;
-    }
+	public String getSexo() {
+		return sexo;
+	}
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
 
-    public String getTelefone2() {
-        return telefone2;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setTelefone2(String telefone2) {
-        this.telefone2 = telefone2;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getSenha() {
-        return senha;
-    }
+	public String getTelefone() {
+		return telefone;
+	}
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 
-    public String getCep() {
-        return cep;
-    }
+	public String getTelefone2() {
+		return telefone2;
+	}
 
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
+	public void setTelefone2(String telefone2) {
+		this.telefone2 = telefone2;
+	}
 
-    public String getRua() {
-        return rua;
-    }
+	public String getSenha() {
+		return senha;
+	}
 
-    public void setRua(String rua) {
-        this.rua = rua;
-    }
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
-    public String getNumero() {
-        return numero;
-    }
+	public String getCep() {
+		return cep;
+	}
 
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
 
-    public String getBairro() {
-        return bairro;
-    }
+	public String getRua() {
+		return rua;
+	}
 
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
 
-    public String getCidade() {
-        return cidade;
-    }
+	public String getNumero() {
+		return numero;
+	}
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
 
-    public String getEstado() {
-        return estado;
-    }
+	public String getBairro() {
+		return bairro;
+	}
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
 
-    public String getCaminhoImagem() {
-        return caminhoImagem;
-    }
+	public String getCidade() {
+		return cidade;
+	}
 
-    public void setCaminhoImagem(String caminhoImagem) {
-        this.caminhoImagem = caminhoImagem;
-    }
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
 
-    public boolean isAtivo() {
-        return ativo;
-    }
+	public String getEstado() {
+		return estado;
+	}
 
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
-    }
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 
-    public String getSobrenome() {
-        return sobrenome;
-    }
+	public String getCaminhoImagem() {
+		return caminhoImagem;
+	}
 
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
-    }
+	public void setCaminhoImagem(String caminhoImagem) {
+		this.caminhoImagem = caminhoImagem;
+	}
 
-    public Permissao getPermissao() {
-        return permissao;
-    }
+	public boolean isAtivo() {
+		return ativo;
+	}
 
-    public void setPermissao(Permissao permissao) {
-        this.permissao = permissao;
-    }
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	public String getSobrenome() {
+		return sobrenome;
+	}
+
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
+	}
+
+	public Permissao getPermissao() {
+		return permissao;
+	}
+
+	public void setPermissao(Permissao permissao) {
+		this.permissao = permissao;
+	}
+
+	public RequisicaoFormUsuario(@NotBlank String nome, String sobrenome, String cpf, String nascimento, String sexo,
+			String email, String telefone, String telefone2, String senha, String cep, String rua, String numero,
+			String bairro, String cidade, String estado, String caminhoImagem, boolean ativo, Permissao permissao) {
+		super();
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.cpf = cpf;
+		this.nascimento = nascimento;
+		this.sexo = sexo;
+		this.email = email;
+		this.telefone = telefone;
+		this.telefone2 = telefone2;
+		this.senha = senha;
+		this.cep = cep;
+		this.rua = rua;
+		this.numero = numero;
+		this.bairro = bairro;
+		this.cidade = cidade;
+		this.estado = estado;
+		this.caminhoImagem = caminhoImagem;
+		this.ativo = ativo;
+		this.permissao = permissao;
+	}
 
 }
