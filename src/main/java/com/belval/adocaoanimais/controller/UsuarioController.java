@@ -43,7 +43,7 @@ public class UsuarioController {
 	}
 
 	@GetMapping("/pet/usuario")
-	public ModelAndView nnew( RequisicaoFormUsuario requisicao) {
+	public ModelAndView nnew(RequisicaoFormUsuario requisicao) {
 		return new ModelAndView("newUsuario");
 	}
 
@@ -106,7 +106,8 @@ public class UsuarioController {
 	}
 
 	@GetMapping("/pet/private/perfil/{id}")
-	public ModelAndView showUsuario(@PathVariable Long id,RequisicaoFormUsuario requisicao,TrocaSenhaUsuarioDto trocaSenhaUsuarioDto) {
+	public ModelAndView showUsuario(@PathVariable Long id, RequisicaoFormUsuario requisicao,
+			TrocaSenhaUsuarioDto trocaSenhaUsuarioDto) {
 		Optional<Usuario> optional = this.usuarioRepository.findById(id);
 		if (optional.isPresent()) {
 			Usuario usuario = optional.get();
@@ -115,14 +116,14 @@ public class UsuarioController {
 			requisicao.fromUsuario(usuario);
 			mv.addObject("idUser", id);
 			mv.addObject("usuario", usuario);
-			mv.addObject("requisicaoFormUsuario",requisicao);
+			mv.addObject("requisicaoFormUsuario", requisicao);
 			return mv;
 		} else {
 			return new ModelAndView("home");
 		}
 	}
-	
-	/*   PARTE PARA INSERIR IMAGEM DO ANIMAL */
+
+	/* PARTE PARA INSERIR IMAGEM DO ANIMAL */
 	@PostMapping("/pet/private/perfil/{id}/imagem")
 	public ModelAndView saveImage(@PathVariable Long id, @RequestParam("file-img") MultipartFile arquivo) {
 		System.out.println("**** ID: " + id);
@@ -132,7 +133,8 @@ public class UsuarioController {
 			Usuario usuario = optional.get();
 			if (!arquivo.isEmpty()) {
 				byte[] bytes = arquivo.getBytes();
-				Path caminho = Paths.get(caminhoImagens + "/img-usuario/"+ String.valueOf(id) + "-" + arquivo.getOriginalFilename());
+				Path caminho = Paths.get(
+						caminhoImagens + "/img-usuario/" + String.valueOf(id) + "-" + arquivo.getOriginalFilename());
 				Files.write(caminho, bytes);
 				usuario.setCaminhoImagem(String.valueOf(id) + "-" + arquivo.getOriginalFilename());
 				this.usuarioRepository.save(usuario);
@@ -143,51 +145,30 @@ public class UsuarioController {
 		}
 		return new ModelAndView("redirect:/pet/private/perfil/" + id);
 	}
-	
-	/* UPDATE DE  SENHA PERFIL DE USUARIO */
 
-//	@PostMapping("/pet/private/perfil/{id}/senha")
-//	public ModelAndView updateSenha(@PathVariable Long id, @Valid TrocaSenhaUsuarioDto trocaSenhaUsuarioDto, RequisicaoFormUsuario requisicao,
-//			BindingResult bindingResult) {
-//		Optional<Usuario> optional = this.usuarioRepository.findById(id);
-//		if (bindingResult.hasErrors()) {
-//			System.out.println("\n************************TEM ERROS (updatePerfil)**********************\n");
-//			ModelAndView mv = new ModelAndView("usuario/perfil");
-//			Usuario usuario = optional.get();
-//			usuario.setId(id);
-//			mv.addObject("usuario", usuario);
-//			mv.addObject("idUser", id);
-//			System.out.println("ERRO: " + bindingResult);
-//			mv.addObject("erro", true);
-//			return mv;
-//		} else {
-//			System.out.println("\n************************DEU CERTO (updatePerfil)**********************\n");
-//			return new ModelAndView("redirect:/pet/private/perfil/{id}");
-//		}
-//	}
+	/* UPDATE DE SENHA PERFIL DE USUARIO */
 
 	@PostMapping("/pet/private/perfil/{id}/senha")
 	public ModelAndView updateSenha(@PathVariable Long id, @Valid TrocaSenhaUsuarioDto trocaSenhaUsuarioDto,
-	        BindingResult bindingResult, RequisicaoFormUsuario requisicao) {
-	    Optional<Usuario> optional = this.usuarioRepository.findById(id);
+			BindingResult bindingResult, RequisicaoFormUsuario requisicaoFormUsuario) {
+		Optional<Usuario> optional = this.usuarioRepository.findById(id);
 
-	    if (!bindingResult.hasErrors()) {
-	        System.out.println("\n************************DEU CERTO (updatePerfil)**********************\n");
-	        return new ModelAndView("redirect:/pet/private/perfil/{id}");
-	    }
-
-	    System.out.println("\n************************TEM ERROS (updatePerfil)**********************\n");
-	    ModelAndView mv = new ModelAndView("usuario/perfil");
-	    Usuario usuario = optional.get();
-	    usuario.setId(id);
-	    mv.addObject("usuario", usuario);
-	    mv.addObject("idUser", id);
-	    System.out.println("ERRO: " + bindingResult);
-	    mv.addObject("erro", true);
-	    return mv;
+		if (!bindingResult.hasErrors()) {
+			System.out.println("\n************************DEU CERTO (updatePerfil)**********************\n");
+			return new ModelAndView("redirect:/pet/private/perfil/{id}");
+		}
+		System.out.println("\n************************TEM ERROS (updatePerfil)**********************\n");
+		ModelAndView mv = new ModelAndView("usuario/perfil");
+		Usuario usuario = optional.get();
+		usuario.setId(id);
+		mv.addObject("usuario", usuario);
+		mv.addObject("idUser", id);
+		mv.addObject("requisicaoFormUsuario", optional.get());
+		System.out.println("ERRO: " + bindingResult);
+		mv.addObject("erro", true);
+		return mv;
 	}
 
-	
 	/* SEPARAÇÃO DE CADASTRO COMUN PARA A PARTE ADMINISTRATIVA */
 
 	@GetMapping("/pet/admin/usuario")

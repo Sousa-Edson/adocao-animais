@@ -250,7 +250,7 @@
 											</label>
 											<div class="col-md-8 col-lg-9">
 												<input type="text" class="form-control" th:field="*{nome}"
-													th:errorclass=" is-invalid">
+													th:errorclass=" is-invalid" placeholder="João Maria">
 												<div class="invalid-feedback" th:errors="*{nome}">asaddadaa</div>
 
 											</div>
@@ -264,7 +264,7 @@
 											</label>
 											<div class="col-md-8 col-lg-9">
 												<input type="text" class="form-control"
-													th:field="*{sobrenome}" th:errorclass=" is-invalid">
+													th:field="*{sobrenome}" th:errorclass=" is-invalid" placeholder="Santos Ferreira">
 												<div class="invalid-feedback" th:errors="*{sobrenome}"></div>
 											</div>
 										</div>
@@ -276,7 +276,7 @@
 											</label>
 											<div class="col-md-8 col-lg-9">
 												<input type="text" class="form-control" th:field="*{cpf}"
-													th:errorclass=" is-invalid">
+													th:errorclass=" is-invalid" placeholder="675.749.088-93">
 												<div class="invalid-feedback" th:errors="*{cpf}"></div>
 											</div>
 										</div>
@@ -290,7 +290,7 @@
 											</label>
 											<div class="col-md-6 col-lg-3">
 												<input type="text" class="form-control"
-													th:field="*{nascimento}" th:errorclass=" is-invalid">
+													th:field="*{nascimento}" th:errorclass=" is-invalid" placeholder="10/01/2000">
 												<div class="invalid-feedback" th:errors="*{nascimento}"></div>
 											</div>
 										</div>
@@ -326,12 +326,12 @@
 											</label>
 											<div class="col-md-4 col-lg-5">
 												<input type="text" class="form-control"
-													th:field="*{telefone}" th:errorclass=" is-invalid">
+													th:field="*{telefone}" th:errorclass=" is-invalid" placeholder="11 9999-3333">
 												<div class="invalid-feedback" th:errors="*{telefone}"></div>
 											</div>
 											<div class="col-md-4 col-lg-4">
 												<input type="text" class="form-control"
-													th:field="*{telefone2}" th:errorclass=" is-invalid">
+													th:field="*{telefone2}" th:errorclass=" is-invalid" placeholder="11 4168 0066">
 												<div class="invalid-feedback" th:errors="*{telefone2}"></div>
 											</div>
 										</div>
@@ -343,7 +343,7 @@
 											</label>
 											<div class="col-md-8 col-lg-9">
 												<input type="text" class="form-control" th:field="*{email}"
-													th:errorclass=" is-invalid">
+													th:errorclass=" is-invalid" placeholder="email@gmail.com">
 												<div class="invalid-feedback" th:errors="*{email}"></div>
 											</div>
 										</div>
@@ -356,7 +356,7 @@
 											</label>
 											<div class="col-md-6 col-lg-3">
 												<input type="text" class="form-control" th:field="*{cep}"
-													th:errorclass=" is-invalid">
+													th:errorclass=" is-invalid" placeholder="06408-000">
 												<div class="invalid-feedback" th:errors="*{cep}"></div>
 											</div>
 										</div>
@@ -368,14 +368,14 @@
 													style="vertical-align: inherit;">Endereço</font>
 											</font>
 											</label>
-											<div class="col-md-6 col-lg-8">
+											<div class="col-md-6 col-lg-7">
 												<input type="text" class="form-control" th:field="*{rua}"
-													th:errorclass=" is-invalid">
+													th:errorclass=" is-invalid" placeholder="Rua do Jacare">
 												<div class="invalid-feedback" th:errors="*{rua}"></div>
 											</div>
 											<div class="col-md-2 col-lg-2">
 												<input type="text" class="form-control" th:field="*{numero}"
-													th:errorclass=" is-invalid">
+													th:errorclass=" is-invalid" placeholder="001">
 												<div class="invalid-feedback" th:errors="*{numero}"></div>
 											</div>
 										</div>
@@ -388,7 +388,7 @@
 											</label>
 											<div class="col-md-8 col-lg-9">
 												<input type="text" class="form-control" th:field="*{bairro}"
-													th:errorclass=" is-invalid">
+													th:errorclass=" is-invalid" placeholder="Bairro dos limões">
 												<div class="invalid-feedback" th:errors="*{bairro}"></div>
 											</div>
 										</div>
@@ -400,12 +400,12 @@
 											</label>
 											<div class="col-md-6 col-lg-7">
 												<input type="text" class="form-control" th:field="*{cidade}"
-													th:errorclass=" is-invalid">
+													th:errorclass=" is-invalid" placeholder="Barueri">
 												<div class="invalid-feedback" th:errors="*{cidade}"></div>
 											</div>
 											<div class="col-md-2 col-lg-2">
 												<input type="text" class="form-control" th:field="*{estado}"
-													th:errorclass=" is-invalid">
+													th:errorclass=" is-invalid" placeholder="SP">
 												<div class="invalid-feedback" th:errors="*{estado}"></div>
 											</div>
 										</div>
@@ -476,7 +476,7 @@
 
 								</div>
 
-								<div class="tab-pane fade pt-3" id="profile-change-password"
+								<div class="tab-pane fade pt-3" id="profile-change-password" 
 									role="tabpanel">
 									<!-- Change Password Form -->
 									<form class="" name="formUser"
@@ -494,7 +494,7 @@
 											<div class="col-md-8 col-lg-9">
 												<input   th:field="*{senhaAtual}"
 													type="password" class="form-control"
-													th:errorclass=" is-invalid">
+													th:errorclass=" is-invalid" placeholder="senha">
 												<div class="invalid-feedback" th:errors="*{senhaAtual}"></div>
 											</div>
 										</div>
@@ -508,7 +508,7 @@
 											</label>
 											<div class="col-md-8 col-lg-9">
 												<input type="password" class="form-control" id="novaSenha"
-													th:field="*{novaSenha}" th:errorclass=" is-invalid">
+													th:field="*{novaSenha}" th:errorclass=" is-invalid" placeholder="senha">
 												<div class="invalid-feedback" th:errors="*{novaSenha}"></div>
 											</div>
 										</div>
@@ -523,7 +523,7 @@
 											<div class="col-md-8 col-lg-9">
 												<input type="password" class="form-control"
 													id="confirmarNovaSenha"
-													th:field="*{confirmarNovaSenha}" th:errorclass="is-invalid">
+													th:field="*{confirmarNovaSenha}" th:errorclass="is-invalid" placeholder="senha">
 												<div class="invalid-feedback"
 													th:errors="*{confirmarNovaSenha}"></div>
 											</div>
