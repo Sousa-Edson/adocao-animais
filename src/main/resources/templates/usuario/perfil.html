@@ -1,4 +1,4 @@
-<head th:replace="~{fragmentos :: head('Perfil')}"></head>
+ <head th:replace="~{fragmentos :: head('Perfil')}"></head>
 <nav th:replace="~{fragmentos :: navbar}"></nav>
 <main class="container mt-1  bg-light ">
 
@@ -353,7 +353,7 @@
 													<font style="vertical-align: inherit;">Endereço</font>
 												</font>
 											</label>
-											<div class="col-md-7 col-lg-7">
+											<div class="col-md-6 col-lg-8">
 												<input type="text" class="form-control" th:field="*{rua}"
 													th:errorclass=" is-invalid">
 												<div class="invalid-feedback" th:errors="*{rua}"></div>
@@ -383,7 +383,7 @@
 													<font style="vertical-align: inherit;">Cidade / Estado</font>
 												</font>
 											</label>
-											<div class="col-md-7 col-lg-7">
+											<div class="col-md-6 col-lg-7">
 												<input type="text" class="form-control" th:field="*{cidade}"
 													th:errorclass=" is-invalid">
 												<div class="invalid-feedback" th:errors="*{cidade}"></div>
