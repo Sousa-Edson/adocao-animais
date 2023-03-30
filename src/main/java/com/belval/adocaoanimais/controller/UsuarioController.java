@@ -140,7 +140,7 @@ public class UsuarioController {
 			System.out.println("erro--> " + e);
 			e.printStackTrace();
 		}
-		return new ModelAndView("redirect:/pet/private/animal/new/" + id);
+		return new ModelAndView("redirect:/pet/private/perfil/" + id);
 	}
 	
 
