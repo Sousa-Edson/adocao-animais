@@ -35,7 +35,7 @@ public class FileStorageConfig {
 
 	public void postagem() {
 		String folderName = "img-post";
-		String folderPath = System.getProperty("user.dir") + "" + folderName;
+		String folderPath = System.getProperty("user.dir") + "/" + folderName;
 		File folder = new File(folderPath);
 
 		if (!folder.exists()) {
@@ -45,7 +45,7 @@ public class FileStorageConfig {
 
 	public void animal() {
 		String folderName = "img-animal";
-		String folderPath = System.getProperty("user.dir") + "" + folderName;
+		String folderPath = System.getProperty("user.dir") + "/" + folderName;
 		File folder = new File(folderPath);
 
 		if (!folder.exists()) {
@@ -55,7 +55,7 @@ public class FileStorageConfig {
 
 	public void usuario() {
 		String folderName = "img-usuario";
-		String folderPath = System.getProperty("user.dir") + "" + folderName;
+		String folderPath = System.getProperty("user.dir") + "/" + folderName;
 		File folder = new File(folderPath);
 
 		if (!folder.exists()) {
