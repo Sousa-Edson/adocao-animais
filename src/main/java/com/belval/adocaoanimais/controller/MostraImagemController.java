@@ -64,4 +64,25 @@ public class MostraImagemController {
 				"\n\n\n######################################################   Mostra imagem\n\n\nimg-post ---- sem-imagem.jpeg\n:");
 		return Files.readAllBytes(imagemArquivo.toPath());
 	}
+	
+	@ResponseBody
+	@GetMapping("/pet/mostrarImagem/img-usuario/{imagem}")
+	public byte[] retornarImagemUsuario(@PathVariable("imagem") String imagem) throws IOException {
+		File imagemArquivo = new File(caminhoImagensAnimal + "/img-usuario/" + imagem);
+		System.out.println("\n\n\n######################################################   IMAGEM PET\n\n\n");
+		if (imagem != null || imagem.trim().length() > 0) {
+			return Files.readAllBytes(imagemArquivo.toPath());
+		}
+		return null;
+		// @{/pet/mostrarImagem/{imagem}(imagem=${p.getCaminhoImagem})}
+	}
+
+	@ResponseBody
+	@GetMapping("/pet/mostrarImagem/img-usuario/")
+	public byte[] retornarImagemUsuarioVazia() throws IOException {
+		File imagemArquivo = new File("sem-imagem.jpeg");
+		System.out.println(
+				"\n\n\n######################################################   Mostra imagem\n\n\nimg-post ---- sem-imagem.jpeg\n:");
+		return Files.readAllBytes(imagemArquivo.toPath());
+	}
 }

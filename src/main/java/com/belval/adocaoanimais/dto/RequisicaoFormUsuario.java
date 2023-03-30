@@ -37,7 +37,6 @@ public class RequisicaoFormUsuario {
 	private String cidade;
 	@NotBlank
 	private String estado;
-	@NotBlank
 
 	private String caminhoImagem;
 	private boolean ativo;
