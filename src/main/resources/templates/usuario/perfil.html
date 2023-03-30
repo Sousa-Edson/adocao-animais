@@ -1,4 +1,5 @@
- <head th:replace="~{fragmentos :: head('Perfil')}"></head>
+
+<head th:replace="~{fragmentos :: head('Perfil')}"></head>
 <nav th:replace="~{fragmentos :: navbar}"></nav>
 <main class="container mt-1  bg-light ">
 
@@ -9,19 +10,23 @@
 				<h1 class="display-5">
 					Perfil # <span th:text="${idUser}"></span>
 				</h1>
-				<div th:if="${erro == true}" class="alert alert-danger alert-dismissible fade show text-center"
+				<div th:if="${erro == true}"
+					class="alert alert-danger alert-dismissible fade show text-center"
 					role="alert">
 
-					<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-						class="bi bi-exclamation-circle" viewBox="0 0 16 16">
-						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+					<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+						fill="currentColor" class="bi bi-exclamation-circle"
+						viewBox="0 0 16 16">
+						<path
+							d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
 						<path
 							d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
 					</svg>
 					<strong> Erro no formulario!</strong> <br> Verifique se todos
 					os itens forma preenchidos corretamente. <br>
 
-					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					<button type="button" class="btn-close" data-bs-dismiss="alert"
+						aria-label="Close"></button>
 				</div>
 
 
@@ -34,37 +39,40 @@
 
 								<li class="nav-item" role="presentation">
 									<button class="nav-link active" data-bs-toggle="tab"
-										data-bs-target="#profile-overview" aria-selected="true" role="tab">
-										<font style="vertical-align: inherit;">
-											<font style="vertical-align: inherit;">Visão geral</font>
-										</font>
-									</button>
-								</li>
-
-								<li class="nav-item" role="presentation">
-									<button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit"
-										aria-selected="false" role="tab" tabindex="-1">
-										<font style="vertical-align: inherit;">
-											<font style="vertical-align: inherit;">Editar Perfil</font>
-										</font>
-									</button>
-								</li>
-
-								<li class="nav-item" role="presentation">
-									<button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings"
-										aria-selected="false" role="tab" tabindex="-1">
-										<font style="vertical-align: inherit;">
-											<font style="vertical-align: inherit;">Imagem de perfil</font>
+										data-bs-target="#profile-overview" aria-selected="true"
+										role="tab">
+										<font style="vertical-align: inherit;"> <font
+											style="vertical-align: inherit;">Visão geral</font>
 										</font>
 									</button>
 								</li>
 
 								<li class="nav-item" role="presentation">
 									<button class="nav-link" data-bs-toggle="tab"
-										data-bs-target="#profile-change-password" aria-selected="false" role="tab"
-										tabindex="-1">
-										<font style="vertical-align: inherit;">
-											<font style="vertical-align: inherit;">Alterar a senha</font>
+										data-bs-target="#profile-edit" aria-selected="false"
+										role="tab" tabindex="-1">
+										<font style="vertical-align: inherit;"> <font
+											style="vertical-align: inherit;">Editar Perfil</font>
+										</font>
+									</button>
+								</li>
+
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" data-bs-toggle="tab"
+										data-bs-target="#profile-settings" aria-selected="false"
+										role="tab" tabindex="-1">
+										<font style="vertical-align: inherit;"> <font
+											style="vertical-align: inherit;">Imagem de perfil</font>
+										</font>
+									</button>
+								</li>
+
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" data-bs-toggle="tab"
+										data-bs-target="#profile-change-password"
+										aria-selected="false" role="tab" tabindex="-1">
+										<font style="vertical-align: inherit;"> <font
+											style="vertical-align: inherit;">Alterar a senha</font>
 										</font>
 									</button>
 								</li>
@@ -72,170 +80,173 @@
 							</ul>
 							<div class="tab-content pt-2">
 
-								<div class="tab-pane fade profile-overview active show" id="profile-overview"
-									role="tabpanel">
+								<div class="tab-pane fade profile-overview active show"
+									id="profile-overview" role="tabpanel">
 
 									<h5 class="card-title">
-										<font style="vertical-align: inherit;">
-											<font style="vertical-align: inherit;">Detalhes de perfil</font>
+										<font style="vertical-align: inherit;"> <font
+											style="vertical-align: inherit;">Detalhes de perfil</font>
 										</font>
 									</h5>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label ">
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;">Nome completo</font>
+											<font style="vertical-align: inherit;"> <font
+												style="vertical-align: inherit;">Nome completo</font>
 											</font>
 										</div>
 										<div class="col-lg-9 col-md-8">
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;"><span
-														th:text="${usuario.nome}+' '+${usuario.sobrenome}"></span>
-												</font>
+											<font style="vertical-align: inherit;"> <font
+												style="vertical-align: inherit;"><span
+													th:text="${usuario.nome}+' '+${usuario.sobrenome}"></span>
+											</font>
 											</font>
 										</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;">Cpf</font>
+											<font style="vertical-align: inherit;"> <font
+												style="vertical-align: inherit;">Cpf</font>
 											</font>
 										</div>
 										<div class="col-lg-9 col-md-8">
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;"> <span
-														th:text="${usuario.cpf}"></span></font>
+											<font style="vertical-align: inherit;"> <font
+												style="vertical-align: inherit;"> <span
+													th:text="${usuario.cpf}"></span></font>
 											</font>
 										</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;">Nascimento</font>
+											<font style="vertical-align: inherit;"> <font
+												style="vertical-align: inherit;">Nascimento</font>
 											</font>
 										</div>
 										<div class="col-lg-9 col-md-8">
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;"><span
-														th:text="${usuario.nascimento}"></span></font>
+											<font style="vertical-align: inherit;"> <font
+												style="vertical-align: inherit;"><span
+													th:text="${usuario.nascimento}"></span></font>
 											</font>
 										</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;">Sexo</font>
+											<font style="vertical-align: inherit;"> <font
+												style="vertical-align: inherit;">Sexo</font>
 											</font>
 										</div>
 										<div class="col-lg-9 col-md-8">
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;"><span
-														th:text="${usuario.sexo}"></span></font>
+											<font style="vertical-align: inherit;"> <font
+												style="vertical-align: inherit;"><span
+													th:text="${usuario.sexo}"></span></font>
 											</font>
 										</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;">Telefone</font>
+											<font style="vertical-align: inherit;"> <font
+												style="vertical-align: inherit;">Telefone</font>
 											</font>
 										</div>
 										<div class="col-lg-9 col-md-8">
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;"> <span
-														th:text="${usuario.telefone}"></span> <span
-														th:text="${usuario.telefone2}"></span></font>
+											<font style="vertical-align: inherit;"> <font
+												style="vertical-align: inherit;"> <span
+													th:text="${usuario.telefone}"></span> <span
+													th:text="${usuario.telefone2}"></span></font>
 											</font>
 										</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;">Email</font>
+											<font style="vertical-align: inherit;"> <font
+												style="vertical-align: inherit;">Email</font>
 											</font>
 										</div>
 										<div class="col-lg-9 col-md-8">
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;"><span
-														th:text="${usuario.email}"></span></font>
+											<font style="vertical-align: inherit;"> <font
+												style="vertical-align: inherit;"><span
+													th:text="${usuario.email}"></span></font>
 											</font>
 										</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;">CEP</font>
+											<font style="vertical-align: inherit;"> <font
+												style="vertical-align: inherit;">CEP</font>
 											</font>
 										</div>
 										<div class="col-lg-9 col-md-8">
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;"><span
-														th:text="${usuario.cep}"></span></font>
+											<font style="vertical-align: inherit;"> <font
+												style="vertical-align: inherit;"><span
+													th:text="${usuario.cep}"></span></font>
 											</font>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;">Endereço</font>
+											<font style="vertical-align: inherit;"> <font
+												style="vertical-align: inherit;">Endereço</font>
 											</font>
 										</div>
 										<div class="col-lg-9 col-md-8">
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;"><span
-														th:text="${usuario.rua}"></span> <span
-														th:text="${usuario.numero}"></span></font>
+											<font style="vertical-align: inherit;"> <font
+												style="vertical-align: inherit;"><span
+													th:text="${usuario.rua}"></span> <span
+													th:text="${usuario.numero}"></span></font>
 											</font>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;">Bairro</font>
+											<font style="vertical-align: inherit;"> <font
+												style="vertical-align: inherit;">Bairro</font>
 											</font>
 										</div>
 										<div class="col-lg-9 col-md-8">
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;"><span
-														th:text="${usuario.bairro}"></span></font>
+											<font style="vertical-align: inherit;"> <font
+												style="vertical-align: inherit;"><span
+													th:text="${usuario.bairro}"></span></font>
 											</font>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;">Cidade / Estado</font>
+											<font style="vertical-align: inherit;"> <font
+												style="vertical-align: inherit;">Cidade / Estado</font>
 											</font>
 										</div>
 										<div class="col-lg-9 col-md-8">
-											<font style="vertical-align: inherit;">
-												<font style="vertical-align: inherit;"><span
-														th:text="${usuario.cidade}"></span> <span
-														th:text="${usuario.estado}"></span></font>
+											<font style="vertical-align: inherit;"> <font
+												style="vertical-align: inherit;"><span
+													th:text="${usuario.cidade}"></span> <span
+													th:text="${usuario.estado}"></span></font>
 											</font>
 										</div>
 									</div>
 
 								</div>
 
-								<div class="tab-pane fade profile-edit pt-3" id="profile-edit" role="tabpanel">
+								<div class="tab-pane fade profile-edit pt-3" id="profile-edit"
+									role="tabpanel">
 
 									<!-- Profile Edit Form -->
-									<form class="" name="formUser" th:object="${requisicaoFormUsuario}"
-										th:action="'/pet/private/perfil/'+${idUser}+'/perfil'" method="post">
+									<form class="" name="formUser"
+										th:object="${requisicaoFormUsuario}"
+										th:action="'/pet/private/perfil/'+${idUser}+'/perfil'"
+										method="post">
 
 
 										<div class="row mb-3">
 											<label for="nome" class="col-md-4 col-lg-3 col-form-label">
-												<font style="vertical-align: inherit;">
-													<font style="vertical-align: inherit;">Nome</font>
-												</font>
+												<font style="vertical-align: inherit;"> <font
+													style="vertical-align: inherit;">Nome</font>
+											</font>
 											</label>
 											<div class="col-md-8 col-lg-9">
 												<input type="text" class="form-control" th:field="*{nome}"
@@ -245,22 +256,23 @@
 											</div>
 										</div>
 										<div class="row mb-3">
-											<label for="sobrenome" class="col-md-4 col-lg-3 col-form-label">
-												<font style="vertical-align: inherit;">
-													<font style="vertical-align: inherit;">Sobrenome</font>
-												</font>
+											<label for="sobrenome"
+												class="col-md-4 col-lg-3 col-form-label"> <font
+												style="vertical-align: inherit;"> <font
+													style="vertical-align: inherit;">Sobrenome</font>
+											</font>
 											</label>
 											<div class="col-md-8 col-lg-9">
-												<input type="text" class="form-control" th:field="*{sobrenome}"
-													th:errorclass=" is-invalid">
+												<input type="text" class="form-control"
+													th:field="*{sobrenome}" th:errorclass=" is-invalid">
 												<div class="invalid-feedback" th:errors="*{sobrenome}"></div>
 											</div>
 										</div>
 										<div class="row mb-3">
 											<label for="cpf" class="col-md-4 col-lg-3 col-form-label">
-												<font style="vertical-align: inherit;">
-													<font style="vertical-align: inherit;">CPF</font>
-												</font>
+												<font style="vertical-align: inherit;"> <font
+													style="vertical-align: inherit;">CPF</font>
+											</font>
 											</label>
 											<div class="col-md-8 col-lg-9">
 												<input type="text" class="form-control" th:field="*{cpf}"
@@ -270,34 +282,35 @@
 										</div>
 
 										<div class="row mb-3">
-											<label for="nascimento" class="col-md-4 col-lg-3 col-form-label">
-												<font style="vertical-align: inherit;">
-													<font style="vertical-align: inherit;">Nascimento</font>
-												</font>
+											<label for="nascimento"
+												class="col-md-4 col-lg-3 col-form-label"> <font
+												style="vertical-align: inherit;"> <font
+													style="vertical-align: inherit;">Nascimento</font>
+											</font>
 											</label>
 											<div class="col-md-6 col-lg-3">
-												<input type="text" class="form-control" th:field="*{nascimento}"
-													th:errorclass=" is-invalid">
+												<input type="text" class="form-control"
+													th:field="*{nascimento}" th:errorclass=" is-invalid">
 												<div class="invalid-feedback" th:errors="*{nascimento}"></div>
 											</div>
 										</div>
 
 										<div class="row mb-3">
 											<label for="sexo" class="col-md-4 col-lg-3 col-form-label">
-												<font style="vertical-align: inherit;">
-													<font style="vertical-align: inherit;">Sexo</font>
-												</font>
+												<font style="vertical-align: inherit;"> <font
+													style="vertical-align: inherit;">Sexo</font>
+											</font>
 											</label>
 											<div class="col-md-8 col-lg-9">
 
 												<div class="col-md-12">
 													<label class="form-check-label" for="sexo1"> <input
-															class="form-check-input" th:field="*{sexo}" value="feminino"
-															type="radio" required="">
+														class="form-check-input" th:field="*{sexo}"
+														value="feminino" type="radio" required="">
 														Feminino
 													</label> <label clclass="form-check-label" for="sexo2"> <input
-															class="form-check-input" th:field="*{sexo}"
-															value="masculino" type="radio" required="">
+														class="form-check-input" th:field="*{sexo}"
+														value="masculino" type="radio" required="">
 														Masculino
 													</label>
 												</div>
@@ -305,27 +318,28 @@
 										</div>
 
 										<div class="row mb-3">
-											<label for="telefone" class="col-md-4 col-lg-3 col-form-label">
-												<font style="vertical-align: inherit;">
-													<font style="vertical-align: inherit;">Telefone</font>
-												</font>
+											<label for="telefone"
+												class="col-md-4 col-lg-3 col-form-label"> <font
+												style="vertical-align: inherit;"> <font
+													style="vertical-align: inherit;">Telefone</font>
+											</font>
 											</label>
 											<div class="col-md-4 col-lg-5">
-												<input type="text" class="form-control" th:field="*{telefone}"
-													th:errorclass=" is-invalid">
+												<input type="text" class="form-control"
+													th:field="*{telefone}" th:errorclass=" is-invalid">
 												<div class="invalid-feedback" th:errors="*{telefone}"></div>
 											</div>
 											<div class="col-md-4 col-lg-4">
-												<input type="text" class="form-control" th:field="*{telefone2}"
-													th:errorclass=" is-invalid">
+												<input type="text" class="form-control"
+													th:field="*{telefone2}" th:errorclass=" is-invalid">
 												<div class="invalid-feedback" th:errors="*{telefone2}"></div>
 											</div>
 										</div>
 										<div class="row mb-3">
 											<label for="email" class="col-md-4 col-lg-3 col-form-label">
-												<font style="vertical-align: inherit;">
-													<font style="vertical-align: inherit;">Email</font>
-												</font>
+												<font style="vertical-align: inherit;"> <font
+													style="vertical-align: inherit;">Email</font>
+											</font>
 											</label>
 											<div class="col-md-8 col-lg-9">
 												<input type="text" class="form-control" th:field="*{email}"
@@ -336,9 +350,9 @@
 
 										<div class="row mb-3">
 											<label for="cep" class="col-md-4 col-lg-3 col-form-label">
-												<font style="vertical-align: inherit;">
-													<font style="vertical-align: inherit;">CEP</font>
-												</font>
+												<font style="vertical-align: inherit;"> <font
+													style="vertical-align: inherit;">CEP</font>
+											</font>
 											</label>
 											<div class="col-md-6 col-lg-3">
 												<input type="text" class="form-control" th:field="*{cep}"
@@ -348,10 +362,11 @@
 										</div>
 
 										<div class="row mb-3">
-											<label for="endereco" class="col-md-4 col-lg-3 col-form-label">
-												<font style="vertical-align: inherit;">
-													<font style="vertical-align: inherit;">Endereço</font>
-												</font>
+											<label for="endereco"
+												class="col-md-4 col-lg-3 col-form-label"> <font
+												style="vertical-align: inherit;"> <font
+													style="vertical-align: inherit;">Endereço</font>
+											</font>
 											</label>
 											<div class="col-md-6 col-lg-8">
 												<input type="text" class="form-control" th:field="*{rua}"
@@ -367,9 +382,9 @@
 
 										<div class="row mb-3">
 											<label for="bairro" class="col-md-4 col-lg-3 col-form-label">
-												<font style="vertical-align: inherit;">
-													<font style="vertical-align: inherit;">Bairro</font>
-												</font>
+												<font style="vertical-align: inherit;"> <font
+													style="vertical-align: inherit;">Bairro</font>
+											</font>
 											</label>
 											<div class="col-md-8 col-lg-9">
 												<input type="text" class="form-control" th:field="*{bairro}"
@@ -379,9 +394,9 @@
 										</div>
 										<div class="row mb-3">
 											<label for="cidade" class="col-md-4 col-lg-3 col-form-label">
-												<font style="vertical-align: inherit;">
-													<font style="vertical-align: inherit;">Cidade / Estado</font>
-												</font>
+												<font style="vertical-align: inherit;"> <font
+													style="vertical-align: inherit;">Cidade / Estado</font>
+											</font>
 											</label>
 											<div class="col-md-6 col-lg-7">
 												<input type="text" class="form-control" th:field="*{cidade}"
@@ -400,8 +415,8 @@
 
 										<div class="text-center">
 											<button type="submit" class="btn btn-primary">
-												<font style="vertical-align: inherit;">
-													<font style="vertical-align: inherit;">Salvar alterações</font>
+												<font style="vertical-align: inherit;"> <font
+													style="vertical-align: inherit;">Salvar alterações</font>
 												</font>
 											</button>
 										</div>
@@ -410,38 +425,40 @@
 
 								</div>
 
-								<div class="tab-pane fade pt-3" id="profile-settings" role="tabpanel">
+								<div class="tab-pane fade pt-3" id="profile-settings"
+									role="tabpanel">
 
 									<!-- Settings Form -->
 									<form class="" name="formUser" th:object="${usuario}"
-										th:action="'/pet/private/perfil/'+${idUser}+'/imagem'" method="post"
-										enctype="multipart/form-data">
+										th:action="'/pet/private/perfil/'+${idUser}+'/imagem'"
+										method="post" enctype="multipart/form-data">
 
 										<div class="row mb-3">
 											<div class="row mb-3">
-												<label for="profileImage" class="col-md-6 col-lg-3 col-form-label">
-													<font style="vertical-align: inherit;">
-														<font style="vertical-align: inherit;">Imagem de perfil</font>
-													</font>
+												<label for="profileImage"
+													class="col-md-6 col-lg-3 col-form-label"> <font
+													style="vertical-align: inherit;"> <font
+														style="vertical-align: inherit;">Imagem de perfil</font>
+												</font>
 												</label>
 												<div class="col-md-12 col-lg-9">
-													<img width="100%" height="100%" style="width: 400px; "
+													<img width="100%" height="100%" style="width: 400px;"
 														id="imagemExibir"
 														th:src="@{/pet/mostrarImagem/img-usuario/{imagem}(imagem=${usuario.getCaminhoImagem})}"
 														class="img-thumbnail" alt="...">
 
 													<div class="pt-2">
 														<div class="mb-3  col-lg-8 col-md-12 col-sm-12">
-															<input  class="form-control" type="file" id="file-img"
+															<input class="form-control" type="file" id="file-img"
 																accept="image/png,image/jpeg" name="file-img">
 
 														</div>
 														<a href="#" class="btn btn-primary btn-sm" id="carregar"
 															title="Carregar nova imagem de perfil"><i
-																class="bi bi-upload"></i></a> <a href="#" id="remover"
+															class="bi bi-upload"></i></a> <a href="#" id="remover"
 															class="btn btn-danger btn-sm"
 															title="Remover minha imagem de perfil"><i
-																class="bi bi-trash"></i></a>
+															class="bi bi-trash"></i></a>
 													</div>
 												</div>
 											</div>
@@ -449,8 +466,8 @@
 
 										<div class="text-center">
 											<button type="submit" class="btn btn-primary">
-												<font style="vertical-align: inherit;">
-													<font style="vertical-align: inherit;">Salvar alterações</font>
+												<font style="vertical-align: inherit;"> <font
+													style="vertical-align: inherit;">Salvar alterações</font>
 												</font>
 											</button>
 										</div>
@@ -459,51 +476,63 @@
 
 								</div>
 
-								<div class="tab-pane fade pt-3" id="profile-change-password" role="tabpanel">
+								<div class="tab-pane fade pt-3" id="profile-change-password"
+									role="tabpanel">
 									<!-- Change Password Form -->
-									<form class="" name="formUser" th:object="${usuario}"
-										th:action="'/pet/private/perfil/'+${idUser}" method="post">
+									<form class="" name="formUser"
+										th:object="${trocaSenhaUsuarioDto}"
+										th:action="'/pet/private/perfil/'+${idUser}+'/senha'"
+										method="post">
 
 										<div class="row mb-3">
-											<label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">
-												<font style="vertical-align: inherit;">
-													<font style="vertical-align: inherit;">Senha atual</font>
-												</font>
+											<label for="currentPassword"
+												class="col-md-4 col-lg-3 col-form-label"> <font
+												style="vertical-align: inherit;"> <font
+													style="vertical-align: inherit;">Senha atual</font>
+											</font>
 											</label>
 											<div class="col-md-8 col-lg-9">
-												<input name="password" type="password" class="form-control"
-													id="currentPassword">
+												<input   th:field="*{senhaAtual}"
+													type="password" class="form-control"
+													th:errorclass=" is-invalid">
+												<div class="invalid-feedback" th:errors="*{senhaAtual}"></div>
 											</div>
 										</div>
 
 										<div class="row mb-3">
-											<label for="newPassword" class="col-md-4 col-lg-3 col-form-label">
-												<font style="vertical-align: inherit;">
-													<font style="vertical-align: inherit;">Nova Senha</font>
-												</font>
+											<label for="newPassword"
+												class="col-md-4 col-lg-3 col-form-label"> <font
+												style="vertical-align: inherit;"> <font
+													style="vertical-align: inherit;">Nova Senha</font>
+											</font>
 											</label>
 											<div class="col-md-8 col-lg-9">
-												<input name="newpassword" type="password" class="form-control"
-													id="newPassword">
+												<input type="password" class="form-control" id="novaSenha"
+													th:field="*{novaSenha}" th:errorclass=" is-invalid">
+												<div class="invalid-feedback" th:errors="*{novaSenha}"></div>
 											</div>
 										</div>
 
 										<div class="row mb-3">
-											<label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">
-												<font style="vertical-align: inherit;">
-													<font style="vertical-align: inherit;">Confirme Senha</font>
-												</font>
+											<label for="renewPassword"
+												class="col-md-4 col-lg-3 col-form-label"> <font
+												style="vertical-align: inherit;"> <font
+													style="vertical-align: inherit;">Confirme Senha</font>
+											</font>
 											</label>
 											<div class="col-md-8 col-lg-9">
-												<input name="renewpassword" type="password" class="form-control"
-													id="renewPassword">
+												<input type="password" class="form-control"
+													id="confirmarNovaSenha"
+													th:field="*{confirmarNovaSenha}" th:errorclass="is-invalid">
+												<div class="invalid-feedback"
+													th:errors="*{confirmarNovaSenha}"></div>
 											</div>
 										</div>
 
 										<div class="text-center">
 											<button type="submit" class="btn btn-primary">
-												<font style="vertical-align: inherit;">
-													<font style="vertical-align: inherit;">Alterar a senha</font>
+												<font style="vertical-align: inherit;"> <font
+													style="vertical-align: inherit;">Alterar a senha</font>
 												</font>
 											</button>
 										</div>
@@ -562,11 +591,15 @@
 </main>
 <!-- footer - rodape basico -->
 <div class="container">
-	<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+	<footer
+		class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
 		<div class="col-md-4 d-flex align-items-center">
-			<a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+			<a href="/"
+				class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
 				<div class="  text-center ">
-					<img class="img-fluid" th:src="@{/imagens/MicrosoftTeams-image.png }" alt="" style="height: 5vh;" />
+					<img class="img-fluid"
+						th:src="@{/imagens/MicrosoftTeams-image.png }" alt=""
+						style="height: 5vh;" />
 				</div>
 			</a> <span class="mb-3 mb-md-0 text-muted">© 2023 Adote fácil</span>
 		</div>

@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.belval.adocaoanimais.dto.RequisicaoFormUsuario;
+import com.belval.adocaoanimais.dto.TrocaSenhaUsuarioDto;
 import com.belval.adocaoanimais.enums.Permissao;
 import com.belval.adocaoanimais.model.Animal;
 import com.belval.adocaoanimais.model.PetImagem;
@@ -105,7 +106,7 @@ public class UsuarioController {
 	}
 
 	@GetMapping("/pet/private/perfil/{id}")
-	public ModelAndView showUsuario(@PathVariable Long id,RequisicaoFormUsuario requisicao) {
+	public ModelAndView showUsuario(@PathVariable Long id,RequisicaoFormUsuario requisicao,TrocaSenhaUsuarioDto trocaSenhaUsuarioDto) {
 		Optional<Usuario> optional = this.usuarioRepository.findById(id);
 		if (optional.isPresent()) {
 			Usuario usuario = optional.get();
@@ -121,7 +122,7 @@ public class UsuarioController {
 		}
 	}
 	
-	/* PENSAR NESTA PARTE PARA INSERIR IMAGEM DO ANIMAL */
+	/*   PARTE PARA INSERIR IMAGEM DO ANIMAL */
 	@PostMapping("/pet/private/perfil/{id}/imagem")
 	public ModelAndView saveImage(@PathVariable Long id, @RequestParam("file-img") MultipartFile arquivo) {
 		System.out.println("**** ID: " + id);
@@ -143,7 +144,50 @@ public class UsuarioController {
 		return new ModelAndView("redirect:/pet/private/perfil/" + id);
 	}
 	
+	/* UPDATE DE  SENHA PERFIL DE USUARIO */
 
+//	@PostMapping("/pet/private/perfil/{id}/senha")
+//	public ModelAndView updateSenha(@PathVariable Long id, @Valid TrocaSenhaUsuarioDto trocaSenhaUsuarioDto, RequisicaoFormUsuario requisicao,
+//			BindingResult bindingResult) {
+//		Optional<Usuario> optional = this.usuarioRepository.findById(id);
+//		if (bindingResult.hasErrors()) {
+//			System.out.println("\n************************TEM ERROS (updatePerfil)**********************\n");
+//			ModelAndView mv = new ModelAndView("usuario/perfil");
+//			Usuario usuario = optional.get();
+//			usuario.setId(id);
+//			mv.addObject("usuario", usuario);
+//			mv.addObject("idUser", id);
+//			System.out.println("ERRO: " + bindingResult);
+//			mv.addObject("erro", true);
+//			return mv;
+//		} else {
+//			System.out.println("\n************************DEU CERTO (updatePerfil)**********************\n");
+//			return new ModelAndView("redirect:/pet/private/perfil/{id}");
+//		}
+//	}
+
+	@PostMapping("/pet/private/perfil/{id}/senha")
+	public ModelAndView updateSenha(@PathVariable Long id, @Valid TrocaSenhaUsuarioDto trocaSenhaUsuarioDto,
+	        BindingResult bindingResult, RequisicaoFormUsuario requisicao) {
+	    Optional<Usuario> optional = this.usuarioRepository.findById(id);
+
+	    if (!bindingResult.hasErrors()) {
+	        System.out.println("\n************************DEU CERTO (updatePerfil)**********************\n");
+	        return new ModelAndView("redirect:/pet/private/perfil/{id}");
+	    }
+
+	    System.out.println("\n************************TEM ERROS (updatePerfil)**********************\n");
+	    ModelAndView mv = new ModelAndView("usuario/perfil");
+	    Usuario usuario = optional.get();
+	    usuario.setId(id);
+	    mv.addObject("usuario", usuario);
+	    mv.addObject("idUser", id);
+	    System.out.println("ERRO: " + bindingResult);
+	    mv.addObject("erro", true);
+	    return mv;
+	}
+
+	
 	/* SEPARAÇÃO DE CADASTRO COMUN PARA A PARTE ADMINISTRATIVA */
 
 	@GetMapping("/pet/admin/usuario")
