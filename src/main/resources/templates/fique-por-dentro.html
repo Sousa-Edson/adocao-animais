@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head th:replace="~{fragmentos :: head('Ops')}"></head>
+ <body>
+	<nav th:replace="~{fragmentos :: navbar}"></nav>
+	
+	<main class="container mt-1   bg-light ">
+		<header class="  navbar-expand-lg">
+			<div class="card-body text-center ">
+				<img class="img-fluid" th:src="@{/imagens/MicrosoftTeams-image.png} " alt="" style="height: 20vh;" />
+			</div>
+		</header>
+	 
+		<section th:replace="~{fragmentos :: container-revista}"></section>
+
+
+
+   <!-- footer - rodape - quem somos -->
+   <section class="bd-footer py-1  mt-5  ">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3  col-md-6 col-sm-12 px-2  mb-1  bg-light ">
+				<h5 class="text-center">Quem somos</h5>
+				<p class="text-center">Somos um sistema para gerenciar adoções de animais, de uma maneira facil e
+					intuitiva.</p>
+			</div>
+			<div class="col-lg-3   col-md-6 col-sm-12 px-2    mb-1   bg-light">
+				<h5 class="text-center">Missão</h5>
+				<p class="text-center"> Trazer transparencia e meios onde o usuario possa adotar com facilidade seu
+					pet.</p>
+			</div>
+			<div class="col-lg-3  col-md-6 col-sm-12  px-2  mb-1   bg-light">
+				<h5 class="text-center">Visão</h5>
+				<p class="text-center">Ser um dos principais meios para adoção de pets no Brasil.</p>
+			</div>
+			<div class="col-lg-3  col-md-6 col-sm-12 px-2 mb-1 bg-light">
+				<h5 class="text-center ">Valores</h5>
+				<p>Trazer felicidade a muitos lares e a muitos animais, por meio de facilitar o seu par pet
+					perfeito.</p>
+			</div>
+		</div>
+
+	</div>
+</section>
+
+<!-- footer - rodape basico -->
+<div class="container">
+	<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+		<div class="col-md-4 d-flex align-items-center">
+			<a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+				<div class="  text-center ">
+					<img class="img-fluid" th:src="@{/imagens/MicrosoftTeams-image.png }" alt="" style="height: 5vh;" />
+				</div>
+			</a>
+			<span class="mb-3 mb-md-0 text-muted">© 2023 Adote fácil</span>
+		</div>
+		<div class="nav col-md-4 justify-content-end list-unstyled d-flex">
+			<span class="mb-3 mb-md-0 text-muted"> Adote e transfome uma vida, a sua!</span>
+		</div>
+	</footer>
+</div>
+
+		<section th:replace="~{fragmentos :: section-script}"></section>
+	</main>
+	<script>
+		const myCarouselElement = document.querySelector('#myCarousel')
+		const carousel = new bootstrap.Carousel(myCarouselElement, {
+			interval: 3000, //aqui conttrola a velocidade do slide
+			ride: "carousel" // aqui inicia automaticamente
+		})
+	</script>
+</body>
+</html>

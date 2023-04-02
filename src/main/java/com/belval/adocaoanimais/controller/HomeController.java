@@ -81,4 +81,9 @@ public class HomeController {
 		}
 	}
 
+	@GetMapping("/pet/fique-por-dentro")
+	public String fiquePorDentro(Model model) {
+		return "fique-por-dentro";
+	}
+
 }
