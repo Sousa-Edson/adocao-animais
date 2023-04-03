@@ -12,7 +12,7 @@ public class AdocaoanimaisApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AdocaoanimaisApplication.class, args);
 	}
-	@GetMapping("/")
+	@GetMapping("/pet")
 	public String index() {
 		return "coloque na url  /pet/home";
 	}

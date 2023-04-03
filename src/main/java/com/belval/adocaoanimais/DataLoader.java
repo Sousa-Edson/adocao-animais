@@ -1,16 +1,18 @@
 package com.belval.adocaoanimais;
 
 import java.net.URL;
-import java.util.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
+import java.util.Collection;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.belval.adocaoanimais.enums.Especie;
@@ -20,11 +22,13 @@ import com.belval.adocaoanimais.model.Animal;
 import com.belval.adocaoanimais.model.PetCor;
 import com.belval.adocaoanimais.model.PetRaca;
 import com.belval.adocaoanimais.model.Postagem;
+import com.belval.adocaoanimais.model.Role;
 import com.belval.adocaoanimais.model.Usuario;
 import com.belval.adocaoanimais.repository.AnimalRepository;
 import com.belval.adocaoanimais.repository.CorRepository;
 import com.belval.adocaoanimais.repository.PostagemRepository;
 import com.belval.adocaoanimais.repository.RacaRepository;
+import com.belval.adocaoanimais.repository.RoleRepository;
 import com.belval.adocaoanimais.repository.UsuarioRepository;
 
 @Component
@@ -52,6 +56,13 @@ public class DataLoader implements CommandLineRunner {
 
 	@Autowired
 	AnimalRepository animalRepository;
+	
+	@Autowired
+	RoleRepository roleRepository;
+	
+
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	Permissao permissao;
 
@@ -59,16 +70,22 @@ public class DataLoader implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		/** SALVAR ROLE **/
+		roleRepository.save(new Role("USER"));
+		roleRepository.save(new Role("ADMIN"));
+
+		Collection<Role> adminRole = roleRepository.findByRole("ADMIN");
+		Collection<Role> userRole = roleRepository.findByRole("USER");
 
 		/** SALVAR USUARIO **/
 		usuarioRepository.save(new Usuario("Edson", "Sousa", "675.749.088-93", "10/01/2000", "masculino",
-				"edson@edson.com", "11 9999-3333", "123", permissao.SUPORTE, true));
+				"edson@edson.com", "11 9999-3333", passwordEncoder.encode("123"),permissao.SUPORTE, true,adminRole));
 		usuarioRepository.save(new Usuario("Felipe", "Fiere", "480.383.958-16", "01/10/2000", "masculino",
-				"felipe@felipe.com", "11 9211-0105", "123", permissao.COLABORADOR, true));
+				"felipe@felipe.com", "11 9211-0105", passwordEncoder.encode("123"), permissao.COLABORADOR, true,userRole));
 		usuarioRepository.save(new Usuario("Victor", "Bombastic", "230.339.982-06", "01/10/2010", "masculino",
-				"victor@victor.com", "11 8521-0105", "123", permissao.USUARIO, true));
+				"victor@victor.com", "11 8521-0105",passwordEncoder.encode("123"), permissao.USUARIO, true,adminRole));
 		usuarioRepository.save(new Usuario("Mariah", "Victoria", "250.789.452-26", "01/10/2010", "feminino",
-				"mariah@mariah.com", "11 8581-0158", "123", permissao.ADMINISTRADOR, true));
+				"mariah@mariah.com", "11 8581-0158", passwordEncoder.encode("123"),permissao.ADMINISTRADOR, true,adminRole));
 
 		/** SALVAR POSTAGEM **/
 		Optional<Usuario> usuario = usuarioRepository.findById(1l);

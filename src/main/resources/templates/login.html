@@ -4,81 +4,98 @@
 <head th:replace="~{fragmentos :: head('Usuario')}"></head>
 
 <body>
-    <div style="background-color: rgb(153, 0, 204); ">
-        <div class="container p-1">
-            <a class="h2 text-white text-decoration-none" href="/pet/home"><img th:src="@{/MicrosoftTeams-image.png}"
-                    alt="" width="40" height="34"> Adote fácil</a>
-        </div>
-    </div>
-    <div class="container">
+	<div style="background-color: rgb(153, 0, 204);">
+		<div class="container p-1">
+			<a class="h2 text-white text-decoration-none" href="/pet/home"><img
+				th:src="@{/MicrosoftTeams-image.png}" alt="" width="40" height="34">
+				Adote fácil</a>
+		</div>
+	</div>
+	<div class="container">
 
-        <main class=" px-5 pb-0 mt-1   bg-light ">
-            <div class="row mx-auto">
-                <div class="col-lg-8 d-sm-none d-md-block ">
-                    <div class="  row align-items-center" style="height: 50vh;">
+		<main class=" px-5 pb-0 mt-1   bg-light ">
+			<div th:if="${param.error}"
+				class="alert alert-danger alert-dismissible fade show text-center"
+				role="alert">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+					viewBox="0 0 24 24" fill="none" stroke="currentColor"
+					stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+					class="feather feather-hexagon">
+					<path
+						d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+				<strong>Login ou senha incorretos!</strong> <br> Entre com
+				senha e login corretos <br>
 
-                        <div class="card-body text-center   ">
-                            <img class="img-fluid rounded-4 "
-                                src="https://blog.cobasi.com.br/wp-content/webpc-passthru.php?src=https://blog.cobasi.com.br/wp-content/uploads/2020/08/cachorros-pequenos-pug.png&nocache=1"
-                                alt="" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
+				<button type="button" class="btn-close" data-bs-dismiss="alert"
+					aria-label="Close"></button>
+			</div>
+			<div class="row mx-auto">
+				<div class="col-lg-8 d-sm-none d-md-block ">
+					<div class="  row align-items-center" style="height: 50vh;">
 
-                    <div class="card-body text-center pt-4">
-                        <img class="img-fluid border border-1 rounded-circle p-0"
-                            th:src="@{/imagens/MicrosoftTeams-image.png} " alt="" style="height: 15vh;" />
-                    </div>
-                    <h1 class="text-center  display-5 p-0 ">Login</h1>
+						<div class="card-body text-center   ">
+							<img class="img-fluid rounded-4 "
+								src="https://blog.cobasi.com.br/wp-content/webpc-passthru.php?src=https://blog.cobasi.com.br/wp-content/uploads/2020/08/cachorros-pequenos-pug.png&nocache=1"
+								alt="" />
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
 
-                    <form class="" action="/pet/home" method="get">
-                        <div class="row">
-                            <div class=" col-12 form-group">
-                                <label class="col-md-12 control-label" for="prependedtext">Email <h11>*</h11>
-                                </label>
-                                <div class="col-md-12">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i
-                                                class="glyphicon glyphicon-envelope"></i></span>
-                                        <input id="prependedtext" name="prependedtext" class="form-control"
-                                            placeholder="email@email.com" required="" type="text"
-                                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-                                    </div>
-                                </div>
-                            </div>
+					<div class="card-body text-center pt-4">
+						<img class="img-fluid border border-1 rounded-circle p-0"
+							th:src="@{/imagens/MicrosoftTeams-image.png} " alt=""
+							style="height: 15vh;" />
+					</div>
+					<h1 class="text-center  display-5 p-0 ">Login</h1>
 
-                            <div class="col-md-12 form-group">
-                                <label class="col-md-12 control-label" for="senha">Senha <h11>*</h11></label>
-                                <div class="col-md-12">
-                                    <input id="senha" name="senha" placeholder="***" class="form-control input-md"
-                                        required="" type="password">
-                                </div>
-                            </div>
+					<form class="" novalidate th:action="@{/pet/login}" method="post">
+						<div class="row">
+							<div class=" col-12 form-group">
+								<label class="col-md-12 control-label" for="prependedtext">Email
+									<h11>*</h11>
+								</label>
+								<div class="col-md-12">
+									<div class="input-group">
+										<span class="input-group-addon"><i
+											class="glyphicon glyphicon-envelope"></i></span> <input id="email"
+											name="username" class="form-control"
+											placeholder="email@email.com" required="" type="text"
+											 
+											pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+									</div>
+								</div>
+							</div>
 
-                            <!-- Button (Double) -->
-                            <div class="form-group">
-                                <label class=" control-label" for="Cadastrar"></label>
-                                <div class="col-md-12 col-sm-12">
-                                    <button id="Cadastrar" name="Cadastrar" class="btn btn-primary"
-                                        style="width: 100px;" type="Submit">Logar</button>
-                                    <button id="Cancelar" name="Cancelar" class="btn btn-danger" style="width: 100px;"
-                                        type="Reset">Cancelar</button>
-                                </div>
-                            </div>
+							<div class="col-md-12 form-group">
+								<label class="col-md-12 control-label" for="senha">Senha
+									<h11>*</h11>
+								</label>
+								<div class="col-md-12">
+									<input id="senha" name="password" placeholder="***"
+										class="form-control input-md" required="" type="password"
+										 >
+								</div>
+							</div>
 
+							<!-- Button (Double) -->
+							<div class="form-group">
+								<label class=" control-label" for="Cadastrar"></label>
+								<div class="col-md-12 col-sm-12">
+									<button id="Cadastrar" name="Cadastrar" class="btn btn-primary"
+										style="width: 100px;" type="Submit">Logar</button>
+									<button id="Cancelar" name="Cancelar" class="btn btn-danger"
+										style="width: 100px;" type="Reset">Cancelar</button>
+								</div>
+							</div>
+					</form>
+				</div>
+			</div>
 
+		</main>
+	</div>
 
-
-
-
-                    </form>
-                </div>
-            </div>
-
-        </main>
-    </div>
-
+	<section th:replace="~{fragmentos :: section-script}"></section>
 </body>
 
 </html>
