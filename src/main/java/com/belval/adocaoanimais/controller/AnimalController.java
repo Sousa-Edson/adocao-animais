@@ -11,6 +11,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -36,21 +38,20 @@ import com.belval.adocaoanimais.repository.AnimalRepository;
 import com.belval.adocaoanimais.repository.CorRepository;
 import com.belval.adocaoanimais.repository.PetImagemRepository;
 import com.belval.adocaoanimais.repository.RacaRepository;
+import com.belval.adocaoanimais.repository.UsuarioRepository;
 
 @Controller
 @RequestMapping(value = "/pet/private/animal")
+@PreAuthorize("hasAnyAuthority('ADMIN','COLLABORATOR','SUPPORT','USER')")
 public class AnimalController {
-	  
-	@Value("${fileStorageLocation}")
-	public static String caminhoImagens ;
 
+	@Value("${fileStorageLocation}")
+	public static String caminhoImagens;
 
 	AnimalController(String caminhoImagens) {
 		AnimalController.caminhoImagens = caminhoImagens;
-}
-	
-	
-	
+	}
+
 	@Autowired
 	private AnimalRepository animalRepository;
 	@Autowired
@@ -60,6 +61,9 @@ public class AnimalController {
 
 	@Autowired
 	private PetImagemRepository petImagemRepository;
+
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 
 	Menu menu = new Menu();
 
@@ -76,7 +80,7 @@ public class AnimalController {
 	}
 
 	@GetMapping("/new")
-	public ModelAndView nnew(RequisicaoFormAnimal requisicao) {  
+	public ModelAndView nnew(RequisicaoFormAnimal requisicao) {
 		ModelAndView mv = new ModelAndView("animal/new");
 		List<PetRaca> racas = racaRepository.findAll();
 		mv.addObject("listaRaca", racas);
@@ -88,11 +92,10 @@ public class AnimalController {
 	}
 
 	@PostMapping("")
-	public ModelAndView create(@Valid RequisicaoFormAnimal requisicao, BindingResult bindingResult) {
-		System.out.println("#########################################################################CREATE");
-		System.out.println(requisicao);
+	public ModelAndView create(@Valid RequisicaoFormAnimal requisicao, BindingResult bindingResult,
+			Authentication authentication) {
+		Usuario user = null;
 		if (bindingResult.hasErrors()) {
-			System.out.println("\n************************TEM ERROS**********************\n");
 			System.out.println("ERRO \n\n" + bindingResult + "\n\n");
 			List<PetRaca> racas = racaRepository.findAll();
 			ModelAndView mv = new ModelAndView("animal/new");
@@ -103,11 +106,14 @@ public class AnimalController {
 			mv.addObject("listaPorte", Porte.values());
 			return mv;
 		} else {
+			try {
+				user = usuarioRepository.findByEmail(authentication.getName());
+				System.out.println("ID: " + user.getId());
+
+			} catch (Exception e) {
+			}
 			Animal animal = requisicao.toAnimal();
-			Usuario usuario = new Usuario();
-			usuario.setId((long) 1);
-			System.out.println("ID DE USUARIO" + usuario.getId());
-			animal.setUsuario(usuario);
+			animal.setUsuario(user);
 			animal.setDisponivel(true);
 			this.animalRepository.save(animal);
 			// return new ModelAndView("redirect:/pet/home" + animal.getId());
@@ -144,12 +150,13 @@ public class AnimalController {
 			PetImagem petImagem = new PetImagem();
 			if (!arquivo.isEmpty()) {
 				byte[] bytes = arquivo.getBytes();
-				Path caminho = Paths.get(caminhoImagens + "/img-animal/"+ String.valueOf(id) + "-" + arquivo.getOriginalFilename());
+				Path caminho = Paths.get(
+						caminhoImagens + "/img-animal/" + String.valueOf(id) + "-" + arquivo.getOriginalFilename());
 				Files.write(caminho, bytes);
 				petImagem.setAnimal(optional.get());
 				petImagem.setCaminhoImagem(String.valueOf(id) + "-" + arquivo.getOriginalFilename());
 				this.petImagemRepository.save(petImagem);
-				System.out.println("private static String caminhoImagensAnimal: "+caminhoImagens);
+				System.out.println("private static String caminhoImagensAnimal: " + caminhoImagens);
 			}
 		} catch (Exception e) {
 			System.out.println("erro--> " + e);
@@ -255,12 +262,12 @@ public class AnimalController {
 
 	@GetMapping("/{id}")
 	public ModelAndView show(@PathVariable Long id) {
-		
+
 		System.out.println("**** ID: " + id);
 		Optional<Animal> optional = this.animalRepository.findById(id);
 		if (optional.isPresent()) {
 			Animal animal = optional.get();
-			
+
 			ModelAndView mv = new ModelAndView("animal/show");
 			mv.addObject(animal);
 			List<PetImagem> petImagem = this.petImagemRepository.findByAnimal(animal);
@@ -274,10 +281,10 @@ public class AnimalController {
 
 	@GetMapping("/{id}/delete")
 	public String delete(@PathVariable("id") Long id, Model model, ModelMap m) {
-		
+
 		menu.setTitulo("Meus anúncios");
 		menu.setSelecao("anuncio");
-		
+
 		try {
 			Optional<Animal> e = animalRepository.findById(id);
 			if (e == null) {

@@ -6,6 +6,8 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -21,12 +23,15 @@ import com.belval.adocaoanimais.dto.RequisicaoFormAdotar;
 import com.belval.adocaoanimais.model.Adotar;
 import com.belval.adocaoanimais.model.Animal;
 import com.belval.adocaoanimais.model.PetImagem;
+import com.belval.adocaoanimais.model.Usuario;
 import com.belval.adocaoanimais.repository.AdotarRepository;
 import com.belval.adocaoanimais.repository.AnimalRepository;
 import com.belval.adocaoanimais.repository.PetImagemRepository;
+import com.belval.adocaoanimais.repository.UsuarioRepository;
 
 @Controller
 @RequestMapping(value = "/pet/private/intencao-adotar")
+@PreAuthorize("hasAnyAuthority('ADMIN','COLLABORATOR','SUPPORT','USER')")
 public class AdotarController {
 	@Autowired
 	private AdotarRepository adotarRepository;
@@ -35,6 +40,9 @@ public class AdotarController {
 
 	@Autowired
 	private PetImagemRepository petImagemRepository;
+
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 
 	Menu menu = new Menu();
 
@@ -72,7 +80,7 @@ public class AdotarController {
 			ModelAndView mv = new ModelAndView("intencao/show");
 			mv.addObject(optional.get());
 			mv.addObject(animal);
-			mv.addObject(animal);
+//			mv.addObject(animal);
 			List<PetImagem> petImagem = this.petImagemRepository.findByAnimal(animal);
 			mv.addObject("petImagem", petImagem);
 			return mv;
@@ -84,9 +92,9 @@ public class AdotarController {
 
 	@PostMapping("/{id}")
 	public ModelAndView create(@PathVariable Long id, @Valid RequisicaoFormAdotar requisicao,
-			BindingResult bindingResult) {
+			BindingResult bindingResult, Authentication authentication) {
 		System.out.println("Salvando");
-		// bindingResult.addError(null);
+		Usuario user = null;
 		if (bindingResult.hasErrors()) {
 			System.out.println("\n************************TEM ERROS**********************\n");
 			System.out.println("ERRO \n\n" + bindingResult + "\n\n");
@@ -94,10 +102,15 @@ public class AdotarController {
 			mv.addObject("petId", id);
 			return mv;
 		} else {
+			try {
+				user = usuarioRepository.findByEmail(authentication.getName());
+				System.out.println("ID: " + user.getId());
+
+			} catch (Exception e) {
+			}
 			Adotar adotar = requisicao.toAdotar();
 			adotar.setAtivo(true);
-			adotar.setUserId((long) 1);
-			// adotar.setAnimalId((long) 2);
+			adotar.setUserId(user.getId());
 			Optional<Animal> optionalAnimal = animalRepository.findById(id);
 			adotar.setAnimal(optionalAnimal.get());
 			this.adotarRepository.save(adotar);
