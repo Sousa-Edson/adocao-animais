@@ -69,15 +69,23 @@
 					</ul></li>
 
 			</ul>
+			<div th:if="${users == null}" class="">
 
-			<div class="dropdown">
+				<a href="/pet/logout"
+					class="d-flex align-items-center link-light text-decoration-none  ">
+					<img th:src="@{/imagens/users.svg}" alt="" width="32" height="32"
+					class="rounded-circle me-2 text-red"> <strong
+					class="text-light">Logar</strong>
+				</a>
+			</div>
+			<div th:if="${users != null}" class="dropdown">
 
 				<a href="#"
 					class="d-flex align-items-center link-light text-decoration-none dropdown-toggle"
 					data-bs-toggle="dropdown" aria-expanded="false"> <img
 					th:src="@{/imagens/users.svg}" alt="" width="32" height="32"
 					class="rounded-circle me-2 text-white"> <strong
-					class="text-light" th:text="${users.nome}">Edson</strong>
+					class="text-light" th:if="${users != null}" th:text="${users.nome}">Edson</strong>
 				</a>
 				<ul class="dropdown-menu text-small shadow ">
 					<div th:if="${users.roles[0].toString().equals('ADMIN')}">
@@ -99,8 +107,8 @@
 							anúncios</a></li>
 					<li><a class="dropdown-item"
 						href="/pet/private/intencao-adotar/"> Minhas requisições</a></li>
-					<li><a class="dropdown-item" th:href="@{/pet/private/perfil/{id} (id=${users.id})}">
-							Perfil</a></li>
+					<li><a class="dropdown-item"
+						th:href="@{/pet/private/perfil/{id} (id=${users.id})}"> Perfil</a></li>
 					<li>
 						<hr class="dropdown-divider">
 					</li>

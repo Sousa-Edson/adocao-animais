@@ -41,16 +41,16 @@ public class SSUserDetailsService implements UserDetailsService {
 	        return (UserDetails) new CustomUserDetails(user);
 	    }
 
-	private Set<GrantedAuthority> getAuthories(Usuario user) {
-
-		Set<GrantedAuthority> authorities = new HashSet<>();
-		for (Role role : user.getRoles()) {
-			GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(role.getRole());
-			authorities.add(grantedAuthority);
-		}
-		  System.out.println("auth: "+user.getRoles());
-		return authorities;
-	}
+//	private Set<GrantedAuthority> getAuthories(Usuario user) {
+//
+//		Set<GrantedAuthority> authorities = new HashSet<>();
+//		for (Role role : user.getRoles()) {
+//			GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(role.getRole());
+//			authorities.add(grantedAuthority);
+//		}
+//		  System.out.println("auth: "+user.getRoles());
+//		return authorities;
+//	}
 	
 	
 }

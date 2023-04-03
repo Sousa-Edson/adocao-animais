@@ -25,9 +25,9 @@ public class GlobalControllerAdvice {
 			System.out.println(user.getNome());
 			usuario=user;
 			System.out.println("MINHAS ROLES: "+usuario.getRoles());
-			Collection<Role> role = (Collection<Role>) authentication.getAuthorities();
-			usuario.setRoles(role);
-			System.out.println(role);
+//			Collection<Role> role = (Collection<Role>) authentication.getAuthorities();
+//			usuario.setRoles(role);
+//			System.out.println(role);
 			return usuario;
 		}
 		return null;

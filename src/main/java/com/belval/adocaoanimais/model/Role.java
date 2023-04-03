@@ -1,6 +1,5 @@
 package com.belval.adocaoanimais.model;
 
- 
 import java.util.Collection;
 
 import javax.persistence.Column;
@@ -15,7 +14,7 @@ import javax.persistence.ManyToMany;
 public class Role {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	@Column(unique = true)
@@ -26,6 +25,12 @@ public class Role {
 
 	public Role() {
 
+	}
+
+	public Role(long id, String role) {
+
+		this.id = id;
+		this.role = role;
 	}
 
 	public Role(String role) {
@@ -59,7 +64,7 @@ public class Role {
 
 	@Override
 	public String toString() {
-		return  role ;
+		return role;
 	}
-	
+
 }
