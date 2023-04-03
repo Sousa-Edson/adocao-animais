@@ -48,7 +48,7 @@ public class HomeController {
 	@GetMapping("/pet/home")
 //	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 	public ModelAndView home(Authentication authentication, Model model, HttpServletRequest request) {
-		String nomeUsuario = "";
+		String nomeUsuario = null;
 		try {
 			nomeUsuario = authentication.getName();
 			Usuario user = usuarioRepository.findByEmail(nomeUsuario);
