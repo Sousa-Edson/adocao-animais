@@ -1,5 +1,8 @@
 package com.belval.adocaoanimais.model;
 
+import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -7,10 +10,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
-import java.util.List;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.belval.adocaoanimais.enums.Permissao;
 
@@ -46,10 +52,34 @@ public class Usuario {
 
 	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY) // , fetch = FetchType.EAGER
 	private List<Animal> animais;
+	
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Collection<Role> roles;
+	
 
 	public Usuario() {
 
 	}
+	
+
+	public Usuario(String nome, String sobrenome, String cpf, String nascimento, String sexo, String email,
+			String telefone, String senha,  Permissao permissao,boolean ativo, Collection<Role> roles) {
+		super();
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.cpf = cpf;
+		this.nascimento = nascimento;
+		this.sexo = sexo;
+		this.email = email;
+		this.telefone = telefone;
+		this.senha = senha;
+		this.ativo = ativo;
+		this.permissao = permissao;
+		this.roles = roles;
+	}
+
 
 	public Usuario(String nome, String sobrenome, String cpf, String nascimento, String sexo, String email,
 			String telefone, String senha, Permissao permissao, boolean ativo) {
@@ -138,14 +168,7 @@ public class Usuario {
 		this.telefone2 = telefone2;
 	}
 
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
+	
 	public String getCep() {
 		return cep;
 	}
@@ -210,21 +233,29 @@ public class Usuario {
 		this.ativo = ativo;
 	}
 
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", cpf=" + cpf + ", nascimento="
-				+ nascimento + ", sexo=" + sexo + ", email=" + email + ", telefone=" + telefone + ", telefone2="
-				+ telefone2 + ", senha=" + senha + ", cep=" + cep + ", rua=" + rua + ", numero=" + numero + ", bairro="
-				+ bairro + ", cidade=" + cidade + ", estado=" + estado + ", caminhoImagem=" + caminhoImagem + ", ativo="
-				+ ativo + ", permissao=" + permissao + "]";
-	}
-
+ 
 	public Permissao getPermissao() {
 		return permissao;
 	}
 
 	public void setPermissao(Permissao permissao) {
 		this.permissao = permissao;
+	}
+
+	public Collection<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Collection<Role> roles) {
+		this.roles = roles;
+	}
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) { 
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		this.senha = passwordEncoder.encode(senha);
 	}
 
 }

@@ -11,6 +11,7 @@
 				<img class="img-fluid" th:src="@{/imagens/MicrosoftTeams-image.png} " alt="" style="height: 20vh;" />
 			</div>
 		</header>
+		<h1   th:text="${'Bem vindo '+nomeUsuario}">404</h1>
 		<section th:replace="~{fragmentos :: container-info}"></section>
 		<!-- <section th:replace="~{fragmentos :: container-postagem}"></section> -->
 		<div class="row">

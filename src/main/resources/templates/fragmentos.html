@@ -76,7 +76,7 @@
 					class="d-flex align-items-center link-light text-decoration-none dropdown-toggle"
 					data-bs-toggle="dropdown" aria-expanded="false"> <img 
 					th:src="@{/imagens/users.svg}" alt="" width="32" height="32"
-					class="rounded-circle me-2 text-white"> <strong class="text-light">Edson</strong>
+					class="rounded-circle me-2 text-white"> <strong class="text-light" th:text="${users.nome}">Edson</strong>
 				</a>
 				<ul class="dropdown-menu text-small shadow ">
 					<li><a href="/pet/dashboard" class="dropdown-item custon-hover"  >  <svg
@@ -97,7 +97,7 @@
 					<li>
 						<hr class="dropdown-divider">
 					</li>
-					<li><a class="dropdown-item" href="/pet/login">Deslogar</a></li>
+					<li><a class="dropdown-item" href="/pet/logout">Deslogar</a></li>
 				</ul>
 			</div>
 

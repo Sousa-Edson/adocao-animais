@@ -32,7 +32,7 @@
                     </div>
                     <h1 class="text-center  display-5 p-0 ">Login</h1>
 
-                    <form class="" action="/pet/home" method="get">
+                    <form class="" novalidate 	th:action="@{/pet/login}" method="post">
                         <div class="row">
                             <div class=" col-12 form-group">
                                 <label class="col-md-12 control-label" for="prependedtext">Email <h11>*</h11>
@@ -41,8 +41,8 @@
                                     <div class="input-group">
                                         <span class="input-group-addon"><i
                                                 class="glyphicon glyphicon-envelope"></i></span>
-                                        <input id="prependedtext" name="prependedtext" class="form-control"
-                                            placeholder="email@email.com" required="" type="text"
+                                        <input id="email" name="username" class="form-control"
+                                            placeholder="email@email.com" required="" type="text" value="edson@edson.com"
                                             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                                     </div>
                                 </div>
@@ -51,8 +51,8 @@
                             <div class="col-md-12 form-group">
                                 <label class="col-md-12 control-label" for="senha">Senha <h11>*</h11></label>
                                 <div class="col-md-12">
-                                    <input id="senha" name="senha" placeholder="***" class="form-control input-md"
-                                        required="" type="password">
+                                    <input id="senha" name="password" placeholder="***" class="form-control input-md"
+                                        required="" type="password" value="123">
                                 </div>
                             </div>
 
