@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -22,6 +23,7 @@ import com.belval.adocaoanimais.repository.CorRepository;
 
 @Controller
 @RequestMapping(value = "/pet/admin/pet-cor")
+@PreAuthorize("hasAnyAuthority('ADMIN','SUPPORT')")
 public class CorController {
 	@Autowired
 	private CorRepository corRepository;

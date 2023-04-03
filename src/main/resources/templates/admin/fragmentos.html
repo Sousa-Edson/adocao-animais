@@ -15,8 +15,7 @@
 		</span> <span class="fs-4">DashBoard</span>
 		</a>
 		<hr>
-		<div class="d-flex flex-column flex-shrink-0  bg-light"
-			th:if="${users.roles[0].toString().equals('ADMIN')}">
+		<div class="d-flex flex-column flex-shrink-0  bg-light" th:if="${users != null && users.roles[0].toString().equals('ADMIN')}">
 			<span class="fs-4 " style="background-color: rgb(212, 212, 233);">Admin</span>
 			<ul class="nav nav-pills flex-column mb-auto">
 
@@ -57,7 +56,7 @@
 			</ul>
 		</div>
 		<div class="d-flex flex-column flex-shrink-0  bg-light"
-			th:if="${users.roles[0].toString().equals('ADMIN')||users.roles[0].toString().equals('COLLABORATOR')||users.roles[0].toString().equals('SUPPORT')}">
+			th:if="${users != null && users.roles[0].toString().equals('ADMIN')|| users != null && users.roles[0].toString().equals('COLLABORATOR')|| users != null && users.roles[0].toString().equals('SUPPORT')}">
 			<span class="fs-4" style="background-color: rgb(212, 212, 233);">Cadastros</span>
 			<ul class="nav nav-pills flex-column mb-auto">
 				<div

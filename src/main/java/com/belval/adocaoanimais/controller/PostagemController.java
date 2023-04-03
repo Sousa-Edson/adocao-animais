@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,6 +28,7 @@ import com.belval.adocaoanimais.repository.PostagemRepository;
 
 @Controller
 @RequestMapping(value = "/pet/admin/postagem")
+@PreAuthorize("hasAnyAuthority('ADMIN','COLLABORATOR')")
 public class PostagemController {
 	@Autowired
 	private PostagemRepository postagemRepository;

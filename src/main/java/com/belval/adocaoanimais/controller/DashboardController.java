@@ -17,6 +17,7 @@ import com.belval.adocaoanimais.repository.AnimalRepository;
 import com.belval.adocaoanimais.repository.UsuarioRepository;
 
 @Controller
+@PreAuthorize("hasAuthority('ADMIN')")
 public class DashboardController {
 
 	@Autowired
@@ -29,7 +30,7 @@ public class DashboardController {
 	Menu menu = new Menu();
 
 	@GetMapping("/pet/dashboard")
-	@PreAuthorize("hasAuthority('ADMIN')")
+	
 	public ModelAndView novo() {
 		ModelAndView mv = new ModelAndView("dashboard");
 		List<Usuario> usuarios = this.usuarioRepository.findAll();
