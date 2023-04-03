@@ -3,24 +3,30 @@ package com.belval.adocaoanimais.controller;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.belval.adocaoanimais.model.Animal;
 import com.belval.adocaoanimais.model.PetImagem;
+import com.belval.adocaoanimais.model.Usuario;
 import com.belval.adocaoanimais.repository.AnimalRepository;
 import com.belval.adocaoanimais.repository.CorRepository;
 import com.belval.adocaoanimais.repository.PetImagemRepository;
 import com.belval.adocaoanimais.repository.PostagemRepository;
 import com.belval.adocaoanimais.repository.RacaRepository;
+import com.belval.adocaoanimais.repository.UsuarioRepository;
 
 @Controller
 public class HomeController {
@@ -35,13 +41,60 @@ public class HomeController {
 	private CorRepository corRepository;
 	@Autowired
 	private PetImagemRepository petImagemRepository;
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 
 	@GetMapping("/pet/home")
-	public String list(Model model) {
+	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+	public ModelAndView home(Authentication authentication, Model model, HttpServletRequest request) {
+		String nomeUsuario = "";
+		try {
+			nomeUsuario = authentication.getName();
+			Usuario user = usuarioRepository.findByEmail(nomeUsuario);
+			System.out.println(user.getNome());
+			nomeUsuario=user.getNome();
+		} catch (Exception e) {
+		}
+		ModelAndView mv = new ModelAndView("home");
+		model.addAttribute("postagem", postagemRepository.findAllAtivas());
+		model.addAttribute("request", request);
+		mv.addObject("nomeUsuario", nomeUsuario);
 		model.addAttribute("postagem", postagemRepository.findAllAtivas());
 		System.out.println("p é -> " + postagemRepository.findAllAtivas());
-		return "home";
+		return mv;
+
 	}
+	
+	@GetMapping("/")
+	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+	public ModelAndView home2(Authentication authentication, Model model, HttpServletRequest request) {
+		String nomeUsuario = "";
+		try {
+			nomeUsuario = authentication.getName();
+			Usuario user = usuarioRepository.findByEmail(nomeUsuario);
+			System.out.println(user.getNome());
+			nomeUsuario=user.getNome();
+		} catch (Exception e) {
+		}
+		ModelAndView mv = new ModelAndView("home");
+		model.addAttribute("postagem", postagemRepository.findAllAtivas());
+		model.addAttribute("request", request);
+		mv.addObject("nomeUsuario", nomeUsuario);
+		model.addAttribute("postagem", postagemRepository.findAllAtivas());
+		System.out.println("p é -> " + postagemRepository.findAllAtivas());
+		return mv;
+
+	}
+
+//	@GetMapping("/pet/home")
+//	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+//	public String list(Model model) {
+//		model.addAttribute("postagem", postagemRepository.findAllAtivas());
+//		System.out.println("p é -> " + postagemRepository.findAllAtivas());
+//		return "home";
+//	}
+	 
 
 	@GetMapping("/pet/public/galeria")
 	public ModelAndView index() {
@@ -58,7 +111,7 @@ public class HomeController {
 		if (optional.isPresent()) {
 			Animal animal = optional.get();
 			ModelAndView mv = new ModelAndView("galeria/show");
-			
+
 			Date dataNascimento = animal.getNascimento(); // obtém o valor de animal.nascimento
 			LocalDate localDataNascimento = dataNascimento.toLocalDate();
 			LocalDate hoje = LocalDate.now();
@@ -67,9 +120,8 @@ public class HomeController {
 			int meses = periodo.getMonths();
 			String idadeFormatada = anos + " anos e " + meses + " meses";
 
-
-			System.out.println("anos: "+idadeFormatada);
-			mv.addObject("idadeFormatada",idadeFormatada);
+			System.out.println("anos: " + idadeFormatada);
+			mv.addObject("idadeFormatada", idadeFormatada);
 			mv.addObject(animal);
 			List<PetImagem> petImagem = this.petImagemRepository.findByAnimal(animal);
 			mv.addObject("petImagem", petImagem);
