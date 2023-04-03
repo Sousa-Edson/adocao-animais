@@ -47,7 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		
 		
 		.sessionManagement()
-        .invalidSessionUrl("/login?expired")
+        .invalidSessionUrl("/pet/login")
         .sessionFixation().migrateSession()
         .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
         .maximumSessions(1)
