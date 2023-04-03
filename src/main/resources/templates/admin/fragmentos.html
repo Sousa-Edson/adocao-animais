@@ -15,7 +15,8 @@
 		</span> <span class="fs-4">DashBoard</span>
 		</a>
 		<hr>
-		<div class="d-flex flex-column flex-shrink-0  bg-light" th:if="${users.roles[0].toString().equals('ADMIN')}">
+		<div class="d-flex flex-column flex-shrink-0  bg-light"
+			th:if="${users.roles[0].toString().equals('ADMIN')}">
 			<span class="fs-4 " style="background-color: rgb(212, 212, 233);">Admin</span>
 			<ul class="nav nav-pills flex-column mb-auto">
 
@@ -55,27 +56,31 @@
 
 			</ul>
 		</div>
-		<div  class="d-flex flex-column flex-shrink-0  bg-light"  th:if="${users.roles[0].toString().equals('ADMIN')||users.roles[0].toString().equals('USER')}">
+		<div class="d-flex flex-column flex-shrink-0  bg-light"
+			th:if="${users.roles[0].toString().equals('ADMIN')||users.roles[0].toString().equals('COLLABORATOR')||users.roles[0].toString().equals('SUPPORT')}">
 			<span class="fs-4" style="background-color: rgb(212, 212, 233);">Cadastros</span>
 			<ul class="nav nav-pills flex-column mb-auto">
-
-				<li class="nav-item"><a href="/pet/admin/pet-cor"
-					class="nav-link    custon-hover"
-					th:classappend="${barra.equals('cor') ? 'active' : 'link-dark '}"
-					aria-current="page"> <svg class="bi pe-none me-2" width="16"
-							height="16">
+				<div
+					th:if="${users.roles[0].toString().equals('ADMIN')||users.roles[0].toString().equals('SUPPORT')}">
+					<li class="nav-item"><a href="/pet/admin/pet-cor"
+						class="nav-link    custon-hover"
+						th:classappend="${barra.equals('cor') ? 'active' : 'link-dark '}"
+						aria-current="page"> <svg class="bi pe-none me-2" width="16"
+								height="16">
                         <use xlink:href="#home"></use>
                     </svg> Cor
-				</a></li>
-				<li><a href="/pet/admin/pet-raca"
-					class="nav-link   custon-hover"
-					th:classappend="${barra.equals('raca') ? 'active' : 'link-dark '}">
-						<svg class="bi pe-none me-2" width="16" height="16">
+					</a></li>
+					<li><a href="/pet/admin/pet-raca"
+						class="nav-link   custon-hover"
+						th:classappend="${barra.equals('raca') ? 'active' : 'link-dark '}">
+							<svg class="bi pe-none me-2" width="16" height="16">
                         <use xlink:href="#speedometer2"></use>
                     </svg> Raça
-				</a></li>
-				<li><a href="/pet/admin/postagem"
-					class="nav-link  custon-hover"
+					</a></li>
+				</div>
+				<li
+					th:if="${users.roles[0].toString().equals('ADMIN')||users.roles[0].toString().equals('COLLABORATOR')}"><a
+					href="/pet/admin/postagem" class="nav-link  custon-hover"
 					th:classappend="${barra.equals('postagem') ? 'active' : 'link-dark '}">
 						<svg class="bi pe-none me-2" width="16" height="16">
                         <use xlink:href="#table"></use>
@@ -87,7 +92,8 @@
 		</div>
 		<span class="fs-4" style="background-color: rgb(212, 212, 233);">Pessoal</span>
 		<ul class="nav nav-pills flex-column mb-auto">
-			<li class="nav-item"><a th:href="@{/pet/private/perfil/{id} (id=${users.id})}"
+			<li class="nav-item"><a
+				th:href="@{/pet/private/perfil/{id} (id=${users.id})}"
 				class="nav-link  custon-hover" aria-current="page"
 				th:classappend="${barra.equals('perfil') ? 'active' : 'link-dark '}">
 					<svg class="bi pe-none me-2" width="16" height="16">

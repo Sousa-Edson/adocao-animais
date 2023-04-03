@@ -73,17 +73,21 @@ public class DataLoader implements CommandLineRunner {
 		/** SALVAR ROLE **/
 		roleRepository.save(new Role("USER"));
 		roleRepository.save(new Role("ADMIN"));
+		roleRepository.save(new Role("COLLABORATOR"));
+		roleRepository.save(new Role("SUPPORT"));
 
 		Collection<Role> adminRole = roleRepository.findByRole("ADMIN");
 		Collection<Role> userRole = roleRepository.findByRole("USER");
+		Collection<Role> collaboratorRole = roleRepository.findByRole("COLLABORATOR");
+		Collection<Role> supportRole = roleRepository.findByRole("SUPPORT");
 
 		/** SALVAR USUARIO **/
 		usuarioRepository.save(new Usuario("Edson", "Sousa", "675.749.088-93", "10/01/2000", "masculino",
-				"edson@edson.com", "11 9999-3333", passwordEncoder.encode("123"),permissao.SUPORTE, true,adminRole));
+				"edson@edson.com", "11 9999-3333", passwordEncoder.encode("123"),permissao.SUPORTE, true,supportRole));
 		usuarioRepository.save(new Usuario("Felipe", "Fiere", "480.383.958-16", "01/10/2000", "masculino",
-				"felipe@felipe.com", "11 9211-0105", passwordEncoder.encode("123"), permissao.COLABORADOR, true,userRole));
+				"felipe@felipe.com", "11 9211-0105", passwordEncoder.encode("123"), permissao.COLABORADOR, true,collaboratorRole));
 		usuarioRepository.save(new Usuario("Victor", "Bombastic", "230.339.982-06", "01/10/2010", "masculino",
-				"victor@victor.com", "11 8521-0105",passwordEncoder.encode("123"), permissao.USUARIO, true,adminRole));
+				"victor@victor.com", "11 8521-0105", passwordEncoder.encode("123"), permissao.USUARIO, true, userRole));
 		usuarioRepository.save(new Usuario("Mariah", "Victoria", "250.789.452-26", "01/10/2010", "feminino",
 				"mariah@mariah.com", "11 8581-0158", passwordEncoder.encode("123"),permissao.ADMINISTRADOR, true,adminRole));
 

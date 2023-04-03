@@ -46,7 +46,7 @@ public class HomeController {
 	private UsuarioRepository usuarioRepository;
 
 	@GetMapping("/pet/home")
-	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+//	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 	public ModelAndView home(Authentication authentication, Model model, HttpServletRequest request) {
 		String nomeUsuario = "";
 		try {
@@ -67,7 +67,7 @@ public class HomeController {
 	}
 	
 	@GetMapping("/")
-	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+//	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 	public ModelAndView home2(Authentication authentication, Model model, HttpServletRequest request) {
 		String nomeUsuario = "";
 		try {
