@@ -1,5 +1,6 @@
 package com.belval.adocaoanimais.dto;
 
+import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 
 import com.belval.adocaoanimais.enums.Permissao;
@@ -12,12 +13,16 @@ public class RequisicaoFormUsuario {
 	@NotBlank
 	private String sobrenome;
 	@NotBlank
+	@Column(unique = true)
 	private String cpf;
 	@NotBlank
 	private String nascimento;
 	@NotBlank
 	private String sexo;
+
 	@NotBlank
+	@Column(unique = true)
+//	@Unique(message = "Email já está em uso")
 	private String email;
 	@NotBlank
 	private String telefone;

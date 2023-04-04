@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -32,6 +33,8 @@ import com.belval.adocaoanimais.model.Role;
 import com.belval.adocaoanimais.model.Usuario;
 import com.belval.adocaoanimais.repository.RoleRepository;
 import com.belval.adocaoanimais.repository.UsuarioRepository;
+import com.fieb.tcc.academicologin.model.User;
+import com.fieb.tcc.academicologin.web.dto.UserDto;
 
 @Controller
 public class UsuarioController {
@@ -81,6 +84,10 @@ public class UsuarioController {
 			return mv;
 		} else {
 			Usuario usuario = requisicao.toUsuario();
+//			Usuario b = usuarioRepository.findByEmail(requisicao.getEmail());
+//			if (b != null) {
+//				return null;
+//			}
 			usuario.setAtivo(true);
 			usuario.setPermissao(Permissao.USUARIO);
 			Collection<Role> userRole = roleRepository.findByRole("USER");
@@ -96,7 +103,7 @@ public class UsuarioController {
 
 	@PostMapping("/pet/private/perfil/{id}/perfil")
 	public ModelAndView updatePerfil(@PathVariable Long id, @Valid RequisicaoFormUsuario requisicao,
-			BindingResult bindingResult) {
+			BindingResult bindingResult, TrocaSenhaUsuarioDto trocaSenhaUsuarioDto) {
 		Optional<Usuario> optional = this.usuarioRepository.findById(id);
 //		Usuario usuario = requisicao.toUsuario();
 		if (bindingResult.hasErrors()) {
@@ -302,5 +309,18 @@ public class UsuarioController {
 					+ "\n\n\n#############################");
 		}
 		return "redirect:/pet/admin/usuario";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/registration/ajax/getEmail/{campo}/{valor}")
+	public String getSearchResultViaAjaxRegister(@PathVariable("campo") String campo,
+			@PathVariable("valor") String valor) {
+
+		String msg = "";
+		Usuario user = usuarioRepository.findByEmail(valor);
+		if (user != null) {
+			msg = "Email já existe, escolha em email válido";
+		}
+		return msg;
 	}
 }

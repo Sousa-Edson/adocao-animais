@@ -3,6 +3,7 @@ package com.belval.adocaoanimais.model;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -32,6 +33,7 @@ public class Usuario {
 	private String cpf;
 	private String nascimento;
 	private String sexo;
+	
 	private String email;
 	private String telefone;
 	private String telefone2;
@@ -52,20 +54,17 @@ public class Usuario {
 
 	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY) // , fetch = FetchType.EAGER
 	private List<Animal> animais;
-	
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Collection<Role> roles;
-	
 
 	public Usuario() {
 
 	}
-	
 
 	public Usuario(String nome, String sobrenome, String cpf, String nascimento, String sexo, String email,
-			String telefone, String senha,  Permissao permissao,boolean ativo, Collection<Role> roles) {
+			String telefone, String senha, Permissao permissao, boolean ativo, Collection<Role> roles) {
 		super();
 		this.nome = nome;
 		this.sobrenome = sobrenome;
@@ -79,7 +78,6 @@ public class Usuario {
 		this.permissao = permissao;
 		this.roles = roles;
 	}
-
 
 	public Usuario(String nome, String sobrenome, String cpf, String nascimento, String sexo, String email,
 			String telefone, String senha, Permissao permissao, boolean ativo) {
@@ -168,7 +166,6 @@ public class Usuario {
 		this.telefone2 = telefone2;
 	}
 
-	
 	public String getCep() {
 		return cep;
 	}
@@ -233,7 +230,6 @@ public class Usuario {
 		this.ativo = ativo;
 	}
 
- 
 	public Permissao getPermissao() {
 		return permissao;
 	}
@@ -249,11 +245,12 @@ public class Usuario {
 	public void setRoles(Collection<Role> roles) {
 		this.roles = roles;
 	}
+
 	public String getSenha() {
 		return senha;
 	}
 
-	public void setSenha(String senha) { 
+	public void setSenha(String senha) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		this.senha = passwordEncoder.encode(senha);
 	}
