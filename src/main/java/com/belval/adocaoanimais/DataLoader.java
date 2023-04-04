@@ -239,6 +239,9 @@ public class DataLoader implements CommandLineRunner {
 		/** SALVAR IMAGEM **/
 		
 		petImagemRepository.save(new PetImagem("img01.jpg",a));
+		petImagemRepository.save(new PetImagem("img01.jpg",a));
+		petImagemRepository.save(new PetImagem("img02.jpg",b));
+		petImagemRepository.save(new PetImagem("img02.jpg",b));
 		petImagemRepository.save(new PetImagem("img02.jpg",b));
 		petImagemRepository.save(new PetImagem("img03.jpg",c));
 		petImagemRepository.save(new PetImagem("img04.jpg",d));
