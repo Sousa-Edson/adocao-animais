@@ -46,12 +46,28 @@ public class AdotarController {
 
 	Menu menu = new Menu();
 
+//	@GetMapping("")
+//	public ModelAndView index() {
+//
+//		menu.setTitulo("Minhas solicitações de adoção (animal)");
+//		menu.setSelecao("intencao");
+//		List<Adotar> animais = this.adotarRepository.findAll();
+//		ModelAndView mv = new ModelAndView("intencao/index");
+//		mv.addObject("animais", animais);
+//		mv.addObject("menu", menu);
+//		return mv;
+//	}
+//	
 	@GetMapping("")
-	public ModelAndView index() {
-
+	public ModelAndView index(Authentication authentication) {
+		Usuario user = null;
+		try {
+			user = usuarioRepository.findByEmail(authentication.getName());
+		} catch (Exception e) {
+		}
 		menu.setTitulo("Minhas solicitações de adoção (animal)");
 		menu.setSelecao("intencao");
-		List<Adotar> animais = this.adotarRepository.findAll();
+		List<Adotar> animais = this.adotarRepository.findByUserId(user.getId());
 		ModelAndView mv = new ModelAndView("intencao/index");
 		mv.addObject("animais", animais);
 		mv.addObject("menu", menu);
