@@ -12,5 +12,9 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
 
     @Query("select p from Animal p where p.disponivel = true")
     List<Animal> findAllAtivas();
+    
+//    @Query("select p from Animal p where p.usuario = ?")
+//    List<Animal> findMyAnimais();
 	 
+    List<Animal> findByUsuario_Id(Long usuarioId);
 }

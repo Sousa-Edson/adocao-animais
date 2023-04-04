@@ -3,6 +3,7 @@ package com.belval.adocaoanimais.controller;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +28,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.belval.adocaoanimais.dto.RequisicaoFormUsuario;
 import com.belval.adocaoanimais.dto.TrocaSenhaUsuarioDto;
 import com.belval.adocaoanimais.enums.Permissao;
+import com.belval.adocaoanimais.model.Role;
 import com.belval.adocaoanimais.model.Usuario;
+import com.belval.adocaoanimais.repository.RoleRepository;
 import com.belval.adocaoanimais.repository.UsuarioRepository;
 
 @Controller
@@ -35,19 +38,23 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
+	@Autowired
+	RoleRepository roleRepository;
+
 	@Value("${fileStorageLocationUsuario}")
 	public static String caminhoImagens;
 
 	UsuarioController(String caminhoImagens) {
 		UsuarioController.caminhoImagens = caminhoImagens;
 	}
+
 	@RequestMapping("/login")
 	public ModelAndView login2() {
 		ModelAndView mv = new ModelAndView("login");
 		return mv;
 
 	}
-	
+
 	@GetMapping("/pet/usuario")
 	public ModelAndView nnew(RequisicaoFormUsuario requisicao) {
 		return new ModelAndView("newUsuario");
@@ -76,6 +83,8 @@ public class UsuarioController {
 			Usuario usuario = requisicao.toUsuario();
 			usuario.setAtivo(true);
 			usuario.setPermissao(Permissao.USUARIO);
+			Collection<Role> userRole = roleRepository.findByRole("USER");
+			usuario.setRoles(userRole);
 			this.usuarioRepository.save(usuario);
 			System.out.println("\n\n\n###############################################################\n\n"
 					+ usuario.toString() + "\n\n\n###############################################################\n\n");
@@ -293,5 +302,5 @@ public class UsuarioController {
 					+ "\n\n\n#############################");
 		}
 		return "redirect:/pet/admin/usuario";
-	} 
+	}
 }

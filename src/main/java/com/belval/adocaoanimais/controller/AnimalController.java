@@ -67,12 +67,29 @@ public class AnimalController {
 
 	Menu menu = new Menu();
 
-	@GetMapping("")
-	public ModelAndView index() {
+//	@GetMapping("/all")
+//	public ModelAndView indexAdmin() {
+//
+//		menu.setTitulo("Meus anúncios");
+//		menu.setSelecao("anuncio");
+//		List<Animal> animais = this.animalRepository.findAll();
+//		ModelAndView mv = new ModelAndView("animal/index");
+//		mv.addObject("animais", animais);
+//		mv.addObject("menu", menu);
+//		return mv;
+//	}
 
+	@GetMapping("")
+	public ModelAndView index(Authentication authentication) {
+		Usuario user = null;
+		try {
+			user = usuarioRepository.findByEmail(authentication.getName());
+		} catch (Exception e) {
+		}
 		menu.setTitulo("Meus anúncios");
 		menu.setSelecao("anuncio");
-		List<Animal> animais = this.animalRepository.findAll();
+//		List<Animal> animais = this.animalRepository.findByUserId(user.getId());
+		List<Animal> animais = this.animalRepository.findByUsuario_Id(user.getId());
 		ModelAndView mv = new ModelAndView("animal/index");
 		mv.addObject("animais", animais);
 		mv.addObject("menu", menu);
