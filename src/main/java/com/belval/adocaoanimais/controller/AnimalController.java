@@ -66,18 +66,7 @@ public class AnimalController {
 	private UsuarioRepository usuarioRepository;
 
 	Menu menu = new Menu();
-
-//	@GetMapping("/all")
-//	public ModelAndView indexAdmin() {
-//
-//		menu.setTitulo("Meus anúncios");
-//		menu.setSelecao("anuncio");
-//		List<Animal> animais = this.animalRepository.findAll();
-//		ModelAndView mv = new ModelAndView("animal/index");
-//		mv.addObject("animais", animais);
-//		mv.addObject("menu", menu);
-//		return mv;
-//	}
+ 
 
 	@GetMapping("")
 	public ModelAndView index(Authentication authentication) {
