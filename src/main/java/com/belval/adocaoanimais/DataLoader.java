@@ -20,12 +20,14 @@ import com.belval.adocaoanimais.enums.Permissao;
 import com.belval.adocaoanimais.enums.Porte;
 import com.belval.adocaoanimais.model.Animal;
 import com.belval.adocaoanimais.model.PetCor;
+import com.belval.adocaoanimais.model.PetImagem;
 import com.belval.adocaoanimais.model.PetRaca;
 import com.belval.adocaoanimais.model.Postagem;
 import com.belval.adocaoanimais.model.Role;
 import com.belval.adocaoanimais.model.Usuario;
 import com.belval.adocaoanimais.repository.AnimalRepository;
 import com.belval.adocaoanimais.repository.CorRepository;
+import com.belval.adocaoanimais.repository.PetImagemRepository;
 import com.belval.adocaoanimais.repository.PostagemRepository;
 import com.belval.adocaoanimais.repository.RacaRepository;
 import com.belval.adocaoanimais.repository.RoleRepository;
@@ -56,10 +58,12 @@ public class DataLoader implements CommandLineRunner {
 
 	@Autowired
 	AnimalRepository animalRepository;
-	
+
 	@Autowired
 	RoleRepository roleRepository;
 	
+	@Autowired
+	PetImagemRepository petImagemRepository;
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
@@ -82,14 +86,17 @@ public class DataLoader implements CommandLineRunner {
 		Collection<Role> supportRole = roleRepository.findByRole("SUPPORT");
 
 		/** SALVAR USUARIO **/
-		usuarioRepository.save(new Usuario("Edson", "Sousa", "675.749.088-93", "10/01/2000", "masculino",
-				"edson@edson.com", "11 9999-3333", passwordEncoder.encode("123"),permissao.SUPORTE, true,supportRole));
-		usuarioRepository.save(new Usuario("Felipe", "Fiere", "480.383.958-16", "01/10/2000", "masculino",
-				"felipe@felipe.com", "11 9211-0105", passwordEncoder.encode("123"), permissao.COLABORADOR, true,collaboratorRole));
+		usuarioRepository
+				.save(new Usuario("Edson", "Sousa", "675.749.088-93", "10/01/2000", "masculino", "edson@edson.com",
+						"11 9999-3333", passwordEncoder.encode("123"), permissao.SUPORTE, true, supportRole));
+		usuarioRepository
+				.save(new Usuario("Felipe", "Fiere", "480.383.958-16", "01/10/2000", "masculino", "felipe@felipe.com",
+						"11 9211-0105", passwordEncoder.encode("123"), permissao.COLABORADOR, true, collaboratorRole));
 		usuarioRepository.save(new Usuario("Victor", "Bombastic", "230.339.982-06", "01/10/2010", "masculino",
 				"victor@victor.com", "11 8521-0105", passwordEncoder.encode("123"), permissao.USUARIO, true, userRole));
-		usuarioRepository.save(new Usuario("Mariah", "Victoria", "250.789.452-26", "01/10/2010", "feminino",
-				"mariah@mariah.com", "11 8581-0158", passwordEncoder.encode("123"),permissao.ADMINISTRADOR, true,adminRole));
+		usuarioRepository
+				.save(new Usuario("Mariah", "Victoria", "250.789.452-26", "01/10/2010", "feminino", "mariah@mariah.com",
+						"11 8581-0158", passwordEncoder.encode("123"), permissao.ADMINISTRADOR, true, adminRole));
 
 		/** SALVAR POSTAGEM **/
 		Optional<Usuario> usuario = usuarioRepository.findById(1l);
@@ -132,15 +139,14 @@ public class DataLoader implements CommandLineRunner {
 
 		/** DATA **/
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-		 Date data = new Date();
-		
+		Date data = new Date();
 
 		/** SALVAR ANIMAL **/
 
 		Animal a = new Animal();
 
 		a.setNome("Trovão");
-		 data= formato.parse("18/05/2005");
+		data = formato.parse("18/05/2005");
 		a.setNascimento(new java.sql.Date(data.getTime()));
 		a.setObservacao(
 				"	Lorem ipsum arcu aptent integer suspendisse urna nec, platea porttitor aliquam class mauris feugiat tempor, sollicitudin a integer porttitor aenean curabitur. conubia lobortis curae donec libero primis maecenas, ut conubia ligula proin augue metus, lacus varius accumsan phasellus interdum. dui rutrum id curabitur donec imperdiet himenaeos conubia nisl, arcu maecenas pharetra convallis semper rutrum lobortis. ");
@@ -153,11 +159,12 @@ public class DataLoader implements CommandLineRunner {
 		a.setSexo(1);
 		a.setEspecie(Especie.CACHORRO);
 		a.setPetImagem(null);
+		a.setUsuario(usuarioRepository.findById(1l).get());
 		animalRepository.save(a);
 
 		Animal b = new Animal();
 		b.setNome("Raio");
-		 data= formato.parse("16/06/2006");
+		data = formato.parse("16/06/2006");
 		b.setNascimento(new java.sql.Date(data.getTime()));
 		b.setObservacao(
 				"	Lorem ipsum arcu aptent integer suspendisse urna nec, platea porttitor aliquam class mauris feugiat tempor, sollicitudin a integer porttitor aenean curabitur. conubia lobortis curae donec libero primis maecenas, ut conubia ligula proin augue metus, lacus varius accumsan phasellus interdum. dui rutrum id curabitur donec imperdiet himenaeos conubia nisl, arcu maecenas pharetra convallis semper rutrum lobortis. ");
@@ -170,11 +177,12 @@ public class DataLoader implements CommandLineRunner {
 		b.setSexo(2);
 		b.setEspecie(Especie.CACHORRO);
 		b.setPetImagem(null);
+		b.setUsuario(usuarioRepository.findById(2l).get());
 		animalRepository.save(b);
 
 		Animal c = new Animal();
 		c.setNome("Relampago");
-		data= formato.parse("17/07/2007");
+		data = formato.parse("17/07/2007");
 		c.setNascimento(new java.sql.Date(data.getTime()));
 		c.setObservacao(
 				"	Lorem ipsum arcu aptent integer suspendisse urna nec, platea porttitor aliquam class mauris feugiat tempor, sollicitudin a integer porttitor aenean curabitur. conubia lobortis curae donec libero primis maecenas, ut conubia ligula proin augue metus, lacus varius accumsan phasellus interdum. dui rutrum id curabitur donec imperdiet himenaeos conubia nisl, arcu maecenas pharetra convallis semper rutrum lobortis. ");
@@ -187,11 +195,12 @@ public class DataLoader implements CommandLineRunner {
 		c.setSexo(2);
 		c.setEspecie(Especie.GATO);
 		c.setPetImagem(null);
+		c.setUsuario(usuarioRepository.findById(3l).get());
 		animalRepository.save(c);
 
 		Animal d = new Animal();
-		d.setNome("Nuvem"); 
-		data= formato.parse("19/09/2009");
+		d.setNome("Nuvem");
+		data = formato.parse("19/09/2009");
 		d.setNascimento(new java.sql.Date(data.getTime()));
 		d.setObservacao(
 				"	Lorem ipsum arcu aptent integer suspendisse urna nec, platea porttitor aliquam class mauris feugiat tempor, sollicitudin a integer porttitor aenean curabitur. conubia lobortis curae donec libero primis maecenas, ut conubia ligula proin augue metus, lacus varius accumsan phasellus interdum. dui rutrum id curabitur donec imperdiet himenaeos conubia nisl, arcu maecenas pharetra convallis semper rutrum lobortis. ");
@@ -204,11 +213,12 @@ public class DataLoader implements CommandLineRunner {
 		d.setSexo(0);
 		d.setEspecie(Especie.GATO);
 		d.setPetImagem(null);
+		d.setUsuario(usuarioRepository.findById(4l).get());
 		animalRepository.save(d);
 
 		Animal e = new Animal();
 		e.setNome("Chuva");
-		data= formato.parse("20/10/2010");
+		data = formato.parse("20/10/2010");
 		e.setNascimento(new java.sql.Date(data.getTime()));
 		e.setObservacao(
 				"	Lorem ipsum arcu aptent integer suspendisse urna nec, platea porttitor aliquam class mauris feugiat tempor, sollicitudin a integer porttitor aenean curabitur. conubia lobortis curae donec libero primis maecenas, ut conubia ligula proin augue metus, lacus varius accumsan phasellus interdum. dui rutrum id curabitur donec imperdiet himenaeos conubia nisl, arcu maecenas pharetra convallis semper rutrum lobortis. ");
@@ -221,9 +231,20 @@ public class DataLoader implements CommandLineRunner {
 		e.setSexo(1);
 		e.setEspecie(Especie.CACHORRO);
 		e.setPetImagem(null);
+		e.setUsuario(usuarioRepository.findById(1l).get());
 		animalRepository.save(e);
 
 		System.out.println("############################## nascimento: " + a.getNascimento());
+		
+		/** SALVAR IMAGEM **/
+		
+		petImagemRepository.save(new PetImagem("img01.jpg",a));
+		petImagemRepository.save(new PetImagem("img02.jpg",b));
+		petImagemRepository.save(new PetImagem("img03.jpg",c));
+		petImagemRepository.save(new PetImagem("img04.jpg",d));
+		petImagemRepository.save(new PetImagem("img05.jpg",e));
 	}
+	
+
 
 }

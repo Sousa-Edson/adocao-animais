@@ -18,7 +18,13 @@ public class PetImagem {
 	private Animal animal;
 
 	public PetImagem() {
+		 
+	}
+
+	public PetImagem(String caminhoImagem, Animal animal) {
 		super();
+		this.caminhoImagem = caminhoImagem;
+		this.animal = animal;
 	}
 
 	public Long getId() {
