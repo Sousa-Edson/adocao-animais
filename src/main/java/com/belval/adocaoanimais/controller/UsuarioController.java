@@ -41,6 +41,8 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
+	;
+
 	@Autowired
 	RoleRepository roleRepository;
 
@@ -207,9 +209,15 @@ public class UsuarioController {
 		Optional<Usuario> optional = this.usuarioRepository.findById(id);
 		if (optional.isPresent()) {
 			Usuario usuario = optional.get();
+//			 List<Role> roles = roleRepository.findAll();
+//			 List<Role> roles =(List<Role>) optional.get().getRoles();
 			ModelAndView mv = new ModelAndView("usuario/permission");
 			requisicao.fromPermissao(usuario);
 			mv.addObject("listaPermissao", Permissao.values());
+			mv.addObject("roles", usuario.getRoles());
+			mv.addObject("listaRole", roleRepository.findAll());
+			System.out.println("############################################################\n\n" + usuario.getRoles()
+					+ "/n/n#######################################################");
 			mv.addObject(usuario);
 			return mv;
 		} else {
@@ -219,10 +227,25 @@ public class UsuarioController {
 
 	@PostMapping("/pet/admin/usuario/permissao/{id}/update")
 	public ModelAndView updatePermission(@PathVariable Long id, RequisicaoFormUsuario requisicao) {
+//		@RequestParam("roles") List<Long> roleIds
 		Optional<Usuario> optional = this.usuarioRepository.findById(id);
 		if (optional.isPresent()) {
 			Usuario usuario = requisicao.toPermissao(optional.get());
 			usuario.setAtivo(true);
+			String vRole = "USER";
+			if (usuario.getPermissao().toString() == "ADMINISTRADOR") {
+				vRole = "ADMIN";
+			} else if (usuario.getPermissao().toString() == "COLABORADOR") {
+				vRole = "COLLABORATOR";
+			} else if (usuario.getPermissao().toString() == "SUPORTE") {
+				vRole = "SUPPORT";
+			}
+			usuario.setRoles(roleRepository.findByRole(vRole));
+//			List<Role> roles = roleRepository.findAllById(roleIds);
+//			usuario.setRoles(roles);
+			System.out.println(usuario.getRoles());
+			System.out.println("############################################################\n\n" + usuario.getRoles()
+					+ "/n/n#######################################################");
 			this.usuarioRepository.save(usuario);
 			return new ModelAndView("redirect:/pet/admin/usuario");
 			// return new ModelAndView("redirect:/pet/admin/pet-raca/" + petRaca.getId());
