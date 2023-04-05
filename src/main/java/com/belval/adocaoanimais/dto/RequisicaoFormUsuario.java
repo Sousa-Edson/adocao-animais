@@ -1,9 +1,12 @@
 package com.belval.adocaoanimais.dto;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 
 import com.belval.adocaoanimais.enums.Permissao;
+import com.belval.adocaoanimais.model.Role;
 import com.belval.adocaoanimais.model.Usuario;
 
 public class RequisicaoFormUsuario {
@@ -47,6 +50,8 @@ public class RequisicaoFormUsuario {
 	private boolean ativo;
 
 	private Permissao permissao;
+
+	private List<Role> roles;
 
 	public RequisicaoFormUsuario() {
 
@@ -315,6 +320,14 @@ public class RequisicaoFormUsuario {
 		this.caminhoImagem = caminhoImagem;
 		this.ativo = ativo;
 		this.permissao = permissao;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 
 }
