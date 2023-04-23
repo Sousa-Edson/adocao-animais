@@ -79,8 +79,8 @@ public class AnimalController {
 //	public CloudinaryService(Cloudinary cloudinary) {
 //		this.cloudinary = cloudinary;
 //	}
-	
-	private String cloud="https://res.cloudinary.com/duatdkkb3/image/upload/v1682275689/";
+
+	private String cloud = "https://res.cloudinary.com/duatdkkb3/image/upload/v1682275689/";
 
 	@GetMapping("")
 	public ModelAndView index(Authentication authentication) {
@@ -318,7 +318,6 @@ public class AnimalController {
 		try {
 			Path caminho = Paths.get(caminhoImagens + pet.get().getCaminhoImagem());
 			Files.delete(caminho);
-			
 
 		} catch (Exception e) {
 			System.err.println("\n\n\n#########################\n\nErro do try cath - destroy\n\n" + e
@@ -343,12 +342,6 @@ public class AnimalController {
 		try {
 			PetImagem petImagem = new PetImagem();
 			if (!arquivo.isEmpty()) {
-//				byte[] bytes = arquivo.getBytes();
-//				Path caminho = Paths.get(
-//						caminhoImagens + "/img-animal/" + String.valueOf(id) + "-" + arquivo.getOriginalFilename());
-//				Files.write(caminho, bytes);
-//				Map resultado = cloudinary.uploader().upload(arquivo.getBytes(), ObjectUtils.emptyMap());
-
 				String randomName = UUID.randomUUID().toString();
 				String folderName = "animais"; // ou qualquer nome de pasta que você queira usar
 				String fileName = folderName + "/" + randomName;
@@ -357,12 +350,15 @@ public class AnimalController {
 				options.put("public_id", fileName);
 				Map resultado = cloudinary.uploader().upload(arquivo.getBytes(), options);
 
-				System.out.println("###############################\nImagem: " +resultado.get("url"));
+				System.out.println("###############################\nImagem: " + resultado.get("url"));
 				petImagem.setAnimal(optional.get());
-//				petImagem.setCaminhoImagem(String.valueOf(id) + "-" + arquivo.getOriginalFilename());
-				petImagem.setCaminhoImagem(fileName);
+				petImagem.setTipoImagem(arquivo.getContentType());
+				petImagem.setTamanhoImagem(arquivo.getSize());
+				petImagem.setCaminhoImagem((String) resultado.get("public_id"));
+				petImagem.setUrlImagem((String) resultado.get("url"));
 				this.petImagemRepository.save(petImagem);
-				System.out.println("private static String caminhoImagensAnimal: " + caminhoImagens);
+				System.out.println("****************************************************\n" + "tamanho: "
+						+ arquivo.getSize());
 			}
 		} catch (Exception e) {
 			System.out.println("erro--> " + e);
