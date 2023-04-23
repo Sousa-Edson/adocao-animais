@@ -33,7 +33,7 @@ import com.belval.adocaoanimais.repository.RacaRepository;
 import com.belval.adocaoanimais.repository.RoleRepository;
 import com.belval.adocaoanimais.repository.UsuarioRepository;
 
-//@Component
+@Component
 public class DataLoader implements CommandLineRunner {
 	LocalDateTime agora = LocalDateTime.now();
 	String s = "25/07/1981";

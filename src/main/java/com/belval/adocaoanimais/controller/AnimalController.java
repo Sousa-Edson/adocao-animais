@@ -1,11 +1,14 @@
 package com.belval.adocaoanimais.controller;
 
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -39,6 +42,8 @@ import com.belval.adocaoanimais.repository.CorRepository;
 import com.belval.adocaoanimais.repository.PetImagemRepository;
 import com.belval.adocaoanimais.repository.RacaRepository;
 import com.belval.adocaoanimais.repository.UsuarioRepository;
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 
 @Controller
 @RequestMapping(value = "/pet/private/animal")
@@ -48,8 +53,11 @@ public class AnimalController {
 	@Value("${fileStorageLocation}")
 	public static String caminhoImagens;
 
-	AnimalController(String caminhoImagens) {
+	private final Cloudinary cloudinary;
+
+	AnimalController(String caminhoImagens, Cloudinary cloudinary) {
 		AnimalController.caminhoImagens = caminhoImagens;
+		this.cloudinary = cloudinary;
 	}
 
 	@Autowired
@@ -66,7 +74,13 @@ public class AnimalController {
 	private UsuarioRepository usuarioRepository;
 
 	Menu menu = new Menu();
- 
+//	private final Cloudinary cloudinary;
+
+//	public CloudinaryService(Cloudinary cloudinary) {
+//		this.cloudinary = cloudinary;
+//	}
+	
+	private String cloud="https://res.cloudinary.com/duatdkkb3/image/upload/v1682275689/";
 
 	@GetMapping("")
 	public ModelAndView index(Authentication authentication) {
@@ -138,37 +152,12 @@ public class AnimalController {
 			mv = new ModelAndView("animal/new-image");
 			List<PetImagem> petImagem = this.petImagemRepository.findByAnimal(animal);
 			mv.addObject("petImagem", petImagem);
+			mv.addObject("cloudinary", cloud);
 			mv.addObject(animal);
 		} else {
 			System.out.println("$$$$$$$$$$$ Não achou a ");
 		}
 		return mv;
-	}
-
-	/* PENSAR NESTA PARTE PARA INSERIR IMAGEM DO ANIMAL */
-	@PostMapping("/new/{id}")
-	public ModelAndView saveImage(@PathVariable Long id, @RequestParam("file-img") MultipartFile arquivo) {
-		System.out.println("**** ID: " + id);
-		System.out.println("arquivo : " + arquivo);
-		Optional<Animal> optional = this.animalRepository.findById(id);
-		System.out.println("$$$$$$$$$$$ Não achou a ");
-		try {
-			PetImagem petImagem = new PetImagem();
-			if (!arquivo.isEmpty()) {
-				byte[] bytes = arquivo.getBytes();
-				Path caminho = Paths.get(
-						caminhoImagens + "/img-animal/" + String.valueOf(id) + "-" + arquivo.getOriginalFilename());
-				Files.write(caminho, bytes);
-				petImagem.setAnimal(optional.get());
-				petImagem.setCaminhoImagem(String.valueOf(id) + "-" + arquivo.getOriginalFilename());
-				this.petImagemRepository.save(petImagem);
-				System.out.println("private static String caminhoImagensAnimal: " + caminhoImagens);
-			}
-		} catch (Exception e) {
-			System.out.println("erro--> " + e);
-			e.printStackTrace();
-		}
-		return new ModelAndView("redirect:/pet/private/animal/new/" + id);
 	}
 
 	@GetMapping("/{id}/activate")
@@ -229,6 +218,7 @@ public class AnimalController {
 			mv.addObject("listaPorte", Porte.values());
 			List<PetImagem> petImagem = this.petImagemRepository.findByAnimal(animal);
 			mv.addObject("petImagem", petImagem);
+			mv.addObject("cloudinary", cloud);
 			return mv;
 		} else {
 			System.out.println("$$$$$$$$$$$ Não achou o animal");
@@ -278,6 +268,7 @@ public class AnimalController {
 			mv.addObject(animal);
 			List<PetImagem> petImagem = this.petImagemRepository.findByAnimal(animal);
 			mv.addObject("petImagem", petImagem);
+			mv.addObject("cloudinary", cloud);
 			return mv;
 		} else {
 			System.out.println("$$$$$$$$$$$ Não achou animal");
@@ -327,13 +318,57 @@ public class AnimalController {
 		try {
 			Path caminho = Paths.get(caminhoImagens + pet.get().getCaminhoImagem());
 			Files.delete(caminho);
-			petImagemRepository.deleteById(id);
+			
 
 		} catch (Exception e) {
 			System.err.println("\n\n\n#########################\n\nErro do try cath - destroy\n\n" + e
 					+ "\n\n################################");
 		}
+		try {
+			petImagemRepository.deleteById(id);
+		} catch (Exception e) {
+			System.out.println("erro no banco de dados");
+		}
 		return "redirect:/pet/private/animal/new/" + pet.get().getAnimal().getId();
+	}
+
+	/* PENSAR NESTA PARTE PARA INSERIR IMAGEM DO ANIMAL */
+	@PostMapping("/new/{id}")
+	public ModelAndView saveImage(@PathVariable Long id, @RequestParam("file-img") MultipartFile arquivo) {
+		System.out.println("**** ID: " + id);
+		System.out.println("arquivo : " + arquivo);
+		Optional<Animal> optional = this.animalRepository.findById(id);
+		System.out.println("$$$$$$$$$$$ Não achou a ");
+
+		try {
+			PetImagem petImagem = new PetImagem();
+			if (!arquivo.isEmpty()) {
+//				byte[] bytes = arquivo.getBytes();
+//				Path caminho = Paths.get(
+//						caminhoImagens + "/img-animal/" + String.valueOf(id) + "-" + arquivo.getOriginalFilename());
+//				Files.write(caminho, bytes);
+//				Map resultado = cloudinary.uploader().upload(arquivo.getBytes(), ObjectUtils.emptyMap());
+
+				String randomName = UUID.randomUUID().toString();
+				String folderName = "animais"; // ou qualquer nome de pasta que você queira usar
+				String fileName = folderName + "/" + randomName;
+
+				Map<String, Object> options = new HashMap<>();
+				options.put("public_id", fileName);
+				Map resultado = cloudinary.uploader().upload(arquivo.getBytes(), options);
+
+				System.out.println("###############################\nImagem: " +resultado.get("url"));
+				petImagem.setAnimal(optional.get());
+//				petImagem.setCaminhoImagem(String.valueOf(id) + "-" + arquivo.getOriginalFilename());
+				petImagem.setCaminhoImagem(fileName);
+				this.petImagemRepository.save(petImagem);
+				System.out.println("private static String caminhoImagensAnimal: " + caminhoImagens);
+			}
+		} catch (Exception e) {
+			System.out.println("erro--> " + e);
+			e.printStackTrace();
+		}
+		return new ModelAndView("redirect:/pet/private/animal/new/" + id);
 	}
 
 }
