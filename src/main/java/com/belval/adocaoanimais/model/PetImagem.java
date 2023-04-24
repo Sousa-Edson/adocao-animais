@@ -25,9 +25,9 @@ public class PetImagem {
 		 
 	}
 
-	public PetImagem(String caminhoImagem, Animal animal) {
+	public PetImagem(String urlImagem, Animal animal) {
 		super();
-		this.caminhoImagem = caminhoImagem;
+		this.urlImagem = urlImagem;
 		this.animal = animal;
 	}
 
