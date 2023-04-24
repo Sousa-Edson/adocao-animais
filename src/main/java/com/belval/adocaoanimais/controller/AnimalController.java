@@ -1,6 +1,5 @@
 package com.belval.adocaoanimais.controller;
 
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -43,7 +42,6 @@ import com.belval.adocaoanimais.repository.PetImagemRepository;
 import com.belval.adocaoanimais.repository.RacaRepository;
 import com.belval.adocaoanimais.repository.UsuarioRepository;
 import com.cloudinary.Cloudinary;
-import com.cloudinary.utils.ObjectUtils;
 
 @Controller
 @RequestMapping(value = "/pet/private/animal")

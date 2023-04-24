@@ -56,11 +56,13 @@
 						</div>
 						<div
 							th:attr="class=${iStat.even} ? 'col-md-5 order-md-2' :'col-md-5 order-md-1' ">
-							<img class="featurette-image img-fluid mx-auto rounded"
-								data-src="holder.js/400x400/auto" alt="400x400"
-								style="width: 500px; height: 400px"
-								th:src="@{/pet/mostrarImagem/img-post/{imagem}(imagem=${postagem.getCaminhoImagem})}"
-								data-holder-rendered="true" />
+<!-- 							<img class="featurette-image img-fluid mx-auto rounded" -->
+<!-- 								data-src="holder.js/400x400/auto" alt="400x400" -->
+<!-- 								style="width: 500px; height: 400px" -->
+<!-- 								th:src="@{/pet/mostrarImagem/img-post/{imagem}(imagem=${postagem.getCaminhoImagem})}" -->
+<!-- 								data-holder-rendered="true" /> -->
+								<img
+											th:replace="~{fragmentos-img :: imagem-postagem-400(${postagem.getCaminhoImagem})}">
 						</div>
 					</div>
 

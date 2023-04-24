@@ -6,5 +6,22 @@
 	style="height: 400px" th:src=" ${imagem}" alt="...">
 
 <img th:fragment="imagem-animal-800(imagem)" class="img-thumbnail"
-	width="100%" height="100%" style="height: 800px"
-	th:src=" ${imagem}" alt="...">
+	width="100%" height="100%" style="height: 800px" th:src=" ${imagem}"
+	alt="...">
+
+<!-- <img th:fragment="imagem-postagem-500(imagem)"  class="featurette-image img-fluid mx-auto rounded" -->
+<!-- 	th:src=" ${imagem}" -->
+<!-- 	data-src="holder.js/400x400/auto" alt="400x400" -->
+<!-- 	style="width: 500px; height: 400px" data-holder-rendered="true"> -->
+
+
+<img th:fragment="imagem-postagem-500(imagem)" name="imagemExibir"
+	id="imagemExibir" class="rounded mx-auto d-block "
+	style="width: 500px; height: 400px" alt="imagem erro"
+	th:src="${imagem}">
+
+<img th:fragment="imagem-postagem-400(imagem)"
+	class="featurette-image img-fluid mx-auto rounded"
+	data-src="holder.js/400x400/auto" alt="400x400"
+	style="width: 500px; height: 400px" th:src="${imagem}"
+	data-holder-rendered="true" />
