@@ -35,9 +35,10 @@
 							<h1 class="fs-4" th:text="${animal.nome}">imagem</h1>
 							<div
 								th:if="${animal.petImagem != null and animal.petImagem.size() > 0}">
-								<img class="card-img-top" style="min-height: 400px"
-									th:src="@{/pet/mostrarImagem/img-pet/{imagem}(imagem=${animal.petImagem[0].caminhoImagem})}"
-									alt="Card image cap">
+								<!-- 								<img class="card-img-top" style="min-height: 400px" -->
+								<!-- 									th:src="@{/pet/mostrarImagem/img-pet/{imagem}(imagem=${animal.petImagem[0].caminhoImagem})}" -->
+								<!-- 									alt="Card image cap"> -->
+								<img th:replace="~{fragmentos-img :: imagem-animal-400(${animal.petImagem[0].getUrlImagem})}">
 							</div>
 							<div
 								th:if="${animal.petImagem == null || animal.petImagem.size() == 0}">
@@ -128,9 +129,10 @@
 									<div class="card shadow-sm" style="">
 										<a type="button" class=" " href="#" data-bs-toggle="modal"
 											th:attr="data-bs-target='#exampleModal'+${imagens.id }">
-											<img width="100%" height="100%" style="height: 200px;"
-											th:src="@{/pet/mostrarImagem/img-pet/{imagem}(imagem=${imagens.getCaminhoImagem})}"
-											class="img-thumbnail" alt="...">
+<!-- 											<img width="100%" height="100%" style="height: 200px;" -->
+<!-- 											th:src="@{/pet/mostrarImagem/img-pet/{imagem}(imagem=${imagens.getCaminhoImagem})}" -->
+<!-- 											class="img-thumbnail" alt="..."> -->
+											<img th:replace="~{fragmentos-img :: imagem-animal(${imagens.getUrlImagem})}">
 										</a>
 									</div>
 								</div>
@@ -145,9 +147,10 @@
 												<button type="button" class="btn-close"
 													data-bs-dismiss="modal" aria-label="Close"></button>
 											</div>
-											<img width="100%" height="100%" style="height: 800px;"
-												th:src="@{/pet/mostrarImagem/img-pet/{imagem}(imagem=${imagens.getCaminhoImagem})}"
-												class="img-thumbnail" alt="...">
+<!-- 											<img width="100%" height="100%" style="height: 800px;" -->
+<!-- 												th:src="@{/pet/mostrarImagem/img-pet/{imagem}(imagem=${imagens.getCaminhoImagem})}" -->
+<!-- 												class="img-thumbnail" alt="..."> -->
+												<img th:replace="~{fragmentos-img :: imagem-animal-800(${imagens.getUrlImagem})}">
 										</div>
 									</div>
 								</div>

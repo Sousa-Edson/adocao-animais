@@ -41,10 +41,6 @@
 				</div>
 
 			</section>
-			<!-- <section th:replace="~{animal/fragmentos :: section-tab-dados('Editar Animal #'+${animalId})}" ></section> -->
-			<!-- <section
-                th:replace="~{animal/fragmentos :: form(requisicaoFormAnimal,'/pet/private/animal','Cadastrar novo animal')}">
-                formulario</section> -->
 
 		</div>
 	</main>
@@ -69,6 +65,30 @@
 		</footer>
 	</div>
 	<section th:replace="~{fragmentos :: section-script}"></section>
+	 <script>
+
+		let photo = document.getElementById('imagemExibir');
+		let file = document.getElementById('file-img');
+
+		photo.addEventListener('click', () => {
+			file.click();
+		});
+
+		file.addEventListener('change', () => {
+
+			if (file.files.length <= 0) {
+				return;
+			}
+
+			let reader = new FileReader();
+
+			reader.onload = () => {
+				photo.src = reader.result;
+			}
+
+			reader.readAsDataURL(file.files[0]);
+		});
+	</script>
 </body>
 
 </html>

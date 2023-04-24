@@ -13,6 +13,10 @@ public class PetImagem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String caminhoImagem;
+	private String nomeImagem;
+	private String tipoImagem;
+	private Long tamanhoImagem;
+	private String urlImagem;
 	@ManyToOne
 	@JoinColumn(name = "animal_id")
 	private Animal animal;
@@ -21,9 +25,9 @@ public class PetImagem {
 		 
 	}
 
-	public PetImagem(String caminhoImagem, Animal animal) {
+	public PetImagem(String urlImagem, Animal animal) {
 		super();
-		this.caminhoImagem = caminhoImagem;
+		this.urlImagem = urlImagem;
 		this.animal = animal;
 	}
 
@@ -50,5 +54,38 @@ public class PetImagem {
 	public void setAnimal(Animal animal) {
 		this.animal = animal;
 	}
+
+	public String getNomeImagem() {
+		return nomeImagem;
+	}
+
+	public void setNomeImagem(String nomeImagem) {
+		this.nomeImagem = nomeImagem;
+	}
+
+	public String getTipoImagem() {
+		return tipoImagem;
+	}
+
+	public void setTipoImagem(String tipoImagem) {
+		this.tipoImagem = tipoImagem;
+	}
+
+	public Long getTamanhoImagem() {
+		return tamanhoImagem;
+	}
+
+	public void setTamanhoImagem(Long tamanhoImagem) {
+		this.tamanhoImagem = tamanhoImagem;
+	}
+
+	public String getUrlImagem() {
+		return urlImagem;
+	}
+
+	public void setUrlImagem(String urlImagem) {
+		this.urlImagem = urlImagem;
+	}
+	
 
 }

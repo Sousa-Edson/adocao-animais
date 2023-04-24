@@ -32,9 +32,7 @@ import com.belval.adocaoanimais.enums.Permissao;
 import com.belval.adocaoanimais.model.Role;
 import com.belval.adocaoanimais.model.Usuario;
 import com.belval.adocaoanimais.repository.RoleRepository;
-import com.belval.adocaoanimais.repository.UsuarioRepository;
-import com.fieb.tcc.academicologin.model.User;
-import com.fieb.tcc.academicologin.web.dto.UserDto;
+import com.belval.adocaoanimais.repository.UsuarioRepository; 
 
 @Controller
 public class UsuarioController {

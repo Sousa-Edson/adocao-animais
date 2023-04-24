@@ -23,9 +23,11 @@
 						<div class="card mb-4 shadow-sm" style="min-height: 600px">
 							<div
 								th:if="${animal.petImagem != null and animal.petImagem.size() > 0}">
-								<img class="card-img-top" style="min-height: 400px"
-									th:src="@{/pet/mostrarImagem/img-pet/{imagem}(imagem=${animal.petImagem[0].caminhoImagem})}"
-									alt="Card image cap">
+<!-- 								<img class="card-img-top" style="min-height: 400px" -->
+<!-- 									th:src="@{/pet/mostrarImagem/img-pet/{imagem}(imagem=${animal.petImagem[0].caminhoImagem})}" -->
+<!-- 									alt="Card image cap"> -->
+								<img  
+									th:replace="~{fragmentos-img :: imagem-animal-400(${animal.petImagem[0].getUrlImagem})}">
 							</div>
 							<div
 								th:if="${animal.petImagem == null || animal.petImagem.size() == 0}">
