@@ -238,14 +238,16 @@ public class DataLoader implements CommandLineRunner {
 		
 		/** SALVAR IMAGEM **/
 		
-		petImagemRepository.save(new PetImagem("img01.jpg",a));
-		petImagemRepository.save(new PetImagem("img01.jpg",a));
-		petImagemRepository.save(new PetImagem("img02.jpg",b));
-		petImagemRepository.save(new PetImagem("img02.jpg",b));
-		petImagemRepository.save(new PetImagem("img02.jpg",b));
-		petImagemRepository.save(new PetImagem("img03.jpg",c));
-		petImagemRepository.save(new PetImagem("img04.jpg",d));
-		petImagemRepository.save(new PetImagem("img05.jpg",e));
+		petImagemRepository.save(new PetImagem("http://res.cloudinary.com/duatdkkb3/image/upload/v1682301201/animais/91578538-b1e5-46fb-b7ab-978d781db417.jpg",a));
+		petImagemRepository.save(new PetImagem("http://res.cloudinary.com/duatdkkb3/image/upload/v1682301201/animais/91578538-b1e5-46fb-b7ab-978d781db417.jpg",a));
+		petImagemRepository.save(new PetImagem("http://res.cloudinary.com/duatdkkb3/image/upload/v1682301255/animais/f3ec9a7a-5d51-49d9-8ea5-a5ed530c162c.jpg",b));
+		petImagemRepository.save(new PetImagem("http://res.cloudinary.com/duatdkkb3/image/upload/v1682301255/animais/f3ec9a7a-5d51-49d9-8ea5-a5ed530c162c.jpg",b));
+		petImagemRepository.save(new PetImagem("http://res.cloudinary.com/duatdkkb3/image/upload/v1682301255/animais/f3ec9a7a-5d51-49d9-8ea5-a5ed530c162c.jpg",b));
+		petImagemRepository.save(new PetImagem("http://res.cloudinary.com/duatdkkb3/image/upload/v1682301291/animais/eb5d5c45-d4c6-4fb6-a491-f552a1a39f48.jpg",c));
+		petImagemRepository.save(new PetImagem("http://res.cloudinary.com/duatdkkb3/image/upload/v1682301323/animais/608a7e6b-22a2-41eb-89f4-427a7359c150.jpg",d));
+		petImagemRepository.save(new PetImagem("http://res.cloudinary.com/duatdkkb3/image/upload/v1682301348/animais/6a8231ee-0e04-41ee-a877-58c62ca0b999.jpg",e));
+		
+			
 	}
 	
 
