@@ -57,7 +57,9 @@
 		</h1>
 	</div>
 	<form th:object="${requisicaoFormAnimal}" th:action="${action}"
-		method="post" name="formulario">
+		method="post" name="formulario"
+		onsubmit="document.getElementById('btnAnimal').disabled = true;"
+		>
 		<div class="  ">
 			<div class="">
 
@@ -193,7 +195,7 @@
 
 		</div>
 		<div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2 pb-2 ">
-			<button type="submit" class="btn btn-primary">
+			<button type="submit" class="btn btn-primary" id="btnAnimal">
 				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
 					fill="currentColor" class="bi bi-arrow-right-circle-fill"
 					viewBox="0 0 20 20">
