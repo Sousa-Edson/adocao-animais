@@ -1,5 +1,7 @@
 package com.belval.adocaoanimais.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -35,10 +37,10 @@ public class PostagemController {
 	private PostagemRepository postagemRepository;
 
 	@Value("${fileStorageLocation}")
-		public static String caminhoImagens ;
+	public static String caminhoImagens;
 
 	private final Cloudinary cloudinary;
-	
+
 	PostagemController(String caminhoImagens, Cloudinary cloudinary) {
 		PostagemController.caminhoImagens = caminhoImagens;
 		this.cloudinary = cloudinary;
@@ -80,15 +82,26 @@ public class PostagemController {
 
 			Postagem postagem = requisicao.toPostagem();
 			postagem.setUsuario(usuario);
+
+			// converte data em texto
+			LocalDate data = LocalDate.parse(postagem.getDataPublicacao());
+			System.err.println("DATA requisicao -> "+postagem.getDataPublicacao());
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd 'de' MMMM 'de' yyyy");
+			String dataFormatada = data.format(formatter);
+			postagem.setDataPublicacao("" +dataFormatada.toUpperCase());// dataFormatada.toUpperCase()
+			
+			System.err.println("DATA FORMATADA -> "+postagem.getDataPublicacao());
 			postagem.setAtivo(true);
 			this.postagemRepository.save(postagem);
 			System.out.println(
 					"###########################################################################\n\n\n ANTES DE CRIAR IMAGEM\n\n\n###############################################");
-			createImage(requisicao, arquivo, postagem.getId());
+			if(arquivo != null) {
+				createImage(requisicao, arquivo, postagem.getId());
+			}
 			System.out.println(
 					"###########################################################################\n\n\n DEPOIS DE CRIAR IMAGEM\n\n\n###############################################");
-			
-			System.out.println("fileStorage "+caminhoImagens);
+
+			System.out.println("fileStorage " + caminhoImagens);
 			return new ModelAndView("redirect:/pet/admin/postagem/");
 		}
 
@@ -103,7 +116,7 @@ public class PostagemController {
 //				byte[] bytes = arquivo.getBytes();
 //				Path caminho = Paths.get(caminhoImagens + "/img-post/"+ String.valueOf(id) + "-" + arquivo.getOriginalFilename());
 //				Files.write(caminho, bytes);
-				
+
 				String randomName = UUID.randomUUID().toString();
 				String folderName = "postagem"; // ou qualquer nome de pasta que você queira usar
 				String fileName = folderName + "/" + randomName;
@@ -112,10 +125,17 @@ public class PostagemController {
 				options.put("public_id", fileName);
 				Map resultado = cloudinary.uploader().upload(arquivo.getBytes(), options);
 
-
 				postagem.setId(id);
 				postagem.setAtivo(true);
 				postagem.setCaminhoImagem((String) resultado.get("url"));
+				
+				// converte data em texto
+				LocalDate data = LocalDate.parse(postagem.getDataPublicacao());
+				System.err.println("DATA requisicao -> "+postagem.getDataPublicacao());
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd 'de' MMMM 'de' yyyy");
+				String dataFormatada = data.format(formatter);
+				postagem.setDataPublicacao("" +dataFormatada.toUpperCase());// dataFormatada.toUpperCase()
+				
 				this.postagemRepository.save(postagem);
 			}
 		} catch (Exception e) {
@@ -161,9 +181,17 @@ public class PostagemController {
 			Optional<Postagem> optional = this.postagemRepository.findById(id);
 			if (optional.isPresent()) {
 				Postagem postagem = requisicao.toPostagem(optional.get());
+				// converte data em texto
+				LocalDate data = LocalDate.parse(postagem.getDataPublicacao());
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd 'de' MMMM 'de' yyyy");
+				String dataFormatada = data.format(formatter);
+				postagem.setDataPublicacao(dataFormatada.toUpperCase());
 				postagem.setAtivo(true);
 				this.postagemRepository.save(postagem);
-				createImage(requisicao, arquivo, postagem.getId());
+				if(arquivo != null) {
+					createImage(requisicao, arquivo, postagem.getId());
+				}
+				
 				return new ModelAndView("redirect:/pet/admin/postagem/");
 				// + postagem.getId()
 			} else {
