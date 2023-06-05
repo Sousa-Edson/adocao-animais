@@ -5,6 +5,7 @@
 
 
 	<form th:object="${requisicaoFormAdotar}" th:action="${action}"
+	 onsubmit="document.getElementById('btnEnviar').disabled = true;"
 		method="post" name="formulario">
 
 
@@ -295,7 +296,7 @@
 				<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 					<div class="row">
 
-						<button type="submit" class="btn btn-success  ">
+						<button type="submit" id="btnEnviar" class="btn btn-success  ">
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
 								fill="currentColor" class="bi bi-list-check" viewBox="0 0 20 20">
                                 <path
