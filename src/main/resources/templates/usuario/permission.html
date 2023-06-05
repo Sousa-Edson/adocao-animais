@@ -28,6 +28,7 @@
 				<div class=" ">
 					<form th:object="${requisicaoFormUsuario}"
 						th:action="${'/pet/admin/usuario/permissao/'}+${usuario.id}+${'/update'}"
+						 onsubmit="document.getElementById('btnEnviar').disabled = true;"
 						method="post">
 
 
@@ -74,7 +75,7 @@
 
 						</div>
 						<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-							<button type="submit" class="btn btn-primary">
+							<button type="submit" id="btnEnviar" class="btn btn-primary">
 								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
 									fill="currentColor" class="bi bi-arrow-right-circle-fill"
 									viewBox="0 0 20 20">
