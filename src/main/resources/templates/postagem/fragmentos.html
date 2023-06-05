@@ -27,6 +27,7 @@
         </div>
     </form> -->
     <form th:object="${requisicaoFormPostagem}" th:action="${action}" method="post" name="formulario"
+    onsubmit="document.getElementById('btnEnviar').disabled = true;"
         enctype="multipart/form-data">
         <div class="col-sm-12">
         </div>
@@ -104,7 +105,7 @@
         </div>
     </div> -->
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button type="submit" class="btn btn-primary mt-1">
+            <button type="submit" class="btn btn-primary mt-1" id="btnEnviar">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                     class="bi bi-arrow-right-circle-fill" viewBox="0 0 20 20">
                     <path
