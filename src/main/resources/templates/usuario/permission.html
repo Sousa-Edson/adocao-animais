@@ -28,6 +28,7 @@
 				<div class=" ">
 					<form th:object="${requisicaoFormUsuario}"
 						th:action="${'/pet/admin/usuario/permissao/'}+${usuario.id}+${'/update'}"
+						 onsubmit="document.getElementById('btnEnviar').disabled = true;"
 						method="post">
 
 
@@ -57,24 +58,14 @@
 												th:text="${tipo.descricao}"></option>
 										</select>
 									</div>
-									<!-- 									<select th:field="*{roles}" multiple> -->
-									<!-- 										<option th:each="role : ${roleList}" th:value="${role}" -->
-									<!-- 											th:text="${role.nome}"></option> -->
 									</select>
 
-<!-- 									<div class="mb-3"> -->
-<!-- 										<label class="form-label">Conceder permissão de</label> <select -->
-<!-- 											class="form-select" th:field="*{roles}">   -->
-<!-- 											<option th:each="roles : ${listaRole}" th:value="${roles.id}" -->
-<!-- 												th:text="${roles.role}"></option> -->
-<!-- 										</select> -->
-<!-- 									</div> -->
 								</div>
 							</div>
 
 						</div>
 						<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-							<button type="submit" class="btn btn-primary">
+							<button type="submit" id="btnEnviar" class="btn btn-primary">
 								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
 									fill="currentColor" class="bi bi-arrow-right-circle-fill"
 									viewBox="0 0 20 20">
