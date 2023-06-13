@@ -18,20 +18,18 @@
 					Detalhe de animal #<span th:text="${animal.id}"></span>
 				</h1>
 				<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-					<a
-						th:href="@{/pet/private/intencao-adotar/new/{id} (id=${animal.id})}"
-						class="btn btn-success me-md-2 px-5"> <svg
-							xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-							fill="currentColor" class="bi bi-list-check" viewBox="0 0 20 20"> 
-                                <path
+					<a th:href="@{/pet/private/intencao-adotar/new/{id} (id=${animal.id})}"
+						class="btn btn-success me-md-2 px-5"> <svg xmlns="http://www.w3.org/2000/svg" width="20"
+							height="20" fill="currentColor" class="bi bi-list-check" viewBox="0 0 20 20">
+							<path
 								d="M11 13a5 5 0 1 0-4.975-5.5H4A1.5 1.5 0 0 0 2.5 6h-1A1.5 1.5 0 0 0 0 7.5v1A1.5 1.5 0 0 0 1.5 10h1A1.5 1.5 0 0 0 4 8.5h2.025A5 5 0 0 0 11 13zm.5-7.5v2h2a.5.5 0 0 1 0 1h-2v2a.5.5 0 0 1-1 0v-2h-2a.5.5 0 0 1 0-1h2v-2a.5.5 0 0 1 1 0z" />
-                               </svg> Adotar
+						</svg> Adotar
 					</a> <a href="/pet/public/galeria" class="btn btn-primary me-md-2 px-5">
-						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-							fill="currentColor" class="bi bi-list-check" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+							class="bi bi-list-check" viewBox="0 0 20 20">
+							<path fill-rule="evenodd"
 								d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
-                        </svg> Galeria
+						</svg> Galeria
 					</a>
 
 				</div>
@@ -40,16 +38,14 @@
 						<div class="col">
 							<hr>
 							<h1 class="fs-4" th:text="${animal.nome}">imagem</h1>
-							<div
-								th:if="${animal.petImagem != null and animal.petImagem.size() > 0}">
+							<div th:if="${animal.petImagem != null and animal.petImagem.size() > 0}">
 								<!-- 								<img class="card-img-top" style="min-height: 400px" -->
 								<!-- 									th:src="@{/pet/mostrarImagem/img-pet/{imagem}(imagem=${animal.petImagem[0].caminhoImagem})}" -->
 								<!-- 									alt="Card image cap"> -->
 								<img
 									th:replace="~{fragmentos-img :: imagem-animal-400(${animal.petImagem[0].getUrlImagem})}">
 							</div>
-							<div
-								th:if="${animal.petImagem == null || animal.petImagem.size() == 0}">
+							<div th:if="${animal.petImagem == null || animal.petImagem.size() == 0}">
 								<img class="card-img-top" style="min-height: 400px"
 									th:src="@{/pet/mostrarImagem/img-pet/}" alt="Card image cap">
 
@@ -71,38 +67,36 @@
 											</div>
 											<div class="form-group col-md-12">
 												<label for="nome">Especie</label> <span type="text"
-													th:text="${animal.especie.descricao}"
-													class="form-control  " placeholder="Digite nome do Animal "
-													id="nome" name="nome" value=""></span>
+													th:text="${animal.especie.descricao}" class="form-control  "
+													placeholder="Digite nome do Animal " id="nome" name="nome"
+													value=""></span>
 											</div>
 											<div class="form-group col-md-12">
 												<label for="nome">Raça</label> <span type="text"
-													th:text="${animal.getPetRaca.getRaca}"
-													class="form-control  " placeholder="Digite nome do Animal "
-													id="nome" name="nome" value=""></span>
+													th:text="${animal.getPetRaca.getRaca}" class="form-control  "
+													placeholder="Digite nome do Animal " id="nome" name="nome"
+													value=""></span>
 											</div>
 											<div class="form-group col-md-12">
 												<label for="nome">Cor de pelagem</label> <span type="text"
-													th:text="${animal.porte.descricao}" class="form-control  "
+													th:text="${animal.getPetCor.cor}" class="form-control  "
 													placeholder="Digite nome do Animal " id="nome" name="nome"
 													value=""></span>
 											</div>
 											<div class="form-group col-md-12">
 												<label for="nome">Porte</label> <span type="text"
-													th:text="${animal.getPetRaca.getRaca}"
-													class="form-control  " placeholder="Digite nome do Animal "
-													id="nome" name="nome" value=""></span>
+													th:text="${animal.porte.descricao}" class="form-control  "
+													placeholder="Digite nome do Animal " id="nome" name="nome"
+													 value=""></span>
 											</div>
 
 											<div class="form-group col-md-12">
-												<label for="nome">Idade</label> <span type="text"
-													th:text="${animal.idade[0] ==1  ? animal.idade[1] + ' ano ' : ''}
+												<label for="nome">Idade</label> <span type="text" th:text="${animal.idade[0] ==1  ? animal.idade[1] + ' ano ' : ''}
 													 + ${animal.idade[0] > 1 ? ' ' + animal.idade[0] + ' anos ' : ''} 
 													 + ${animal.idade[1] == 1 ? ' ' + animal.idade[1] + ' mes ' : ''} 
 													 + ${animal.idade[1] > 1 ? ' ' + animal.idade[1] + ' meses ' : ''} 
 													 + ${animal.idade[2] == 1 ? ' ' + animal.idade[2] + ' dia ' : ''} 
-													 + ${animal.idade[2] > 1 ? ' ' + animal.idade[2] + ' dias  ' : ''} "
-													class="form-control  "></span>
+													 + ${animal.idade[2] > 1 ? ' ' + animal.idade[2] + ' dias  ' : ''} " class="form-control  "></span>
 											</div>
 
 
@@ -110,8 +104,7 @@
 											<b>Disponivel:</b> <a th:if="${animal.disponivel}"
 												class="text-decoration-none"
 												th:href="@{/pet/private/animal/{id}/deactivate (id=${animal.id})}">
-												Sim</a> <a th:unless="${animal.disponivel}"
-												class="text-decoration-none"
+												Sim</a> <a th:unless="${animal.disponivel}" class="text-decoration-none"
 												th:href="@{/pet/private/animal/{id}/activate (id=${animal.id})}">Não</a>
 
 											<br /> <b>Atualizado por:</b> Edson <br /> <b>Atualizado
@@ -131,40 +124,36 @@
 							<div class="col-lg-4 col-md-6 col-sm-12"
 								th:if="${petImagem == null || petImagem.size() == 0}">
 								<div class="card shadow-sm" style="">
-									<a type="button" class=" " href="#"> <img width="100%"
-										height="100%" style="height: 200px;"
-										th:src="@{/pet/mostrarImagem/img-pet/}" class="img-thumbnail"
-										alt="...">
+									<a type="button" class=" " href="#"> <img width="100%" height="100%"
+											style="height: 200px;" th:src="@{/pet/mostrarImagem/img-pet/}"
+											class="img-thumbnail" alt="...">
 									</a>
 								</div>
 							</div>
-							<div class="col-lg-4 col-md-6 col-sm-12"
-								th:each="imagens : ${petImagem}">
+							<div class="col-lg-4 col-md-6 col-sm-12" th:each="imagens : ${petImagem}">
 								<div class="">
 									<div class="card shadow-sm" style="">
 										<a type="button" class=" " href="#" data-bs-toggle="modal"
 											th:attr="data-bs-target='#exampleModal'+${imagens.id }">
 											<img
-											th:replace="~{fragmentos-img :: imagem-animal(${imagens.getUrlImagem})}">
+												th:replace="~{fragmentos-img :: imagem-animal(${imagens.getUrlImagem})}">
 										</a>
 									</div>
 								</div>
 								<!-- Modal -->
-								<div class="modal modal-xl fade" data-bs-backdrop="static"
-									data-bs-keyboard="false"
+								<div class="modal modal-xl fade" data-bs-backdrop="static" data-bs-keyboard="false"
 									th:attr="id='exampleModal'+${imagens.id }" tabindex="-1"
 									aria-labelledby="exampleModalLabel" aria-hidden="true">
 									<div class="modal-dialog ">
 										<div class="modal-content">
 											<div class="modal-header">
-												<button type="button" class="btn-close"
-													data-bs-dismiss="modal" aria-label="Close"></button>
+												<button type="button" class="btn-close" data-bs-dismiss="modal"
+													aria-label="Close"></button>
 											</div>
 											<!-- 											<img width="100%" height="100%" style="height: 800px;" -->
 											<!-- 												th:src="@{/pet/mostrarImagem/img-pet/{imagem}(imagem=${imagens.getCaminhoImagem})}" -->
 											<!-- 												class="img-thumbnail" alt="..."> -->
-											<img
-												th:replace="~{fragmentos-img :: imagem-animal-800(${imagens.getUrlImagem})}"
+											<img th:replace="~{fragmentos-img :: imagem-animal-800(${imagens.getUrlImagem})}"
 												alt="...">
 										</div>
 									</div>
@@ -179,14 +168,11 @@
 	</main>
 	<!-- footer - rodape basico -->
 	<div class="container">
-		<footer
-			class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+		<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
 			<div class="col-md-4 d-flex align-items-center">
-				<a href="/"
-					class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+				<a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
 					<div class="  text-center ">
-						<img class="img-fluid"
-							th:src="@{/imagens/MicrosoftTeams-image.png }" alt=""
+						<img class="img-fluid" th:src="@{/imagens/MicrosoftTeams-image.png }" alt=""
 							style="height: 5vh;" />
 					</div>
 				</a> <span class="mb-3 mb-md-0 text-muted">© 2023 Adote fácil</span>
