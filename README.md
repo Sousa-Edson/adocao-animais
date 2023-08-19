@@ -60,3 +60,10 @@ Se você gostaria de contribuir para este projeto, siga os passos abaixo:
 3. Faça as alterações desejadas e commit (**`git commit -m "Minha contribuição"`**)
 4. Push para a branch (**`git push origin minha-contribuicao`**)
 5. Abra um pull request e descreva suas alterações em detalhes
+
+## **Imagens**
+![adocao-animais imagem 1](/home/edson/Projetos/web/adocao-animais/img/adocao-1.png)
+
+![adocao-animais imagem 2](/home/edson/Projetos/web/adocao-animais/img/adocao-2.png)
+
+![adocao-animais imagem 3](/home/edson/Projetos/web/adocao-animais/img/adocao-3.png)
